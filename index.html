@@ -1,0 +1,227 @@
+<html lang="en">
+    
+    <head>
+        <title>Measurements</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="icon" type="image/png" href="imgs/Teaspils_final_logo_no_text.png" />
+        <link rel="stylesheet" href="MainStyle.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="js/Term_fun.js"></script>
+
+        
+        
+    </head>
+    
+    <body>
+        <!--<div class="row">   
+            <div class="col"> Column 1 </div>
+            <div class="col"> Column 2 </div>
+        </div> */-->
+        <header>
+            <div class="header-content">
+                <a class='logo-btn' href="https://www.teaspils.eu/" title="Tide-Logo">
+                    <img src="imgs/Teaspils_final_logo_M.png" width="85" height="100">
+                </a>
+                <nav>
+                    <ul>
+                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="http://localhost:63342/Teaspils_Dashboard/index.html">Measurements</a></li>
+                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="http://localhost:63342/Teaspils_Dashboard/observations.html">Observations</a></li>
+                    </ul>
+                </nav>
+            </div>    
+        </header>
+        
+        <div id="separador">
+            
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div id="date" class="col-10"></div>
+            <div class="col-3"></div>
+        </div>
+        <div class="row">
+            <div class="col-1"></div>
+            <div class="col-8" id="Chart-all">
+                <div class = "row" >
+                    <div class="col-1">  
+                       <div class="white-space-swiper"></div>
+                       <img src="imgs/Rectangle 99.png" width="40" height="80">
+                    </div>
+
+                    <div class="col-2">
+                    <!--<script src="js/Functions.js"></script>-->
+                        <div class="container">
+                            <div class="chart-wrapper">
+                              <ul class="chart-y">
+                                <li></li>
+                                <li>30</li>
+                                <li>20</li>
+                                <li>10</li>
+                                <li></li>
+                              </ul>
+                              <ul class="chart-x">
+                                  <ul class="lines">
+                                      <li></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li></li>
+                                  </ul>
+                                <li id="T-load" class="load-element"></li>
+                              </ul>
+                            </div>
+                            <div class="down">
+                                <h2>Temp. [ºC]</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="container">
+                        <!--<script src="js/Functions.js"></script>-->
+                            <div class="chart-wrapper">
+                              <ul class="chart-y">
+                                <li></li>
+                                <li>75</li>
+                                <li>50</li>
+                                <li>25</li>
+                                <li></li>
+                              </ul>
+                              <ul class="chart-x">
+                                  <ul class="lines">
+                                      <li></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li></li>
+                                  </ul>
+                                <li id="N-load" class="load-element"></li>
+                              </ul>
+                            </div>
+                            <div class="down">
+                                <h2>Noise [dB]</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="container">
+                            <div class="chart-wrapper">
+                              <ul class="chart-y">
+                                <li></li>
+                                <li>1500</li>
+                                <li>1000</li>
+                                <li>500</li>
+                                <li></li>
+                              </ul>
+                              <ul class="chart-x">
+                                  <ul class="lines">
+                                      <li></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li></li>
+                                  </ul>
+                                <li id="CO2-load" class="load-element"></li>
+                              </ul>
+                            </div>
+                            <div class="down">
+                                <h2>CO2 [ppm]</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="container">
+                            <div class="chart-wrapper">
+                              <ul class="chart-y">
+                                <li></li>
+                                <li>75</li>
+                                <li>50</li>
+                                <li>25</li>
+                                <li></li>
+                              </ul>
+                              <ul class="chart-x">
+                                  <ul class="lines">
+                                      <li></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li></li>
+                                  </ul>
+                                <li id="H-load" class="load-element"></li>
+                              </ul>
+                            </div>
+                            <div class="down">
+                                <h2>Humid. [%]</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-2">
+                        <div class="container">
+                            <div class="chart-wrapper">
+                              <ul class="chart-y">
+                                <li></li>
+                                <li>1500</li>
+                                <li>1000</li>
+                                <li>500</li>
+                                <li></li>
+                              </ul>
+                              <ul class="chart-x">
+                                  <ul class="lines">
+                                      <li></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li class="dot"></li>
+                                      <li></li>
+                                  </ul>
+                                <li id="L-load" class="load-element"></li>
+                              </ul>
+                            </div>
+                            <div class="down">
+                                <h2>Illum. [lux]</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-1">
+                       <div class="white-space-swiper"></div>
+                       <img src="imgs/Rectangle 109.png" width="40" height="80">
+                    </div>
+                </div>
+            </div>
+            <div class="col-3"> 
+                <div class="white-space"></div>
+                <div class="white-space"></div>
+                <div class="white-space"></div>
+                <a class="observation-btn" href="http://localhost:63342/Teaspils_Dashboard/observations.html" title="Observations-btn">
+                    <img src="imgs/Group 16.png" width="150" height="150">
+                </a>
+                <div class="white-space"></div>
+                <a class="export-btn" href="" title="export-btn">
+                    <img src="imgs/Group 17.png" width="150" height="70">
+                </a>
+                <a id="" style="display: none;" href=""></a>
+                
+            </div>
+        </div>
+        
+        
+
+        <footer>
+            <div class="footer-content">
+                
+                
+                <div class="footer-image">
+                    <a href="" title="Tide-Logo">
+                        <img src="imgs/upf_tide_logo.png" width="350" height="55">
+                    </a>
+                </div>
+                
+                
+                <div class="footer-space"></div>       
+                <h3>UPF TEASPILS PROJECT</h3>                
+            </div>
+        </footer>
+    </body>
+</html>
+

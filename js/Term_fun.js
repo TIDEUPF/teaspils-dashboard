@@ -56,7 +56,7 @@ window.addEventListener("load", () =>
    if (input_value > 80) {
     input_value = 80  }
    low_limit = input_value;
-   console.log(Data)
+   console.log(low_limit)
    loadDashboard(Data, low_limit)
   })
 

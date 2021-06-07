@@ -90,7 +90,7 @@ nav{
 /* BODY
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
-#separador {
+.separador{
     background: var(--separador-color);
     margin: auto;
     height: 0.3%;
@@ -297,9 +297,9 @@ div.col-2 {
 footer{
     position: fixed;
     width: 100%;
-    height: 10%;
-    color: white;
-    background: var(--black);
+    height: 15%;
+    color: var(--red-color);
+    background: var(--white);
     margin: auto;
     font-size: 15px;
     bottom:0px;
@@ -327,6 +327,10 @@ footer{
 footer h3{
     text-align: center;
     justify-content: center;
+    float: left;
 }
 
+#myinput{
+    width: 15%;
+}
 

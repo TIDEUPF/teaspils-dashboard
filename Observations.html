@@ -23,14 +23,14 @@
                 </a>
                 <nav>
                     <ul>
-                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="http://localhost:63342/Teaspils_Dashboard/index.html">Measurements</a></li>
-                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="http://localhost:63342/Teaspils_Dashboard/observations.html">Observations</a></li>
+                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="index.html">Measurements</a></li>
+                        <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="observations.html">Observations</a></li>
                     </ul>
                 </nav>
             </div>
         </header>
         
-        <div id="separador"></div>
+        <div class="separador"></div>
         <div class="row">
                 <div class="col-1"></div>
                 <div id="date" class="col-10">
@@ -54,7 +54,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-10">
-                    <input type="text"  name="nombredelacaja" class="write-input">
+                    <input type="text"  id="comment-maker" name="nombredelacaja" class="write-input">
                 </div>
                 <div class="col-1"></div>
             </div>
@@ -97,20 +97,31 @@
             </div>
         </div>
 
-        <footer>
-            <div class="footer-content">
-
-
+    </body>
+    <footer>
+        <div class="footer-content">
+            <div class="col-1"></div>
+            <div class="col-3">
                 <div class="footer-image">
                     <a href="" title="Tide-Logo">
                         <img src="imgs/upf_tide_logo.png" width="350" height="55">
                     </a>
                 </div>
-
-
-                <div class="footer-space"></div>
-                <h3>UPF TEASPILS PROJECT</h3>
             </div>
-        </footer>
-    </body>
+            <div class="col-3">
+                <div class="footer-image">
+                    <a href="" title="Tide-Logo">
+                        <img src="imgs/erasmus_en.png" width="250" height="90">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="footer-space"></div>
+                <h3>TEASPILS Project</h3>
+                <h4 href="www.teaspils.eu">www.teaspils.eu</h4>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </footer>
 </html>

@@ -9,6 +9,7 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"  crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" crossorigin="anonymous">
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
         <script src="js/Term_fun.js"></script>
     </head>
     
@@ -31,9 +32,7 @@
             </div>    
         </header>
         
-        <div id="separador">
-            
-        </div>
+        <div class="separador"></div>
         <div class="row">
             <div class="col-1"></div>
             <div id="date" class="col-10"></div>
@@ -191,35 +190,50 @@
                 <div class="white-space"></div>
                 <div class="white-space"></div>
                 <div class="white-space"></div>
-                <a class="observation-btn" href="http://localhost:63342/Teaspils_Dashboard/observations.html" title="Observations-btn">
+                <a class="observation-btn" href="Observations.html" title="Observations-btn">
                     <img src="imgs/Group 16.png" width="150" height="150">
                 </a>
                 <div class="white-space"></div>
-                <a class="export-btn" href="" title="export-btn">
+                <a class="export-btn" id='fileRequest' href="" title="export-btn">
                     <img src="imgs/Group 17.png" width="150" height="70">
                 </a>
-                <a id="" style="display: none;" href=""></a>
-                
+                <!--
+                <a href="https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json" download="Reporte2Mayo2010">
+                    Descargar Archivo
+                </a>
+                -->
+
+                <input id="myInput" type="number" size="1" value=50 />
+                <button id="inputButton" >Update limits</button>
+
             </div>
         </div>
-        
-        
-
-        <footer>
-            <div class="footer-content">
-                
-                
+    </body>
+    <footer>
+        <div class="footer-content">
+            <div class="col-1"></div>
+            <div class="col-3">
                 <div class="footer-image">
                     <a href="" title="Tide-Logo">
                         <img src="imgs/upf_tide_logo.png" width="350" height="55">
                     </a>
                 </div>
-                
-                
-                <div class="footer-space"></div>       
-                <h3>UPF TEASPILS PROJECT</h3>                
             </div>
-        </footer>
-    </body>
+            <div class="col-3">
+                <div class="footer-image">
+                    <a href="" title="Tide-Logo">
+                        <img src="imgs/erasmus_en.png" width="250" height="90">
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="footer-space"></div>
+                <h3>TEASPILS Project</h3>
+                <h4 href="www.teaspils.eu">www.teaspils.eu</h4>
+            </div>
+            <div class="col-1"></div>
+        </div>
+    </footer>
 </html>
 

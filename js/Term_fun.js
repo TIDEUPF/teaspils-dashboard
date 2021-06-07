@@ -6,6 +6,9 @@
 window.addEventListener("load", () =>
 {
 
+ let low_limit = 60;
+ let upper_limit = 80;
+
  /*We generate a request to get the .json*/
  const section = document.querySelector('#temp');
  /*Almacenamos la dirección URL del json*/
@@ -22,8 +25,42 @@ window.addEventListener("load", () =>
  /*Cómo manejar la respuesta del servidor*/
  request.onload = function() {
 
-  var Data = request.response;
-  loadDashboard(Data)
+  let Data = request.response;
+  loadDashboard(Data, low_limit);
+
+  let button = document.getElementById('fileRequest')
+  button.addEventListener('click',function(){
+   /*let blob = Data;
+   var URL = window.URL || window.webkitURL;
+   // try to get URL from Blob
+   try{
+    var downloadUrl = URL.createObjectURL(blob);
+   }
+   catch(e){
+    console.log(blob)
+   }
+  window.location.href = window.URL.createObjectURL(blob);*/
+   let dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(Data));
+   let downloadLink = document.createElement('a');
+   downloadLink.setAttribute('href', dataStr);
+   downloadLink.setAttribute('download', 'exportdata.json');
+   downloadLink.click();
+  });
+
+  let input_limit = document.getElementById('myInput')
+  input_limit.value = low_limit;
+
+  let input_button = document.getElementById('inputButton')
+  input_button.addEventListener('click', function(){
+   let input_value = input_limit.value
+   if (input_value > 80) {
+    input_value = 80  }
+   low_limit = input_value;
+   console.log(Data)
+   loadDashboard(Data, low_limit)
+  })
+
+
   /*showTemp(Temperatures);
   }   */
 
@@ -36,7 +73,18 @@ const red = '#FF3104';
 const green = '#4AD347';
 const orange = '#E8B147';
 
-function loadDashboard(Data){
+/*
+function download(Data){
+ let MIME_TYPE = "text/json";
+ let blob = Data;
+ if (typeof Data === 'undefined'){
+  return;
+ }
+ window.location.href = window.URL.createObjectURL(blob);
+}
+*/
+
+function loadDashboard(Data, low_limit){
 
  var Date_place = document.getElementById("date");
 
@@ -44,11 +92,12 @@ function loadDashboard(Data){
  myH2.textContent = Data['Date'][0].Value;
  Date_place.appendChild(myH2);
 
+
  let Temperature = document.getElementById("T-load");
  let valueT = Math.round((Data['Temperature'][0].Value/40)*100);
  Temperature.style.height = valueT.toString()+'%' ;
  let color_T
- if (valueT < 60) {
+ if (valueT < low_limit) {
   color_T = green;
  } else if (valueT < 80){
   color_T  = orange;

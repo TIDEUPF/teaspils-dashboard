@@ -190,8 +190,6 @@
             </div>
             <div class="col-3">
                 <div class="white-space"></div>
-                <div class="white-space"></div>
-                <div class="white-space"></div>
                 <a class="observation-btn" href="Observations.html" title="Observations-btn">
                     <img src="imgs/Group 16.png" width="150" height="150">
                 </a>
@@ -205,11 +203,35 @@
                     Descargar Archivo
                 </a>
                 -->
+
                 <div class="white-space"></div>
 
-                <input class="input-limit" id="myInput" type="number" size="1" value=50 />
-                <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
-                <button id="inputButton" >Update CO2 limits</button>
+                <a class="export-btn" id='hiding-btn'>
+                    <img src="imgs/settings.png" width="70" height="70">
+                </a>
+                <!--
+                <button id="hiding-btn">Clickeame</button>
+                -->
+
+
+                <div id='limits-setting' class="col">
+
+                    <div class="row">
+                        <div class="button-container">
+                    <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
+                    <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
+                    <button id="inputButtonT" >Update Temp. limits</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                    <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
+                    <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
+                    <button id="inputButtonNoise" >Update Noise limits</button>
+                        </div>
+                    </div>
+
+                </div>
 
             </div>
         </div>

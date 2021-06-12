@@ -6,9 +6,18 @@
 window.addEventListener("load", () =>
 {
 
- /*INITIALIZE THE LIMITS FOR CO2*/
- let low_limit = 23;
- let upper_limit = 30;
+
+ /*INITIALIZE THE LIMITS FOR TEMPERATURE*/
+ let low_limit_T = 23;
+ let upper_limit_T = 30;
+
+ /*INITIALIZE THE LIMITS FOR THE NOISE*/
+ let low_limit_Noise = 50;
+ let upper_limit_Noise = 70;
+
+
+
+
 
  /*We generate a request to get the .json*/
  const section = document.querySelector('#temp');
@@ -27,7 +36,7 @@ window.addEventListener("load", () =>
  request.onload = function() {
 
   let Data = request.response;
-  loadDashboard(Data, low_limit, upper_limit);
+  loadDashboard(Data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise);
 
   let button = document.getElementById('fileRequest')
   button.addEventListener('click',function(){
@@ -53,28 +62,65 @@ window.addEventListener("load", () =>
 
   /*********************INPUT SETTINGS*************************************/
   /*******************************CO2*************************************/
-  let input_limit = document.getElementById('myInput')
-  input_limit.value = low_limit;
+  let T_input_lowlimit = document.getElementById('myInputLowT')
+  T_input_lowlimit.value = low_limit_T;
 
-  let CO2_input_highlimit = document.getElementById('myInputHighCO2')
-  CO2_input_highlimit.value = upper_limit;
+  let T_input_highlimit = document.getElementById('myInputHighT')
+  T_input_highlimit.value = upper_limit_T;
 
-  let input_button = document.getElementById('inputButton')
-  input_button.addEventListener('click', function(){
+  let input_button_T = document.getElementById('inputButtonT')
+  input_button_T.addEventListener('click', function(){
    /*LOW LIMIT OF CO2*/
-   let input_value_low = input_limit.value
+   console.log('Temp!')
+   let input_value_low = T_input_lowlimit.value
    if (input_value_low > 80) {
     input_value_low = 80  }
-   low_limit = input_value_low;
+   low_limit_T = input_value_low;
 
    /*HIGH LIMIT OF CO2*/
-   let input_value_high= CO2_input_highlimit.value
+   let input_value_high= T_input_highlimit.value
    if (input_value_high > 100) {
     input_value_high = 100  }
-   high_limit = input_value_high;
-   loadDashboard(Data, low_limit, high_limit)
+   upper_limit_T = input_value_high;
+   loadDashboard(Data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise);
   })
 
+  /*******************************NOISE*************************************/
+
+  let Noise_input_lowlimit = document.getElementById('myInputLowNoise')
+  Noise_input_lowlimit.value = low_limit_Noise;
+
+  let Noise_input_highlimit = document.getElementById('myInputHighNoise')
+  Noise_input_highlimit.value = upper_limit_Noise;
+
+  let input_button_Noise = document.getElementById('inputButtonNoise')
+  input_button_Noise.addEventListener('click', function(){
+   /*LOW LIMIT OF CO2*/
+   console.log('Noise!')
+   let input_value_low = Noise_input_lowlimit.value
+   if (input_value_low > 80) {
+    input_value_low = 80  }
+   low_limit_Noise = input_value_low;
+   console.log(low_limit_Noise)
+
+   /*HIGH LIMIT OF CO2*/
+   let input_value_high= Noise_input_highlimit.value
+   if (input_value_high > 100) {
+    input_value_high = 100  }
+   upper_limit_Noise = input_value_high;
+   loadDashboard(Data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise);
+  })
+
+  let hide_button = document.getElementById("hiding-btn");
+  hide_button.addEventListener('click', function(){
+   console.log('click me!')
+   let x = document.getElementById("limits-setting")
+   if (x.style.display === "none") {
+    x.style.display = "block";
+   } else {
+    x.style.display = "none";
+   }
+  })
 
 
   /*showTemp(Temperatures);
@@ -100,7 +146,7 @@ function download(Data){
 }
 */
 
-function loadDashboard(Data, low_limit_CO2, high_limit_CO2){
+function loadDashboard(Data, low_limit_T, high_limit_T, low_limit_Noise, high_limit_Noise){
 
  let Date_place = document.getElementById("date");
 
@@ -110,34 +156,36 @@ function loadDashboard(Data, low_limit_CO2, high_limit_CO2){
  Date_place.textContent = myH2.textContent;
  /*appendChild(myH2);*/
 
-
+ /*____________________________________TEMPERATURE_________________________________*/
  let Temperature = document.getElementById("T-load");
  let valueT = Math.round((Data['Temperature'][0].Value/40)*100);
 
- let low_limit_C02_pct = Math.round((low_limit_CO2/40)*100);
- let high_limit_C02_pct = Math.round((high_limit_CO2/40)*100);
+ let low_limit_T_pct = Math.round((low_limit_T/40)*100);
+ let high_limit_T_pct = Math.round((high_limit_T/40)*100);
 
- console.log(high_limit_C02_pct)
  Temperature.style.height = valueT.toString()+'%' ;
  let color_T
- if (valueT < low_limit_C02_pct) {
+ if (valueT < low_limit_T_pct) {
   color_T = green;
- } else if (valueT < high_limit_C02_pct){
+ } else if (valueT < high_limit_T_pct){
   color_T  = orange;
  } else {
   color_T = red;
  }
  Temperature.style.backgroundColor = color_T;
 
-
- var Noise = document.getElementById("N-load");
- var valueN = Math.round((Data['Noise'][0].Value/100)*100);
+ /*____________________________________NOISE_________________________________*/
+ let Noise = document.getElementById("N-load");
+ let valueN = Math.round((Data['Noise'][0].Value/100)*100);
  Noise.style.height = valueN.toString()+'%' ;
 
+ let low_limit_Noise_pct = Math.round((low_limit_Noise/100)*100);
+ let high_limit_Noise_pct = Math.round((high_limit_Noise/100)*100);
+
  let color_N
- if (valueN < 60) {
+ if (valueN < low_limit_Noise_pct) {
   color_N = green;
- } else if (valueN < 80){
+ } else if (valueN < high_limit_Noise_pct){
   color_N = orange;
  } else {
   color_N = red;

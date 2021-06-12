@@ -295,6 +295,17 @@ div.col-2 {
     height: 40%;
     width: 0px;
 }
+
+.button-container{
+    margin-bottom: 0.3rem;
+}
+
+#limits-setting{
+    display: none;
+}
+
+
+
 /* FOOTER
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 

@@ -96,7 +96,7 @@ nav{
     height: 0.3%;
     width: 95%;
 }
-
+/*
 #date{
     color: var(--green-color);
     font-weight: normal;
@@ -105,8 +105,12 @@ nav{
     margin-bottom:0rem;
     padding:0rem;
 }
-
-#date h3 {
+*/
+#date{
+    color: var(--green-color);
+    margin:0rem;
+    margin-top: 0.2rem;
+    padding:0rem;
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--green-color);
@@ -330,7 +334,8 @@ footer h3{
     float: left;
 }
 
-#myinput{
+.input-limit{
     width: 15%;
 }
+
 

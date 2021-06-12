@@ -35,7 +35,9 @@
         <div class="separador"></div>
         <div class="row">
             <div class="col-1"></div>
-            <div id="date" class="col-10"></div>
+            <div class="col-10">
+                <h3 id ='date'></h3>
+            </div>
             <div class="col-3"></div>
         </div>
         <div class="row">
@@ -186,13 +188,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-3"> 
+            <div class="col-3">
                 <div class="white-space"></div>
                 <div class="white-space"></div>
                 <div class="white-space"></div>
                 <a class="observation-btn" href="Observations.html" title="Observations-btn">
                     <img src="imgs/Group 16.png" width="150" height="150">
                 </a>
+
                 <div class="white-space"></div>
                 <a class="export-btn" id='fileRequest' href="" title="export-btn">
                     <img src="imgs/Group 17.png" width="150" height="70">
@@ -202,9 +205,11 @@
                     Descargar Archivo
                 </a>
                 -->
+                <div class="white-space"></div>
 
-                <input id="myInput" type="number" size="1" value=50 />
-                <button id="inputButton" >Update limits</button>
+                <input class="input-limit" id="myInput" type="number" size="1" value=50 />
+                <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
+                <button id="inputButton" >Update CO2 limits</button>
 
             </div>
         </div>

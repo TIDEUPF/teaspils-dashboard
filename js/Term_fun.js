@@ -6,8 +6,9 @@
 window.addEventListener("load", () =>
 {
 
- let low_limit = 60;
- let upper_limit = 80;
+ /*INITIALIZE THE LIMITS FOR CO2*/
+ let low_limit = 23;
+ let upper_limit = 30;
 
  /*We generate a request to get the .json*/
  const section = document.querySelector('#temp');
@@ -26,7 +27,7 @@ window.addEventListener("load", () =>
  request.onload = function() {
 
   let Data = request.response;
-  loadDashboard(Data, low_limit);
+  loadDashboard(Data, low_limit, upper_limit);
 
   let button = document.getElementById('fileRequest')
   button.addEventListener('click',function(){
@@ -47,18 +48,33 @@ window.addEventListener("load", () =>
    downloadLink.click();
   });
 
+
+
+
+  /*********************INPUT SETTINGS*************************************/
+  /*******************************CO2*************************************/
   let input_limit = document.getElementById('myInput')
   input_limit.value = low_limit;
 
+  let CO2_input_highlimit = document.getElementById('myInputHighCO2')
+  CO2_input_highlimit.value = upper_limit;
+
   let input_button = document.getElementById('inputButton')
   input_button.addEventListener('click', function(){
-   let input_value = input_limit.value
-   if (input_value > 80) {
-    input_value = 80  }
-   low_limit = input_value;
-   console.log(low_limit)
-   loadDashboard(Data, low_limit)
+   /*LOW LIMIT OF CO2*/
+   let input_value_low = input_limit.value
+   if (input_value_low > 80) {
+    input_value_low = 80  }
+   low_limit = input_value_low;
+
+   /*HIGH LIMIT OF CO2*/
+   let input_value_high= CO2_input_highlimit.value
+   if (input_value_high > 100) {
+    input_value_high = 100  }
+   high_limit = input_value_high;
+   loadDashboard(Data, low_limit, high_limit)
   })
+
 
 
   /*showTemp(Temperatures);
@@ -84,22 +100,29 @@ function download(Data){
 }
 */
 
-function loadDashboard(Data, low_limit){
+function loadDashboard(Data, low_limit_CO2, high_limit_CO2){
 
- var Date_place = document.getElementById("date");
+ let Date_place = document.getElementById("date");
 
- var myH2 = document.createElement('h3');
+ let myH2 = document.createElement('h3');
+
  myH2.textContent = Data['Date'][0].Value;
- Date_place.appendChild(myH2);
+ Date_place.textContent = myH2.textContent;
+ /*appendChild(myH2);*/
 
 
  let Temperature = document.getElementById("T-load");
  let valueT = Math.round((Data['Temperature'][0].Value/40)*100);
+
+ let low_limit_C02_pct = Math.round((low_limit_CO2/40)*100);
+ let high_limit_C02_pct = Math.round((high_limit_CO2/40)*100);
+
+ console.log(high_limit_C02_pct)
  Temperature.style.height = valueT.toString()+'%' ;
  let color_T
- if (valueT < low_limit) {
+ if (valueT < low_limit_C02_pct) {
   color_T = green;
- } else if (valueT < 80){
+ } else if (valueT < high_limit_C02_pct){
   color_T  = orange;
  } else {
   color_T = red;

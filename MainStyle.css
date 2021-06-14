@@ -346,7 +346,30 @@ footer h3{
 }
 
 .input-limit{
-    width: 15%;
+    margin: 0.8rem;
+    width: 30%;
 }
 
+.input-btn{
+    margin-left: 2rem;
+    border-radius: 10px;
+    background-color: whitesmoke;
+}
+
+.input-btn:hover{
+    border-color: var(--yellow-color);
+    border-radius: 10px;
+}
+
+#limits-setting{
+    width:90%;
+    background-color: var(--green-color);
+    border-radius: 10px;
+    margin-left: 2rem;
+}
+
+#hiding-btn{
+    margin-top: 10rem;
+    margin-left: 5rem;
+}
 

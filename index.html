@@ -41,12 +41,58 @@
             <div class="col-3"></div>
         </div>
         <div class="row">
-            <div class="col-1"></div>
+            <div class="col-2">
+                <a class="export-btn" id='hiding-btn'>
+                    <img src="imgs/settings.png" width="70" height="70">
+                </a>
+
+                <div id='limits-setting' class="col">
+
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
+                            <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
+                            <button class="input-btn" id="inputButtonT" >Update Temp. limits</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
+                            <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
+                            <button class="input-btn" id="inputButtonNoise" >Update Noise limits</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowCO2" type="number" size="1" value=50 />
+                            <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
+                            <button class="input-btn" id="inputButtonCO2" >Update CO2 limits</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowHUM" type="number" size="1" value=50 />
+                            <input class="input-limit" id="myInputHighHUM" type="number" size="1" value=50 />
+                            <button class="input-btn" id="inputButtonHUM" >Update Hum. limits</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowIL" type="number" size="1" value=50 />
+                            <input class="input-limit" id="myInputHighIL" type="number" size="1" value=50 />
+                            <button class="input-btn" id="inputButtonIL" >Update Illum. limits</button>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
             <div class="col-8" id="Chart-all">
                 <div class = "row" >
                     <div class="col-1">  
                        <div class="white-space-swiper"></div>
+                        <!--
                        <img src="imgs/Rectangle 99.png" width="40" height="80">
+                       -->
                     </div>
 
                     <div class="col-2">
@@ -184,16 +230,20 @@
 
                     <div class="col-1">
                        <div class="white-space-swiper"></div>
+                        <!--
                        <img src="imgs/Rectangle 109.png" width="40" height="80">
+                       -->
                     </div>
                 </div>
             </div>
-            <div class="col-3">
+            <div class="col-2">
+                <div class="white-space"></div>
+                <div class="white-space"></div>
                 <div class="white-space"></div>
                 <a class="observation-btn" href="Observations.html" title="Observations-btn">
                     <img src="imgs/Group 16.png" width="150" height="150">
                 </a>
-
+                <div class="white-space"></div>
                 <div class="white-space"></div>
                 <a class="export-btn" id='fileRequest' href="" title="export-btn">
                     <img src="imgs/Group 17.png" width="150" height="70">
@@ -206,32 +256,12 @@
 
                 <div class="white-space"></div>
 
-                <a class="export-btn" id='hiding-btn'>
-                    <img src="imgs/settings.png" width="70" height="70">
-                </a>
                 <!--
                 <button id="hiding-btn">Clickeame</button>
                 -->
 
 
-                <div id='limits-setting' class="col">
 
-                    <div class="row">
-                        <div class="button-container">
-                    <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
-                    <button id="inputButtonT" >Update Temp. limits</button>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="button-container">
-                    <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
-                    <button id="inputButtonNoise" >Update Noise limits</button>
-                        </div>
-                    </div>
-
-                </div>
 
             </div>
         </div>

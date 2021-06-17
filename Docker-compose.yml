@@ -1,5 +1,19 @@
 version: '2'
 services:
+  mysql:
+    image: mysql:8.0
+    container_name: docker-mysql
+    environment:
+      MYSQL_DATABASE: Teaspils_DB
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: TIDE2021
+      MYSQL_ROOT_PASSWORD: TEASPILS2021@
+    ports:
+      - "3306:3306"
+    restart: always
+    volumes:
+      - "mysql-data:/var/lib/mysql"
+
   webserver:
     image: phpstorm/php-71-apache-xdebug-26
     ports:
@@ -8,3 +22,6 @@ services:
       - ./:/var/www/html
     environment:
       XDEBUG_CONFIG: remote_host=host.docker.internal
+
+volumes:
+  mysql-data:

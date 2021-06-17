@@ -41,59 +41,61 @@
             <div class="col-3"></div>
         </div>
         <div class="row">
-            <div class="col-2">
+            <div id="settings" class="col-3">
                 <a class="export-btn" id='hiding-btn'>
-                    <img src="imgs/settings.png" width="70" height="70">
+                    <img src="imgs/settings_button.png" width="120" height="100">
                 </a>
 
                 <div id='limits-setting' class="col">
-
+                    <div class="row">
+                        <div class="button-container">
+                            <h4>Lower Limit</h4>
+                            <h4>Upper Limit</h4>
+                            <a style="left: 0rem;" class="small-setting">
+                                <img src="imgs/settings_button.png" width="50" height="40">
+                            </a>
+                        </div>
+                    </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
                             <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
-                            <button class="input-btn" id="inputButtonT" >Update Temp. limits</button>
+                            <button class="input-btn" id="inputButtonT" >Update Temp.</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
                             <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
-                            <button class="input-btn" id="inputButtonNoise" >Update Noise limits</button>
+                            <button class="input-btn" id="inputButtonNoise" >Update Noise</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowCO2" type="number" size="1" value=50 />
                             <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
-                            <button class="input-btn" id="inputButtonCO2" >Update CO2 limits</button>
+                            <button class="input-btn" id="inputButtonCO2" >Update CO2</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowHUM" type="number" size="1" value=50 />
                             <input class="input-limit" id="myInputHighHUM" type="number" size="1" value=50 />
-                            <button class="input-btn" id="inputButtonHUM" >Update Hum. limits</button>
+                            <button class="input-btn" id="inputButtonHUM" >Update Hum.</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowIL" type="number" size="1" value=50 />
                             <input class="input-limit" id="myInputHighIL" type="number" size="1" value=50 />
-                            <button class="input-btn" id="inputButtonIL" >Update Illum. limits</button>
+                            <button class="input-btn" id="inputButtonIL" >Update Illum.</button>
                         </div>
                     </div>
 
                 </div>
             </div>
-            <div class="col-8" id="Chart-all">
+            <div class="col-7" id="Chart-all">
                 <div class = "row" >
-                    <div class="col-1">  
-                       <div class="white-space-swiper"></div>
-                        <!--
-                       <img src="imgs/Rectangle 99.png" width="40" height="80">
-                       -->
-                    </div>
 
                     <div class="col-2">
                     <!--<script src="js/Functions.js"></script>-->

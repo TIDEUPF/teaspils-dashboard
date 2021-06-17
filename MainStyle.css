@@ -280,6 +280,10 @@ div.col-2 {
     opacity:0.9;
 }
 
+.small-setting:hover{
+    opacity:0.7;
+}
+
 
 
 .swipe-left-btn{
@@ -297,7 +301,8 @@ div.col-2 {
 }
 
 .button-container{
-    margin-bottom: 0.3rem;
+    margin-bottom:0rem;
+    padding: 0rem;
 }
 
 #limits-setting{
@@ -346,14 +351,15 @@ footer h3{
 }
 
 .input-limit{
-    margin: 0.8rem;
-    width: 30%;
+    margin: 0.6rem;
+    width: 20%;
 }
 
 .input-btn{
-    margin-left: 2rem;
+    margin-left: 0rem;
     border-radius: 10px;
     background-color: whitesmoke;
+    width: 8rem;
 }
 
 .input-btn:hover{
@@ -361,15 +367,37 @@ footer h3{
     border-radius: 10px;
 }
 
+
+
 #limits-setting{
     width:90%;
     background-color: var(--green-color);
     border-radius: 10px;
+    margin-top: 0.1rem;
     margin-left: 2rem;
+    display: none;
 }
 
+
 #hiding-btn{
-    margin-top: 10rem;
-    margin-left: 5rem;
+    margin-top: 20rem;
+    margin-left: 8rem;
+}
+
+.button-container h4{
+    font-size: 14px;
+    float: left;
+    margin: 0.4rem;
+    margin-top: 1rem;
+
+}
+
+#settings{
+    margin-top: 2rem;
+}
+
+.small-setting{
+    margin-top: 1rem;
+    margin-left: 5.2rem;
 }
 

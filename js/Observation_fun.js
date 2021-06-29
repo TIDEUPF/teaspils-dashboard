@@ -2,8 +2,9 @@
 
 var Current_day = "Hello";
 window.addEventListener("load", () => {
-
+    //We define the IdPlant, author and comment default value
     let IdPlant = 1234;
+    let author = 'Student Name';
     let comment = 'Please write some of your thoughts in here...';
     var Date_place = document.getElementById("date");
     var f = new Date();
@@ -20,36 +21,43 @@ window.addEventListener("load", () => {
     let written_input = document.getElementById('comment-maker')
     written_input.value = comment;
 
+    let author_input = document.getElementById('author-name')
+    author_input.value = author;
+
     let input_button = document.getElementById('saveButton')
     input_button.addEventListener('click', function () {
         let written_value = written_input.value
-        console.log(written_value)
-        saveComment(written_value)
+        let name = author_input.value
+        console.log(name)
+        saveComment(name, written_value)
 
     })
 
-  function loadComments(written_value) {
+  function loadComments(name, written_value) {
 
         let f = new Date();
         let Today = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear() + ' ' + f.getHours() + ':' + f.getMinutes() + ':' + f.getSeconds();
         let Date_place = document.getElementById("comment_container");
         let myDate = document.createElement('h2');
-        let myH2 = document.createElement('h3');
+        let myText = document.createElement('h3');
+        let myName = document.createElement('h4');
         myDate.textContent = Today;
-        myH2.textContent = written_value;
+        myText.textContent = written_value;
+        myName.textContent = name;
         Date_place.appendChild(myDate);
-        Date_place.appendChild(myH2);
+        Date_place.appendChild(myName);
+        Date_place.appendChild(myText);
     };
 
 
-    function saveComment(written_value) {
-        let Info_Json = {IdPlant: IdPlant, Name: 'Student' , Text: written_value, Image: ' '  }
+    function saveComment(name, written_value) {
+        let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: ' '  }
         $.ajax({
             url: 'Actions/AddObservation.php',
             method: 'post',
             data: {Info_Json: Info_Json},
             success: function (DataJson) {
-                loadComments(written_value)
+                loadComments(name, written_value)
             },
             error: function(xhr, status, error) {
                 console.log(error);
@@ -60,11 +68,18 @@ window.addEventListener("load", () => {
     function display(Json_string) {
         let Json_data = JSON.parse(Json_string)
         Object.values(Json_data).forEach(obs=>{
-            console.log(obs)
+            let Date_place = document.getElementById("comment_container");
+            let myDate_temp = document.createElement('h2');
+            let myText_temp = document.createElement('h3');
+            let myName_temp = document.createElement('h4');
+            myDate_temp.textContent = obs.Date;
+            myText_temp.textContent = obs.Observation;
+            myName_temp.textContent = obs.Name;
+            Date_place.appendChild(myDate_temp);
+            Date_place.appendChild(myName_temp);
+            Date_place.appendChild(myText_temp);
         })
-        //Json_data.forEach(obs => {
-        //    console.log(Json_data)
-        //});
+
     }
 
     function checkDBcomments(IdPlant) {

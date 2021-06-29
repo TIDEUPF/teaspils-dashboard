@@ -87,6 +87,20 @@ nav{
     font-size: 0.9rem;
 }
 
+.id_disp{
+    width: 30%;
+    margin: 0.2rem;
+    margin-left:15rem;
+    float:left;
+    height: 2rem;
+    display: block;
+    background-color: var(--white);
+    border-radius: 10px;
+    font-size: 1.25rem;
+    font-weight: 100;
+
+}
+
 /* BODY
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 
@@ -129,6 +143,24 @@ nav{
 }
 
 .write-input:focus {
+    outline: none;
+    border-color: var(--red-color);
+}
+
+/*NAME*/
+
+.name-input{
+    width: 30%;
+    height: 2rem;
+    display: block;
+    background-color: var(--white);
+    border-radius: 10px;
+    font-size: 1.25rem;
+    font-weight: 100;
+    margin: 0.2rem;
+}
+
+.name-input:focus {
     outline: none;
     border-color: var(--red-color);
 }
@@ -185,6 +217,15 @@ nav{
 }
 .historical-comments h2{
     color: var(--green-color);
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.historical-comments h4{
+    color: var(--red-color);
+    float: right;
     font-size: 1.5rem;
     font-weight: 300;
     margin-left: 20%;

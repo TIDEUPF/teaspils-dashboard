@@ -201,6 +201,7 @@ nav{
 .save-btn:hover{
     opacity:80%;
 }
+
 /*
 .write-input {
     width: 100%;
@@ -240,6 +241,10 @@ nav{
     background-color: var(--grey);
     border-radius: 10px;
     color:white;
+}
+
+.observation ul{
+    color: black;
 }
 
 #comment_container h2{

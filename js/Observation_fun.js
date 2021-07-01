@@ -6,6 +6,7 @@ window.addEventListener("load", () => {
     let IdPlant = 1234;
     let author = 'Student Name';
     let comment = 'Please write some of your thoughts in here...';
+    let image = null;
     var Date_place = document.getElementById("date");
     var f = new Date();
     window.Current_day = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
@@ -27,14 +28,28 @@ window.addEventListener("load", () => {
     let id_plant_displayer = document.getElementById('id_disp')
     id_plant_displayer.value = IdPlant;
 
+    let image_input = document.getElementById('image-upload')
+    image_input.value = image;
+
     let input_button = document.getElementById('saveButton')
     input_button.addEventListener('click', function () {
         let written_value = written_input.value
         let name = author_input.value
-        console.log(name)
-        saveComment(name, written_value)
+        let image = image_input.value
+        console.log(image)
+        saveComment(name, written_value, image)
 
     })
+/*
+**************IMAGE**************+
+    let image_btn = document.getElementById('img-btn')
+    image_btn.addEventListener('click',  function(event) {
+        let image = document.getElementById('output');
+        image.src = URL.createObjectURL(event.target.files[0]);
+        console.log('hello!')
+    });
+    */
+
 
   function loadComments(name, written_value) {
         let f = new Date();
@@ -54,8 +69,8 @@ window.addEventListener("load", () => {
     };
 
 
-    function saveComment(name, written_value) {
-        let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: ' '  }
+    function saveComment(name, written_value, image) {
+        let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image  }
         $.ajax({
             url: 'Actions/AddObservation.php',
             method: 'post',
@@ -86,9 +101,11 @@ window.addEventListener("load", () => {
             let myLinks_temp = document.createElement('ul');
             myText_temp.textContent = obs.Observation;
             myName_temp.textContent = obs.Name;
-            obs_div.append(myName_temp)
-            obs_div.append(myText_temp)
-            obs_div.append(myLinks_temp)
+            myLinks_temp.textContent = obs.Image;
+            console.log(obs.Image);
+            obs_div.append(myName_temp);
+            obs_div.append(myText_temp);
+            obs_div.append(myLinks_temp);
             let delete_btn = document.createElement('button');
             let edit_btn = document.createElement('button');
             edit_btn.textContent = 'Edit'

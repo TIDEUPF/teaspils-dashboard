@@ -79,9 +79,23 @@
                 <div class="col-1"></div>
             </div>
             <div class="row">
-                <div class="col-7"></div>
-                <div class="col-2">
-                    <input type="button" class="obs-btn" value="Upload Image">
+                <div class="col-5">
+                    <!--
+                    <form action="/action_page.php">
+                        <input type="file" id="myImage" name="filename">
+                        <input type="submit">
+                    </form>
+
+                    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                    <img id="output" width="200" />
+                    <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+                    -->
+                </div>
+                <div class="col-4">
+                    <input type="file" id="image-upload" class="image-up"/>
+                    <!--
+                    <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
+                    -->
                 </div>
                 <div class="col-2">
                     <input type="button" id="saveButton" class="save-btn" value="Save">

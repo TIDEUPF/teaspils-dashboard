@@ -1,21 +1,21 @@
 /* RESET RULES & HELPER CLASSES
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
 :root {
-  --red-color: #B85042;
-  --green-color: #A7BEAE;
-  --yellow-color: #E7E8D1; 
-  --separador-color: #CFCFCF; 
-  --contenedor-color: #FEFBFA;
-  --line-color1: crimson;
-  --line-color2: gold;
-  --line-color3: firebrick;
-  --line-color4: orange;
-  --line-color5: darkblue;
-  --black: #2d2929;
-  --grey: #F4F4F4;
-  --white: white;
-  --transition-delay: 0.6s;
-  --transition-delay-step: 0.6s;
+    --red-color: #B85042;
+    --green-color: #A7BEAE;
+    --yellow-color: #E7E8D1;
+    --separador-color: #CFCFCF;
+    --contenedor-color: #FEFBFA;
+    --line-color1: crimson;
+    --line-color2: gold;
+    --line-color3: firebrick;
+    --line-color4: orange;
+    --line-color5: darkblue;
+    --black: #2d2929;
+    --grey: #F4F4F4;
+    --white: white;
+    --transition-delay: 0.6s;
+    --transition-delay-step: 0.6s;
 }
 
 
@@ -56,6 +56,8 @@ header h2 {
 
 .menu{
     float:left;
+    margin: 2rem 0.2rem 0;
+    font-size: 0.9rem;
 }
 
 .logo-btn{
@@ -83,9 +85,34 @@ nav{
     font-weight:bold;
 }
 
-.menu{
-    font-size: 0.9rem;
+
+#id_disp{
+    width: 30%;
+    /*margin-left:15rem;*/
+    height: 2rem;
+    display: block;
+    background-color: var(--white);
+    border-radius: 10px;
+    border-color: var(--green-color);
+    font-size: 1.25rem;
+    font-weight: 100;
 }
+
+#Plant_Identifier{
+    margin: auto;
+}
+
+#IdText{
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-right: 1rem;
+    color: var(--green-color)
+}
+
+.IdElement{
+    float: left;
+}
+
 
 /* BODY
 –––––––––––––––––––––––––––––––––––––––––––––––––– */

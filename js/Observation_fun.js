@@ -121,7 +121,20 @@ window.addEventListener("load", () => {
     }
 
     function deleteComment(Id){
-        console.log(Id)
+        $.ajax({
+            url: 'Actions/DeleteObservation.php',
+            method: 'post',
+            data: {IdObservation: Id},
+            success: function() {
+                console.log('Succeed!!')
+                checkDBcomments(IdPlant)
+
+            },
+            error: function(xhr, status, error) {
+                console.log(error);
+            }
+
+        });
     }
 
     function editComment(Id){

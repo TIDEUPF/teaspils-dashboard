@@ -6,6 +6,9 @@
 window.addEventListener("load", () =>
 {
 
+ let IdPlant = 1234;
+ let id_plant_displayer = document.getElementById('id_disp')
+ id_plant_displayer.value = IdPlant;
 
  /*INITIALIZE THE LIMITS FOR TEMPERATURE*/
  let low_limit_T = 23;

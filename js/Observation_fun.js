@@ -24,6 +24,9 @@ window.addEventListener("load", () => {
     let author_input = document.getElementById('author-name')
     author_input.value = author;
 
+    let id_plant_displayer = document.getElementById('id_disp')
+    id_plant_displayer.value = IdPlant;
+
     let input_button = document.getElementById('saveButton')
     input_button.addEventListener('click', function () {
         let written_value = written_input.value
@@ -34,19 +37,20 @@ window.addEventListener("load", () => {
     })
 
   function loadComments(name, written_value) {
-
         let f = new Date();
-        let Today = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear() + ' ' + f.getHours() + ':' + f.getMinutes() + ':' + f.getSeconds();
-        let Date_place = document.getElementById("comment_container");
+        let Today = f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + f.getDate() + ' ' + f.getHours() + ':' + f.getMinutes() + ':' + f.getSeconds();
+        let comment_container = document.getElementById("comment_container");
+        let comment = document.createElement('div')
         let myDate = document.createElement('h2');
         let myText = document.createElement('h3');
         let myName = document.createElement('h4');
         myDate.textContent = Today;
         myText.textContent = written_value;
         myName.textContent = name;
-        Date_place.appendChild(myDate);
-        Date_place.appendChild(myName);
-        Date_place.appendChild(myText);
+        comment.appendChild(myDate);
+        comment.appendChild(myName);
+        comment.appendChild(myText);
+        comment_container.append(comment)
     };
 
 
@@ -57,7 +61,7 @@ window.addEventListener("load", () => {
             method: 'post',
             data: {Info_Json: Info_Json},
             success: function (DataJson) {
-                loadComments(name, written_value)
+                checkDBcomments(IdPlant)
             },
             error: function(xhr, status, error) {
                 console.log(error);
@@ -67,17 +71,35 @@ window.addEventListener("load", () => {
 
     function display(Json_string) {
         let Json_data = JSON.parse(Json_string)
+        let comment_container = $('#comment_container')
+        comment_container.empty();
         Object.values(Json_data).forEach(obs=>{
-            let Date_place = document.getElementById("comment_container");
+            let comment = document.createElement('div')
+            comment.classList.add('comment')
             let myDate_temp = document.createElement('h2');
-            let myText_temp = document.createElement('h3');
-            let myName_temp = document.createElement('h4');
             myDate_temp.textContent = obs.Date;
+            let obs_div = document.createElement('div')
+            obs_div.classList.add('observation')
+            let myName_temp = document.createElement('h4');
+            let myText_temp = document.createElement('div');
+            myText_temp.classList.add('observation_text')
+            let myLinks_temp = document.createElement('ul');
             myText_temp.textContent = obs.Observation;
             myName_temp.textContent = obs.Name;
-            Date_place.appendChild(myDate_temp);
-            Date_place.appendChild(myName_temp);
-            Date_place.appendChild(myText_temp);
+            obs_div.append(myName_temp)
+            obs_div.append(myText_temp)
+            obs_div.append(myLinks_temp)
+            let delete_btn = document.createElement('button');
+            let edit_btn = document.createElement('button');
+            edit_btn.textContent = 'Edit'
+            delete_btn.textContent = 'Delete'
+            $(edit_btn).click(function(){ editComment(obs.IdObservation)})
+            $(delete_btn).click(function(){ deleteComment(obs.IdObservation)})
+            comment.append(myDate_temp);
+            comment.append(obs_div);
+            comment.append(delete_btn);
+            comment.append(edit_btn);
+            comment_container.append(comment)
         })
 
     }
@@ -96,5 +118,13 @@ window.addEventListener("load", () => {
 
         });
 
+    }
+
+    function deleteComment(Id){
+        console.log(Id)
+    }
+
+    function editComment(Id){
+        console.log(Id)
     }
 });

@@ -10,7 +10,7 @@ if (empty($_POST['IdPlant'])){
 }
 $Id = $_POST['IdPlant'];
 global $conn;
-$Result = mysqli_query($conn, "SELECT * FROM PLANTS_INFO_DB WHERE IdPlant = '$Id'");
+$Result = mysqli_query($conn, "SELECT * FROM PLANTS_INFO_DB WHERE IdPlant = '$Id' ORDER BY Date DESC");
 if(mysqli_num_rows($Result)>0){
     $DataJson = array();//Creamos una array vacía
     while($row = mysqli_fetch_assoc($Result)) {

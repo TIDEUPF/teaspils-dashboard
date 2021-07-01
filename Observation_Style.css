@@ -90,15 +90,14 @@ nav{
 .id_disp{
     width: 30%;
     margin: 0.2rem;
-    margin-left:15rem;
-    float:left;
+    /*margin-left:15rem;*/
+    float: right;
     height: 2rem;
     display: block;
     background-color: var(--white);
     border-radius: 10px;
     font-size: 1.25rem;
     font-weight: 100;
-
 }
 
 /* BODY
@@ -211,11 +210,12 @@ nav{
     border-color: #d80810;
 }
 */
-.historical-comments{
+#comment_container{
     margin-top: 1rem;
     margin-bottom: 5rem;
+    width: 100%;
 }
-.historical-comments h2{
+#comment_container h2{
     color: var(--green-color);
     font-size: 1.5rem;
     font-weight: 300;
@@ -223,7 +223,7 @@ nav{
     margin-right: 20%;
 }
 
-.historical-comments h4{
+#comment_container h4{
     color: var(--red-color);
     float: right;
     font-size: 1.5rem;
@@ -232,15 +232,12 @@ nav{
     margin-right: 20%;
 }
 
-.historical-comments h3{
+#comment_container h3{
     color: grey;
     width: 80%;
     height: 3rem;
     font-size: 1.3rem;
     font-weight: 300;
-    margin-left: 20%;
-    margin-right: 20%;
-    background-color: var(--grey);
     border-radius: 10px;
 }
 

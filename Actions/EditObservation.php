@@ -9,13 +9,14 @@ if (empty($_POST['Info_Json'])) {
 }
 
 $IdPlant = $_POST['Info_Json']['IdPlant'];
+$IdObservation = $_POST['Info_Json']['IdObservation'];
 $Name = $_POST['Info_Json']['Name'];
 $Text = $_POST['Info_Json']['Text'];
 $Image = $_POST['Info_Json']['Image'];
 
 global $conn;
 
-mysqli_query($conn, "INSERT INTO PLANTS_INFO_DB VALUES (NOW(), '$IdPlant','$Text', '$Image', 0,'$Name')"); //Insertamos la nueva observacion
+mysqli_query($conn, "UPDATE PLANTS_INFO_DB SET Observation=$Text, Name = $Name WHERE IdObservation=$IdObservation AND IdPlant=$IdPlant"); //Insertamos la nueva observacion
 
 if (mysqli_affected_rows($conn)) {
     mysqli_query($conn, "commit");

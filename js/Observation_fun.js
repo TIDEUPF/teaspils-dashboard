@@ -7,8 +7,8 @@ window.addEventListener("load", () => {
     let author = 'Student Name';
     let comment = 'Please write some of your thoughts in here...';
     let image = null;
-    var Date_place = document.getElementById("date");
-    var f = new Date();
+    let Date_place = document.getElementById("date");
+    let f = new Date();
     window.Current_day = f.getDate() + "/" + (f.getMonth() + 1) + "/" + f.getFullYear();
     let Today = window.Current_day + ' ' + f.getHours() + ':' + f.getMinutes() + ':' + f.getSeconds();
     /*****CONECTAMOS CON LA DB*******/
@@ -28,16 +28,32 @@ window.addEventListener("load", () => {
     let id_plant_displayer = document.getElementById('id_disp')
     id_plant_displayer.value = IdPlant;
 
-    let image_input = document.getElementById('image-upload')
-    image_input.value = image;
+
+
+
+// When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+
+//    let image_input = document.getElementById('image-upload')
+//    image_input.value = image;
+
+    var uploaded_image;
+    $('#image-upload').on('change',e=>{
+        uploaded_image = e.target.files[0];
+        console.log(uploaded_image)
+    })
 
     let input_button = document.getElementById('saveButton')
     input_button.addEventListener('click', function () {
         let written_value = written_input.value
         let name = author_input.value
-        let image = image_input.value
+        //let image = image_input.value
         console.log(image)
-        saveComment(name, written_value, image)
+        saveComment(name, written_value)
 
     })
 /*
@@ -68,14 +84,21 @@ window.addEventListener("load", () => {
         comment_container.append(comment)
     };
 
-
-    function saveComment(name, written_value, image) {
+    // THE CONNECTION TO SAVE AN OBSERVATION TO THE DATABASE IS GENERATED
+    function saveComment(name, written_value) {
         let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image  }
+        let form_data = new FormData();
+        form_data.append('IdPlant', IdPlant);
+        form_data.append('Name', name);
+        form_data.append('Text', written_value);
+        form_data.append('Image', image);
+        form_data.append('file', uploaded_image);
         $.ajax({
             url: 'Actions/AddObservation.php',
             method: 'post',
-            data: {Info_Json: Info_Json},
-            success: function (DataJson) {
+                data: {Info_Json: Info_Json},
+            //data: form_data,
+            success: function () {
                 checkDBcomments(IdPlant)
             },
             error: function(xhr, status, error) {
@@ -84,6 +107,13 @@ window.addEventListener("load", () => {
         });
     };
 
+
+
+    //**********************MODAL*************************
+// Get the modal
+    let modal = document.getElementById("myModal");
+
+// Function to display all observations from the database with their corresponding buttons.
     function display(Json_string) {
         let Json_data = JSON.parse(Json_string)
         let comment_container = $('#comment_container')
@@ -102,16 +132,72 @@ window.addEventListener("load", () => {
             myText_temp.textContent = obs.Observation;
             myName_temp.textContent = obs.Name;
             myLinks_temp.textContent = obs.Image;
-            console.log(obs.Image);
             obs_div.append(myName_temp);
             obs_div.append(myText_temp);
             obs_div.append(myLinks_temp);
+
+            //The delete button performance is defined.
             let delete_btn = document.createElement('button');
+            delete_btn.textContent = 'Delete'
+            //$(edit_btn).click(function(){ editComment(obs.IdObservation)})
+            $(delete_btn).click(function(){ deleteComment(obs.IdObservation)})
+
+            //The edit button performance is defined.
             let edit_btn = document.createElement('button');
             edit_btn.textContent = 'Edit'
-            delete_btn.textContent = 'Delete'
-            $(edit_btn).click(function(){ editComment(obs.IdObservation)})
-            $(delete_btn).click(function(){ deleteComment(obs.IdObservation)})
+
+            let save_btn_modal = document.getElementById('saveButton-modal')
+
+
+            // Get the button that opens the modal
+            //    let btn = document.getElementById("myBtn");
+
+            // Get the <span> element that closes the modal
+            let span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal and fill all blank spaced with the observation data
+            edit_btn.onclick = function() {
+                modal.style.display = "block";
+                let written_input_modal = document.getElementById('comment-maker-modal')
+                written_input_modal.value = obs.Observation;
+
+                let author_input_modal = document.getElementById('author-name-modal')
+                author_input_modal.value = obs.Name;
+
+                let Obs_id_modal = document.getElementById('Obs-id-modal')
+                Obs_id_modal.value = obs.IdObservation;
+
+
+            }
+
+            //The save button to edit a specific observation is generated.
+
+            save_btn_modal.onclick = function() {
+                modal.style.display = "none";
+                let text_modal = document.getElementById('comment-maker-modal')
+                let name_modal = document.getElementById('author-name-modal')
+                let obs_id = document.getElementById('Obs-id-modal')
+                let Info_Json_modal = {IdPlant: IdPlant, Name: name_modal.value , Text: text_modal.value, Image: ' ', IdObservation: obs_id.value}
+                console.log(Info_Json_modal)
+                $.ajax({
+                    url: 'Actions/EditObservation.php',
+                    method: 'post',
+                    data: {Info_Json: Info_Json_modal},
+                    //data: form_data,
+                    success: function () {
+                        checkDBcomments(IdPlant)
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                    }
+                });
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
             comment.append(myDate_temp);
             comment.append(obs_div);
             comment.append(delete_btn);
@@ -120,6 +206,10 @@ window.addEventListener("load", () => {
         })
 
     }
+
+
+
+    // THE CONNECTION TO CHECK ALL EXISTING OBSERVATIONS IS GENERATED
 
     function checkDBcomments(IdPlant) {
         $.ajax({
@@ -137,6 +227,7 @@ window.addEventListener("load", () => {
 
     }
 
+    // THE CONNECTION TO DELETE AN OBSERVATION FROM THE DATABASE IS GENERATED
     function deleteComment(Id){
         $.ajax({
             url: 'Actions/DeleteObservation.php',

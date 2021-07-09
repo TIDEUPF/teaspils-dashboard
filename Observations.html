@@ -35,7 +35,81 @@
             </div>
 
         </header>
-        
+
+
+
+        <!-- Trigger/Open The Modal -->
+        <button id="myBtn">Open Modal</button>
+
+        <!-- MODAL -->
+        <div id="myModal" class="modal">
+            <!-- Modal content -->
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <div class="Main-Comment" >
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-8">
+                            <h2>Name:</h2>
+                        </div>
+                        <div class="col-3"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <input type="text" id="author-name-modal" class="name-input">
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-8">
+                            <h2>Observations:</h2>
+                        </div>
+                        <div class="col-2">
+                            <input type="button" class="obs-btn" value="Observation button">
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-1"></div>
+                        <div class="col-10">
+                            <input type="text" id="comment-maker-modal" name="nombredelacaja" class="write-input">
+                        </div>
+                        <div class="col-1"></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-5">
+                            <!--
+                            <form action="/action_page.php">
+                                <input type="file" id="myImage" name="filename">
+                                <input type="submit">
+                            </form>
+
+                            <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
+                            <img id="output" width="200" />
+                            <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
+                            -->
+                        </div>
+                        <!-- IMAGE UPLOAD -->
+                        <div class="col-4">
+                            <input type="file" id="image-upload-modal" class="image-up"/>
+                            <!--
+                            <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
+                            -->
+                        </div>
+                        <div class="col-2">
+                            <input type="button" id="saveButton-modal" class="save-btn" value="Save">
+                        </div>
+                        <div class="col-7"></div>
+                        <input type="text" id="Obs-id-modal">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    <!-- DATE -->
         <div class="separador"></div>
         <div class="row">
                 <div class="col-1"></div>
@@ -45,7 +119,7 @@
         </div>
 
         <div class="white-space"></div>
-
+        <!-- MAIN COMMENT Inputs -->
         <div class="Main-Comment" >
             <div class="row">
                 <div class="col-1"></div>
@@ -91,6 +165,7 @@
                     <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
                     -->
                 </div>
+    <!-- IMAGE UPLOAD -->
                 <div class="col-4">
                     <input type="file" id="image-upload" class="image-up"/>
                     <!--
@@ -105,26 +180,8 @@
         </div>
 
 
-
-
+    <!-- COMMENTS DISPLAY -->
         <div id='comment_container'></div>
-
-            <!--
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <div class="comment"></div>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            <div class="row">
-                <div class="col-10"></div>
-                <div class="col-1">
-                    <input type="button" class="obs-btn" value="Edit">
-                </div>
-                <div class="col-1"></div>
-            </div>
-            -->
         </div>
 
     </body>

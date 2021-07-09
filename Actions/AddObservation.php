@@ -6,10 +6,16 @@ if (empty($_POST['Info_Json'])){
     header("HTTP/1.0 404 IdPlant not found");
     exit; /*Ya no se ejecuta más*/
 }
+//$IdPlant = $_POST['IdPlant'];
+//$Name = $_POST['Name'];
+//$Text = $_POST['Text'];
+//$Image = $_POST['file'];
+
 $IdPlant = $_POST['Info_Json']['IdPlant'];
 $Name = $_POST['Info_Json']['Name'];
 $Text = $_POST['Info_Json']['Text'];
 $Image = $_POST['Info_Json']['Image'];
+//$Image = $_POST['Info_Json']['file'];
 
 global $conn;
 

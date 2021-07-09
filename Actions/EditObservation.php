@@ -16,7 +16,7 @@ $Image = $_POST['Info_Json']['Image'];
 
 global $conn;
 
-mysqli_query($conn, "UPDATE PLANTS_INFO_DB SET Observation=$Text, Name = $Name WHERE IdObservation=$IdObservation AND IdPlant=$IdPlant"); //Insertamos la nueva observacion
+mysqli_query($conn, "UPDATE PLANTS_INFO_DB SET Observation='$Text', Name = '$Name' WHERE IdObservation='$IdObservation' AND IdPlant='$IdPlant'"); //Insertamos la nueva observacion
 
 if (mysqli_affected_rows($conn)) {
     mysqli_query($conn, "commit");

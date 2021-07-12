@@ -6,6 +6,7 @@
 window.addEventListener("load", () =>
 {
 
+ /*The value of the IdPlant is defined*/
  let IdPlant = 1234;
  let id_plant_displayer = document.getElementById('id_disp')
  id_plant_displayer.value = IdPlant;
@@ -37,7 +38,6 @@ window.addEventListener("load", () =>
  /*Almacenamos la dirección URL del json*/
  const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json';
  /*const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll2.json';*/
-
  /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
  const request = new XMLHttpRequest();
  /*Con el open hacemos una solicitud del Request*/
@@ -45,6 +45,45 @@ window.addEventListener("load", () =>
  /*Definimos que el tipo de archivo que usaremos sera un json*/
  request.responseType = 'json';
  request.send();
+
+ /*___________________________DATASET DE BERNARDO___________________________________*/
+ const dataset_requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/CO2_Temp_dataset.json'
+
+ /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
+ const dataset_request = new XMLHttpRequest();
+ /*Con el open hacemos una solicitud del Request*/
+ dataset_request.open('GET', dataset_requestURL);
+ /*Definimos que el tipo de archivo que usaremos sera un json*/
+ dataset_request.responseType = 'json';
+ dataset_request.send();
+
+
+ dataset_request.onload = function() {
+  let dataset_Data = dataset_request.response;
+  console.log('CO2:', dataset_Data[0]['CO2'])
+  console.log('Temp.:', dataset_Data[0]['temperature'])
+  console.log('Time:', dataset_Data[0]['Timestamp'])
+
+  let f = new Date();
+
+  let current_hour = f.getHours();
+  console.log(f.getHours())
+
+  for (instance in dataset_Data) {
+   let hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
+   console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
+
+   if (parseInt(dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0]) >= current_hour ){
+    console.log('Now is', current_hour)
+
+   }
+  }
+
+
+  /*___________________-FIN DATASET DE BERNARDO____________________*/
+
+ }
+
  /*Cómo manejar la respuesta del servidor*/
  request.onload = function() {
 
@@ -243,21 +282,32 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
 
  /*____________________________________TEMPERATURE_________________________________*/
  let Temperature = document.getElementById("T-load");
- let valueT = Math.round((Data['Temperature'][0].Value/40)*100);
-
- let low_limit_T_pct = Math.round((low_limit_T/40)*100);
- let high_limit_T_pct = Math.round((upper_limit_T/40)*100);
-
- Temperature.style.height = valueT.toString()+'%' ;
- let color_T
- if (valueT < low_limit_T_pct) {
-  color_T = green;
- } else if (valueT < high_limit_T_pct){
-  color_T  = orange;
- } else {
-  color_T = red;
+ /*Checking if the temperature data has been received*/
+ if(Data['Temperature'] != null){
+  let valueT = Math.round((Data['Temperature'][0].Value / 40) * 100);
+  console.log(Data['hehe'] != null)
+  let low_limit_T_pct = Math.round((low_limit_T / 40) * 100);
+  let high_limit_T_pct = Math.round((upper_limit_T / 40) * 100);
+  Temperature.style.height = valueT.toString() + '%';
+  let color_T
+  if (valueT < low_limit_T_pct) {
+   color_T = green;
+  } else if (valueT < high_limit_T_pct) {
+   color_T = orange;
+  } else {
+   color_T = red;
+  }
+  Temperature.style.backgroundColor = color_T;
  }
- Temperature.style.backgroundColor = color_T;
+ else{
+  let Temp_input = document.getElementById("temp-input")
+  Temp_input.style.color = '#808080'
+  console.log('hey!')
+  let color_T
+  color_T = red
+  Temperature.style.height = '100%';
+  Temperature.style.backgroundColor = '#F0F8FF'
+ }
 
  /*____________________________________NOISE_________________________________*/
  let Noise = document.getElementById("N-load");

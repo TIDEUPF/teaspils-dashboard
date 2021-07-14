@@ -36,7 +36,8 @@ window.addEventListener("load", () =>
  /*We generate a request to get the .json*/
  const section = document.querySelector('#temp');
  /*Almacenamos la dirección URL del json*/
- const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json';
+ //const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json';
+ const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/whole_dataset.json';
  /*const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll2.json';*/
  /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
  const request = new XMLHttpRequest();
@@ -71,10 +72,8 @@ window.addEventListener("load", () =>
 
   for (instance in dataset_Data) {
    let hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
-   console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
-
+   //console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
    if (parseInt(dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0]) >= current_hour ){
-    console.log('Now is', current_hour)
 
    }
   }
@@ -85,11 +84,26 @@ window.addEventListener("load", () =>
  }
 
  /*Cómo manejar la respuesta del servidor*/
- request.onload = function() {
+ //request.onload = function() {
+ dataset_request.onload = function(){
 
-  let Data = request.response;
+  //let Data = request.response;
+  let dataset_Data = dataset_request.response;
+  for (instance in dataset_Data) {
+   let hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
+   //console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
+   let f = new Date();
+   let current_hour = f.getHours();
+   if (parseInt(dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0]) >= current_hour ){
+    console.log('Now is', current_hour)
+    var Data
+    Data = dataset_Data[instance]
+    console.log('heheh', Data)
+   }
+  }
+
   loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL);
-
+  console.log('Data: ', Data)
   let button = document.getElementById('fileRequest')
   button.addEventListener('click',function(){
    /*let blob = Data;
@@ -270,20 +284,162 @@ function download(Data){
 }
 */
 
-function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL){
+function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL) {
 
  let Date_place = document.getElementById("date");
 
  let myH2 = document.createElement('h3');
-
- myH2.textContent = Data['Date'][0].Value;
+ myH2.textContent = Data['temperature'].Value;
  Date_place.textContent = myH2.textContent;
  /*appendChild(myH2);*/
 
  /*____________________________________TEMPERATURE_________________________________*/
  let Temperature = document.getElementById("T-load");
  /*Checking if the temperature data has been received*/
- if(Data['Temperature'] != null){
+
+ if (Data['temperature'] != null) {
+  let valueT = Math.round((Data['temperature']/40) * 100);
+  let low_limit_T_pct = Math.round((low_limit_T / 40) * 100);
+  let high_limit_T_pct = Math.round((upper_limit_T / 40) * 100);
+  Temperature.style.height = valueT.toString() + '%';
+  let color_T
+  if (valueT < low_limit_T_pct) {
+   color_T = green;
+  } else if (valueT < high_limit_T_pct) {
+   color_T = orange;
+  } else {
+   color_T = red;
+  }
+  Temperature.style.backgroundColor = color_T;
+ }
+ else {
+  let Temp_input = document.getElementById("temp-input")
+  Temp_input.style.color = '#808080'
+  Temperature.style.height = '100%';
+  Temperature.style.backgroundColor = '#F0F8FF'
+ }
+
+ /*____________________________________NOISE_________________________________*/
+ let Noise = document.getElementById("N-load");
+ if (Data['loudness'] != null) {
+  let valueN = Math.round((Data['loudness']/100) * 100);
+  Noise.style.height = valueN.toString() + '%';
+
+  let low_limit_Noise_pct = Math.round((low_limit_Noise / 100) * 100);
+  let high_limit_Noise_pct = Math.round((upper_limit_Noise / 100) * 100);
+
+  let color_N
+  if (valueN < low_limit_Noise_pct) {
+   color_N = green;
+  } else if (valueN < high_limit_Noise_pct) {
+   color_N = orange;
+  } else {
+   color_N = red;
+  }
+  Noise.style.backgroundColor = color_N;
+ }
+ else {
+  let Noise_input = document.getElementById("N-input")
+  Noise_input.style.color = '#808080'
+  Noise.style.height = '100%';
+  Noise.style.backgroundColor = '#F0F8FF'
+ }
+
+ /*____________________________________CO2_________________________________*/
+ var CO2 = document.getElementById("CO2-load");
+ if (Data['CO2'] != null) {
+  var valueC = Math.round((Data['CO2']/2000) * 100);
+  CO2.style.height = valueC.toString() + '%';
+
+  let low_limit_CO2_pct = Math.round((low_limit_CO2 / 2000) * 100);
+  let high_limit_CO2_pct = Math.round((upper_limit_CO2 / 2000) * 100);
+
+  let color_C
+  if (valueC < low_limit_CO2_pct) {
+   color_C = green;
+  } else if (valueC < high_limit_CO2_pct) {
+   color_C = orange;
+  } else {
+   color_C = red;
+  }
+  CO2.style.backgroundColor = color_C;
+ }
+ else {
+  let Noise_input = document.getElementById("CO2-input")
+  CO2_input.style.color = '#808080'
+  CO2.style.height = '100%';
+  CO2.style.backgroundColor = '#F0F8FF'
+ }
+
+ /*____________________________________HUMIDITY_________________________________*/
+ var Hum = document.getElementById("H-load");
+ if (Data['Humidity'] != null) {
+  var valueH = Math.round(Data['Humidity']);
+  Hum.style.height = valueH.toString() + '%';
+
+  let low_limit_HUM_pct = Math.round(low_limit_HUM);
+  let high_limit_HUM_pct = Math.round(upper_limit_HUM);
+
+  let color_H
+  if (valueH < low_limit_HUM_pct) {
+   color_H = green;
+  } else if (valueH < high_limit_HUM_pct) {
+   color_H = orange;
+  } else {
+   color_H = red;
+  }
+  Hum.style.backgroundColor = color_H;
+ }
+ else {
+  let Hum_input = document.getElementById("Hum-input")
+  Hum_input.style.color = '#808080'
+  Hum.style.height = '100%';
+  Hum.style.backgroundColor = '#F0F8FF'
+ }
+
+ /*____________________________________ILLUMINANCE_________________________________*/
+ var Light = document.getElementById("L-load");
+ if (Data['light'] != null) {
+  var valueL = Math.round((Data['light']/2000) * 100);
+  Light.style.height = valueL.toString() + '%';
+
+  let low_limit_IL_pct = Math.round(((low_limit_IL) / 2000) * 100);
+  let high_limit_IL_pct = Math.round(((upper_limit_IL) / 2000) * 100);
+
+  let color_L
+  if (valueL < low_limit_IL_pct) {
+   color_L = green;
+  } else if (valueL < high_limit_IL_pct) {
+   color_L = orange;
+  } else {
+   color_L = red;
+  }
+  Light.style.backgroundColor = color_L;
+ }
+ else {
+  let Il_input = document.getElementById("Il-input")
+  Il_input.style.color = '#808080'
+  Light.style.height = '100%';
+  Light.style.backgroundColor = '#F0F8FF'
+ }
+}
+
+
+/*
+function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL) {
+
+ let Date_place = document.getElementById("date");
+
+ let myH2 = document.createElement('h3');
+ myH2.textContent = Data['temperature'].Value;
+ Date_place.textContent = myH2.textContent;
+ /*appendChild(myH2);*/
+ /*____________________________________TEMPERATURE_________________________________*/
+/*
+ let Temperature = document.getElementById("T-load");
+ /*Checking if the temperature data has been received*/
+/*
+ if (Data['Temperature'] != null) {
   let valueT = Math.round((Data['Temperature'][0].Value / 40) * 100);
   console.log(Data['hehe'] != null)
   let low_limit_T_pct = Math.round((low_limit_T / 40) * 100);
@@ -298,8 +454,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_T = red;
   }
   Temperature.style.backgroundColor = color_T;
- }
- else{
+ } else {
   let Temp_input = document.getElementById("temp-input")
   Temp_input.style.color = '#808080'
   console.log('hey!')
@@ -310,17 +465,18 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  }
 
  /*____________________________________NOISE_________________________________*/
- let Noise = document.getElementById("N-load");
- let valueN = Math.round((Data['Noise'][0].Value/100)*100);
- Noise.style.height = valueN.toString()+'%' ;
+/*
+let Noise = document.getElementById("N-load");
+ let valueN = Math.round((Data['Noise'][0].Value / 100) * 100);
+ Noise.style.height = valueN.toString() + '%';
 
- let low_limit_Noise_pct = Math.round((low_limit_Noise/100)*100);
- let high_limit_Noise_pct = Math.round((upper_limit_Noise/100)*100);
+ let low_limit_Noise_pct = Math.round((low_limit_Noise / 100) * 100);
+ let high_limit_Noise_pct = Math.round((upper_limit_Noise / 100) * 100);
 
  let color_N
  if (valueN < low_limit_Noise_pct) {
   color_N = green;
- } else if (valueN < high_limit_Noise_pct){
+ } else if (valueN < high_limit_Noise_pct) {
   color_N = orange;
  } else {
   color_N = red;
@@ -328,17 +484,18 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  Noise.style.backgroundColor = color_N;
 
  /*____________________________________CO2_________________________________*/
- var CO2 = document.getElementById("CO2-load");
- var valueC = Math.round((Data['CO2'][0].Value/2000)*100);
- CO2.style.height = valueC.toString()+'%';
+/*
+var CO2 = document.getElementById("CO2-load");
+ var valueC = Math.round((Data['CO2'][0].Value / 2000) * 100);
+ CO2.style.height = valueC.toString() + '%';
 
- let low_limit_CO2_pct = Math.round((low_limit_CO2/2000)*100);
- let high_limit_CO2_pct = Math.round((upper_limit_CO2/2000)*100);
+ let low_limit_CO2_pct = Math.round((low_limit_CO2 / 2000) * 100);
+ let high_limit_CO2_pct = Math.round((upper_limit_CO2 / 2000) * 100);
 
  let color_C
  if (valueC < low_limit_CO2_pct) {
   color_C = green;
- } else if (valueC < high_limit_CO2_pct){
+ } else if (valueC < high_limit_CO2_pct) {
   color_C = orange;
  } else {
   color_C = red;
@@ -346,9 +503,10 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  CO2.style.backgroundColor = color_C;
 
  /*____________________________________HUMIDITY_________________________________*/
- var Hum = document.getElementById("H-load");
+/*
+var Hum = document.getElementById("H-load");
  var valueH = Math.round(Data['Humidity'][0].Value);
- Hum.style.height = valueH.toString()+'%';
+ Hum.style.height = valueH.toString() + '%';
 
  let low_limit_HUM_pct = Math.round(low_limit_HUM);
  let high_limit_HUM_pct = Math.round(upper_limit_HUM);
@@ -356,7 +514,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  let color_H
  if (valueH < low_limit_HUM_pct) {
   color_H = green;
- } else if (valueH < high_limit_HUM_pct){
+ } else if (valueH < high_limit_HUM_pct) {
   color_H = orange;
  } else {
   color_H = red;
@@ -364,20 +522,22 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  Hum.style.backgroundColor = color_H;
 
  /*____________________________________ILLUMINANCE_________________________________*/
- var Light = document.getElementById("L-load");
- var valueL = Math.round((Data['Light'][0].Value/2000)*100);
- Light.style.height = valueL.toString()+'%';
+/*
+var Light = document.getElementById("L-load");
+ var valueL = Math.round((Data['Light'][0].Value / 2000) * 100);
+ Light.style.height = valueL.toString() + '%';
 
- let low_limit_IL_pct = Math.round(((low_limit_IL)/2000)*100);
- let high_limit_IL_pct = Math.round(((upper_limit_IL)/2000)*100);
+ let low_limit_IL_pct = Math.round(((low_limit_IL) / 2000) * 100);
+ let high_limit_IL_pct = Math.round(((upper_limit_IL) / 2000) * 100);
 
  let color_L
  if (valueL < low_limit_IL_pct) {
   color_L = green;
- } else if (valueL < high_limit_IL_pct){
+ } else if (valueL < high_limit_IL_pct) {
   color_L = orange;
  } else {
   color_L = red;
  }
  Light.style.backgroundColor = color_L;
 }
+*/

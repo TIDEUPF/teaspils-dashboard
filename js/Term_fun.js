@@ -77,12 +77,7 @@ window.addEventListener("load", () =>
 
    }
   }
-
-
-  /*___________________-FIN DATASET DE BERNARDO____________________*/
-
  }
-
  /*Cómo manejar la respuesta del servidor*/
  //request.onload = function() {
  dataset_request.onload = function(){
@@ -296,8 +291,8 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  /*____________________________________TEMPERATURE_________________________________*/
  let Temperature = document.getElementById("T-load");
  /*Checking if the temperature data has been received*/
-
  if (Data['temperature'] != null) {
+  let Temp_real_value =Data['temperature']
   let valueT = Math.round((Data['temperature']/40) * 100);
   let low_limit_T_pct = Math.round((low_limit_T / 40) * 100);
   let high_limit_T_pct = Math.round((upper_limit_T / 40) * 100);
@@ -311,9 +306,14 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_T = red;
   }
   Temperature.style.backgroundColor = color_T;
+  let Temp_value = document.getElementById("T-value")
+  Temp_value.textContent = Math.round(Temp_real_value).toString()
  }
  else {
   let Temp_input = document.getElementById("temp-input")
+  let Noise_input = document.getElementById("N-input")
+  let Noise_value = document.getElementById("N-value")
+  Noise_value.textContent = 'None'
   Temp_input.style.color = '#808080'
   Temperature.style.height = '100%';
   Temperature.style.backgroundColor = '#F0F8FF'
@@ -322,6 +322,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  /*____________________________________NOISE_________________________________*/
  let Noise = document.getElementById("N-load");
  if (Data['loudness'] != null) {
+  let Noise_real_value =Data['loudness']
   let valueN = Math.round((Data['loudness']/100) * 100);
   Noise.style.height = valueN.toString() + '%';
 
@@ -337,9 +338,13 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_N = red;
   }
   Noise.style.backgroundColor = color_N;
+  let Noise_value = document.getElementById("N-value")
+  Noise_value.textContent = Math.round(Noise_real_value).toString()
  }
  else {
   let Noise_input = document.getElementById("N-input")
+  let Noise_value = document.getElementById("N-value")
+  Noise_value.textContent = 'None'
   Noise_input.style.color = '#808080'
   Noise.style.height = '100%';
   Noise.style.backgroundColor = '#F0F8FF'
@@ -347,6 +352,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
 
  /*____________________________________CO2_________________________________*/
  var CO2 = document.getElementById("CO2-load");
+ let CO2_real_value =Data['CO2']
  if (Data['CO2'] != null) {
   var valueC = Math.round((Data['CO2']/2000) * 100);
   CO2.style.height = valueC.toString() + '%';
@@ -363,8 +369,13 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_C = red;
   }
   CO2.style.backgroundColor = color_C;
+  let CO2_value = document.getElementById("CO2-value")
+  CO2_value.textContent = Math.round(CO2_real_value).toString()
  }
  else {
+  let CO2_input = document.getElementById("CO2-input")
+  let CO2_value = document.getElementById("CO2-value")
+  CO2_value.textContent = 'None'
   let Noise_input = document.getElementById("CO2-input")
   CO2_input.style.color = '#808080'
   CO2.style.height = '100%';
@@ -373,6 +384,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
 
  /*____________________________________HUMIDITY_________________________________*/
  var Hum = document.getElementById("H-load");
+ let Hum_real_value =Data['Hum']
  if (Data['Humidity'] != null) {
   var valueH = Math.round(Data['Humidity']);
   Hum.style.height = valueH.toString() + '%';
@@ -389,8 +401,12 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_H = red;
   }
   Hum.style.backgroundColor = color_H;
+  let Hum_value = document.getElementById("Hum-value")
+  Hum_value.textContent = Math.round(Hum_real_value).toString()
  }
  else {
+  let Hum_value = document.getElementById("Hum-value")
+  Hum_value.textContent = 'None'
   let Hum_input = document.getElementById("Hum-input")
   Hum_input.style.color = '#808080'
   Hum.style.height = '100%';
@@ -399,6 +415,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
 
  /*____________________________________ILLUMINANCE_________________________________*/
  var Light = document.getElementById("L-load");
+ let Il_real_value =Data['light']
  if (Data['light'] != null) {
   var valueL = Math.round((Data['light']/2000) * 100);
   Light.style.height = valueL.toString() + '%';
@@ -415,8 +432,12 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
    color_L = red;
   }
   Light.style.backgroundColor = color_L;
+  let Il_value = document.getElementById("Il-value")
+  Il_value.textContent = Math.round(Il_real_value).toString()
  }
  else {
+  let Il_value = document.getElementById("Il-value")
+  Il_value.textContent = 'None'
   let Il_input = document.getElementById("Il-input")
   Il_input.style.color = '#808080'
   Light.style.height = '100%';

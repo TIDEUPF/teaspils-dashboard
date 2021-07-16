@@ -52,8 +52,7 @@ window.addEventListener("load", () => {
         let written_value = written_input.value
         let name = author_input.value
         //let image = image_input.value
-        console.log(image)
-        saveComment(name, written_value)
+        saveComment(name, written_value, uploaded_image)
 
     })
 /*
@@ -85,19 +84,18 @@ window.addEventListener("load", () => {
     };
 
     // THE CONNECTION TO SAVE AN OBSERVATION TO THE DATABASE IS GENERATED
-    function saveComment(name, written_value) {
-        let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image  }
+    function saveComment(name, written_value, image) {
+        let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image }
         let form_data = new FormData();
         form_data.append('IdPlant', IdPlant);
         form_data.append('Name', name);
         form_data.append('Text', written_value);
-        form_data.append('Image', image);
-        form_data.append('file', uploaded_image);
+        form_data.append('file', image);
         $.ajax({
             url: 'Actions/AddObservation.php',
             method: 'post',
-                data: {Info_Json: Info_Json},
-            //data: form_data,
+                  data: {Info_Json: Info_Json},
+                  //data: form_data,
             success: function () {
                 checkDBcomments(IdPlant)
             },

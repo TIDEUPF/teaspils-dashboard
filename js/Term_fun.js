@@ -48,7 +48,7 @@ window.addEventListener("load", () =>
  request.send();
 
  /*___________________________DATASET DE BERNARDO___________________________________*/
- const dataset_requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/CO2_Temp_dataset.json'
+ const dataset_requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/whole_dataset.json'
 
  /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
  const dataset_request = new XMLHttpRequest();
@@ -321,13 +321,14 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
 
  /*____________________________________NOISE_________________________________*/
  let Noise = document.getElementById("N-load");
+ console.log(Data['loudness'])
  if (Data['loudness'] != null) {
   let Noise_real_value =Data['loudness']
-  let valueN = Math.round((Data['loudness']/100) * 100);
+  let valueN = Math.round((Data['loudness']/200) * 100);
   Noise.style.height = valueN.toString() + '%';
 
-  let low_limit_Noise_pct = Math.round((low_limit_Noise / 100) * 100);
-  let high_limit_Noise_pct = Math.round((upper_limit_Noise / 100) * 100);
+  let low_limit_Noise_pct = Math.round((low_limit_Noise / 200) * 100);
+  let high_limit_Noise_pct = Math.round((upper_limit_Noise / 200) * 100);
 
   let color_N
   if (valueN < low_limit_Noise_pct) {

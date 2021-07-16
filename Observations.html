@@ -16,6 +16,7 @@
             <div class="col"> Column 1 </div>
         </div> */-->
         <header>
+
             <div class="header-content">
                 <div class="menu_options>
                     <a class='logo-btn' href="www.teaspils.eu/" title="Tide-Logo">
@@ -91,10 +92,7 @@
                         </div>
                         <!-- IMAGE UPLOAD -->
                         <div class="col-4">
-                            <input type="file" id="image-upload-modal" class="image-up"/>
-                            <!--
-                            <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
-                            -->
+                            <!--<input type="file" id="image-upload-modal" class="image-up"/>-->
                         </div>
                         <div class="col-2">
                             <input type="button" id="saveButton-modal" class="save-btn" value="Save">
@@ -151,7 +149,7 @@
                 <div class="col-1"></div>
             </div>
             <div class="row">
-                <div class="col-5">
+                <div class="col-3">
                     <!--
                     <form action="/action_page.php">
                         <input type="file" id="myImage" name="filename">
@@ -164,8 +162,13 @@
                     -->
                 </div>
     <!-- IMAGE UPLOAD -->
-                <div class="col-4">
-                    <input type="file" id="image-upload" class="image-up"/>
+                <div class="col-6">
+                   <form name="frmImage" enctype="multipart/form-data" action="" method="post" class="frmImageUpload">
+                        <label></label><br />
+                        <input name="userImage" type="file" class="inputFile" id="image-upload" />
+                        <input type="submit" value="Submit" class="btnSubmit" />
+                    </form>
+                    <!--<input type="file" id="image-upload" class="image-up"/>-->
                     <!--
                     <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
                     -->

@@ -15,6 +15,7 @@ $IdPlant = $_POST['Info_Json']['IdPlant'];
 $Name = $_POST['Info_Json']['Name'];
 $Text = $_POST['Info_Json']['Text'];
 $Image = $_POST['Info_Json']['Image'];
+$Image = addslashes(file_get_contents($_FILES['userImage']['tmp_name']));
 //$Image = $_POST['Info_Json']['file'];
 
 global $conn;

@@ -40,11 +40,25 @@ window.addEventListener("load", () => {
 
 //    let image_input = document.getElementById('image-upload')
 //    image_input.value = image;
+    //An array of images is created for each observation
+    var uploaded_images = [];
+    var imageid = 0;
 
-    var uploaded_image;
     $('#image-upload').on('change',e=>{
-        uploaded_image = e.target.files[0];
-        console.log(uploaded_image)
+        if(e.target.files[0] != null) {
+            //An object of an image instance is generated to store the image main values.
+            var image_instance = new Object();
+            image_instance.id = imageid++;
+            image_instance.file = e.target.files[0];
+            uploaded_images.append(image_instance);
+            image_div = document.createElement('div')
+            image_div.id = 'img' + image_instance.id
+            let img_delete_btn = document.createElement('button');
+            img_delete_btn.textContent = 'Delete'
+            $(img-delete_btn).click(function(){ deleteComment()})
+            image_div.append(img_delete_btn)
+            image_div.link =
+        }
     })
 
     let input_button = document.getElementById('saveButton')
@@ -52,7 +66,7 @@ window.addEventListener("load", () => {
         let written_value = written_input.value
         let name = author_input.value
         //let image = image_input.value
-        saveComment(name, written_value, uploaded_image)
+        saveComment(name, written_value, uploaded_images)
 
     })
 /*

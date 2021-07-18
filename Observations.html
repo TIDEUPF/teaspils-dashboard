@@ -37,10 +37,7 @@
 
         </header>
 
-
-
-
-        <!-- MODAL -->
+        <!---------------------------------- MODAL TO EDIT -------------------------------------------->
         <div id="myModal" class="modal">
             <!-- Modal content -->
             <div class="mymodal-content">
@@ -78,18 +75,7 @@
                         <div class="col-1"></div>
                     </div>
                     <div class="row">
-                        <div class="col-5">
-                            <!--
-                            <form action="/action_page.php">
-                                <input type="file" id="myImage" name="filename">
-                                <input type="submit">
-                            </form>
-
-                            <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                            <img id="output" width="200" />
-                            <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-                            -->
-                        </div>
+                        <div class="col-5"></div>
                         <!-- IMAGE UPLOAD -->
                         <div class="col-4">
                             <!--<input type="file" id="image-upload-modal" class="image-up"/>-->
@@ -105,7 +91,7 @@
         </div>
 
 
-    <!-- DATE -->
+        <!---------------------------------- BEGINNING OF THE OBSERVATION PAGE: DATE -------------------------------------------->
         <div class="separador"></div>
         <div class="row">
                 <div class="col-1"></div>
@@ -115,7 +101,7 @@
         </div>
 
         <div class="white-space"></div>
-        <!-- MAIN COMMENT Inputs -->
+        <!---------------------------------- MAIN OBSERVATION COMMENTS INPUTS -------------------------------------------->
         <div class="Main-Comment" >
             <div class="row">
                 <div class="col-1"></div>
@@ -149,27 +135,20 @@
                 <div class="col-1"></div>
             </div>
             <div class="row">
-                <div class="col-3">
-                    <!--
-                    <form action="/action_page.php">
-                        <input type="file" id="myImage" name="filename">
-                        <input type="submit">
-                    </form>
-
-                    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                    <img id="output" width="200" />
-                    <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-                    -->
-                </div>
-    <!-- IMAGE UPLOAD -->
+                <div class="col-3"></div>
+                <!---------------------------------- IMAGE UPLOADING -------------------------------------------->
                 <div class="col-6">
-                    <a>+ Add image</a>
-                    <div id="Image-container"></div>
-                    <input name="userImage" type="file" class="inputFile" id="image-upload" hidden/>
-                    <!--<input type="file" id="image-upload" class="image-up"/>-->
-                    <!--
-                    <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
-                    -->
+                    <a class='button' id="image-upload"><input name="userImage" type="file" class="inputFile"/>
+                        + Add image
+                    </a>
+                    <div id="image-container"></div>
+                    <div id="myModal-image" class="modal">
+                        <!-- Modal content -->
+                        <div class="mymodal-content-image">
+                            <span class="close_img">&times;</span>
+                            <img id="blah" src="http://localhost/" alt="your image" />
+                        </div>
+                    </div>
                 </div>
                 <div class="col-2">
                     <input type="button" id="saveButton" class="save-btn" value="Save">
@@ -177,9 +156,10 @@
                 <div class="col-7"></div>
             </div>
         </div>
+        <!---------------------------------- END OF THE MAIN OBSERVATION INPUTS -------------------------------------------->
 
 
-    <!-- COMMENTS DISPLAY -->
+        <!---------------------------------- DISPLAYING ALL OBSERVATIONS (IN JAVASCRIPT)-------------------------------------------->
         <div id='comment_container'></div>
         </div>
 
@@ -197,7 +177,7 @@
             <div class="col-3">
                 <div class="footer-image">
                     <a href="" title="Tide-Logo">
-                        <img src="imgs/erasmus_en.png" width="250" height="90">
+                        <img src="imgs/erasmus_en.png" width="250" height="65">
                     </a>
                 </div>
             </div>

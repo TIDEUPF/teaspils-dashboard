@@ -31,7 +31,7 @@ window.addEventListener("load", () => {
 
 
 
-// When the user clicks anywhere outside of the modal, close it
+// When the user clicks anywhere outside of the modal of the edit button, close it
     window.onclick = function(event) {
         if (event.target == modal) {
             modal.style.display = "none";
@@ -43,23 +43,87 @@ window.addEventListener("load", () => {
     //An array of images is created for each observation
     var uploaded_images = [];
     var imageid = 0;
-
+//************************UPLOAD THE IMAGES**********************************
     $('#image-upload').on('change',e=>{
         if(e.target.files[0] != null) {
-            //An object of an image instance is generated to store the image main values.
             var image_instance = new Object();
             image_instance.id = imageid++;
+            console.log(image_instance.id)
             image_instance.file = e.target.files[0];
-            uploaded_images.append(image_instance);
+            uploaded_images.push(image_instance);
+            Display_images(uploaded_images)
+        }
+    })
+//*****************************PREVIEW OF THE IMAGES*************************************//
+    function Display_images(uploaded_images){
+        let image_container = $('#image-container')
+        image_container.empty();
+        uploaded_images.forEach(image_instance=>{
+            //An object of an image instance is generated to store the image main values.
             image_div = document.createElement('div')
             image_div.id = 'img' + image_instance.id
             let img_delete_btn = document.createElement('button');
+            //let delete_icon = document.createElement('i')
             img_delete_btn.textContent = 'Delete'
-            $(img-delete_btn).click(function(){ deleteComment()})
+            img_delete_btn.className = 'obs-btn-img'
+            //delete_icon.className = "fa fa-close"
+            //img_delete_btn.append(delete_icon)
+            $(img_delete_btn).click(function() {DeleteImage(image_instance.id)} )
             image_div.append(img_delete_btn)
-            image_div.link =
+            let img_preview_btn = document.createElement('button');
+            img_preview_btn.textContent = 'Preview'
+            img_preview_btn.className = 'save-btn-img'
+            $(img_preview_btn).click(function(){PreviewImage(image_instance)})
+            image_div.append(img_preview_btn)
+            image_link = document.createElement('a')
+            image_link.textContent=image_instance.file.name
+            image_div.append(image_link)
+            //image_div.link =
+            image_container.append(image_div)
+            }
+        )
+    }
+//***********************+DELETE IMAGE FUNCTION************************//
+    function DeleteImage(id){
+        console.log(id)
+        //uploaded_images.splice(id,1)
+        delete uploaded_images[id]
+        Display_images(uploaded_images)
+    }
+//**********************PREVIEW IMAGE FUNCTION*************************//
+    // Get the modal to preview the image
+    let modal_img = document.getElementById("myModal-image")
+    let span_img = document.getElementsByClassName("close_img")[0];
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function(event) {
+        if (event.target == modal_img) {
+            modal_img.style.display = "none";
         }
-    })
+    }
+    span_img.onclick = function() {
+        modal_img.style.display = "none";
+    }
+
+    function readURL(input) {
+        if (input.file) {
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $('#blah').attr('src', input.file);
+                console.log('succeed1!')
+            };
+            reader.readAsDataURL(input.file);
+            console.log('succeed2!')
+        }
+    }
+
+
+    function PreviewImage(image){
+        modal_img.style.display = "block"
+        readURL(image)
+        //uploaded_images.splice(id,1)
+        //delete uploaded_images[id]
+        //Display_images(uploaded_images)
+    }
 
     let input_button = document.getElementById('saveButton')
     input_button.addEventListener('click', function () {
@@ -69,17 +133,9 @@ window.addEventListener("load", () => {
         saveComment(name, written_value, uploaded_images)
 
     })
-/*
-**************IMAGE**************+
-    let image_btn = document.getElementById('img-btn')
-    image_btn.addEventListener('click',  function(event) {
-        let image = document.getElementById('output');
-        image.src = URL.createObjectURL(event.target.files[0]);
-        console.log('hello!')
-    });
-    */
 
 
+//**********************LOADING COMMENTS*************************//
   function loadComments(name, written_value) {
         let f = new Date();
         let Today = f.getFullYear() + "-" + (f.getMonth() + 1) + "-" + f.getDate() + ' ' + f.getHours() + ':' + f.getMinutes() + ':' + f.getSeconds();
@@ -97,7 +153,7 @@ window.addEventListener("load", () => {
         comment_container.append(comment)
     };
 
-    // THE CONNECTION TO SAVE AN OBSERVATION TO THE DATABASE IS GENERATED
+//**********************THE CONNECTION TO SAVE AN OBSERVATION TO THE DATABASE IS GENERATED*************************//
     function saveComment(name, written_value, image) {
         let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image }
         let form_data = new FormData();
@@ -118,10 +174,7 @@ window.addEventListener("load", () => {
             }
         });
     };
-
-
-
-    //**********************MODAL*************************
+    //**********************MODAL*************************//
 // Get the modal
     let modal = document.getElementById("myModal");
 
@@ -161,12 +214,14 @@ window.addEventListener("load", () => {
             let save_btn_modal = document.getElementById('saveButton-modal')
 
 
-            // Get the button that opens the modal
-            //    let btn = document.getElementById("myBtn");
 
             // Get the <span> element that closes the modal
             let span = document.getElementsByClassName("close")[0];
-
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
             // When the user clicks the button, open the modal and fill all blank spaced with the observation data
             edit_btn.onclick = function() {
                 modal.style.display = "block";
@@ -178,8 +233,6 @@ window.addEventListener("load", () => {
 
                 let Obs_id_modal = document.getElementById('Obs-id-modal')
                 Obs_id_modal.value = obs.IdObservation;
-
-
             }
 
             //The save button to edit a specific observation is generated.

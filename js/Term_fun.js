@@ -34,21 +34,15 @@ window.addEventListener("load", () =>
 
 
  /*We generate a request to get the .json*/
+
  const section = document.querySelector('#temp');
+
  /*Almacenamos la dirección URL del json*/
- //const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json';
- const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/whole_dataset.json';
- /*const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll2.json';*/
- /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
- const request = new XMLHttpRequest();
- /*Con el open hacemos una solicitud del Request*/
- request.open('GET', requestURL);
- /*Definimos que el tipo de archivo que usaremos sera un json*/
- request.responseType = 'json';
- request.send();
 
  /*___________________________DATASET DE BERNARDO___________________________________*/
  const dataset_requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/whole_dataset.json'
+ //const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json';
+ /*const requestURL = 'https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll2.json';*/
 
  /*Creamos una nueva instancia de la clase XMLHttpRequest()*/
  const dataset_request = new XMLHttpRequest();
@@ -58,42 +52,24 @@ window.addEventListener("load", () =>
  dataset_request.responseType = 'json';
  dataset_request.send();
 
-
- dataset_request.onload = function() {
-  let dataset_Data = dataset_request.response;
-  console.log('CO2:', dataset_Data[0]['CO2'])
-  console.log('Temp.:', dataset_Data[0]['temperature'])
-  console.log('Time:', dataset_Data[0]['Timestamp'])
-
-  let f = new Date();
-
-  let current_hour = f.getHours();
-  console.log(f.getHours())
-
-  for (instance in dataset_Data) {
-   let hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
-   //console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
-   if (parseInt(dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0]) >= current_hour ){
-
-   }
-  }
- }
- /*Cómo manejar la respuesta del servidor*/
- //request.onload = function() {
+ //******Generamos una comunicación con el servidor******/
  dataset_request.onload = function(){
 
   //let Data = request.response;
   let dataset_Data = dataset_request.response;
+  //We iterate over all available items
   for (instance in dataset_Data) {
-   let hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
-   //console.log(dataset_Data[instance]['Timestamp'].split(" ")[1]);
    let f = new Date();
+   let item_hour = dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0];
    let current_hour = f.getHours();
-   if (parseInt(dataset_Data[instance]['Timestamp'].split(" ")[1].split(':')[0]) >= current_hour ){
+
+   if ( parseInt(item_hour) >= current_hour ){
     console.log('Now is', current_hour)
     var Data
     Data = dataset_Data[instance]
-    console.log('heheh', Data)
+
+    console.log('this is the real data: ', typeof Data['Timestamp'])
+    break
    }
   }
 
@@ -268,25 +244,14 @@ const red = '#FF3104';
 const green = '#4AD347';
 const orange = '#E8B147';
 
-/*
-function download(Data){
- let MIME_TYPE = "text/json";
- let blob = Data;
- if (typeof Data === 'undefined'){
-  return;
- }
- window.location.href = window.URL.createObjectURL(blob);
-}
-*/
-
+//*******************************************FUNCTION TO LOAD ALL THERMOMETER VALUES*****//
 function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL) {
 
  let Date_place = document.getElementById("date");
+ const measurement = document.createElement('h3')
+ measurement.textContent = 'Current data was measured on: ' + Data['Timestamp']
+ Date_place.appendChild(measurement)
 
- let myH2 = document.createElement('h3');
- myH2.textContent = Data['temperature'].Value;
- Date_place.textContent = myH2.textContent;
- /*appendChild(myH2);*/
 
  /*____________________________________TEMPERATURE_________________________________*/
  let Temperature = document.getElementById("T-load");
@@ -307,13 +272,14 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
   }
   Temperature.style.backgroundColor = color_T;
   let Temp_value = document.getElementById("T-value")
-  Temp_value.textContent = Math.round(Temp_real_value).toString()
+  Temp_value.textContent = Math.round(Temp_real_value).toString()+' ºC'
  }
  else {
   let Temp_input = document.getElementById("temp-input")
   let Noise_input = document.getElementById("N-input")
   let Noise_value = document.getElementById("N-value")
-  Noise_value.textContent = 'None'
+  Temp_value.textContent = 'None'
+  Temp_value.style.color = '#808080'
   Temp_input.style.color = '#808080'
   Temperature.style.height = '100%';
   Temperature.style.backgroundColor = '#F0F8FF'
@@ -340,7 +306,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
   }
   Noise.style.backgroundColor = color_N;
   let Noise_value = document.getElementById("N-value")
-  Noise_value.textContent = Math.round(Noise_real_value).toString()
+  Noise_value.textContent = Math.round(Noise_real_value).toString()+' dB'
  }
  else {
   let Noise_input = document.getElementById("N-input")
@@ -371,7 +337,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
   }
   CO2.style.backgroundColor = color_C;
   let CO2_value = document.getElementById("CO2-value")
-  CO2_value.textContent = Math.round(CO2_real_value).toString()
+  CO2_value.textContent = Math.round(CO2_real_value).toString()+' ppm'
  }
  else {
   let CO2_input = document.getElementById("CO2-input")
@@ -407,7 +373,8 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
  }
  else {
   let Hum_value = document.getElementById("Hum-value")
-  Hum_value.textContent = 'None'
+  Hum_value.textContent = 'No Data'
+  Hum_value.style.color = '#808080'
   let Hum_input = document.getElementById("Hum-input")
   Hum_input.style.color = '#808080'
   Hum.style.height = '100%';
@@ -434,7 +401,7 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
   }
   Light.style.backgroundColor = color_L;
   let Il_value = document.getElementById("Il-value")
-  Il_value.textContent = Math.round(Il_real_value).toString()
+  Il_value.textContent = Math.round(Il_real_value).toString()+' lux'
  }
  else {
   let Il_value = document.getElementById("Il-value")
@@ -445,121 +412,3 @@ function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper
   Light.style.backgroundColor = '#F0F8FF'
  }
 }
-
-
-/*
-function    loadDashboard(Data, low_limit_T, upper_limit_T,low_limit_Noise,upper_limit_Noise,low_limit_CO2,upper_limit_CO2,low_limit_HUM,upper_limit_HUM,low_limit_IL,upper_limit_IL) {
-
- let Date_place = document.getElementById("date");
-
- let myH2 = document.createElement('h3');
- myH2.textContent = Data['temperature'].Value;
- Date_place.textContent = myH2.textContent;
- /*appendChild(myH2);*/
- /*____________________________________TEMPERATURE_________________________________*/
-/*
- let Temperature = document.getElementById("T-load");
- /*Checking if the temperature data has been received*/
-/*
- if (Data['Temperature'] != null) {
-  let valueT = Math.round((Data['Temperature'][0].Value / 40) * 100);
-  console.log(Data['hehe'] != null)
-  let low_limit_T_pct = Math.round((low_limit_T / 40) * 100);
-  let high_limit_T_pct = Math.round((upper_limit_T / 40) * 100);
-  Temperature.style.height = valueT.toString() + '%';
-  let color_T
-  if (valueT < low_limit_T_pct) {
-   color_T = green;
-  } else if (valueT < high_limit_T_pct) {
-   color_T = orange;
-  } else {
-   color_T = red;
-  }
-  Temperature.style.backgroundColor = color_T;
- } else {
-  let Temp_input = document.getElementById("temp-input")
-  Temp_input.style.color = '#808080'
-  console.log('hey!')
-  let color_T
-  color_T = red
-  Temperature.style.height = '100%';
-  Temperature.style.backgroundColor = '#F0F8FF'
- }
-
- /*____________________________________NOISE_________________________________*/
-/*
-let Noise = document.getElementById("N-load");
- let valueN = Math.round((Data['Noise'][0].Value / 100) * 100);
- Noise.style.height = valueN.toString() + '%';
-
- let low_limit_Noise_pct = Math.round((low_limit_Noise / 100) * 100);
- let high_limit_Noise_pct = Math.round((upper_limit_Noise / 100) * 100);
-
- let color_N
- if (valueN < low_limit_Noise_pct) {
-  color_N = green;
- } else if (valueN < high_limit_Noise_pct) {
-  color_N = orange;
- } else {
-  color_N = red;
- }
- Noise.style.backgroundColor = color_N;
-
- /*____________________________________CO2_________________________________*/
-/*
-var CO2 = document.getElementById("CO2-load");
- var valueC = Math.round((Data['CO2'][0].Value / 2000) * 100);
- CO2.style.height = valueC.toString() + '%';
-
- let low_limit_CO2_pct = Math.round((low_limit_CO2 / 2000) * 100);
- let high_limit_CO2_pct = Math.round((upper_limit_CO2 / 2000) * 100);
-
- let color_C
- if (valueC < low_limit_CO2_pct) {
-  color_C = green;
- } else if (valueC < high_limit_CO2_pct) {
-  color_C = orange;
- } else {
-  color_C = red;
- }
- CO2.style.backgroundColor = color_C;
-
- /*____________________________________HUMIDITY_________________________________*/
-/*
-var Hum = document.getElementById("H-load");
- var valueH = Math.round(Data['Humidity'][0].Value);
- Hum.style.height = valueH.toString() + '%';
-
- let low_limit_HUM_pct = Math.round(low_limit_HUM);
- let high_limit_HUM_pct = Math.round(upper_limit_HUM);
-
- let color_H
- if (valueH < low_limit_HUM_pct) {
-  color_H = green;
- } else if (valueH < high_limit_HUM_pct) {
-  color_H = orange;
- } else {
-  color_H = red;
- }
- Hum.style.backgroundColor = color_H;
-
- /*____________________________________ILLUMINANCE_________________________________*/
-/*
-var Light = document.getElementById("L-load");
- var valueL = Math.round((Data['Light'][0].Value / 2000) * 100);
- Light.style.height = valueL.toString() + '%';
-
- let low_limit_IL_pct = Math.round(((low_limit_IL) / 2000) * 100);
- let high_limit_IL_pct = Math.round(((upper_limit_IL) / 2000) * 100);
-
- let color_L
- if (valueL < low_limit_IL_pct) {
-  color_L = green;
- } else if (valueL < high_limit_IL_pct) {
-  color_L = orange;
- } else {
-  color_L = red;
- }
- Light.style.backgroundColor = color_L;
-}
-*/

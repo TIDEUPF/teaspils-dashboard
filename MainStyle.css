@@ -133,15 +133,12 @@ nav{
     padding:0rem;
 }
 */
-#date{
-    color: var(--green-color);
-    margin:0rem;
-    margin-top: 0.2rem;
-    padding:0rem;
+#date h3{
     font-size: 1.2rem;
     font-weight: bold;
     color: var(--green-color);
 }
+
 
 .container{
     float: left;

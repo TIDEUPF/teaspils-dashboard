@@ -44,7 +44,7 @@ window.addEventListener("load", () => {
     var uploaded_images = [];
     var imageid = 0;
 //************************UPLOAD THE IMAGES**********************************
-    $('#image-upload').on('change',e=>{
+    $('#file-input').on('change',e=>{
         if(e.target.files[0] != null) {
             var image_instance = new Object();
             image_instance.id = imageid++;
@@ -103,7 +103,7 @@ window.addEventListener("load", () => {
     span_img.onclick = function() {
         modal_img.style.display = "none";
     }
-
+    /*
     function readURL(input) {
         if (input.file) {
             var reader = new FileReader();
@@ -115,7 +115,19 @@ window.addEventListener("load", () => {
             console.log('succeed2!')
         }
     }
+*/
+    function readURL(input) {
+        if (input.file) {
+            var reader = new FileReader();
 
+            reader.onload = function (e) {
+                $('#blah')
+                    .attr('src', e.target.result);
+            };
+
+            reader.readAsDataURL(input.file);
+        }
+    }
 
     function PreviewImage(image){
         modal_img.style.display = "block"
@@ -131,9 +143,11 @@ window.addEventListener("load", () => {
         let name = author_input.value
         //let image = image_input.value
         saveComment(name, written_value, uploaded_images)
-
     })
 
+    $('#image-upload').on('click', function() {
+        $('#file-input').trigger('click');
+    });
 
 //**********************LOADING COMMENTS*************************//
   function loadComments(name, written_value) {

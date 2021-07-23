@@ -269,7 +269,9 @@ nav{
 
 /***********IMAGE PREVIEWING*************/
 img{
-    max-width:180px;
+    max-width:500px;
+    max-height:300px;
+    margin: auto;
 }
 input[type=file]{
     padding:10px;
@@ -375,8 +377,8 @@ footer h3{
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 40%;
-    height: 40%;
+    width: 45%;
+    height: 60%;
 }
 
 /* The Close Button */

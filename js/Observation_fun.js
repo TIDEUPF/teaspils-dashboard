@@ -3,7 +3,7 @@
 var Current_day = "Hello";
 window.addEventListener("load", () => {
     //We define the IdPlant, author and comment default value
-    let IdPlant = 1234;
+    var IdPlant = 1234;
     let author = 'Student Name';
     let comment = 'Please write some of your thoughts in here...';
     let image = null;
@@ -142,7 +142,7 @@ window.addEventListener("load", () => {
         let written_value = written_input.value
         let name = author_input.value
         //let image = image_input.value
-        saveComment(name, written_value, uploaded_images)
+        saveComment(name, written_value)
     })
 
     $('#image-upload').on('click', function() {
@@ -168,18 +168,26 @@ window.addEventListener("load", () => {
     };
 
 //**********************THE CONNECTION TO SAVE AN OBSERVATION TO THE DATABASE IS GENERATED*************************//
-    function saveComment(name, written_value, image) {
+    function saveComment(name, written_value) {
         let Info_Json = {IdPlant: IdPlant, Name: name , Text: written_value, Image: image }
         let form_data = new FormData();
         form_data.append('IdPlant', IdPlant);
         form_data.append('Name', name);
         form_data.append('Text', written_value);
-        form_data.append('file', image);
+        form_data.append('Images_num', uploaded_images.length);
+        let image_count = 0
+        uploaded_images.forEach(image =>
+        {
+            form_data.append('file' + ++image_count, image.file)
+        })
+        /*form_data.append('file', uploaded_images);*/
         $.ajax({
             url: 'Actions/AddObservation.php',
+            contentType: false,
+            processData: false,
+            cache: false,
             method: 'post',
-                  data: {Info_Json: Info_Json},
-                  //data: form_data,
+                  data: form_data,
             success: function () {
                 checkDBcomments(IdPlant)
             },

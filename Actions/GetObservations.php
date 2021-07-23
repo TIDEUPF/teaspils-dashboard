@@ -11,9 +11,12 @@ if (empty($_POST['IdPlant'])){
 $Id = $_POST['IdPlant'];
 global $conn;
 $Result = mysqli_query($conn, "SELECT * FROM PLANTS_INFO_DB WHERE IdPlant = '$Id' ORDER BY Date DESC");
+//Another array to get from the ddbb images
 if(mysqli_num_rows($Result)>0){
     $DataJson = array();//Creamos una array vacía
     while($row = mysqli_fetch_assoc($Result)) {
+        //array_merge(arr1, arr2) -> merge them
+        //Create a php to get an individual instance of the image and get the value.
         $DataJson[] = $row; //Le añadimos elementos a la array, donde cada posición sera un elemento.
     }
     echo json_encode($DataJson);

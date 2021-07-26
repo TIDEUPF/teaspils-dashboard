@@ -202,10 +202,13 @@ window.addEventListener("load", () => {
 
 // Function to display all observations from the database with their corresponding buttons.
     function display(Json_string) {
+        console.log('Here!')
         let Json_data = JSON.parse(Json_string)
+        console.log('Here2!')
         let comment_container = $('#comment_container')
         comment_container.empty();
         Object.values(Json_data).forEach(obs=>{
+            console.log(obs)
             let comment = document.createElement('div')
             comment.classList.add('comment')
             let myDate_temp = document.createElement('h2');

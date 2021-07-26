@@ -1,8 +1,6 @@
 <?php
 include ('../DB_Connection.php');
 
-
-
 /*or isset*/
 if (empty($_POST['IdPlant'])){
     header("HTTP/1.0 404 IdPlant not found");
@@ -17,7 +15,22 @@ if(mysqli_num_rows($Result)>0){
     while($row = mysqli_fetch_assoc($Result)) {
         //array_merge(arr1, arr2) -> merge them
         //Create a php to get an individual instance of the image and get the value.
-        $DataJson[] = $row; //Le añadimos elementos a la array, donde cada posición sera un elemento.
+         //Le añadimos elementos a la array, donde cada posición sera un elemento.
+        $IdObservation = $row['IdObservation'];
+
+        $Result_imgs = mysqli_query($conn, "SELECT * FROM ImagesObs_Teaspils_DB WHERE IdObs = $IdObservation");
+        $ImgJson = array();
+        while($row_img = mysqli_fetch_assoc($Result_imgs))
+        {
+          $ImgJson[] = $row_img;
+        }
+        if(count($ImgJson)>0) {
+            //$ImgContainer = array_map('strval',$ImgJson);
+            $DataJson[] = array_merge($row,$ImgJson);
+        }
+        else{
+            $DataJson[] = $row;
+        }
     }
     echo json_encode($DataJson);
 }

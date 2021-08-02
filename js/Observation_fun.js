@@ -4,6 +4,7 @@ var Current_day = "Hello";
 window.addEventListener("load", () => {
     //We define the IdPlant, author and comment default value
     var IdPlant = 1234;
+    // Initialization of all variables.
     let author = 'Student Name';
     let comment = 'Please write some of your thoughts in here...';
     let image = null;
@@ -14,11 +15,12 @@ window.addEventListener("load", () => {
     /*****CONECTAMOS CON LA DB*******/
     checkDBcomments(IdPlant)
 
-
+    /*****AÑADIMOS LA FECHA ACTUAL*******/
     const myH2 = document.createElement('h3');
     myH2.textContent = Current_day;
     Date_place.appendChild(myH2);
 
+    /*****DEFINIMOS LOS VALORES DEFAULT DE EL INPUT DEL COMENTARIO, EL NOMBRE Y EL IDPLANT*******/
     let written_input = document.getElementById('comment-maker')
     written_input.value = comment;
 
@@ -30,7 +32,7 @@ window.addEventListener("load", () => {
 
 
 
-
+    /*****GENERAMOS UN MODAL PARA ABRIR LAS IMAGENES*******/
 // When the user clicks anywhere outside of the modal of the edit button, close it
     window.onclick = function(event) {
         if (event.target == modal) {
@@ -203,12 +205,13 @@ window.addEventListener("load", () => {
 // Function to display all observations from the database with their corresponding buttons.
     function display(Json_string) {
         console.log('Here!')
+        console.log(Json_string)
         let Json_data = JSON.parse(Json_string)
+        //let Json_data = Json_string
         console.log('Here2!')
         let comment_container = $('#comment_container')
         comment_container.empty();
         Object.values(Json_data).forEach(obs=>{
-            console.log(obs)
             let comment = document.createElement('div')
             comment.classList.add('comment')
             let myDate_temp = document.createElement('h2');
@@ -221,9 +224,29 @@ window.addEventListener("load", () => {
             let myLinks_temp = document.createElement('ul');
             myText_temp.textContent = obs.Observation;
             myName_temp.textContent = obs.Name;
-            myLinks_temp.textContent = obs.Image;
+            //myLinks_temp.textContent = obs.Image;
             obs_div.append(myName_temp);
             obs_div.append(myText_temp);
+            console.log(obs)
+            if(obs.Images) {
+                obs.Images.forEach(image => {
+                        console.log(image)
+                        let image_instance = document.createElement('li');
+                        image_instance.textContent = image.Image_Name;
+                        image_instance.onclick =  function()
+                        {
+                            modal_img.style.display = "block";
+                            image_place = document.getElementById('blah');
+                            //img_link = "Actions/GetImage.php?ImageId=" + Id_img;
+                            //console.log(img_link);
+                            image_place.src = 'Actions/GetImage.php?ImageId=' + image.Id
+                        }
+
+                    //obs_div.classList.add('observation') Para añadir una clase
+                        myLinks_temp.append(image_instance);
+                    }
+                )
+            }
             obs_div.append(myLinks_temp);
 
             //The delete button performance is defined.

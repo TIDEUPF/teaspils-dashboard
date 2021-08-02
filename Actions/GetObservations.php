@@ -20,19 +20,32 @@ if(mysqli_num_rows($Result)>0){
 
         $Result_imgs = mysqli_query($conn, "SELECT * FROM ImagesObs_Teaspils_DB WHERE IdObs = $IdObservation");
         $ImgJson = array();
+        $img_count = 0;
         while($row_img = mysqli_fetch_assoc($Result_imgs))
         {
-          $ImgJson[] = $row_img;
+            $img_count = $img_count + 1;
+            $image_values=[];
+            $image_values['Id'] = $row_img['Id'];
+            $image_values['Image_Name'] = 'Image'.$img_count;
+            $image_values['IdObs'] = $row_img['IdObs'];
+            //$image_values['Img'] = base64_encode($conn, $row_img['Img']);
+            $ImgJson[] = $image_values;
         }
         if(count($ImgJson)>0) {
-            //$ImgContainer = array_map('strval',$ImgJson);
-            $DataJson[] = array_merge($row,$ImgJson);
+            $ImgContainer['Images'] = $ImgJson;
+            $DataJson[] = array_merge($row,$ImgContainer);
+            //$DataJson[] = $row;
+            //$DataJson['Image'] = $ImgJson;
+            //echo json_encode($DataJson);
+            //$DataJson[] = array_merge($row,$ImgContainer);
         }
         else{
             $DataJson[] = $row;
         }
     }
-    echo json_encode($DataJson);
+    $encode_Json = json_encode($DataJson);
+    echo $encode_Json;
+
 }
 else{
     header("HTTP/1.0 404 No observations found");/*Ya no se ejecuta más*/

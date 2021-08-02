@@ -6,6 +6,10 @@
 window.addEventListener("load", () =>
 {
 
+ //const json = '{"result":true, "count":}';
+ //const obj = JSON.parse(json);
+ //console.log(obj)
+
  /*The value of the IdPlant is defined*/
  let IdPlant = 1234;
  let id_plant_displayer = document.getElementById('id_disp')

@@ -5,7 +5,7 @@ import django.db.models.deletion
 
 class Migration(migrations.Migration):
 
-    # mysql --host=127.0.0.1 --port=3306 -u root -p
+    # mysql --host=127.0.0.1 --port=3306 -u root -p teaspils-db
     def generate_superuser(apps, schema_editor):
         from django.contrib.auth.models import User
 

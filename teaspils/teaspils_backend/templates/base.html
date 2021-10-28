@@ -1,0 +1,74 @@
+{% load static %}
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Measurements</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" type="image/png" href="{% static 'img/Teaspils_final_logo_no_text.png' %}" />
+    <link rel="stylesheet" href="{% static 'css/MainStyle.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"
+        referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
+    <script src="{% static 'js/Term_fun.js' %}"></script>
+
+</head>
+
+<header>
+    <div class="header-content">
+        <div class="menu_options>
+            <a class='logo-btn' href="www.teaspils.eu/" title="Tide-Logo">
+        <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="85" height="100">
+        </a>
+        <nav>
+            <ul>
+                <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="{% url 'index' %}">Measurements</a></li>
+                <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="{% url 'observations' %}">Observations</a></li>
+            </ul>
+        </nav>
+    </div>
+    <div id="Plant_Identifier">
+        <div class="IdElement" id="IdText">Plant id: </div>
+        <input class="IdElement" type="text" id="id_disp">
+    </div>
+    </div>
+
+</header>
+
+<body>
+    <main role="main" class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    </div>
+</body>
+<footer>
+    <div class="footer-content">
+        <div class="col-1"></div>
+        <div class="col-3">
+            <div class="footer-image">
+                <a href="" title="Tide-Logo">
+                    <img src="{% static 'img/upf_tide_logo.png' %}" width="350" height="55">
+                </a>
+            </div>
+        </div>
+        <div class="col-3">
+            <div class="footer-image">
+                <a href="" title="Tide-Logo">
+                    <img src="{% static 'img/erasmus_en.png' %}" width="250" height="55">
+                </a>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="footer-space"></div>
+            <h3>TEASPILS Project</h3>
+            <h4 href="www.teaspils.eu">www.teaspils.eu</h4>
+        </div>
+        <div class="col-1"></div>
+    </div>
+</footer>
+</html>

@@ -20,7 +20,7 @@ class Student(models.Model):
 
     def __str__(self) -> str:
         return self.name
-
+#TODO Cambiar One to one a one to many con Courses
 class Plant(models.Model):
     alias = models.CharField(max_length=100)
     data_source = models.CharField(max_length=512, default='no-source', null=False)

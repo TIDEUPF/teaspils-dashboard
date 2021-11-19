@@ -11,6 +11,6 @@ urlpatterns:list = [
     path('plant/<int:plant_id>/detail', views.plantDetail, name='plantDetail'),
     path('plant/<int:plant_id>/history', views.plantHistory, name='plantDetail'),
     #path('plant/<int:plant_id>/observations', views.observations, name='observations'),
-    path('plant/observations', views.observations, name='observations'),
-    path('plant/<int:plant_id>/measurement', views.measures, name='measurement')
+    path('plant/<int:plant_id>/observations', views.observations, name='observations'),
+    path('plant/<int:plant_id>/measurement/<str:ts>', views.measures, name='measurement')
 ]

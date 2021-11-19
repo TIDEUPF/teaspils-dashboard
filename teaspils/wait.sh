@@ -5,6 +5,10 @@ while ! nc -z mysql 3306 ; do
     sleep 3
 done
 
+set -m
+
 python manage.py makemigrations teaspils-db
 python manage.py migrate
-python manage.py runserver 0.0.0.0:80
+python manage.py runserver 0.0.0.0:80 &
+
+python ./fake_generator/app.py

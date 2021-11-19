@@ -39,9 +39,8 @@ ul{
 
 .header-content{
     column-count:1;
-    width: 90%;
-    height: 18%;
-    margin-left: 100px;
+    width: 100%;
+    height: 10%;
     display: flex;
     align-items: center;
     flex-direction: row;
@@ -144,11 +143,12 @@ nav{
 }
 
 .container{
-    float: left;
-    height: 90%;
-    width:100%;
-    padding: 0%;
-    position:relative;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    height:100%;
+    width: 100%;
+    padding: 0 20px;
 }
 
 
@@ -173,8 +173,9 @@ nav{
 
 .container{
     padding-left: 1.5rem;
-    background: var(--grey);
-    min-width:4rem;
+    /* background: var(--grey); */
+    min-width:100%;
+    min-height: 100%;
 }
 
 div.col-2 {
@@ -345,7 +346,7 @@ div.col-2 {
 footer{
     position: fixed;
     width: 100%;
-    height: 12%;
+    height: 10%;
     color: var(--red-color);
     background: var(--white);
     margin: auto;

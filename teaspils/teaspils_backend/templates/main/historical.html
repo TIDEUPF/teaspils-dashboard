@@ -4,4 +4,268 @@
 
 {% block content %}
 
+
+<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
+
+<link href="{% static 'fullcalendar/packages/core/main.css' %}" rel='stylesheet' />
+<link href="{% static 'fullcalendar/packages/daygrid/main.css' %}" rel='stylesheet' />
+
+
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+
+<!-- Style -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<script src="{% static 'js/popper.min.js' %}"></script>
+<script src="{% static 'js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'fullcalendar/packages/core/main.js' %}"></script>
+<script src="{% static 'fullcalendar/packages/interaction/main.js' %}"></script>
+<script src="{% static 'fullcalendar/packages/daygrid/main.js' %}"></script>
+<script src="{% static 'fullcalendar/packages/timegrid/main.js' %}"></script>
+<script src="{% static 'fullcalendar/packages/list/main.js' %}"></script>
+
+
+<style>
+    .wrapper {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px;
+    }
+</style>
+
+<!-- 
+<div id='plot_area' style="align-content: center;">
+    <p> Plant id : {{plant_id }} </p>
+    <div id="all_plots" style="width:600px;height:400px;"></div>
+</div> -->
+
+<div id='plot_area' style="align-content: center;">
+    <p> Plant id : {{plant_id }} </p>
+    <div class="wrapper">
+        <div id="plt_tem" style="width:350px;height:300px;"></div>
+        <div id="plt_noi" style="width:350px;height:300px;"></div>
+        <div id="plt_lig" style="width:350px;height:300px;"></div>
+        <div id="plt_co2" style="width:350px;height:300px;"></div>
+        <div id="plt_hum" style="width:350px;height:300px;"></div>
+      </div>
+</div>
+
+
+<!--
+<div>
+    <div id='calendar-container'>
+        <div id='calendar'></div>
+    </div>
+</div>
+-->
+<script>
+
+
+    let history = {{ json_history| safe}};
+
+    // let timestamp = history['Date'][0]['Value'];
+    // let temperature = history['Temperature'][0]['Value'];
+    // let noise = history['Noise'][0]['Value'];
+    // let co2 = history['CO2'][0]['Value'];
+    // let light = history['Light'][0]['Value'];
+    // let humidity = history['Humidity'][0]['Value'];
+
+    var times  = []
+    var temps  = []
+    var noises = []
+    var co2s   = []
+    var lights = []
+    var hums   = [] 
+
+
+    for (let i = 0; i < history.length; i++){
+        times.push(new Date(history[i]['timestamp']));
+        temps.push(history[i]['temperature']);
+        noises.push(history[i]['noise']);
+        co2s.push(history[i]['co2']);
+        lights.push(history[i]['light']);
+        hums.push(history[i]['humidity']);
+    }
+    console.log(times, temps, noises, co2s, lights, hums);
+
+
+    var trace_temp = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'temperature',
+        x: times,
+        y: temps,
+        line: { color: '#17BECF' }
+    }
+
+    var trace_noise = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'noise',
+        x: times,
+        y: noises,
+        line: { color: '#7F7F7F' }
+    }
+
+    var trace_co2 = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'co2',
+        x: times,
+        y: co2s,
+        line: { color: '#0000FF' }
+    }
+
+    var trace_light = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'light',
+        x: times,
+        y: lights,
+        line: { color: '#00FF00' }
+    }
+
+    var trace_hum = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'humidity',
+        x: times,
+        y: hums,
+        line: { color: '#FF0000' }
+    }
+
+    // plot_all_div = document.getElementById('all_plots');
+    // Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    //     margin: { t: 15 }
+    // });
+
+    plot_tem_div = document.getElementById('plt_tem');
+    Plotly.newPlot(plot_tem_div, [trace_temp], {
+        margin: { t: 15 }
+    });
+
+    plot_noi_div = document.getElementById('plt_noi');
+    Plotly.newPlot(plot_noi_div, [trace_noise], {
+        margin: { t: 15 }
+    });
+
+    plot_co2_div = document.getElementById('plt_co2');
+    Plotly.newPlot(plot_co2_div, [trace_co2], {
+        margin: { t: 15 }
+    });
+
+    plot_lig_div = document.getElementById('plt_lig');
+    Plotly.newPlot(plot_lig_div, [trace_light], {
+        margin: { t: 15 }
+    });
+
+    plot_hum_div = document.getElementById('plt_hum');
+    Plotly.newPlot(plot_hum_div, [trace_hum], {
+        margin: { t: 15 }
+    });
+
+    plot_tem_div.on('plotly_click', function(data){
+        ts = data['points'][0]['x']
+        console.log(ts)
+        location.href = "/teaspils/plant/{{plant_id }}/measurement/"+ts
+    });
+
+
+
+    /* Current Plotly.js version */
+    console.log(Plotly.BUILD);
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
+            height: 'parent',
+            header: {
+                left: 'prev,next today',
+                center: 'title',
+                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
+            },
+            defaultView: 'dayGridMonth',
+            defaultDate: '2020-02-12',
+            navLinks: true, // can click day/week names to navigate views
+            editable: true,
+            eventLimit: true, // allow "more" link when too many events
+            events: [
+                {
+                    title: 'All Day Event',
+                    start: '2020-02-01',
+                },
+                {
+                    title: 'Long Event',
+                    start: '2020-02-07',
+                    end: '2020-02-10'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-02-09T16:00:00'
+                },
+                {
+                    groupId: 999,
+                    title: 'Repeating Event',
+                    start: '2020-02-16T16:00:00'
+                },
+                {
+                    title: 'Conference',
+                    start: '2020-02-11',
+                    end: '2020-02-13'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-02-12T10:30:00',
+                    end: '2020-02-12T12:30:00'
+                },
+                {
+                    title: 'Lunch',
+                    start: '2020-02-12T12:00:00'
+                },
+                {
+                    title: 'Meeting',
+                    start: '2020-02-12T14:30:00'
+                },
+                {
+                    title: 'Happy Hour',
+                    start: '2020-02-12T17:30:00'
+                },
+                {
+                    title: 'Dinner',
+                    start: '2020-02-12T20:00:00'
+                },
+                {
+                    title: 'Birthday Party',
+                    start: '2020-02-13T07:00:00'
+                },
+                {
+                    title: 'Click for Google',
+                    url: 'http://google.com/',
+                    start: '2020-02-28'
+                }
+            ]
+        });
+
+        calendar.render();
+    });
+
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+
+
 {% endblock %}

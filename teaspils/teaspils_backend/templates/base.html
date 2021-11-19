@@ -12,7 +12,8 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
         crossorigin="anonymous">
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" crossorigin="anonymous"></script>
-    <script src="{% static 'js/Term_fun.js' %}"></script>
+    <script src="{% static 'js/plotly-2.4.2.min.js' %}"></script>
+
 
 </head>
 
@@ -21,18 +22,12 @@
         <div class="menu_options>
             <a class='logo-btn' href="www.teaspils.eu/" title="Tide-Logo">
         <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="85" height="100">
-        </a>
-        <nav>
-            <ul>
-                <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="{% url 'index' %}">Measurements</a></li>
-                <li class="menu"><a class="nav-btn" style="text-decoration:none; color:#B85042;"  href="{% url 'observations' %}">Observations</a></li>
-            </ul>
-        </nav>
+        </a>    
     </div>
-    <div id="Plant_Identifier">
+    <!-- <div id="Plant_Identifier">
         <div class="IdElement" id="IdText">Plant id: </div>
         <input class="IdElement" type="text" id="id_disp">
-    </div>
+    </div> -->
     </div>
 
 </header>

@@ -1,7 +1,6 @@
 {% load static %}
 <html>
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Measurements</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -21,7 +20,7 @@
     <div class="header-content">
         <div class="menu_options>
             <a class='logo-btn' href="www.teaspils.eu/" title="Tide-Logo">
-        <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="85" height="100">
+        <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="20%" height="100%">
         </a>    
     </div>
     <!-- <div id="Plant_Identifier">
@@ -33,7 +32,7 @@
 </header>
 
 <body>
-    <main role="main" class="container">
+    <main role="main" class="container" style="min-height: 0%; max-height: 80%;">
         {% block content %}
         {% endblock %}
     </main>

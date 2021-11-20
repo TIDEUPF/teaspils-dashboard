@@ -13,63 +13,60 @@
 <script src="{% static 'js/Term_fun.js' %}"></script>
 
 
-<div class="separador"></div>
-<div class="row">
+<!-- <div class="row">
     <div class="col-1"></div>
-    <div class="col-10">
-        <h3 id='date'></h3>
-    </div>
+
     <div class="col-3"></div>
-</div>
+</div> -->
+<div class="white-space"></div>
 <div class="row">
     <div id="settings" class="col-3">
-        <a class="export-btn" id='hiding-btn'>
-            <img src="{% static 'img/settings.png' %}" width="120" height="100">
-        </a>
-
         <div id='limits-setting' class="col">
+            <div class="row">
+                <h3 id='date'></h3>
+            </div>
+            <div class="row">
+                <h4>Settings</h4>
+            </div>
             <div class="row">
                 <div class="button-container">
                     <h4>Lower Limit</h4>
                     <h4>Upper Limit</h4>
-                    <a style="left: 0rem;" class="small-setting">
-                        <img src="{% static 'img/settings.png' %}" width="50" height="40">
-                    </a>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonT">Update Temp.</button>
+                    <button class="input-btn" id="inputButtonT">Update</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonNoise">Update Noise</button>
+                    <button class="input-btn" id="inputButtonNoise">Update</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowCO2" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonCO2">Update CO2</button>
+                    <button class="input-btn" id="inputButtonCO2">Update</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowHUM" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighHUM" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonHUM">Update Hum.</button>
+                    <button class="input-btn" id="inputButtonHUM">Update</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowIL" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighIL" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonIL">Update Illum.</button>
+                    <button class="input-btn" id="inputButtonIL">Update</button>
                 </div>
             </div>
 
@@ -77,9 +74,11 @@
     </div>
     <div class="col-7" id="Chart-all">
         <div class="row">
-
+            <div class="col-1">
+                <div class="white-space-swiper"></div>
+            </div>
             <div class="col-2">
-                <!--<script src="js/Functions.js"></script>-->
+                <!-- <script src="{% static 'js/Term_fun.js' %}"></script> -->
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
@@ -211,12 +210,6 @@
                 </div>
             </div>
 
-            <div class="col-1">
-                <div class="white-space-swiper"></div>
-                <!--
-                       <img src="imgs/Rectangle 109.png" width="40" height="80">
-                       -->
-            </div>
         </div>
     </div>
     <div class="col-2">

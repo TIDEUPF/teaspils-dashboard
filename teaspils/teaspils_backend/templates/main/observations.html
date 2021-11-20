@@ -83,41 +83,45 @@
 
 <div class="white-space"></div>
 <!-- MAIN COMMENT Inputs -->
-<div class="Main-Comment">
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-8">
-            <h2>Name:</h2>
-        </div>
-        <div class="col-3"></div>
+<div class="container">
+    <div class="col-2">
+        <button class="btn btn-outline-danger">Export</button>
     </div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <input type="text" id="author-name" class="name-input">
-        </div>
-        <div class="col-1"></div>
-    </div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-8">
-            <h2>Observations:</h2>
-        </div>
-        <div class="col-2">
-            <input type="button" class="obs-btn" value="Observation button">
-        </div>
-        <div class="col-1"></div>
-    </div>
-    <div class="row">
-        <div class="col-1"></div>
-        <div class="col-10">
-            <input type="text" id="comment-maker" name="nombredelacaja" class="write-input">
-        </div>
-        <div class="col-1"></div>
-    </div>
-    <div class="row">
-        <div class="col-5">
-            <!--
+    <div class="Main-Comment">
+        <form method="post">
+            <input type="hidden" name="plant_id" value="{{plant_id}}">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-8">
+                    <h2>Name:</h2>
+                </div>
+                <div class="col-3"></div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10">
+                    <input type="text" id="author-name" name="name" class="form-control">
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row" style="display: flex; align-content: space-between; margin: 20px 0px;">
+                <div class="col-1"></div>
+                <div class="col-8">
+                    <h2>Observations:</h2>
+                </div>
+
+                <div class="col-1"></div>
+            </div>
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10"">
+                    <textarea id="comment-maker" name="observation" class="form-control" rows="7"></textarea>
+                </div>
+                <div class="col-1"></div>
+            </div>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col-1">
+                    <!--
                     <form action="/action_page.php">
                         <input type="file" id="myImage" name="filename">
                         <input type="submit">
@@ -127,18 +131,20 @@
                     <img id="output" width="200" />
                     <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
                     -->
-        </div>
-        <!-- IMAGE UPLOAD -->
-        <div class="col-4">
-            <input type="file" id="image-upload" class="image-up" />
-            <!--
+                </div>
+                <!-- IMAGE UPLOAD -->
+                <div class="col-4">
+                    <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
+                    <!--
                     <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
                     -->
-        </div>
-        <div class="col-2">
-            <input type="button" id="saveButton" class="save-btn" value="Save">
-        </div>
-        <div class="col-7"></div>
+                </div>
+                <div class="col-2">
+                    <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save   ">
+                </div>
+                <div class="col-7"></div>
+            </div>
+        </form>
     </div>
 </div>
 

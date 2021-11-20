@@ -9,7 +9,7 @@ from django.views.decorators.csrf import csrf_exempt
 from .api import facade
 
 from .models import Measurement, Plant, Student
-from .forms import LoginForm
+from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
 def index(request):
@@ -79,8 +79,20 @@ def plantHistory(request, plant_id:int):
                            'json_history': json_pretty})
 
 
-
+@csrf_exempt
 def observations(request, plant_id:int): #,plant_id:int):
+
+    if request.method == 'POST':
+        form:ObservationForm = ObservationForm(request.POST)
+        if form.is_valid():
+            plant_id = form.cleaned_data['plant_id']
+            name = form.cleaned_data['name']
+            observation = form.cleaned_data['observation']
+
+            print(f"{name} makes this observation: {observation} about plant {plant_id}")
+
+    else:
+        pass
     template:any = loader.get_template('main/observations.html')
     context:set = {'plant_id': plant_id}
     return HttpResponse(template.render(context, request))

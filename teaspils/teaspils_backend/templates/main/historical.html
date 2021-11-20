@@ -43,13 +43,13 @@
     }
 </style>
 
-<!-- 
-<div id='plot_area' style="align-content: center;">
-    <p> Plant id : {{plant_id }} </p>
-    <div id="all_plots" style="width:600px;height:400px;"></div>
-</div> -->
 
 <div id='plot_area' style="align-content: center;">
+    <!-- <p> Plant id : {{plant_id }} </p> -->
+    <div id="all_plots" style="width:100%;height:100%;"></div>
+</div>
+
+<!-- <div id='plot_area' style="align-content: center;">
     <p> Plant id : {{plant_id }} </p>
     <div class="wrapper">
         <div id="plt_tem" style="width:350px;height:300px;"></div>
@@ -59,7 +59,7 @@
         <div id="plt_hum" style="width:350px;height:300px;"></div>
       </div>
 </div>
-
+ -->
 
 <!--
 <div>
@@ -144,48 +144,46 @@
         line: { color: '#FF0000' }
     }
 
-    // plot_all_div = document.getElementById('all_plots');
-    // Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    plot_all_div = document.getElementById('all_plots');
+    Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+        margin: { t: 15 }
+    });
+
+    // plot_tem_div = document.getElementById('plt_tem');
+    // Plotly.newPlot(plot_tem_div, [trace_temp], {
     //     margin: { t: 15 }
     // });
 
-    plot_tem_div = document.getElementById('plt_tem');
-    Plotly.newPlot(plot_tem_div, [trace_temp], {
-        margin: { t: 15 }
-    });
+    // plot_noi_div = document.getElementById('plt_noi');
+    // Plotly.newPlot(plot_noi_div, [trace_noise], {
+    //     margin: { t: 15 }
+    // });
 
-    plot_noi_div = document.getElementById('plt_noi');
-    Plotly.newPlot(plot_noi_div, [trace_noise], {
-        margin: { t: 15 }
-    });
+    // plot_co2_div = document.getElementById('plt_co2');
+    // Plotly.newPlot(plot_co2_div, [trace_co2], {
+    //     margin: { t: 15 }
+    // });
 
-    plot_co2_div = document.getElementById('plt_co2');
-    Plotly.newPlot(plot_co2_div, [trace_co2], {
-        margin: { t: 15 }
-    });
+    // plot_lig_div = document.getElementById('plt_lig');
+    // Plotly.newPlot(plot_lig_div, [trace_light], {
+    //     margin: { t: 15 }
+    // });
 
-    plot_lig_div = document.getElementById('plt_lig');
-    Plotly.newPlot(plot_lig_div, [trace_light], {
-        margin: { t: 15 }
-    });
+    // plot_hum_div = document.getElementById('plt_hum');
+    // Plotly.newPlot(plot_hum_div, [trace_hum], {
+    //     margin: { t: 15 }
+    // });
 
-    plot_hum_div = document.getElementById('plt_hum');
-    Plotly.newPlot(plot_hum_div, [trace_hum], {
-        margin: { t: 15 }
-    });
-
-    plot_tem_div.on('plotly_click', function(data){
+    plot_all_div.on('plotly_click', function(data){
         ts = data['points'][0]['x']
         console.log(ts)
         location.href = "/teaspils/plant/{{plant_id }}/measurement/"+ts
     });
 
-
-
     /* Current Plotly.js version */
     console.log(Plotly.BUILD);
 </script>
-
+<!-- 
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         var calendarEl = document.getElementById('calendar');
@@ -264,7 +262,7 @@
         calendar.render();
     });
 
-</script>
+</script> -->
 <script src="{% static 'js/main.js' %}"></script>
 
 

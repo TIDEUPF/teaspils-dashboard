@@ -3,6 +3,17 @@
 {% load static %}
 
 {% block content %}
+<div class="cointainer">
+    <div class="row">
+        <nav aria-label="breadcrumb" style="margin-left: 5%;">
+            <ol class="breadcrumb" style="background-color: white;">
+                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data measurement</li>
+            </ol>
+        </nav>
+
+    </div>
+</div>
 
 <div id="Plant_Identifier" class="d-none">
     <div class="IdElement" id="IdText">IdPlant</div>
@@ -18,7 +29,6 @@
 
     <div class="col-3"></div>
 </div> -->
-<div class="white-space"></div>
 <div class="row">
     <div id="settings" class="col-3">
         <div id='limits-setting' class="col">
@@ -213,28 +223,13 @@
         </div>
     </div>
     <div class="col-2">
-        <div class="white-space"></div>
-        <div class="white-space"></div>
-        <div class="white-space"></div>
         <a class="observation-btn" href="{% url 'observations' plant_id=plant_id %}" title="Observations-btn">
-            <img src="{% static 'img/Group 16.png' %}" width="150" height="150">
+            <img src="{% static 'img/Group 16.png' %}" width="94" height="94">
         </a>
-        <div class="white-space"></div>
         <div class="white-space"></div>
         <a class="export-btn" id='fileRequest' href="" title="export-btn">
-            <img src="{% static 'img/Group 17.png' %}" width="150" height="70">
+            <img src="{% static 'img/Group 17.png' %}" width="94" height=50">
         </a>
-        <!--
-                <a href="https://raw.githubusercontent.com/rferrers/Teaspils/main/DataAll.json" download="Reporte2Mayo2010">
-                    Descargar Archivo
-                </a>
-                -->
-
-        <div class="white-space"></div>
-
-        <!--
-                <button id="hiding-btn">Clickeame</button>
-                -->
     </div>
 </div>
 {% endblock %}

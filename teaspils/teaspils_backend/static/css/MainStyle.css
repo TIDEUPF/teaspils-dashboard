@@ -47,6 +47,7 @@ ul{
     padding: 1%;
     padding-bottom: 0px;
     background: var(--white);
+    justify-content: space-between;
 }
 header h2 {
     font-size: 40px;
@@ -363,7 +364,7 @@ footer{
 .footer-content{
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-direction: row;
     text-align: center;
 }
@@ -423,11 +424,6 @@ footer h3{
     float: left;
     margin: 0.4rem;
     margin-top: 1rem;
-}
-
-#settings{
-    margin-top: 0.5rem;
-    padding: 30px;
 }
 
 .small-setting{

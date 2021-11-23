@@ -1,14 +1,18 @@
 import datetime
 import json
-from django.http.response import HttpResponseRedirect
+from pathlib import Path
+from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
+from django.contrib import messages
 from django.views.decorators.csrf import csrf_exempt
+
+from .utils import handle_uploaded_file
 
 from .api import facade
 
-from .models import Measurement, Plant, Student
+from .models import Measurement, Observation, Plant, Student
 from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
@@ -82,19 +86,44 @@ def plantHistory(request, plant_id:int):
 @csrf_exempt
 def observations(request, plant_id:int): #,plant_id:int):
 
+    observations = []
     if request.method == 'POST':
-        form:ObservationForm = ObservationForm(request.POST)
+        form:ObservationForm = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
             plant_id = form.cleaned_data['plant_id']
             name = form.cleaned_data['name']
             observation = form.cleaned_data['observation']
+            attachedfile = request.FILES
+            timestamp = datetime.datetime.now()
 
-            print(f"{name} makes this observation: {observation} about plant {plant_id}")
+            saved_path:Path = handle_uploaded_file(attachedfile, plant_id, timestamp)
+
+            if saved_path is not None:
+                obs = Observation(plant_id=plant_id,
+                                  author=name,
+                                  text=observation,
+                                  filePath= str(saved_path),
+                                  timestamp=timestamp)
+                obs.save()
+
+                messages.success(request, "Observation saved successfully")
+
+                observations = Observation.objects.filter(plant_id=plant_id)
+                context:set = {'plant_id': plant_id, 'observations': observations}
+                return HttpResponseRedirect('observations', context)
+            else:
+                messages.error(request, "Error saving the observation")
+                return(Http404())
+
+            print(f"{name} makes this observation: {observation} about plant {plant_id} with file {attachedfile}")
 
     else:
-        pass
+        observations = Observation.objects.filter(plant_id=plant_id)
+        print(observations)
+
+
     template:any = loader.get_template('main/observations.html')
-    context:set = {'plant_id': plant_id}
+    context:set = {'plant_id': plant_id, 'observations': observations}
     return HttpResponse(template.render(context, request))
     #return HttpResponse(f"Hello, world. You're at Observations page {plant_id}.")
 

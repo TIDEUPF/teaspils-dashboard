@@ -4,17 +4,33 @@
 {% block content %}
 <div class="container" style="height: 100%; display: flex; justify-content: center; align-items: center;">
     <div class="col-4">
-            <form action="/teaspils/" method="post">
-                <div class="input-group pb-3">
-                    <label class="input-group-text" for="course_id_input">Course id: </label>
-                    <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="100" required>
+        <form action="/teaspils/" method="post">
+            <div class="input-group pb-3">
+                <label class="input-group-text" for="course_id_input">Course id: </label>
+                <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3" required>
+            </div>
+            <div class="input-group pb-3">
+                <label class="input-group-text" for="secret_word_input">Secret word: </label>
+                <input class="form-control" id="secret_word_input" type="password" name="secret_word" maxlength="5"
+                    required>
+                <div class="input-group-append">
+                    <div class="input-group-text">
+                        <input type="checkbox" id="reveal-box" onclick="reveal()">
+                    </div>
                 </div>
-                <div class="input-group pb-3">
-                    <label class="input-group-text" for="secret_word_input">Secret word: </label>
-                    <input class="form-control" id="secret_word_input" type="text" name="secret_word" maxlength="100" required>
-                </div>
-                <input class="btn btn-outline-secondary" style="float: right;" type="submit" value="Submit">
-            </form>
+
+            </div>
+            <input class="btn btn-outline-secondary" style="float: right;" type="submit" value="Submit">
+        </form>
     </div>
 </div>
+
+<script type="text/javascript">
+    function reveal() {
+        if (document.getElementById('reveal-box').checked) { document.getElementById("secret_word_input").type = 'text'; }
+        else
+            document.getElementById("secret_word_input").type = 'password';
+    }
+</script>
+
 {% endblock %}

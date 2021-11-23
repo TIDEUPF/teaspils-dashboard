@@ -3,6 +3,23 @@
 {% load static %}
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<div class="cointainer">
+    <div class="row">
+        <nav aria-label="breadcrumb" style="margin-left: 5%;">
+            <ol class="breadcrumb" style="background-color: white;">
+                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Observations</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
 
 <!-- MODAL -->
 <div id="myModal" class="modal">
@@ -13,7 +30,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-8">
-                    <h2>Name:</h2>
+                    <h3>Name [Group name]: </h3>
                 </div>
                 <div class="col-3"></div>
             </div>
@@ -27,7 +44,7 @@
             <div class="row">
                 <div class="col-1"></div>
                 <div class="col-8">
-                    <h2>Observations:</h2>
+                    <h3>Observations:</h3>
                 </div>
                 <div class="col-2">
                     <input type="button" class="obs-btn" value="Observation button">
@@ -73,7 +90,6 @@
 
 
 <!-- DATE -->
-<div class="separador"></div>
 <div class="row">
     <div class="col-1"></div>
     <div id="date" class="col-10">
@@ -84,67 +100,71 @@
 <div class="white-space"></div>
 <!-- MAIN COMMENT Inputs -->
 <div class="container">
-    <div class="col-2">
+    <!-- <div class="col-2">
         <button class="btn btn-outline-danger">Export</button>
-    </div>
-    <div class="Main-Comment">
-        <form method="post">
-            <input type="hidden" name="plant_id" value="{{plant_id}}">
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-8">
-                    <h2>Name:</h2>
+    </div> -->
+    <div class="row">
+        <div class="col-4">
+            <form method="post" enctype="multipart/form-data">
+                <input type="hidden" name="plant_id" value="{{plant_id}}">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <h2>Name or group name:</h2>
+                    </div>
+                    <div class="col-3"></div>
                 </div>
-                <div class="col-3"></div>
-            </div>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10">
-                    <input type="text" id="author-name" name="name" class="form-control">
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10">
+                        <input type="text" id="author-name" name="name" class="form-control">
+                    </div>
+                    <div class="col-1"></div>
                 </div>
-                <div class="col-1"></div>
-            </div>
-            <div class="row" style="display: flex; align-content: space-between; margin: 20px 0px;">
-                <div class="col-1"></div>
-                <div class="col-8">
-                    <h2>Observations:</h2>
-                </div>
+                <div class="row" style="display: flex; align-content: space-between; margin: 20px 0px;">
+                    <div class="col-1"></div>
+                    <div class="col-8">
+                        <h2>Observations:</h2>
+                    </div>
 
-                <div class="col-1"></div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row">
+                    <div class="col-1"></div>
+                    <div class="col-10"">
+                    <textarea id="comment-maker" name="observation" class="form-control" rows="5"></textarea>
+                    </div>
+                    <div class="col-1"></div>
+                </div>
+                <div class="row" style="margin: 30px;">
+                    <!-- IMAGE UPLOAD -->
+                    <div class="col-10">
+                        <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
+                    </div>
+                    <div class="col-2">
+                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save   ">
+                    </div>
+                    <div class="col-7"></div>
+                </div>
+            </form>
+        </div>
+        <div id="comments-section" class="col-7">
+            <div class="cointainer" style="margin: 10px; overflow-y: auto; max-height: 480px; width: 100%;">
+                {%for obs in observations %}
+                <div class="row" style="justify-content: center; margin-top: 10px;">
+                    <div class="card" style="width: 90%;">
+                        <div class="card-body">
+                            <h5 class="card-title">{{obs.author}}</h5>
+                            <h6 class="card-subtitle mb-2 text-muted">{{obs.timestamp}}</h6>
+                            <p class="card-text">{{obs.text}}</p>
+                            <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
+                            <a href="{{obs.filePath}}" class="card-link">attached file</a>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
             </div>
-            <div class="row">
-                <div class="col-1"></div>
-                <div class="col-10"">
-                    <textarea id="comment-maker" name="observation" class="form-control" rows="7"></textarea>
-                </div>
-                <div class="col-1"></div>
-            </div>
-            <div class="row" style="margin-top: 20px;">
-                <div class="col-1">
-                    <!--
-                    <form action="/action_page.php">
-                        <input type="file" id="myImage" name="filename">
-                        <input type="submit">
-                    </form>
-
-                    <p><label for="file" style="cursor: pointer;">Upload Image</label></p>
-                    <img id="output" width="200" />
-                    <input type="file"  accept="image/*" name="image" id="file"  onchange="loadFile(event)" style="display: none;">
-                    -->
-                </div>
-                <!-- IMAGE UPLOAD -->
-                <div class="col-4">
-                    <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
-                    <!--
-                    <input type="button" id="image-btn" class="obs-btn" value="Upload Image">
-                    -->
-                </div>
-                <div class="col-2">
-                    <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save   ">
-                </div>
-                <div class="col-7"></div>
-            </div>
-        </form>
+        </div>
     </div>
 </div>
 
@@ -152,4 +172,18 @@
 <!-- COMMENTS DISPLAY -->
 <div id='comment_container'></div>
 </div>
+
+
+<script>
+    $(function () {
+        $('#save-button').attr('disabled', true);
+        $('#comment-maker').keypress(function () {
+            if ($('#author-name').val() != '' && $('#comment-maker').val() != '') {
+                $('#save-button').attr('disabled', false);
+            } else {
+                $('#save-button').attr('disabled', true);
+            }
+        });
+    });
+</script>
 {% endblock %}

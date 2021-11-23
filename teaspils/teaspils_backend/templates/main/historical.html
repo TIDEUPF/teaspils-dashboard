@@ -4,7 +4,7 @@
 
 {% block content %}
 
-
+<!-- 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
@@ -14,17 +14,18 @@
 
 <link href="{% static 'fullcalendar/packages/core/main.css' %}" rel='stylesheet' />
 <link href="{% static 'fullcalendar/packages/daygrid/main.css' %}" rel='stylesheet' />
+ -->
 
-
-<!-- Bootstrap CSS -->
+<!-- Bootstrap CSS
 <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+ -->
 
-<!-- Style -->
-<link rel="stylesheet" href="{% static 'css/style.css' %}">
+<!-- Style
+<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
+ -->
 
 
-
-<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+<!-- <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
 <script src="{% static 'js/popper.min.js' %}"></script>
 <script src="{% static 'js/bootstrap.min.js' %}"></script>
 
@@ -32,7 +33,7 @@
 <script src="{% static 'fullcalendar/packages/interaction/main.js' %}"></script>
 <script src="{% static 'fullcalendar/packages/daygrid/main.js' %}"></script>
 <script src="{% static 'fullcalendar/packages/timegrid/main.js' %}"></script>
-<script src="{% static 'fullcalendar/packages/list/main.js' %}"></script>
+<script src="{% static 'fullcalendar/packages/list/main.js' %}"></script> -->
 
 
 <style>
@@ -44,10 +45,30 @@
 </style>
 
 
-<div id='plot_area' style="align-content: center;">
-    <!-- <p> Plant id : {{plant_id }} </p> -->
-    <div id="all_plots" style="width:100%;height:100%;"></div>
+<div class="cointainer">
+    <div class="row">
+        <nav aria-label="breadcrumb" style="margin-left: 5%;">
+            <ol class="breadcrumb" style="background-color: white;">
+                <li class="breadcrumb-item active" aria-current="page">Timeline</li>
+                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/observations">Observations</a></li>
+            </ol>
+        </nav>
+    </div>
+    <div class="row" style="height: 90%;">
+        <div class="col-10">
+            <div id='plot_area' style="align-content: center;">
+                <!-- <p> Plant id : {{plant_id }} </p> -->
+                <div id="all_plots" style="width:100%;height:100%;"></div>
+            </div>
+        </div>
+        <div class="col-2">
+            <a class="observation-btn" href="{% url 'observations' plant_id=plant_id %}" title="Observations-btn">
+                <img src="{% static 'img/Group 16.png' %}" width="94" height="94">
+            </a>
+        </div>
+    </div>
 </div>
+
 
 <!-- <div id='plot_area' style="align-content: center;">
     <p> Plant id : {{plant_id }} </p>
@@ -80,15 +101,15 @@
     // let light = history['Light'][0]['Value'];
     // let humidity = history['Humidity'][0]['Value'];
 
-    var times  = []
-    var temps  = []
+    var times = []
+    var temps = []
     var noises = []
-    var co2s   = []
+    var co2s = []
     var lights = []
-    var hums   = [] 
+    var hums = []
 
 
-    for (let i = 0; i < history.length; i++){
+    for (let i = 0; i < history.length; i++) {
         times.push(new Date(history[i]['timestamp']));
         temps.push(history[i]['temperature']);
         noises.push(history[i]['noise']);
@@ -174,10 +195,10 @@
     //     margin: { t: 15 }
     // });
 
-    plot_all_div.on('plotly_click', function(data){
+    plot_all_div.on('plotly_click', function (data) {
         ts = data['points'][0]['x']
         console.log(ts)
-        location.href = "/teaspils/plant/{{plant_id }}/measurement/"+ts
+        location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
     });
 
     /* Current Plotly.js version */

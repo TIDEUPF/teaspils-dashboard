@@ -1,5 +1,6 @@
 from datetime import datetime
 from django.db import models
+from django.db.models.fields import BLANK_CHOICE_DASH
 
 class Center(models.Model):
     name = models.CharField(max_length=120)
@@ -43,10 +44,11 @@ class Measurement(models.Model):
         return f'Plant {self.plant.id} status: Temp:{self.temperature}, Noise:{self.noise} @ {self.timestamp}'
 
 class Observation(models.Model):
+    author = models.TextField(max_length=50)
     text = models.TextField(max_length=1200)
-    timestamp = models.TimeField(default=datetime.now)
+    filePath = models.FilePathField(path='/teaspils/uploads/1',blank=False)
+    timestamp = models.DateTimeField(default=datetime.now)
 
-    author = models.ForeignKey(Student, on_delete=models.CASCADE)
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
     def __str__(self) -> str:

@@ -16,56 +16,48 @@
 
 
 </head>
-
-<header style="height: fit-content;">
-    <div class="header-content d-flex flex-row justify-content-between" style="background-color: #ffde9f;">
-        <div class="menu_options col-2">
-            <a class='logo-btn' href=" www.teaspils.eu/" title="Tide-Logo">
-                <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="58" height="75">
-            </a>
+<div class="maincontainer">
+    <header style="height: fit-content;">
+        <div class="d-flex flex-row justify-content-between">
+            <div class="menu_options col-2">
+                <a class='logo-btn' href=" www.teaspils.eu/" title="Tide-Logo">
+                    <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="58" height="75">
+                </a>
+            </div>
+            <div class="col-2 mr-4">
+                <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">Logout</a>
+            </div>
         </div>
-        <div class="col-2 mr-4">
-            <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">Logout</a>
-        </div>
-        <!-- <div id="Plant_Identifier">
-        <div class="IdElement" id="IdText">Plant id: </div>
-        <input class="IdElement" type="text" id="id_disp">
-    </div> -->
-    </div>
+    </header>
 
-</header>
-
-<body style="background-color: #ffde9f	;">
-    <main role="main" class="container" style="min-height: 0%; max-height: 80%;">
+    <main role="main" style="overflow:auto;">
         {% block content %}
         {% endblock %}
     </main>
+    <footer>
+        <div class="footer-content">
+            <div class="col-4">
+                <div class="footer-image">
+                    <a href="" title="Tide-Logo">
+                        <img src="{% static 'img/upf_tide_logo.png' %}" width="350" height="55">
+                    </a>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="footer-image">
+                    <a href="" title="Tide-Logo">
+                        <img src="{% static 'img/erasmus_en.png' %}" width="250" height="55">
+                    </a>
+                </div>
+            </div>
 
-    </div>
-</body>
-<footer>
-    <div class="footer-content">
-        <div class="col-3">
-            <div class="footer-image">
-                <a href="" title="Tide-Logo">
-                    <img src="{% static 'img/upf_tide_logo.png' %}" width="350" height="55">
-                </a>
+            <div class="col-4">
+                <div class="footer-space">
+                    <h3><a href="http://www.teaspils.eu" style="color:red">TEASPILS Project</a></h3>
+                </div>
             </div>
         </div>
-        <div class="col-3">
-            <div class="footer-image">
-                <a href="" title="Tide-Logo">
-                    <img src="{% static 'img/erasmus_en.png' %}" width="250" height="55">
-                </a>
-            </div>
-        </div>
-
-        <div class="col-4">
-            <div class="footer-space"></div>
-            <h3>TEASPILS Project</h3>
-            <h4 href="www.teaspils.eu">www.teaspils.eu</h4>
-        </div>
-    </div>
-</footer>
+    </footer>
+</div>
 
 </html>

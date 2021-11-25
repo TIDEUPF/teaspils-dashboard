@@ -76,9 +76,10 @@
     </div>
     <div class="row" style="height: 90%;">
         <div class="col-12">
-            <div id='plot_area' style="align-content: center; background-color: #ffde9f;">
+            <!--#ffde9f;-->
+            <div id='plot_area' style="align-content: center;">
                 <!-- <p> Plant id : {{plant_id }} </p> -->
-                <div id="all_plots" style="width:100%;height:100%; background-color: #ffde9f;"></div>
+                <div id="all_plots" style="width:100%;height:100%;"></div>
             </div>
         </div>
         <!-- <div class="col-2">
@@ -110,7 +111,6 @@
 </div>
 -->
 <script>
-
 
     let history = {{ json_history| safe}};
 
@@ -204,14 +204,15 @@
     plot_all_div = document.getElementById('all_plots');
     Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
         margin: { t: 15 },
-        plot_bgcolor: "#ffde9f",
-        paper_bgcolor: "#ffde9f",
+        // plot_bgcolor: "#ffde9f",
+        // paper_bgcolor: "#ffde9f",
         legend: {
             yanchor: "top",
             y: 0.8,
             xanchor: "right",
             x: 1.1
         },
+        hovermode: "x unified"
     });
 
     // plot_tem_div = document.getElementById('plt_tem');
@@ -247,6 +248,16 @@
 
     /* Current Plotly.js version */
     console.log(Plotly.BUILD);
+
+    
+    $(document).ready(function () {
+        function fade_out() {
+            $(".alert").fadeOut().empty();
+        } 
+        setTimeout(fade_out, 5000);
+        console.log("fade out");
+    });
+
 </script>
 <!-- 
 <script>

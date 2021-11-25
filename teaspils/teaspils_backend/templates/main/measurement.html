@@ -29,6 +29,8 @@
     <div class="IdElement" id="IdText">IdPlant</div>
     <input class="IdElement" type="text" id="id_disp" value="{{plant_id}}">
 </div>
+<input type="hidden" id="hidden_data" name="variable" value="{{ measure }}">
+
 
 <link rel="icon" type="image/png" href="{% static 'img/Teaspils_final_logo_no_text.png' %}" />
 <script src="{% static 'js/Term_fun.js' %}"></script>
@@ -58,54 +60,55 @@
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonT">Update</button>
+                    <button class="input-btn" id="inputButtonT">Temp</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonNoise">Update</button>
+                    <button class="input-btn" id="inputButtonNoise">Noise</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowCO2" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonCO2">Update</button>
+                    <button class="input-btn" id="inputButtonCO2">CO2</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowHUM" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighHUM" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonHUM">Update</button>
+                    <button class="input-btn" id="inputButtonHUM">Humid</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
                     <input class="input-limit" id="myInputLowIL" type="number" size="1" value=50 />
                     <input class="input-limit" id="myInputHighIL" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonIL">Update</button>
+                    <button class="input-btn" id="inputButtonIL">Light</button>
                 </div>
             </div>
 
         </div>
     </div>
     <div class="col-9" id="Chart-all">
-        <div class="row" style="background-color: #ffde9f;">
-            <div class="col-1" style="background-color: #ffde9f;">
+        <!-- style="background-color: #ffde9f;"-->
+        <div class="row">
+            <div class="col-1">
                 <div class="white-space-swiper"></div>
             </div>
-            <div class="col-2" style="background-color: #ffde9f;">
+            <div class="col-2">
                 <!-- <script src="{% static 'js/Term_fun.js' %}"></script> -->
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li>30</li>
-                            <li>20</li>
-                            <li>10</li>
+                            <li id="label_temp_h">30</li>
+                            <li id="label_temp_m">20</li>
+                            <li id="label_temp_l">10</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -124,15 +127,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2" style="background-color: #ffde9f;">
+            <div class="col-2">
                 <div class="container">
                     <!--<script src="js/Functions.js"></script>-->
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li>75</li>
-                            <li>50</li>
-                            <li>25</li>
+                            <li id="label_noise_h">75</li>
+                            <li id="label_noise_m">50</li>
+                            <li id="label_noise_l">25</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -151,14 +154,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2" style="background-color: #ffde9f;">
+            <div class="col-2">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li>1500</li>
-                            <li>1000</li>
-                            <li>500</li>
+                            <li id="label_co2_h">1500</li>
+                            <li id="label_co2_m">1000</li>
+                            <li id="label_co2_l">500</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -177,14 +180,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2" style="background-color: #ffde9f;">
+            <div class="col-2">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li>75</li>
-                            <li>50</li>
-                            <li>25</li>
+                            <li id="label_hum_h">75</li>
+                            <li id="label_hum_m">50</li>
+                            <li id="label_hum_l">25</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -203,14 +206,14 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2" style="background-color: #ffde9f;">
+            <div class="col-2">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li>1500</li>
-                            <li>1000</li>
-                            <li>500</li>
+                            <li id="label_light_h">1600</li>
+                            <li id="label_light_m">1000</li>
+                            <li id="label_light_l">800</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">

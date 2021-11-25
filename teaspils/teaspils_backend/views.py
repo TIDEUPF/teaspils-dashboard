@@ -17,8 +17,8 @@ from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
 def index(request):
-
     if request.method == 'POST':
+        facade.ConnectionFacade.data = {}
         form:LoginForm = LoginForm(request.POST)
 
         if form.is_valid():
@@ -69,8 +69,9 @@ def plantHistory(request, plant_id:int):
 
     plant = Plant.objects.filter(pk=plant_id).first()
     con = facade.ConnectionFacade('http')
-    json_response = con.connect(plant.data_source)
-    json_pretty = json.dumps(json_response, sort_keys=True, indent=4)
+    con.connect(plant.data_source)
+    print("FROM STATIC: ", facade.ConnectionFacade.data)
+    json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
     # Conectar con la fuente de datos externa.
     # Esta parte en realidad no va acá. Debe haber una tarea corriendo que se  conecte cada X sminutos.
     # En esta sección debe aparecer la información que ya está guardada en la base de datos.
@@ -131,7 +132,17 @@ def observations(request, plant_id:int): #,plant_id:int):
 
 def measures(request, plant_id:int, ts:str):
     #2021-11-18%2022:48:02.884
-    print(ts)
+    origin_data = facade.ConnectionFacade.data
+
+    single_measure = {}
+    for m in origin_data:
+        print(m['timestamp'][:-3],"--" ,ts)
+        if m['timestamp'][:-3] == ts:
+            single_measure = m
+    
+    single_measure = json.dumps(single_measure)
+    print(single_measure)
+
     return render(request,
                   template_name='main/measurement.html',
-                  context={'timestamp': ts, 'plant_id': plant_id})
+                  context={'timestamp': ts, 'plant_id': plant_id, 'measure' : single_measure})

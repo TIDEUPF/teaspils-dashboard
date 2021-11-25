@@ -10,13 +10,22 @@
 {% endif %}
 
 <div class="cointainer">
-    <div class="row">
+    <!-- <div class="row">
         <nav aria-label="breadcrumb" style="margin-left: 5%;">
             <ol class="breadcrumb" style="background-color: white;">
                 <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
                 <li class="breadcrumb-item active" aria-current="page">Observations</li>
             </ol>
         </nav>
+    </div> -->
+    <div class="d-flex flex-row justify-content-center mt-3">
+        <div class="col-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block"
+                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">Timeline</button>
+    </div>
+        <div class=" col-6">
+                <button type="button" class="btn btn-outline-success btn-lg btn-block" disabled>Observations</button>
+        </div>
     </div>
 </div>
 
@@ -117,7 +126,7 @@
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-10">
-                        <input type="text" id="author-name" name="name" class="form-control">
+                        <input type="text" id="author-name" name="name" class="form-control"  style="background-color: papayawhip;">
                     </div>
                     <div class="col-1"></div>
                 </div>
@@ -132,7 +141,7 @@
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-10"">
-                    <textarea id="comment-maker" name="observation" class="form-control" rows="5"></textarea>
+                    <textarea id="comment-maker" name="observation" class="form-control" rows="5"  style="background-color: papayawhip;"></textarea>
                     </div>
                     <div class="col-1"></div>
                 </div>
@@ -142,7 +151,7 @@
                         <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
                     </div>
                     <div class="col-2">
-                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save   ">
+                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save">
                     </div>
                     <div class="col-7"></div>
                 </div>
@@ -151,9 +160,9 @@
         <div id="comments-section" class="col-7">
             <div class="cointainer" style="margin: 10px; overflow-y: auto; max-height: 480px; width: 100%;">
                 {%for obs in observations %}
-                <div class="row" style="justify-content: center; margin-top: 10px;">
+                <div class="row" style="justify-content: center; margin: 20px;">
                     <div class="card" style="width: 90%;">
-                        <div class="card-body">
+                        <div class="card-body"  style="background-color: papayawhip;">
                             <h5 class="card-title">{{obs.author}}</h5>
                             <h6 class="card-subtitle mb-2 text-muted">{{obs.timestamp}}</h6>
                             <p class="card-text">{{obs.text}}</p>
@@ -178,6 +187,7 @@
     $(function () {
         $('#save-button').attr('disabled', true);
         $('#comment-maker').keypress(function () {
+            console.log("keypressed")
             if ($('#author-name').val() != '' && $('#comment-maker').val() != '') {
                 $('#save-button').attr('disabled', false);
             } else {

@@ -4,7 +4,7 @@
 
 {% block content %}
 <div class="cointainer">
-    <div class="row">
+    <!-- <div class="row">
         <nav aria-label="breadcrumb" style="margin-left: 5%;">
             <ol class="breadcrumb" style="background-color: white;">
                 <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
@@ -12,6 +12,16 @@
             </ol>
         </nav>
 
+    </div> -->
+    <div class="d-flex flex-row justify-content-center m-3">
+        <div class="col-6">
+            <button type="button" class="btn btn-primary btn-lg btn-block"
+                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">Timeline</button>
+        </div>
+        <div class=" col-6">
+                <button type=" button" class="btn btn-success btn-lg btn-block"
+                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">Observations</button>
+        </div>
     </div>
 </div>
 
@@ -82,12 +92,12 @@
 
         </div>
     </div>
-    <div class="col-7" id="Chart-all">
-        <div class="row">
-            <div class="col-1">
+    <div class="col-9" id="Chart-all">
+        <div class="row" style="background-color: #ffde9f;">
+            <div class="col-1" style="background-color: #ffde9f;">
                 <div class="white-space-swiper"></div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="background-color: #ffde9f;">
                 <!-- <script src="{% static 'js/Term_fun.js' %}"></script> -->
                 <div class="container">
                     <div class="chart-wrapper">
@@ -114,7 +124,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="background-color: #ffde9f;">
                 <div class="container">
                     <!--<script src="js/Functions.js"></script>-->
                     <div class="chart-wrapper">
@@ -141,7 +151,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="background-color: #ffde9f;">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
@@ -167,7 +177,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="background-color: #ffde9f;">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
@@ -193,7 +203,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-2">
+            <div class="col-2" style="background-color: #ffde9f;">
                 <div class="container">
                     <div class="chart-wrapper">
                         <ul class="chart-y">
@@ -222,7 +232,7 @@
 
         </div>
     </div>
-    <div class="col-2">
+    <!-- <div class="col-2">
         <a class="observation-btn" href="{% url 'observations' plant_id=plant_id %}" title="Observations-btn">
             <img src="{% static 'img/Group 16.png' %}" width="94" height="94">
         </a>
@@ -230,6 +240,6 @@
         <a class="export-btn" id='fileRequest' href="" title="export-btn">
             <img src="{% static 'img/Group 17.png' %}" width="94" height=50">
         </a>
-    </div>
+    </div> -->
 </div>
 {% endblock %}

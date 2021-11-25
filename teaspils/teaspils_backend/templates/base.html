@@ -17,16 +17,15 @@
 
 </head>
 
-<header>
-    <div class="header-content">
-        <div class="menu_options>
+<header style="height: fit-content;">
+    <div class="header-content d-flex flex-row justify-content-between" style="background-color: #ffde9f;">
+        <div class="menu_options col-2">
             <a class='logo-btn' href=" www.teaspils.eu/" title="Tide-Logo">
-            <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="20%" height="100%">
+                <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="58" height="75">
             </a>
         </div>
-        <div>
-            <a class="btn btn-danger" href="/teaspils/">Logout</a>
-
+        <div class="col-2 mr-4">
+            <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">Logout</a>
         </div>
         <!-- <div id="Plant_Identifier">
         <div class="IdElement" id="IdText">Plant id: </div>
@@ -36,7 +35,7 @@
 
 </header>
 
-<body>
+<body style="background-color: #ffde9f	;">
     <main role="main" class="container" style="min-height: 0%; max-height: 80%;">
         {% block content %}
         {% endblock %}

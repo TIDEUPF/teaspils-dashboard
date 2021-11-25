@@ -3,16 +3,23 @@
 {% load static %}
 {% block content %}
 <div class="container" style="height: 100%; display: flex; justify-content: center; align-items: center;">
-    <div class="col-4">
+    <div class="col-6">
         <form action="/teaspils/" method="post">
-            <div class="input-group pb-3">
-                <label class="input-group-text" for="course_id_input">Course id: </label>
-                <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3" required>
+            <div class="input-group input-group-lg pb-3">
+                <!-- <label class="input-group-text" for="course_id_input">Course id: </label> -->
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="course_id_label">Course id</span>
+                </div>
+                <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3"
+                    aria-label="Default" aria-describedby="course_id_label" required>
             </div>
-            <div class="input-group pb-3">
-                <label class="input-group-text" for="secret_word_input">Secret word: </label>
+            <div class="input-group input-group-lg pb-3">
+                <!-- <label class="input-group-text" for="secret_word_input">Secret word: </label> -->
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="secret_label">Secret Word</span>
+                </div>
                 <input class="form-control" id="secret_word_input" type="password" name="secret_word" maxlength="5"
-                    required>
+                    aria-label="Default" aria-describedby="secret_word_input" required>
                 <div class="input-group-append">
                     <div class="input-group-text">
                         <input type="checkbox" id="reveal-box" onclick="reveal()">

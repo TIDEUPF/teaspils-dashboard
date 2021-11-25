@@ -77,6 +77,8 @@ def plantHistory(request, plant_id:int):
     # Crear información mock para probar.
     # return HttpResponse(json_pretty,content_type="application/json")
 
+    messages.info(request, "Try selecting a point on the chart with the mouse!")
+
     return render(request, 
                   template_name='main/historical.html', 
                   context={'plant_id' : plant_id,

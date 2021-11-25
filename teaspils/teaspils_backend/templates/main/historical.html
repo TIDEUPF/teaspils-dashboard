@@ -4,6 +4,17 @@
 
 {% block content %}
 
+{% if messages %}
+{% for message in messages %}
+<!-- <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div> -->
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable mt-3"
+    style="position: fixed; top:0; width:95%">
+    <button type="button" class="close " data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p class="m-0 font-weight-bold">{{message}}</p>
+</div>
+{% endfor %}
+{% endif %}
+
 <!-- 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
 
@@ -46,26 +57,35 @@
 
 
 <div class="cointainer">
-    <div class="row">
+    <!-- <div class="row">
         <nav aria-label="breadcrumb" style="margin-left: 5%;">
             <ol class="breadcrumb" style="background-color: white;">
                 <li class="breadcrumb-item active" aria-current="page">Timeline</li>
                 <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/observations">Observations</a></li>
             </ol>
         </nav>
+    </div> -->
+    <div class="d-flex flex-row justify-content-center m-3">
+        <div class="col-6">
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled ">Timeline</button>
+        </div>
+        <div class=" col-6">
+                <button type=" button" class="btn btn-success btn-lg btn-block"
+                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">Observations</button>
+        </div>
     </div>
     <div class="row" style="height: 90%;">
-        <div class="col-10">
-            <div id='plot_area' style="align-content: center;">
+        <div class="col-12">
+            <div id='plot_area' style="align-content: center; background-color: #ffde9f;">
                 <!-- <p> Plant id : {{plant_id }} </p> -->
-                <div id="all_plots" style="width:100%;height:100%;"></div>
+                <div id="all_plots" style="width:100%;height:100%; background-color: #ffde9f;"></div>
             </div>
         </div>
-        <div class="col-2">
+        <!-- <div class="col-2">
             <a class="observation-btn" href="{% url 'observations' plant_id=plant_id %}" title="Observations-btn">
                 <img src="{% static 'img/Group 16.png' %}" width="94" height="94">
             </a>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -120,13 +140,17 @@
     console.log(times, temps, noises, co2s, lights, hums);
 
 
+
     var trace_temp = {
         type: "scatter",
         mode: "lines+markers",
         name: 'temperature',
         x: times,
         y: temps,
-        line: { color: '#17BECF' }
+        text: temps.map(function (value) { return `Temperature: ${value}`; }),
+        hoverinfo: 'text',
+        line: { color: '#f1bdff', width:8 },
+        marker: { color: '#d9bdff', size:8 },
     }
 
     var trace_noise = {
@@ -135,7 +159,10 @@
         name: 'noise',
         x: times,
         y: noises,
-        line: { color: '#7F7F7F' }
+        text: noises.map(function (value) { return `Noise: ${value}`; }),
+        hoverinfo: 'text',
+        line: { color: '#666666', width:8 },
+        marker: { color: '#666666', size:12 },
     }
 
     var trace_co2 = {
@@ -144,7 +171,10 @@
         name: 'co2',
         x: times,
         y: co2s,
-        line: { color: '#0000FF' }
+        text: co2s.map(function (value) { return `CO2: ${value}`; }),
+        hoverinfo: 'text',
+        line: { color: '#9cbcff', width:8 },
+        marker: { color: '#9cbcff', size:12 },
     }
 
     var trace_light = {
@@ -153,7 +183,10 @@
         name: 'light',
         x: times,
         y: lights,
-        line: { color: '#00FF00' }
+        text: lights.map(function (value) { return `Light: ${value}`; }),
+        hoverinfo: 'text',
+        line: { color: '#ffa2a2', width:8 },
+        marker: { color: '#ffa2a2', size:12 },
     }
 
     var trace_hum = {
@@ -162,12 +195,23 @@
         name: 'humidity',
         x: times,
         y: hums,
-        line: { color: '#FF0000' }
+        text: hums.map(function (value) { return `Humidity: ${value}`; }),
+        hoverinfo: 'text',
+        line: { color: '#bdfff1', width:8 },
+        marker: { color: '#bdfff1', size:12 },
     }
 
     plot_all_div = document.getElementById('all_plots');
     Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
-        margin: { t: 15 }
+        margin: { t: 15 },
+        plot_bgcolor: "#ffde9f",
+        paper_bgcolor: "#ffde9f",
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
     });
 
     // plot_tem_div = document.getElementById('plt_tem');

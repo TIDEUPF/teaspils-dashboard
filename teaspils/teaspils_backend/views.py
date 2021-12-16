@@ -6,6 +6,9 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
+from django.core.files import File as DjangoFile
+from django.conf import settings as django_settings
+
 from django.views.decorators.csrf import csrf_exempt
 
 from .utils import handle_uploaded_file
@@ -96,16 +99,21 @@ def observations(request, plant_id:int): #,plant_id:int):
             plant_id = form.cleaned_data['plant_id']
             name = form.cleaned_data['name']
             observation = form.cleaned_data['observation']
-            attachedfile = request.FILES
+            attachedfile = request.FILES['attachedfile']
             timestamp = datetime.datetime.now()
 
-            saved_path:Path = handle_uploaded_file(attachedfile, plant_id, timestamp)
+            #saved_path:str = handle_uploaded_file(attachedfile, plant_id, timestamp, django_settings.STATIC_URL)
+            saved_path:str = '/uploads'
+
+            #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
+            
 
             if saved_path is not None:
                 obs = Observation(plant_id=plant_id,
                                   author=name,
                                   text=observation,
-                                  filePath= str(saved_path),
+                                  filePath= saved_path,
+                                  image = attachedfile,
                                   timestamp=timestamp)
                 obs.save()
 

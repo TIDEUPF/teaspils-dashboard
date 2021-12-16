@@ -11,6 +11,9 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
 from pathlib import Path
+from os.path import normpath, join
+
+import thumbnails
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -38,6 +41,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'thumbnails',
+    'imagefit'
 ]
 
 MIDDLEWARE = [
@@ -126,9 +131,56 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/teaspils_backend/static/'
+STATIC_URL = '/teaspils_backend/static/'   
+
+
+MEDIA_ROOT_DIR = 'media'
+MEDIA_ROOT = normpath(join(BASE_DIR, MEDIA_ROOT_DIR))
+MEDIA_URL = '/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Thumbnails
+IMAGEFIT_ROOT = "."
+
+
+THUMBNAILS = {
+    'METADATA': {
+        'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
+    },
+    'STORAGE': {
+        'BACKEND': 'django.core.files.storage.FileSystemStorage',
+        # You can also use Amazon S3 or any other Django storage backends
+    },
+    'SIZES': {
+        'small': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 24, 'height': 24},
+                {'PATH': 'thumbnails.processors.crop', 'width': 80, 'height': 80}
+            ],
+            'POST_PROCESSORS': [
+                {
+                    'PATH': 'thumbnails.post_processors.optimize',
+                    'png_command': 'optipng -force -o7 "%(filename)s"',
+                    'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
+                },
+            ],
+        },
+        'large': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 48, 'height': 48},
+                {'PATH': 'thumbnails.processors.flip', 'direction': 'horizontal'}
+            ],
+        },
+        'watermarked': {
+            'PROCESSORS': [
+                {'PATH': 'thumbnails.processors.resize', 'width': 20, 'height': 20},
+                # Only supports PNG. File must be of the same size with thumbnail (20 x 20 in this case)
+                {'PATH': 'thumbnails.processors.add_watermark', 'watermark_path': 'watermark.png'}
+            ],
+        }
+    }
+}

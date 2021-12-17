@@ -17,20 +17,22 @@
 
 </head>
 <div class="maincontainer">
-    <header style="height: fit-content;">
+    <header style="height: fit-content;
+    box-shadow: 0 0 5px rgba(0,0,0,.05), 2px 2px 5px rgba(0,0,0,.1);
+    border-radius: 4px;">
         <div class="d-flex flex-row justify-content-between">
-            <div class="menu_options col-2">
+            <div class="menu_options col-2 m-1">
                 <a class='logo-btn' href=" www.teaspils.eu/" title="Tide-Logo">
-                    <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="58" height="75">
+                    <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="150" height="75">
                 </a>
             </div>
-            <div class="col-2 mr-4">
+            <div class="col-2 m-3 mr-4">
                 <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">Logout</a>
             </div>
         </div>
     </header>
 
-    <main role="main" style="overflow:auto;">
+    <main>
         {% block content %}
         {% endblock %}
     </main>

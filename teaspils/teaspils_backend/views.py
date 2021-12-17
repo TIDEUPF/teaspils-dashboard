@@ -1,6 +1,9 @@
 import datetime
 import json
 from pathlib import Path
+from datetime import timezone
+from zoneinfo import ZoneInfo
+
 from django.http.response import Http404, HttpResponseRedirect
 from django.shortcuts import render
 from django.http import HttpResponse
@@ -100,7 +103,7 @@ def observations(request, plant_id:int): #,plant_id:int):
             name = form.cleaned_data['name']
             observation = form.cleaned_data['observation']
             attachedfile = request.FILES['attachedfile']
-            timestamp = datetime.datetime.now()
+            timestamp = datetime.datetime.now().astimezone(ZoneInfo('Europe/Madrid'))
 
             #saved_path:str = handle_uploaded_file(attachedfile, plant_id, timestamp, django_settings.STATIC_URL)
             saved_path:str = '/uploads'

@@ -47,13 +47,13 @@
 <script src="{% static 'fullcalendar/packages/list/main.js' %}"></script> -->
 
 
-<style>
+<!-- <style>
     .wrapper {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
         grid-gap: 10px;
     }
-</style>
+</style> -->
 
 
 <div class="cointainer">
@@ -74,52 +74,53 @@
                     onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">Observations</button>
         </div>
     </div>
-    <div class="row" style="height: 90%;">
-        <div class="col-12">
-            <!--#ffde9f;-->
-            <div id='plot_area' style="align-content: center;">
-                <!-- <p> Plant id : {{plant_id }} </p> -->
-                <div id="all_plots" style="width:100%;height:100%;"></div>
+
+    <div class="row m-4" style="height: 90%;">
+        <div class="col-2">
+            <ul class="nav nav-pills flex-column" role="tablist">
+                <li>
+                    <a class="nav-link active" href="#temperature_area" role="tab" data-toggle="pill"
+                        aria-selected="true">Temperature (Cº)</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">Noise (dB)</a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">Humidity (%) </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#co2_area" role="tab" data-toggle="pill">CO2 (ppm) </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#light_area" role="tab" data-toggle="pill">Light (lux) </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-10">
+            <div class="tab-content clearfix">
+                <div id="temperature_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
+                    <div id="plt_tem" style="width:100%;height:100%;"></div>
+                </div>
+                <div id="noise_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                    <div id="plt_noi" style="width:100%;height:100%;"></div>
+                </div>
+                <div id="humidity_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                    <div id="plt_hum" style="width:100%;height:100%;"></div>
+                </div>
+                <div id="co2_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                    <div id="plt_co2" style="width:100%;height:100%;"></div>
+                </div>
+                <div id="light_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                    <div id="plt_lig" style="width:100%;height:100%;"></div>
+                </div>
             </div>
         </div>
-        <!-- <div class="col-2">
-            <a class="observation-btn" href="{% url 'observations' plant_id=plant_id %}" title="Observations-btn">
-                <img src="{% static 'img/Group 16.png' %}" width="94" height="94">
-            </a>
-        </div> -->
     </div>
 </div>
 
-
-<!-- <div id='plot_area' style="align-content: center;">
-    <p> Plant id : {{plant_id }} </p>
-    <div class="wrapper">
-        <div id="plt_tem" style="width:350px;height:300px;"></div>
-        <div id="plt_noi" style="width:350px;height:300px;"></div>
-        <div id="plt_lig" style="width:350px;height:300px;"></div>
-        <div id="plt_co2" style="width:350px;height:300px;"></div>
-        <div id="plt_hum" style="width:350px;height:300px;"></div>
-      </div>
-</div>
- -->
-
-<!--
-<div>
-    <div id='calendar-container'>
-        <div id='calendar'></div>
-    </div>
-</div>
--->
 <script>
 
     let history = {{ json_history| safe}};
-
-    // let timestamp = history['Date'][0]['Value'];
-    // let temperature = history['Temperature'][0]['Value'];
-    // let noise = history['Noise'][0]['Value'];
-    // let co2 = history['CO2'][0]['Value'];
-    // let light = history['Light'][0]['Value'];
-    // let humidity = history['Humidity'][0]['Value'];
 
     var times = []
     var temps = []
@@ -147,10 +148,10 @@
         name: 'temperature',
         x: times,
         y: temps,
-        text: temps.map(function (value) { return `Temperature: ${value}`; }),
+        text: temps.map(function (value) { return `Temperature: ${value} Cº`; }),
         hoverinfo: 'text',
-        line: { color: '#f1bdff', width:8 },
-        marker: { color: '#d9bdff', size:8 },
+        line: { color: '#f1bdff', width: 8 },
+        marker: { color: '#d9bdff', size: 8 },
     }
 
     var trace_noise = {
@@ -159,10 +160,10 @@
         name: 'noise',
         x: times,
         y: noises,
-        text: noises.map(function (value) { return `Noise: ${value}`; }),
+        text: noises.map(function (value) { return `Noise: ${value} dB`; }),
         hoverinfo: 'text',
-        line: { color: '#666666', width:8 },
-        marker: { color: '#666666', size:12 },
+        line: { color: '#666666', width: 8 },
+        marker: { color: '#666666', size: 12 },
     }
 
     var trace_co2 = {
@@ -171,10 +172,10 @@
         name: 'co2',
         x: times,
         y: co2s,
-        text: co2s.map(function (value) { return `CO2: ${value}`; }),
+        text: co2s.map(function (value) { return `CO2: ${value} ppm`; }),
         hoverinfo: 'text',
-        line: { color: '#9cbcff', width:8 },
-        marker: { color: '#9cbcff', size:12 },
+        line: { color: '#9cbcff', width: 8 },
+        marker: { color: '#9cbcff', size: 12 },
     }
 
     var trace_light = {
@@ -183,10 +184,10 @@
         name: 'light',
         x: times,
         y: lights,
-        text: lights.map(function (value) { return `Light: ${value}`; }),
+        text: lights.map(function (value) { return `Light: ${value} lux`; }),
         hoverinfo: 'text',
-        line: { color: '#ffa2a2', width:8 },
-        marker: { color: '#ffa2a2', size:12 },
+        line: { color: '#ffa2a2', width: 8 },
+        marker: { color: '#ffa2a2', size: 12 },
     }
 
     var trace_hum = {
@@ -195,17 +196,29 @@
         name: 'humidity',
         x: times,
         y: hums,
-        text: hums.map(function (value) { return `Humidity: ${value}`; }),
+        text: hums.map(function (value) { return `Humidity: ${value} %`; }),
         hoverinfo: 'text',
-        line: { color: '#bdfff1', width:8 },
-        marker: { color: '#bdfff1', size:12 },
+        line: { color: '#bdfff1', width: 8 },
+        marker: { color: '#bdfff1', size: 12 },
     }
 
-    plot_all_div = document.getElementById('all_plots');
-    Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    // plot_all_div = document.getElementById('all_plots');
+    // Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    //     margin: { t: 15 },
+    //     // plot_bgcolor: "#ffde9f",
+    //     // paper_bgcolor: "#ffde9f",
+    //     legend: {
+    //         yanchor: "top",
+    //         y: 0.8,
+    //         xanchor: "right",
+    //         x: 1.1
+    //     },
+    //     hovermode: "x unified"
+    // });
+
+    plot_tem_div = document.getElementById('plt_tem');
+    Plotly.newPlot(plot_tem_div, [trace_temp], {
         margin: { t: 15 },
-        // plot_bgcolor: "#ffde9f",
-        // paper_bgcolor: "#ffde9f",
         legend: {
             yanchor: "top",
             y: 0.8,
@@ -215,32 +228,55 @@
         hovermode: "x unified"
     });
 
-    // plot_tem_div = document.getElementById('plt_tem');
-    // Plotly.newPlot(plot_tem_div, [trace_temp], {
-    //     margin: { t: 15 }
-    // });
+    plot_noi_div = document.getElementById('plt_noi');
+    Plotly.newPlot(plot_noi_div, [trace_noise], {
+        margin: { t: 15 },
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
+        hovermode: "x unified"
+    });
 
-    // plot_noi_div = document.getElementById('plt_noi');
-    // Plotly.newPlot(plot_noi_div, [trace_noise], {
-    //     margin: { t: 15 }
-    // });
+    plot_co2_div = document.getElementById('plt_co2');
+    Plotly.newPlot(plot_co2_div, [trace_co2], {
+        margin: { t: 15 },
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
+        hovermode: "x unified"
+    });
 
-    // plot_co2_div = document.getElementById('plt_co2');
-    // Plotly.newPlot(plot_co2_div, [trace_co2], {
-    //     margin: { t: 15 }
-    // });
+    plot_lig_div = document.getElementById('plt_lig');
+    Plotly.newPlot(plot_lig_div, [trace_light], {
+        margin: { t: 15 },
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
+        hovermode: "x unified"
+    });
 
-    // plot_lig_div = document.getElementById('plt_lig');
-    // Plotly.newPlot(plot_lig_div, [trace_light], {
-    //     margin: { t: 15 }
-    // });
+    plot_hum_div = document.getElementById('plt_hum');
+    Plotly.newPlot(plot_hum_div, [trace_hum], {
+        margin: { t: 15 },
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
+        hovermode: "x unified"
+    });
 
-    // plot_hum_div = document.getElementById('plt_hum');
-    // Plotly.newPlot(plot_hum_div, [trace_hum], {
-    //     margin: { t: 15 }
-    // });
-
-    plot_all_div.on('plotly_click', function (data) {
+    plot_tem_div.on('plotly_click', function (data) {
         ts = data['points'][0]['x']
         console.log(ts)
         location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
@@ -249,96 +285,16 @@
     /* Current Plotly.js version */
     console.log(Plotly.BUILD);
 
-    
+
     $(document).ready(function () {
         function fade_out() {
             $(".alert").fadeOut().empty();
-        } 
+        }
         setTimeout(fade_out, 5000);
         console.log("fade out");
     });
 
 </script>
-<!-- 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        var calendarEl = document.getElementById('calendar');
-
-        var calendar = new FullCalendar.Calendar(calendarEl, {
-            plugins: ['interaction', 'dayGrid', 'timeGrid', 'list'],
-            height: 'parent',
-            header: {
-                left: 'prev,next today',
-                center: 'title',
-                right: 'dayGridMonth,timeGridWeek,timeGridDay,listWeek'
-            },
-            defaultView: 'dayGridMonth',
-            defaultDate: '2020-02-12',
-            navLinks: true, // can click day/week names to navigate views
-            editable: true,
-            eventLimit: true, // allow "more" link when too many events
-            events: [
-                {
-                    title: 'All Day Event',
-                    start: '2020-02-01',
-                },
-                {
-                    title: 'Long Event',
-                    start: '2020-02-07',
-                    end: '2020-02-10'
-                },
-                {
-                    groupId: 999,
-                    title: 'Repeating Event',
-                    start: '2020-02-09T16:00:00'
-                },
-                {
-                    groupId: 999,
-                    title: 'Repeating Event',
-                    start: '2020-02-16T16:00:00'
-                },
-                {
-                    title: 'Conference',
-                    start: '2020-02-11',
-                    end: '2020-02-13'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2020-02-12T10:30:00',
-                    end: '2020-02-12T12:30:00'
-                },
-                {
-                    title: 'Lunch',
-                    start: '2020-02-12T12:00:00'
-                },
-                {
-                    title: 'Meeting',
-                    start: '2020-02-12T14:30:00'
-                },
-                {
-                    title: 'Happy Hour',
-                    start: '2020-02-12T17:30:00'
-                },
-                {
-                    title: 'Dinner',
-                    start: '2020-02-12T20:00:00'
-                },
-                {
-                    title: 'Birthday Party',
-                    start: '2020-02-13T07:00:00'
-                },
-                {
-                    title: 'Click for Google',
-                    url: 'http://google.com/',
-                    start: '2020-02-28'
-                }
-            ]
-        });
-
-        calendar.render();
-    });
-
-</script> -->
 <script src="{% static 'js/main.js' %}"></script>
 
 

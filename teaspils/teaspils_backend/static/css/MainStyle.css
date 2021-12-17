@@ -49,8 +49,9 @@ ul{
   }
 
 main{
-    flex: 1;
-    overflow: auto;
+    max-height: 80%;
+    flex: 100%;
+    overflow: hidden;
 }
 
 .header-content{

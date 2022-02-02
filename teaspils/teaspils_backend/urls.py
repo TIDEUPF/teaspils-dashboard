@@ -1,4 +1,5 @@
-from django.urls import path
+from django.urls import include, path
+from django.conf.urls import url
 
 from . import views
 
@@ -12,5 +13,7 @@ urlpatterns:list = [
     path('plant/<int:plant_id>/history', views.plantHistory, name='plantDetail'),
     #path('plant/<int:plant_id>/observations', views.observations, name='observations'),
     path('plant/<int:plant_id>/observations', views.observations, name='observations'),
-    path('plant/<int:plant_id>/measurement/<str:ts>', views.measures, name='measurement')
+    path('plant/<int:plant_id>/measurement/<str:ts>', views.measures, name='measurement'),
+    path('ajax/savesettings', views.saveSettings, name='saveSettings'),
+    url(r'^i18n/', include('django.conf.urls.i18n')),
 ]

@@ -14,3 +14,5 @@ django-thumbnails
 redis
 pillow
 django-imagefit
+gunicorn
+django-heroku

@@ -11,24 +11,25 @@ window.addEventListener("load", () => {
     id_plant_displayer.value = IdPlant;
 
     /*INITIALIZE THE LIMITS FOR TEMPERATURE*/
-    let low_limit_T = 10;
-    let upper_limit_T = 30;
+    let low_limit_T = document.getElementById("myInputLowT").value;
+    let upper_limit_T = document.getElementById("myInputHighT").value;
 
     /*INITIALIZE THE LIMITS FOR THE NOISE*/
-    let low_limit_Noise = 25;
-    let upper_limit_Noise = 75;
+    let low_limit_Noise = document.getElementById("myInputLowNoise").value;
+    let upper_limit_Noise = document.getElementById("myInputHighNoise").value;
 
     /*INITIALIZE THE LIMITS FOR THE CO2*/
-    let low_limit_CO2 = 500;
-    let upper_limit_CO2 = 1500;
+    let low_limit_CO2 = document.getElementById("myInputLowCO2").value;
+    let upper_limit_CO2 = document.getElementById("myInputHighCO2").value;
 
     /*INITIALIZE THE LIMITS FOR THE HUMIDITY*/
-    let low_limit_HUM = 35;
-    let upper_limit_HUM = 75;
+    let low_limit_HUM = document.getElementById("myInputLowHUM").value;
+    let upper_limit_HUM = document.getElementById("myInputHighHUM").value;
 
     /*INITIALIZE THE LIMITS FOR THE ILLUMINCANCE*/
-    let low_limit_IL = 800;
-    let upper_limit_IL = 1600;
+    let low_limit_IL = document.getElementById("myInputLowIL").value;;
+    let upper_limit_IL = document.getElementById("myInputHighIL").value;
+
     let hidden_data = document.getElementById("hidden_data").value
     hidden_data = hidden_data.replaceAll("\'", "\"");
     let measure_data = JSON.parse(hidden_data);
@@ -39,159 +40,71 @@ window.addEventListener("load", () => {
 
     /*********************INPUT SETTINGS*************************************/
     /******************************TEMPERATURE*************************************/
-    let T_input_lowlimit = document.getElementById('myInputLowT')
-    T_input_lowlimit.value = low_limit_T;
-
-    let T_input_highlimit = document.getElementById('myInputHighT')
-    T_input_highlimit.value = upper_limit_T;
-
     let input_button_T = document.getElementById('inputButtonT')
     input_button_T.addEventListener('click', function () {
         /*LOW LIMIT OF TEMPERATURE*/
-        console.log('Temp!')
-        let input_value_low = T_input_lowlimit.value
-        if (input_value_low > 80) {
-            input_value_low = 80
-        }
-        low_limit_T = input_value_low;
+        let input_value_low = document.getElementById('myInputLowT').value
+        let input_value_high = document.getElementById('myInputHighT').value
 
-        /*HIGH LIMIT OF TEMPERATURE*/
-        let input_value_high = T_input_highlimit.value
-        if (input_value_high > 100) {
-            input_value_high = 100
-        }
-        upper_limit_T = input_value_high;
+        document.getElementById("label_temp_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_temp_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_temp_l").innerHTML = parseInt(input_value_low);
 
-        document.getElementById("label_temp_h").innerHTML = parseInt(upper_limit_T);
-        document.getElementById("label_temp_m").innerHTML = ((parseInt(upper_limit_T) + parseInt(low_limit_T)) / 2);
-        document.getElementById("label_temp_l").innerHTML = parseInt(low_limit_T);
-
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, input_value_low, input_value_high, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
     })
 
     /*******************************NOISE*************************************/
 
-    let Noise_input_lowlimit = document.getElementById('myInputLowNoise')
-    Noise_input_lowlimit.value = low_limit_Noise;
-
-    let Noise_input_highlimit = document.getElementById('myInputHighNoise')
-    Noise_input_highlimit.value = upper_limit_Noise;
-
     let input_button_Noise = document.getElementById('inputButtonNoise')
     input_button_Noise.addEventListener('click', function () {
-        /*LOW LIMIT OF CO2*/
-        console.log('Noise!')
-        let input_value_low = Noise_input_lowlimit.value
-        if (input_value_low > 80) {
-            input_value_low = 80
-        }
-        low_limit_Noise = input_value_low;
 
-        /*HIGH LIMIT OF CO2*/
-        let input_value_high = Noise_input_highlimit.value
-        if (input_value_high > 100) {
-            input_value_high = 100
-        }
-        upper_limit_Noise = input_value_high;
+        let input_value_low = document.getElementById("myInputLowNoise").value;
+        let input_value_high = document.getElementById("myInputHighNoise").value;
+        
+        document.getElementById("label_noise_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_noise_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_noise_l").innerHTML = parseInt(input_value_low);
 
-        document.getElementById("label_noise_h").innerHTML = parseInt(upper_limit_Noise);
-        document.getElementById("label_noise_m").innerHTML = ((parseInt(upper_limit_Noise) + parseInt(low_limit_Noise)) / 2);
-        document.getElementById("label_noise_l").innerHTML = parseInt(low_limit_Noise);
-
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, low_limit_T, upper_limit_T, input_value_low, input_value_high, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
     })
 
     /*******************************CO2*************************************/
-    let CO2_input_lowlimit = document.getElementById('myInputLowCO2')
-    CO2_input_lowlimit.value = low_limit_CO2;
-
-    let CO2_input_highlimit = document.getElementById('myInputHighCO2')
-    CO2_input_highlimit.value = upper_limit_CO2;
-
-    let input_button_CO2 = document.getElementById('inputButtonCO2')
+    let input_button_CO2 = document.getElementById('inputButtonCO2');
     input_button_CO2.addEventListener('click', function () {
-        /*LOW LIMIT OF CO2*/
-        console.log('CO2!')
-        let input_value_low = CO2_input_lowlimit.value
-        if (input_value_low > 1500) {
-            input_value_low = 1500
-        }
-        low_limit_CO2 = input_value_low;
+        let input_value_low = document.getElementById('myInputLowCO2').value;
+        let input_value_high = document.getElementById('myInputHighCO2').value;
 
-        /*HIGH LIMIT OF CO2*/
-        let input_value_high = CO2_input_highlimit.value
-        if (input_value_high > 2000) {
-            input_value_high = 2000
-        }
-        upper_limit_CO2 = input_value_high;
+        document.getElementById("label_co2_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_co2_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_co2_l").innerHTML = parseInt(input_value_low);
 
-        document.getElementById("label_co2_h").innerHTML = parseInt(upper_limit_CO2);
-        document.getElementById("label_co2_m").innerHTML = ((parseInt(upper_limit_CO2) + parseInt(low_limit_CO2)) / 2);
-        document.getElementById("label_co2_l").innerHTML = parseInt(low_limit_CO2);
-
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, input_value_low, input_value_high, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
     })
 
     /*******************************HUMIDITY*************************************/
-    let HUM_input_lowlimit = document.getElementById('myInputLowHUM')
-    HUM_input_lowlimit.value = low_limit_HUM;
-
-    let HUM_input_highlimit = document.getElementById('myInputHighHUM')
-    HUM_input_highlimit.value = upper_limit_HUM;
-
     let input_button_HUM = document.getElementById('inputButtonHUM')
     input_button_HUM.addEventListener('click', function () {
-        /*LOW LIMIT OF HUM*/
-        console.log('HUM!')
-        let input_value_low = HUM_input_lowlimit.value
-        if (input_value_low > 80) {
-            input_value_low = 80
-        }
-        low_limit_HUM = input_value_low;
+        let input_value_low = document.getElementById('myInputLowHUM').value;
+        let input_value_high = document.getElementById("myInputHighHUM").value;
 
-        /*HIGH LIMIT OF HUM*/
-        let input_value_high = HUM_input_highlimit.value
-        if (input_value_high > 100) {
-            input_value_high = 100
-        }
-        upper_limit_HUM = input_value_high;
+        document.getElementById("label_hum_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_hum_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_hum_l").innerHTML = parseInt(input_value_low);
 
-        document.getElementById("label_hum_h").innerHTML = parseInt(upper_limit_HUM);
-        document.getElementById("label_hum_m").innerHTML = ((parseInt(upper_limit_HUM) + parseInt(low_limit_HUM)) / 2);
-        document.getElementById("label_hum_l").innerHTML = parseInt(low_limit_HUM);
-
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, input_value_low, input_value_high, low_limit_IL, upper_limit_IL);
     })
 
     /*******************************ILLUMINANCE*************************************/
-    let IL_input_lowlimit = document.getElementById('myInputLowIL')
-    IL_input_lowlimit.value = low_limit_IL;
-
-    let IL_input_highlimit = document.getElementById('myInputHighIL')
-    IL_input_highlimit.value = upper_limit_IL;
-
     let input_button_IL = document.getElementById('inputButtonIL')
     input_button_IL.addEventListener('click', function () {
-        /*LOW LIMIT OF IL*/
-        console.log('IL!')
-        let input_value_low = IL_input_lowlimit.value
-        if (input_value_low > 1000) {
-            input_value_low = 1000
-        }
-        low_limit_IL = input_value_low;
+        let input_value_low = document.getElementById('myInputLowIL').value
+        let input_value_high = document.getElementById('myInputHighIL').value
 
-        /*HIGH LIMIT OF HUM*/
-        let input_value_high = IL_input_highlimit.value
-        if (input_value_high > 100) {
-            input_value_high = 100
-        }
-        upper_limit_IL = input_value_high;
+        document.getElementById("label_light_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_light_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_light_l").innerHTML = parseInt(input_value_low);
 
-        document.getElementById("label_light_h").innerHTML = parseInt(upper_limit_IL);
-        document.getElementById("label_light_m").innerHTML = ((parseInt(upper_limit_IL) + parseInt(low_limit_IL)) / 2);
-        document.getElementById("label_light_l").innerHTML = parseInt(low_limit_IL);
-
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, input_value_low, input_value_high);
     })
 
 });
@@ -213,17 +126,30 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
     /*____________________________________TEMPERATURE_________________________________*/
     let Temperature = document.getElementById("T-load");
     /*Checking if the temperature data has been received*/
+
     if (measure_data['temperature'] != null) {
 
-        let valueT = Math.round((measure_data['temperature'] / upper_limit_T) * 75);
-        let low_limit_T_pct = Math.round((low_limit_T / upper_limit_T) * 75);
-        let high_limit_T_pct = Math.round((upper_limit_T / upper_limit_T) * 75);
-        Temperature.style.height = valueT.toString() + '%';
+        let valueT = parseFloat(measure_data['temperature']);
+        let percentage = 0.0;
+        if (valueT < low_limit_T) {
+            percentage = 20.0;
+        } else if (valueT >= low_limit_T && valueT <= upper_limit_T) {
+            a = 25;
+            b = 75;
+            min = parseFloat(low_limit_T);
+            max = parseFloat(upper_limit_T);
+            
+            percentage = ((b-a)*(valueT-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
+        }
+
+        Temperature.style.height = percentage.toString() + '%';
         Temperature.setAttribute('title', measure_data['temperature']);
         let color_T
-        if (valueT < low_limit_T_pct) {
+        if (valueT > low_limit_T && valueT < upper_limit_T) {
             color_T = green;
-        } else if (valueT < high_limit_T_pct) {
+        } else if (valueT == upper_limit_T || valueT == low_limit_T) {
             color_T = orange;
         } else {
             color_T = red;
@@ -233,8 +159,6 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
     else {
         let Temp_input = document.getElementById("temp-input")
         Temp_input.style.color = '#808080'
-        console.log('hey!')
-        let color_T
         color_T = red
         Temperature.style.height = '100%';
         Temperature.style.backgroundColor = '#F0F8FF'
@@ -242,77 +166,154 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
     /*____________________________________NOISE_________________________________*/
     let Noise = document.getElementById("N-load");
-    let valueN = Math.round((measure_data['noise'] / upper_limit_Noise) * 75);
-    Noise.style.height = valueN.toString() + '%';
-    Noise.setAttribute('title', measure_data['noise']);
 
-    let low_limit_Noise_pct = Math.round((low_limit_Noise / upper_limit_Noise) * 75);
-    let high_limit_Noise_pct = Math.round((upper_limit_Noise / upper_limit_Noise) * 75);
+    if (measure_data['noise'] != null) {
 
-    let color_N
-    if (valueN < low_limit_Noise_pct) {
-        color_N = green;
-    } else if (valueN < high_limit_Noise_pct) {
-        color_N = orange;
-    } else {
-        color_N = red;
+        let valueN = parseFloat(measure_data['noise']);
+        let percentage = 0.0;
+        if (valueN < low_limit_Noise) {
+            percentage = 20.0;
+        } else if (valueN >= low_limit_Noise && valueN <= upper_limit_Noise) {
+            a = 25;
+            b = 75;
+            min = parseFloat(low_limit_Noise);
+            max = parseFloat(upper_limit_Noise);
+            
+            percentage = ((b-a)*(valueN-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
+        }
+
+        Noise.style.height = percentage.toString() + '%';
+        Noise.setAttribute('title', measure_data['noise']);
+        let color_N;
+        if (valueN > low_limit_Noise && valueN < upper_limit_Noise) {
+            color_N = green;
+        } else if (valueN == upper_limit_Noise || valueN == low_limit_Noise) {
+            color_N = orange;
+        } else {
+            color_N = red;
+        }
+        Noise.style.backgroundColor = color_N   ;
     }
-    Noise.style.backgroundColor = color_N;
+    else {
+        let Noise_input = document.getElementById("noise-input")
+        Noise_input.style.color = '#808080'
+        Noise.style.height = '100%';
+        Noise.style.backgroundColor = '#F0F8FF'
+    }
 
     /*____________________________________CO2_________________________________*/
     var CO2 = document.getElementById("CO2-load");
-    var valueC = Math.round((measure_data['co2'] / upper_limit_CO2) * 75);
-    CO2.style.height = valueC.toString() + '%';
-    CO2.setAttribute('title', measure_data['co2']);
+    if (measure_data['co2'] != null) {
 
-    let low_limit_CO2_pct = Math.round((low_limit_CO2 / upper_limit_CO2) * 75);
-    let high_limit_CO2_pct = Math.round((upper_limit_CO2 / upper_limit_CO2) * 75);
+        let valueC = parseFloat(measure_data['co2']);
+        let percentage = 0.0;
+        if (valueC < low_limit_CO2) {
+            percentage = 20.0;
+        } else if (valueC >= low_limit_CO2 && valueC <= upper_limit_CO2) {
+            a = 25;
+            b = 75;
+            min = parseFloat(low_limit_CO2);
+            max = parseFloat(upper_limit_CO2);
+            
+            percentage = ((b-a)*(valueC-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
+        }
 
-    let color_C
-    if (valueC < low_limit_CO2_pct) {
-        color_C = green;
-    } else if (valueC < high_limit_CO2_pct) {
-        color_C = orange;
-    } else {
-        color_C = red;
+        CO2.style.height = percentage.toString() + '%';
+        CO2.setAttribute('title', measure_data['co2']);
+        let color_C;
+        if (valueC > low_limit_CO2 && valueC < upper_limit_CO2) {
+            color_C = green;
+        } else if (valueC == upper_limit_CO2 || valueC == low_limit_CO2) {
+            color_C = orange;
+        } else {
+            color_C = red;
+        }
+        CO2.style.backgroundColor = color_C;
     }
-    CO2.style.backgroundColor = color_C;
+    else {
+        let CO2_input = document.getElementById("co2-input")
+        CO2_input.style.color = '#808080'
+        CO2.style.height = '100%';
+        CO2.style.backgroundColor = '#F0F8FF'
+    }
 
     /*____________________________________HUMIDITY_________________________________*/
     var Hum = document.getElementById("H-load");
-    var valueH = Math.round(measure_data['humidity']);
-    Hum.style.height = valueH.toString() + '%';
-    Hum.setAttribute('title', measure_data['humidity']);
+    if (measure_data['humidity'] != null) {
 
-    let low_limit_HUM_pct = Math.round(low_limit_HUM);
-    let high_limit_HUM_pct = Math.round(upper_limit_HUM);
+        let valueH = parseFloat(measure_data['humidity']);
+        let percentage = 0.0;
+        if (valueH < low_limit_HUM) {
+            percentage = 20.0;
+        } else if (valueH >= low_limit_HUM && valueH <= upper_limit_HUM) {
+            a = 25;
+            b = 75;
+            min = parseFloat(low_limit_HUM);
+            max = parseFloat(upper_limit_HUM);
+            
+            percentage = ((b-a)*(valueH-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
+        }
 
-    let color_H
-    if (valueH < low_limit_HUM_pct) {
-        color_H = green;
-    } else if (valueH < high_limit_HUM_pct) {
-        color_H = orange;
-    } else {
-        color_H = red;
+        Hum.style.height = percentage.toString() + '%';
+        Hum.setAttribute('title', measure_data['humidity']);
+        let color_H;
+        if (valueH > low_limit_HUM && valueH < upper_limit_HUM) {
+            color_H = green;
+        } else if (valueH == upper_limit_HUM || valueH == low_limit_HUM) {
+            color_H = orange;
+        } else {
+            color_H = red;
+        }
+        Hum.style.backgroundColor = color_H;
     }
-    Hum.style.backgroundColor = color_H;
+    else {
+        let Hum_input = document.getElementById("humidity-input")
+        Hum_input.style.color = '#808080'
+        Hum.style.height = '100%';
+        Hum.style.backgroundColor = '#F0F8FF'
+    }
 
     /*____________________________________ILLUMINANCE_________________________________*/
     var Light = document.getElementById("L-load");
-    var valueL = Math.round((measure_data['light'] / upper_limit_IL) * 75);
-    Light.style.height = valueL.toString() + '%';
-    Light.setAttribute('title', measure_data['light']);
+    if (measure_data['light'] != null) {
 
-    let low_limit_IL_pct = Math.round(((low_limit_IL) / upper_limit_IL) * 75);
-    let high_limit_IL_pct = Math.round(((upper_limit_IL) / upper_limit_IL) * 75);
+        let valueL = parseFloat(measure_data['light']);
+        let percentage = 0.0;
+        if (valueL < low_limit_IL) {
+            percentage = 20.0;
+        } else if (valueL >= low_limit_IL && valueL <= upper_limit_IL) {
+            a = 25;
+            b = 75;
+            min = parseFloat(low_limit_IL);
+            max = parseFloat(upper_limit_IL);
+            
+            percentage = ((b-a)*(valueL-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
+        }
 
-    let color_L
-    if (valueL < low_limit_IL_pct) {
-        color_L = green;
-    } else if (valueL < high_limit_IL_pct) {
-        color_L = orange;
-    } else {
-        color_L = red;
+        Light.style.height = percentage.toString() + '%';
+        Light.setAttribute('title', measure_data['light']);
+        let color_L;
+        if (valueL > low_limit_IL && valueL < upper_limit_IL) {
+            color_L = green;
+        } else if (valueL == upper_limit_IL || valueL == low_limit_IL) {
+            color_L = orange;
+        } else {
+            color_L = red;
+        }
+        Light.style.backgroundColor = color_L;
     }
-    Light.style.backgroundColor = color_L;
+    else {
+        let Light_input = document.getElementById("light-input")
+        Light_input.style.color = '#808080'
+        Light.style.height = '100%';
+        Light.style.backgroundColor = '#F0F8FF'
+    }
 }

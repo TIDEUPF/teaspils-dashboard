@@ -1,0 +1,354 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-01-22 19:16+0100\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_termui_impl.py:496
+#, python-brace-format
+msgid "{editor}: Editing failed"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_termui_impl.py:500
+#, python-brace-format
+msgid "{editor}: Editing failed: {e}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_unicodefun.py:20
+msgid ""
+"Click will abort further execution because Python was configured to use "
+"ASCII as encoding for the environment. Consult https://click.palletsprojects."
+"com/unicode-support/ for mitigation steps."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_unicodefun.py:56
+msgid ""
+"Additional information: on this system no suitable UTF-8 locales were "
+"discovered. This most likely requires resolving by reconfiguring the locale "
+"system."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_unicodefun.py:65
+msgid ""
+"This system supports the C.UTF-8 locale which is recommended. You might be "
+"able to resolve your issue by exporting the following environment variables:"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_unicodefun.py:75
+#, python-brace-format
+msgid ""
+"This system lists some UTF-8 supporting locales that you can pick from. The "
+"following suitable locales were discovered: {locales}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\_unicodefun.py:93
+msgid ""
+"Click discovered that you exported a UTF-8 locale but the locale system "
+"could not pick up from it because it does not exist. The exported locale is "
+"{locale!r} but it is not supported."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1095
+msgid "Aborted!"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1279
+#: .\fake_generator\env_fake\Lib\site-packages\click\decorators.py:434
+msgid "Show this message and exit."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1308
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1334
+#, python-brace-format
+msgid "(Deprecated) {text}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1351
+msgid "Options"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1375
+#, python-brace-format
+msgid "Got unexpected extra argument ({args})"
+msgid_plural "Got unexpected extra arguments ({args})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1390
+msgid "DeprecationWarning: The command {name!r} is deprecated."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1607
+msgid "Commands"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1639
+msgid "Missing command."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:1717
+msgid "No such command {name!r}."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2258
+msgid "Value must be an iterable."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2278
+#, python-brace-format
+msgid "Takes {nargs} values but 1 was given."
+msgid_plural "Takes {nargs} values but {len} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2701
+#, python-brace-format
+msgid "env var: {var}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2724
+msgid "(dynamic)"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2735
+#, python-brace-format
+msgid "default: {default}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\core.py:2748
+msgid "required"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\decorators.py:339
+#, python-format
+msgid "%(prog)s, version %(version)s"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\decorators.py:403
+msgid "Show the version and exit."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:43
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:79
+#, python-brace-format
+msgid "Error: {message}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:71
+#, python-brace-format
+msgid "Try '{command} {option}' for help."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:120
+#, python-brace-format
+msgid "Invalid value: {message}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:122
+#, python-brace-format
+msgid "Invalid value for {param_hint}: {message}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:178
+msgid "Missing argument"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:180
+msgid "Missing option"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:182
+msgid "Missing parameter"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:184
+#, python-brace-format
+msgid "Missing {param_type}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:191
+#, python-brace-format
+msgid "Missing parameter: {param_name}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:211
+#, python-brace-format
+msgid "No such option: {name}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:223
+#, python-brace-format
+msgid "Did you mean {possibility}?"
+msgid_plural "(Possible options: {possibilities})"
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:261
+msgid "unknown error"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\exceptions.py:268
+msgid "Could not open file {filename!r}: {message}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\parser.py:231
+msgid "Argument {name!r} takes {nargs} values."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\parser.py:413
+msgid "Option {name!r} does not take a value."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\parser.py:474
+msgid "Option {name!r} requires an argument."
+msgid_plural "Option {name!r} requires {nargs} arguments."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\shell_completion.py:316
+msgid "Shell completion is not supported for Bash versions older than 4.4."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\shell_completion.py:322
+msgid "Couldn't detect Bash version, shell completion is not supported."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:161
+msgid "Repeat for confirmation"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:178
+msgid "Error: The value you entered was invalid."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:180
+#, python-brace-format
+msgid "Error: {e.message}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:191
+msgid "Error: The two entered values do not match."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:247
+msgid "Error: invalid input"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\termui.py:798
+msgid "Press any key to continue..."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:258
+#, python-brace-format
+msgid ""
+"Choose from:\n"
+"\t{choices}"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:290
+msgid "{value!r} is not {choice}."
+msgid_plural "{value!r} is not one of {choices}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:380
+msgid "{value!r} does not match the format {format}."
+msgid_plural "{value!r} does not match the formats {formats}."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:402
+msgid "{value!r} is not a valid {number_type}."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:458
+#, python-brace-format
+msgid "{value} is not in the range {range}."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:599
+msgid "{value!r} is not a valid boolean."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:623
+msgid "{value!r} is not a valid UUID."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:801
+msgid "file"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:803
+msgid "directory"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:805
+msgid "path"
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:851
+msgid "{name} {filename!r} does not exist."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:860
+msgid "{name} {filename!r} is a file."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:868
+msgid "{name} {filename!r} is a directory."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:876
+msgid "{name} {filename!r} is not writable."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:884
+msgid "{name} {filename!r} is not readable."
+msgstr ""
+
+#: .\fake_generator\env_fake\Lib\site-packages\click\types.py:951
+#, python-brace-format
+msgid "{len_type} values are required, but {len_value} was given."
+msgid_plural "{len_type} values are required, but {len_value} were given."
+msgstr[0] ""
+msgstr[1] ""
+
+#: .\teaspils\settings.py:129
+msgid "English"
+msgstr "Inglés"
+
+#: .\teaspils\settings.py:130
+msgid "Spanish"
+msgstr "Español"
+
+#: .\teaspils_backend\templates\main\index.html:21
+msgid "Course id"
+msgstr "Id Curso"
+
+#: .\teaspils_backend\templates\main\index.html:29
+msgid "Secret Word"
+msgstr "Palabra secreta"
+
+#: .\teaspils_backend\templates\main\index.html:40
+msgid " Submit "
+msgstr "Enviar"
+
+#~ msgid "Hello"
+#~ msgstr "Hola"
+
+#~ msgid "Welcome to the site"
+#~ msgstr "Bienvenido al sitio"

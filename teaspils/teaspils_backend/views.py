@@ -4,7 +4,7 @@ from pathlib import Path
 from datetime import timezone
 from zoneinfo import ZoneInfo
 
-from django.http.response import Http404, HttpResponseRedirect
+from django.http.response import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
@@ -18,7 +18,7 @@ from .utils import handle_uploaded_file
 
 from .api import facade
 
-from .models import Measurement, Observation, Plant, Student
+from .models import Course, Measurement, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
@@ -29,13 +29,24 @@ def index(request):
 
         if form.is_valid():
             course_id = form.cleaned_data['course_id']
-            try: 
-                plant = Plant.objects.filter(course__pk=course_id).first()
-                print(plant)
-                return HttpResponseRedirect(f'plant/{plant.id}/history')
-            except Exception as e:
-                print(e)
-                return HttpResponseRedirect('/teaspils')
+            secret_word = form.cleaned_data['secret_word']
+
+            print(course_id)
+            course = Course.objects.filter(pk=course_id).first()
+            is_valid = course.validateSecret(secret_word)
+
+            #TODO: Implement real login system
+            if is_valid:
+                try: 
+                    plant = Plant.objects.filter(course__pk=course_id).first()
+                    print(plant)
+                    return HttpResponseRedirect(f'plant/{plant.id}/history')
+                except Exception as e:
+                    print(e)
+                    return HttpResponseRedirect('/teaspils')
+            else:
+                messages.error(request, "Course credentials are not valid, try again.")
+                return render(request, 'main/index.html', {'form': form})
 
         else:
             print(form.errors)
@@ -84,7 +95,7 @@ def plantHistory(request, plant_id:int):
     # Crear información mock para probar.
     # return HttpResponse(json_pretty,content_type="application/json")
 
-    messages.info(request, "Try selecting a point on the chart with the mouse!")
+    messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
 
     return render(request, 
                   template_name='main/historical.html', 
@@ -152,8 +163,51 @@ def measures(request, plant_id:int, ts:str):
             single_measure = m
     
     single_measure = json.dumps(single_measure)
-    print(single_measure)
 
+    plant_settings = PlantSettings.objects.filter(plant_id=plant_id).last()
+    # plant_settings = plant_settings.toJSON()
     return render(request,
                   template_name='main/measurement.html',
-                  context={'timestamp': ts, 'plant_id': plant_id, 'measure' : single_measure})
+                  context={'timestamp': ts, 
+                           'plant_id': plant_id, 
+                           'measure' : single_measure,
+                           'lowT' : plant_settings.low_temperature,
+                           'highT' : plant_settings.high_temperature,
+                           'lowN' : plant_settings.low_noise,
+                           'highN' : plant_settings.high_noise,
+                           'lowC' : plant_settings.low_co2,
+                           'highC' : plant_settings.high_co2,
+                           'lowH' : plant_settings.low_humidity,
+                           'highH' : plant_settings.high_humidity,
+                           'lowI' : plant_settings.low_light,
+                           'highI' : plant_settings.high_light
+                           })
+
+                
+@csrf_exempt
+def saveSettings(request):
+
+    try:
+        settings = PlantSettings(low_temperature = request.GET['lowT'],
+                                high_temperature = request.GET['highT'],
+                                low_noise = request.GET['lowN'],
+                                high_noise = request.GET['highN'],
+                                low_co2 = request.GET['lowC'],
+                                high_co2 = request.GET['highC'],
+                                low_humidity = request.GET['lowH'],
+                                high_humidity = request.GET['highH'],
+                                low_light = request.GET['lowI'],
+                                high_light = request.GET['highI'],
+                                plant_id = request.GET['plant_id']
+                                )
+
+        settings.save()
+
+        print("Settings saved successfully")
+        return_data = {'success' : True}
+    except Exception as e:
+        return_data = {'success' : False}
+        print("Settings could not be saved", e)
+
+    return JsonResponse(return_data)
+    

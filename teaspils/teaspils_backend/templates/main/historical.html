@@ -15,56 +15,8 @@
 {% endfor %}
 {% endif %}
 
-<!-- 
-<link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
-
-<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500&display=swap" rel="stylesheet">
-
-
-<link rel="stylesheet" href="{% static 'fonts/icomoon/style.css' %}">
-
-<link href="{% static 'fullcalendar/packages/core/main.css' %}" rel='stylesheet' />
-<link href="{% static 'fullcalendar/packages/daygrid/main.css' %}" rel='stylesheet' />
- -->
-
-<!-- Bootstrap CSS
-<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
- -->
-
-<!-- Style
-<link rel="stylesheet" href="{% static 'css/style.css' %}"> 
- -->
-
-
-<!-- <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
-<script src="{% static 'js/popper.min.js' %}"></script>
-<script src="{% static 'js/bootstrap.min.js' %}"></script>
-
-<script src="{% static 'fullcalendar/packages/core/main.js' %}"></script>
-<script src="{% static 'fullcalendar/packages/interaction/main.js' %}"></script>
-<script src="{% static 'fullcalendar/packages/daygrid/main.js' %}"></script>
-<script src="{% static 'fullcalendar/packages/timegrid/main.js' %}"></script>
-<script src="{% static 'fullcalendar/packages/list/main.js' %}"></script> -->
-
-
-<!-- <style>
-    .wrapper {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 10px;
-    }
-</style> -->
-
 
 <div class="cointainer">
-    <!-- <div class="row">
-        <nav aria-label="breadcrumb" style="margin-left: 5%;">
-            <ol class="breadcrumb" style="background-color: white;">
-                <li class="breadcrumb-item active" aria-current="page">Timeline</li>
-                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/observations">Observations</a></li>
-            </ol>
-        </nav>
-    </div> -->
     <div class="d-flex flex-row justify-content-center m-3">
         <div class="col-6">
             <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled ">Timeline</button>
@@ -79,38 +31,50 @@
         <div class="col-2">
             <ul class="nav nav-pills flex-column" role="tablist">
                 <li>
-                    <a class="nav-link active" href="#temperature_area" role="tab" data-toggle="pill"
-                        aria-selected="true">Temperature (Cº)</a>
+                    <a class="nav-link active" href="#all_area" role="tab" data-toggle="pill"
+                        aria-selected="true">All plots</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">Noise (dB)</a>
+                    <a class="nav-link" href="#temperature_area" role="tab" data-toggle="pill">Temperature (ºC)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">Humidity (%) </a>
+                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">Total Disolved Solids (mg/l)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#co2_area" role="tab" data-toggle="pill">CO2 (ppm) </a>
+                    <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">PH (ph)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#light_area" role="tab" data-toggle="pill">Light (lux) </a>
+                    <a class="nav-link" href="#co2_area" role="tab" data-toggle="pill">Turbidity (NTU) </a>
+                </li>
+                <li>
+                    <a class="nav-link" href="#light_area" role="tab" data-toggle="pill">Electroconductivity (mS/cm)</a>
                 </li>
             </ul>
         </div>
         <div class="col-10">
             <div class="tab-content clearfix">
-                <div id="temperature_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
+                <div id="all_area" class="tab-pane fade active show" role="tabpanel" 
+                    style="width:100%;height:100%;">
+                    <div id="plt_all" style="width:100%;height:100%;"></div>
+                </div>
+                <div id="temperature_area" class="tab-pane fade" role="tabpanel"
+                    style="width:100%;height:100%;">
                     <div id="plt_tem" style="width:100%;height:100%;"></div>
                 </div>
-                <div id="noise_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                <div id="noise_area" class="tab-pane fade" role="tabpanel" 
+                    style="width:100%;height:100%;">
                     <div id="plt_noi" style="width:100%;height:100%;"></div>
                 </div>
-                <div id="humidity_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                <div id="humidity_area" class="tab-pane fade" role="tabpanel" 
+                    style="width:100%;height:100%;">
                     <div id="plt_hum" style="width:100%;height:100%;"></div>
                 </div>
-                <div id="co2_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                <div id="co2_area" class="tab-pane fade" role="tabpanel" 
+                    style="width:100%;height:100%;">
                     <div id="plt_co2" style="width:100%;height:100%;"></div>
                 </div>
-                <div id="light_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
+                <div id="light_area" class="tab-pane fade" role="tabpanel" 
+                    style="width:100%;height:100%;">
                     <div id="plt_lig" style="width:100%;height:100%;"></div>
                 </div>
             </div>
@@ -145,34 +109,39 @@
     var trace_temp = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'temperature',
+        name: 'Temp.',
         x: times,
         y: temps,
         text: temps.map(function (value) { return `Temperature: ${value} Cº`; }),
         hoverinfo: 'text',
         line: { color: '#f1bdff', width: 8 },
-        marker: { color: '#d9bdff', size: 8 },
+        marker: { color: '#d9bdff', size: 12 },
     }
 
     var trace_noise = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'noise',
+        name: 'TDS',
         x: times,
         y: noises,
-        text: noises.map(function (value) { return `Noise: ${value} dB`; }),
+        text: noises.map(function (value) { return `TDS: ${value} mg/l`; }),
         hoverinfo: 'text',
         line: { color: '#666666', width: 8 },
         marker: { color: '#666666', size: 12 },
+        layout: {
+            xaxis: {
+                tickformat: "%H/%M"
+            },
+        }
     }
 
     var trace_co2 = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'co2',
+        name: 'PH',
         x: times,
         y: co2s,
-        text: co2s.map(function (value) { return `CO2: ${value} ppm`; }),
+        text: co2s.map(function (value) { return `PH: ${value} `; }),
         hoverinfo: 'text',
         line: { color: '#9cbcff', width: 8 },
         marker: { color: '#9cbcff', size: 12 },
@@ -181,10 +150,10 @@
     var trace_light = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'light',
+        name: 'Elec.',
         x: times,
         y: lights,
-        text: lights.map(function (value) { return `Light: ${value} lux`; }),
+        text: lights.map(function (value) { return `Electroconductivity: ${value} mS/cm`; }),
         hoverinfo: 'text',
         line: { color: '#ffa2a2', width: 8 },
         marker: { color: '#ffa2a2', size: 12 },
@@ -193,28 +162,32 @@
     var trace_hum = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'humidity',
+        name: 'Turb.',
         x: times,
         y: hums,
-        text: hums.map(function (value) { return `Humidity: ${value} %`; }),
+        text: hums.map(function (value) { return `Turbidity: ${value} NTU`; }),
         hoverinfo: 'text',
         line: { color: '#bdfff1', width: 8 },
         marker: { color: '#bdfff1', size: 12 },
     }
 
-    // plot_all_div = document.getElementById('all_plots');
-    // Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
-    //     margin: { t: 15 },
-    //     // plot_bgcolor: "#ffde9f",
-    //     // paper_bgcolor: "#ffde9f",
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified"
-    // });
+    plot_all_div = document.getElementById('plt_all');
+    Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+        margin: { t: 15 },
+        // plot_bgcolor: "#ffde9f",
+        // paper_bgcolor: "#ffde9f",
+        legend: {
+            yanchor: "top",
+            y: 0.8,
+            xanchor: "right",
+            x: 1.1
+        },
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_tem_div = document.getElementById('plt_tem');
     Plotly.newPlot(plot_tem_div, [trace_temp], {
@@ -225,8 +198,12 @@
             xanchor: "right",
             x: 1.1
         },
-        hovermode: "x unified"
-    });
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_noi_div = document.getElementById('plt_noi');
     Plotly.newPlot(plot_noi_div, [trace_noise], {
@@ -237,8 +214,12 @@
             xanchor: "right",
             x: 1.1
         },
-        hovermode: "x unified"
-    });
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_co2_div = document.getElementById('plt_co2');
     Plotly.newPlot(plot_co2_div, [trace_co2], {
@@ -249,8 +230,12 @@
             xanchor: "right",
             x: 1.1
         },
-        hovermode: "x unified"
-    });
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_lig_div = document.getElementById('plt_lig');
     Plotly.newPlot(plot_lig_div, [trace_light], {
@@ -261,8 +246,12 @@
             xanchor: "right",
             x: 1.1
         },
-        hovermode: "x unified"
-    });
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_hum_div = document.getElementById('plt_hum');
     Plotly.newPlot(plot_hum_div, [trace_hum], {
@@ -273,18 +262,18 @@
             xanchor: "right",
             x: 1.1
         },
-        hovermode: "x unified"
-    });
+        hovermode: "x unified",
+        xaxis: {
+            tickformat: '%H:%M',
+        },
+        autosize : true,
+    }, {responsive : true});
 
     plot_tem_div.on('plotly_click', function (data) {
         ts = data['points'][0]['x']
         console.log(ts)
         location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
     });
-
-    /* Current Plotly.js version */
-    console.log(Plotly.BUILD);
-
 
     $(document).ready(function () {
         function fade_out() {

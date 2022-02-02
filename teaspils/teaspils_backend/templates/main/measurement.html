@@ -32,6 +32,7 @@
 <input type="hidden" id="hidden_data" name="variable" value="{{ measure }}">
 
 
+
 <link rel="icon" type="image/png" href="{% static 'img/Teaspils_final_logo_no_text.png' %}" />
 <script src="{% static 'js/Term_fun.js' %}"></script>
 
@@ -41,6 +42,12 @@
 
     <div class="col-3"></div>
 </div> -->
+<div class="row p-3 ml-3">
+    <h5 style="color: gray;">Measures taken at: 
+        <span style="color:red">{{timestamp}}</span> for the plant with id: 
+        <span style="color:red">{{plant_id}}</span>
+    </h5> 
+</div>
 <div class="row">
     <div id="settings" class="col-3">
         <div id='limits-setting' class="col">
@@ -48,7 +55,7 @@
                 <h3 id='date'></h3>
             </div>
             <div class="row">
-                <h4>Settings</h4>
+                <h4>Plant Settings</h4>
             </div>
             <div class="row">
                 <div class="button-container">
@@ -58,41 +65,47 @@
             </div>
             <div class="row">
                 <div class="button-container">
-                    <input class="input-limit" id="myInputLowT" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighT" type="number" size="1" value=50 />
+                    <input class="input-limit" id="myInputLowT" type="number" size="1" value={{lowT}} />
+                    <input class="input-limit" id="myInputHighT" type="number" size="1" value={{highT}} />
                     <button class="input-btn" id="inputButtonT">Temp</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
-                    <input class="input-limit" id="myInputLowNoise" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighNoise" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonNoise">Noise</button>
+                    <input class="input-limit" id="myInputLowNoise" type="number" size="1" value={{lowN}}  />
+                    <input class="input-limit" id="myInputHighNoise" type="number" size="1" value={{highN}}  />
+                    <button class="input-btn" id="inputButtonNoise">TDS</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
-                    <input class="input-limit" id="myInputLowCO2" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighCO2" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonCO2">CO2</button>
+                    <input class="input-limit" id="myInputLowCO2" type="number" size="1" value={{lowC}}  />
+                    <input class="input-limit" id="myInputHighCO2" type="number" size="1" value={{highC}}  />
+                    <button class="input-btn" id="inputButtonCO2">PH</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
-                    <input class="input-limit" id="myInputLowHUM" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighHUM" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonHUM">Humid</button>
+                    <input class="input-limit" id="myInputLowHUM" type="number" size="1" value={{lowH}}  />
+                    <input class="input-limit" id="myInputHighHUM" type="number" size="1" value={{highH}}  />
+                    <button class="input-btn" id="inputButtonHUM">NTU</button>
                 </div>
             </div>
             <div class="row">
                 <div class="button-container">
-                    <input class="input-limit" id="myInputLowIL" type="number" size="1" value=50 />
-                    <input class="input-limit" id="myInputHighIL" type="number" size="1" value=50 />
-                    <button class="input-btn" id="inputButtonIL">Light</button>
+                    <input class="input-limit" id="myInputLowIL" type="number" size="1" value={{lowI}}  />
+                    <input class="input-limit" id="myInputHighIL" type="number" size="1" value={{highI}}  />
+                    <button class="input-btn" id="inputButtonIL">Elect</button>
+                </div>
+            </div>
+            <div class="row">
+                <div class="button-container">
+                    <button id="saveSettingsButton" class="btn ml-2">Save Settings</button>
                 </div>
             </div>
 
         </div>
+
     </div>
     <div class="col-9" id="Chart-all">
         <!-- style="background-color: #ffde9f;"-->
@@ -106,9 +119,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_temp_h">30</li>
-                            <li id="label_temp_m">20</li>
-                            <li id="label_temp_l">10</li>
+                            <li id="label_temp_h">{{highT}}</li>
+                            <li id="label_temp_m"> </li>
+                            <li id="label_temp_l">{{lowT}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -133,9 +146,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_noise_h">75</li>
-                            <li id="label_noise_m">50</li>
-                            <li id="label_noise_l">25</li>
+                            <li id="label_noise_h">{{lowN}}</li>
+                            <li id="label_noise_m"> </li>
+                            <li id="label_noise_l">{{highN}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -150,7 +163,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Noise [dB]</h2>
+                        <h2>TDS [mg/l]</h2>
                     </div>
                 </div>
             </div>
@@ -159,9 +172,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_co2_h">1500</li>
-                            <li id="label_co2_m">1000</li>
-                            <li id="label_co2_l">500</li>
+                            <li id="label_co2_h">{{highC}}</li>
+                            <li id="label_co2_m"> </li>
+                            <li id="label_co2_l">{{lowC}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -176,7 +189,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>CO2 [ppm]</h2>
+                        <h2>PH [ph]</h2>
                     </div>
                 </div>
             </div>
@@ -185,9 +198,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_hum_h">75</li>
-                            <li id="label_hum_m">50</li>
-                            <li id="label_hum_l">25</li>
+                            <li id="label_hum_h">{{highH}}</li>
+                            <li id="label_hum_m"> </li>
+                            <li id="label_hum_l">{{lowH}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -202,7 +215,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Humid. [%]</h2>
+                        <h2>Turbidity [NTU]</h2>
                     </div>
                 </div>
             </div>
@@ -211,9 +224,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_light_h">1600</li>
-                            <li id="label_light_m">1000</li>
-                            <li id="label_light_l">800</li>
+                            <li id="label_light_h">{{highI}}</li>
+                            <li id="label_light_m"> </li>
+                            <li id="label_light_l">{{lowI}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">
@@ -228,7 +241,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Illum. [lux]</h2>
+                        <h2>Elecond. [mS/cm]</h2>
                     </div>
                 </div>
             </div>
@@ -245,4 +258,48 @@
         </a>
     </div> -->
 </div>
+
+{% block javascript %}
+<script>
+    let saveButton = document.getElementById("saveSettingsButton");
+
+    saveButton.addEventListener("click", () => {
+        
+        let params = {
+            'lowT' : document.getElementById('myInputLowT').value,
+            'highT' : document.getElementById('myInputHighT').value,
+            'lowN' : document.getElementById('myInputLowNoise').value,
+            'highN' : document.getElementById('myInputHighNoise').value,
+            'lowC' : document.getElementById('myInputLowCO2').value,
+            'highC' : document.getElementById('myInputHighCO2').value,
+            'lowH' : document.getElementById('myInputLowHUM').value,
+            'highH' : document.getElementById('myInputHighHUM').value,
+            'lowI' : document.getElementById('myInputLowIL').value,
+            'highI' : document.getElementById('myInputHighIL').value,
+            'plant_id': {{plant_id}}
+        };
+
+        // Sending and receiving data in JSON format using POST method
+        //
+
+        $.ajax({
+            url : '../../../ajax/savesettings',
+            data : params,
+            dataType : 'json',
+            success: function(data){
+                console.log(data.success)
+                if(data.success == true){
+                    alert('Settings saved succesfully');
+                }else{
+                    alert('An error ocurred saving the data');
+                }
+            }
+        })
+
+        console.log(params)
+    })
+</script>
+{% endblock %}
+
+
 {% endblock %}

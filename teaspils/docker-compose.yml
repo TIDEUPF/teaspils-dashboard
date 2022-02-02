@@ -9,6 +9,7 @@ services:
       MYSQL_USER: admin
       MYSQL_PASSWORD: TEASPILS2021@
       MYSQL_ROOT_PASSWORD: TEASPILS2021@
+      WEB_CONCURRENCY: 3
     ports:
       - "3306:3306"
     restart: always

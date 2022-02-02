@@ -1,14 +1,24 @@
 {% extends 'base.html' %}
 
+{% load i18n %}
+
 {% load static %}
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
 <div class="container" style="height: 100%; display: flex; justify-content: center; align-items: center;">
+
     <div class="col-6">
         <form action="/teaspils/" method="post">
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="course_id_input">Course id: </label> -->
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="course_id_label">Course id</span>
+                    <span class="input-group-text" id="course_id_label">{% blocktrans %}Course id{% endblocktrans %}</span>
                 </div>
                 <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3"
                     aria-label="Default" aria-describedby="course_id_label" required>
@@ -16,9 +26,9 @@
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="secret_word_input">Secret word: </label> -->
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="secret_label">Secret Word</span>
+                    <span class="input-group-text" id="secret_label">{% blocktrans %}Secret Word{% endblocktrans %}</span>
                 </div>
-                <input class="form-control" id="secret_word_input" type="password" name="secret_word" maxlength="5"
+                <input class="form-control" id="secret_word_input" type="password" name="secret_word" maxlength="12"
                     aria-label="Default" aria-describedby="secret_word_input" required>
                 <div class="input-group-append">
                     <div class="input-group-text">
@@ -27,7 +37,7 @@
                 </div>
 
             </div>
-            <input class="btn btn-outline-secondary" style="float: right;" type="submit" value="Submit">
+            <input class="btn btn-outline-secondary" style="float: right;" type="submit" value="{% blocktrans %} Submit {% endblocktrans %}">
         </form>
     </div>
 </div>

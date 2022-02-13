@@ -15,6 +15,9 @@
 
     <div class="col-6">
         <form action="/teaspils/" method="post">
+            <div class="input-group input-group-lg pt-3">
+                <h1>Plant alias: <span id='alias-label' class="badge bg-info">No alias</span> </h1>
+            </div>
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="course_id_input">Course id: </label> -->
                 <div class="input-group-prepend">
@@ -35,9 +38,9 @@
                         <input type="checkbox" id="reveal-box" onclick="reveal()">
                     </div>
                 </div>
-
             </div>
-            <input class="btn btn-outline-secondary" style="float: right;" type="submit" value="{% blocktrans %} Submit {% endblocktrans %}">
+            <input class="btn btn-outline-secondary" style="float: right;" type="submit"
+                value="{% blocktrans %} Submit {% endblocktrans %}">
         </form>
     </div>
 </div>
@@ -48,6 +51,20 @@
         else
             document.getElementById("secret_word_input").type = 'password';
     }
+
+    document.getElementById('course_id_input').addEventListener('focusout', (event) => {
+
+        $.get('./', { 'value': document.getElementById('course_id_input').value }, function (json_response) {
+            alias = JSON.parse(json_response)['alias']
+            document.getElementById("alias-label").innerHTML = alias;
+
+            if( alias != 'No alias' ){
+                document.getElementById("alias-label").className = 'badge bg-success';                
+            }else{
+                document.getElementById("alias-label").className = 'badge bg-info';    
+            }
+        });
+    });
 </script>
 
 {% endblock %}

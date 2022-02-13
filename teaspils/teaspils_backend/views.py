@@ -23,6 +23,20 @@ from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
 def index(request):
+
+    if request.is_ajax():
+        course_id = request.GET.get('value', '')
+        course = Course.objects.filter(pk=course_id).first()
+        if(course is None):
+            return HttpResponse(json.dumps({'alias': "No alias"})) 
+        else:
+            plant = Plant.objects.filter(course__pk=course.id).first()    
+            if(plant is None):
+                return HttpResponse(json.dumps({'alias': "No alias"})) 
+            else:
+                return HttpResponse(json.dumps({'alias': plant.alias}))
+            
+
     if request.method == 'POST':
         facade.ConnectionFacade.data = {}
         form:LoginForm = LoginForm(request.POST)
@@ -33,21 +47,25 @@ def index(request):
 
             print(course_id)
             course = Course.objects.filter(pk=course_id).first()
-            is_valid = course.validateSecret(secret_word)
 
-            #TODO: Implement real login system
-            if is_valid:
-                try: 
-                    plant = Plant.objects.filter(course__pk=course_id).first()
-                    print(plant)
-                    return HttpResponseRedirect(f'plant/{plant.id}/history')
-                except Exception as e:
-                    print(e)
-                    return HttpResponseRedirect('/teaspils')
+            if (not course is None): 
+                is_valid = course.validateSecret(secret_word)
+
+                #TODO: Implement real login system
+                if is_valid:
+                    try: 
+                        plant = Plant.objects.filter(course__pk=course_id).first()
+                        print(plant)
+                        return HttpResponseRedirect(f'plant/{plant.id}/history')
+                    except Exception as e:
+                        print(e)
+                        return HttpResponseRedirect('/teaspils')
+                else:
+                    messages.error(request, "Course credentials are not valid, try again.")
+                    return render(request, 'main/index.html', {'form': form})
             else:
-                messages.error(request, "Course credentials are not valid, try again.")
-                return render(request, 'main/index.html', {'form': form})
-
+                messages.error(request, "Course not found!")
+                return HttpResponseRedirect('/teaspils')
         else:
             print(form.errors)
             print("Formulario no válido")
@@ -165,11 +183,14 @@ def measures(request, plant_id:int, ts:str):
     single_measure = json.dumps(single_measure)
 
     plant_settings = PlantSettings.objects.filter(plant_id=plant_id).last()
+    plant = Plant.objects.filter(pk=plant_id).first()
+    plant_alias = plant.alias
     # plant_settings = plant_settings.toJSON()
     return render(request,
                   template_name='main/measurement.html',
                   context={'timestamp': ts, 
-                           'plant_id': plant_id, 
+                           'plant_id': plant_id,
+                           'alias' : plant_alias,
                            'measure' : single_measure,
                            'lowT' : plant_settings.low_temperature,
                            'highT' : plant_settings.high_temperature,

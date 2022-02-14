@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load i18n %}
+
 {% block content %}
 
 {% if messages %}
@@ -19,11 +21,11 @@
 <div class="cointainer">
     <div class="d-flex flex-row justify-content-center m-3">
         <div class="col-6">
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled ">Timeline</button>
+            <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled ">{% blocktrans %}Timeline{% endblocktrans %}</button>
         </div>
         <div class=" col-6">
                 <button type=" button" class="btn btn-success btn-lg btn-block"
-                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">Observations</button>
+                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">{% blocktrans %}Observations{% endblocktrans %}</button>
         </div>
     </div>
 
@@ -31,23 +33,22 @@
         <div class="col-2">
             <ul class="nav nav-pills flex-column" role="tablist">
                 <li>
-                    <a class="nav-link active" href="#all_area" role="tab" data-toggle="pill" aria-selected="true">All
-                        plots</a>
+                    <a class="nav-link active" href="#all_area" role="tab" data-toggle="pill" aria-selected="true"> {% blocktrans %}All plots{% endblocktrans %}</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#temperature_area" role="tab" data-toggle="pill">Temperature (ºC)</a>
+                    <a class="nav-link" href="#temperature_area" role="tab" data-toggle="pill">{% blocktrans %}Temperature{% endblocktrans %} (ºC)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill"> Noise (db)</a>
+                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">{% blocktrans %}Noise{% endblocktrans %} (db)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">Humidity (%)</a>
+                    <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">{% blocktrans %}Humidity{% endblocktrans %} (%)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#co2_area" role="tab" data-toggle="pill">Co2 (ppm) </a>
+                    <a class="nav-link" href="#co2_area" role="tab" data-toggle="pill">{% blocktrans %}Co2{% endblocktrans %} (ppm) </a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#light_area" role="tab" data-toggle="pill">Light (lux)</a>
+                    <a class="nav-link" href="#light_area" role="tab" data-toggle="pill">{% blocktrans %}Light{% endblocktrans %} (lux)</a>
                 </li>
                 <hr > 
 
@@ -55,7 +56,7 @@
                     <div>
                     </div>
                     <a class="nav-link" href="#compare_area" role="tab" data-toggle="pill" aria-selected="true"
-                        style="color: orange;">Compare plots</a>
+                        style="color: orange;">{% blocktrans %}Compare measures{% endblocktrans %}</a>
                 </li>
             </ul>
         </div>
@@ -71,14 +72,14 @@
                             <li class="nav-item dropdown">
                                 <div class="sms-button" id="first-dropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;First measure&nbsp;&nbsp;</a>
+                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}First measure{% endblocktrans %}&nbsp;&nbsp;</a>
                                 </div>
                                 <div id="first-options" class="dropdown-menu" aria-labelledby="first-dropdown">
-                                    <a class="dropdown-item" href="#">Temperature</a>
-                                    <a class="dropdown-item" href="#">Noise</a>
-                                    <a class="dropdown-item" href="#">Co2</a>
-                                    <a class="dropdown-item" href="#">Light</a>
-                                    <a class="dropdown-item" href="#">Humidity</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Noise{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
                                 </div>
                             </li>
                         </div>
@@ -86,14 +87,14 @@
                             <li class="nav-item dropdown">
                                 <div class="sms-button" id="second-dropdown" role="button" data-toggle="dropdown"
                                     aria-haspopup="true" aria-expanded="false">
-                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;Second measure&nbsp;&nbsp;</a>
+                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}Second measure{% endblocktrans %}&nbsp;&nbsp;</a>
                                 </div>
                                 <div id="second-options" class="dropdown-menu" aria-labelledby="second-dropdown">
-                                    <a class="dropdown-item" href="#">Temperature</a>
-                                    <a class="dropdown-item" href="#">Noise</a>
-                                    <a class="dropdown-item" href="#">Co2</a>
-                                    <a class="dropdown-item" href="#">Light</a>
-                                    <a class="dropdown-item" href="#">Humidity</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Noise{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
                                 </div>
                             </li>
                         </div>

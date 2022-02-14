@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-01-22 19:16+0100\n"
+"POT-Creation-Date: 2022-02-14 12:44+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -335,17 +335,104 @@ msgstr "Inglés"
 msgid "Spanish"
 msgstr "Español"
 
-#: .\teaspils_backend\templates\main\index.html:21
+#: .\teaspils_backend\templates\base.html:51
+msgid "Logout"
+msgstr "Salir"
+
+#: .\teaspils_backend\templates\main\historical.html:24
+#| msgid " Timeline "
+msgid "Timeline"
+msgstr "Linea de tiempo"
+
+#: .\teaspils_backend\templates\main\historical.html:28
+#| msgid " Observations "
+msgid "Observations"
+msgstr "Observaciones"
+
+#: .\teaspils_backend\templates\main\historical.html:36
+#| msgid " All plots "
+msgid "All plots"
+msgstr "Todas las medidas"
+
+#: .\teaspils_backend\templates\main\historical.html:39
+#: .\teaspils_backend\templates\main\historical.html:78
+#: .\teaspils_backend\templates\main\historical.html:93
+msgid "Temperature"
+msgstr "Temperatura"
+
+#: .\teaspils_backend\templates\main\historical.html:42
+#: .\teaspils_backend\templates\main\historical.html:79
+#: .\teaspils_backend\templates\main\historical.html:94
+msgid "Noise"
+msgstr "Ruido"
+
+#: .\teaspils_backend\templates\main\historical.html:45
+#: .\teaspils_backend\templates\main\historical.html:82
+#: .\teaspils_backend\templates\main\historical.html:97
+msgid "Humidity"
+msgstr "Humedad"
+
+#: .\teaspils_backend\templates\main\historical.html:48
+#: .\teaspils_backend\templates\main\historical.html:80
+#: .\teaspils_backend\templates\main\historical.html:95
+msgid "Co2"
+msgstr "Co2"
+
+#: .\teaspils_backend\templates\main\historical.html:51
+#: .\teaspils_backend\templates\main\historical.html:81
+#: .\teaspils_backend\templates\main\historical.html:96
+msgid "Light"
+msgstr "Iluminación"
+
+#: .\teaspils_backend\templates\main\historical.html:59
+#| msgid "Compare measures "
+msgid "Compare measures"
+msgstr "Comparar medidas"
+
+#: .\teaspils_backend\templates\main\historical.html:75
+#| msgid " First measure "
+msgid "First measure"
+msgstr "Primera medida"
+
+#: .\teaspils_backend\templates\main\historical.html:90
+msgid "Second measure"
+msgstr "Segunda medida"
+
+#: .\teaspils_backend\templates\main\index.html:19
+msgid "Plant alias: "
+msgstr "Alias de la planta: "
+
+#: .\teaspils_backend\templates\main\index.html:19
+#: .\teaspils_backend\views.py:40 .\teaspils_backend\views.py:44
+msgid "No alias"
+msgstr "Sin alias"
+
+#: .\teaspils_backend\templates\main\index.html:24
 msgid "Course id"
 msgstr "Id Curso"
 
-#: .\teaspils_backend\templates\main\index.html:29
+#: .\teaspils_backend\templates\main\index.html:32
 msgid "Secret Word"
 msgstr "Palabra secreta"
 
-#: .\teaspils_backend\templates\main\index.html:40
+#: .\teaspils_backend\templates\main\index.html:43
 msgid " Submit "
 msgstr "Enviar"
+
+#~ msgid " Temperature "
+#~ msgstr "Temperatura"
+
+#~ msgid " Noise "
+#~ msgstr "Ruido"
+
+#~ msgid " Humidity "
+#~ msgstr "Humedad"
+
+#~ msgid "Co2 "
+#~ msgstr "Co2"
+
+#~ msgid "Light "
+#~ msgstr "Iluminación"
 
 #~ msgid "Hello"
 #~ msgstr "Hola"

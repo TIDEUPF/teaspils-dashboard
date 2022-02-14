@@ -11,8 +11,11 @@ from django.template import loader
 from django.contrib import messages
 from django.core.files import File as DjangoFile
 from django.conf import settings as django_settings
+from django.utils.translation import ugettext_lazy as _
+
 
 from django.views.decorators.csrf import csrf_exempt
+
 
 from .utils import handle_uploaded_file
 
@@ -25,16 +28,22 @@ from .forms import LoginForm, ObservationForm
 def index(request):
 
     if request.is_ajax():
-        course_id = request.GET.get('value', '')
-        course = Course.objects.filter(pk=course_id).first()
-        if(course is None):
-            return HttpResponse(json.dumps({'alias': "No alias"})) 
-        else:
-            plant = Plant.objects.filter(course__pk=course.id).first()    
-            if(plant is None):
-                return HttpResponse(json.dumps({'alias': "No alias"})) 
+        
+        print(request)
+        ajax_value = request.GET.get('value', '')
+
+        if ajax_value != '':
+
+            course_id = ajax_value
+            course = Course.objects.filter(pk=course_id).first()
+            if(course is None):
+                return HttpResponse(json.dumps({'alias': _("No alias")})) 
             else:
-                return HttpResponse(json.dumps({'alias': plant.alias}))
+                plant = Plant.objects.filter(course__pk=course.id).first()    
+                if(plant is None):
+                    return HttpResponse(json.dumps({'alias': _("No alias")})) 
+                else:
+                    return HttpResponse(json.dumps({'alias': plant.alias}))
             
 
     if request.method == 'POST':

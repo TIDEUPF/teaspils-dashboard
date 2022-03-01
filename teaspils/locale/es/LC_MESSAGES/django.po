@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-02-14 12:44+0100\n"
+"POT-Creation-Date: 2022-03-01 23:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -340,17 +340,14 @@ msgid "Logout"
 msgstr "Salir"
 
 #: .\teaspils_backend\templates\main\historical.html:24
-#| msgid " Timeline "
 msgid "Timeline"
 msgstr "Linea de tiempo"
 
 #: .\teaspils_backend\templates\main\historical.html:28
-#| msgid " Observations "
 msgid "Observations"
 msgstr "Observaciones"
 
 #: .\teaspils_backend\templates\main\historical.html:36
-#| msgid " All plots "
 msgid "All plots"
 msgstr "Todas las medidas"
 
@@ -363,8 +360,9 @@ msgstr "Temperatura"
 #: .\teaspils_backend\templates\main\historical.html:42
 #: .\teaspils_backend\templates\main\historical.html:79
 #: .\teaspils_backend\templates\main\historical.html:94
-msgid "Noise"
-msgstr "Ruido"
+#| msgid " Humidity "
+msgid "Soil Humidity"
+msgstr "Humedad del suelo"
 
 #: .\teaspils_backend\templates\main\historical.html:45
 #: .\teaspils_backend\templates\main\historical.html:82
@@ -385,12 +383,10 @@ msgid "Light"
 msgstr "Iluminación"
 
 #: .\teaspils_backend\templates\main\historical.html:59
-#| msgid "Compare measures "
 msgid "Compare measures"
 msgstr "Comparar medidas"
 
 #: .\teaspils_backend\templates\main\historical.html:75
-#| msgid " First measure "
 msgid "First measure"
 msgstr "Primera medida"
 
@@ -419,14 +415,14 @@ msgstr "Palabra secreta"
 msgid " Submit "
 msgstr "Enviar"
 
+#~ msgid "Noise"
+#~ msgstr "Ruido"
+
 #~ msgid " Temperature "
 #~ msgstr "Temperatura"
 
 #~ msgid " Noise "
 #~ msgstr "Ruido"
-
-#~ msgid " Humidity "
-#~ msgstr "Humedad"
 
 #~ msgid "Co2 "
 #~ msgstr "Co2"

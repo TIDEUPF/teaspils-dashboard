@@ -398,16 +398,18 @@ footer h3{
 }
 
 .input-limit{
-    margin: 0.6rem;
-    width: 30%;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
+    width: 20%;
 
 }
 
 .input-btn{
-    margin-left: 0rem;
+    margin-right: 0.5rem;
+    margin-top: 0.5rem;
     border-radius: 10px;
     background-color: whitesmoke;
-    width: 35%;
+    width: 40%;
 }
 
 .input-btn:hover{

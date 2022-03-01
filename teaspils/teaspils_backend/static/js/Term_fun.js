@@ -119,7 +119,7 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
     let myH2 = document.createElement('h3');
 
-    myH2.textContent = measure_data['timestamp'][0].Value;
+    myH2.textContent = measure_data['Timestamp'].Value;
     Date_place.textContent = myH2.textContent;
     /*appendChild(myH2);*/
 
@@ -167,9 +167,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
     /*____________________________________NOISE_________________________________*/
     let Noise = document.getElementById("N-load");
 
-    if (measure_data['noise'] != null) {
+    if (measure_data['soilHumidity'] != null) {
 
-        let valueN = parseFloat(measure_data['noise']);
+        let valueN = parseFloat(measure_data['soilHumidity']);
         let percentage = 0.0;
         if (valueN < low_limit_Noise) {
             percentage = 20.0;
@@ -185,7 +185,7 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         }
 
         Noise.style.height = percentage.toString() + '%';
-        Noise.setAttribute('title', measure_data['noise']);
+        Noise.setAttribute('title', measure_data['soilHumidity']);
         let color_N;
         if (valueN > low_limit_Noise && valueN < upper_limit_Noise) {
             color_N = green;

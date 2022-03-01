@@ -32,6 +32,13 @@ def generator():
 
     return json.dumps(measures, indent=4, sort_keys=True, default=str)
 
+@app.route("/json")
+def get_measures():
+    print("##### ENTERING FAKE GET MEASURES #########")
+    with open('fake_generator/dataset_7-02_15_02.json', 'r') as f:
+        data = json.load(f)
+        print(data)
+        return json.dumps(data, indent=4, sort_keys=True, default=str)
 
 
 def get_timestamp():

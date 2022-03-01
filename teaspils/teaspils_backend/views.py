@@ -185,8 +185,8 @@ def measures(request, plant_id:int, ts:str):
 
     single_measure = {}
     for m in origin_data:
-        print(m['timestamp'][:-3],"--" ,ts)
-        if m['timestamp'][:-3] == ts:
+        # print(m['Timestamp'],"--" ,ts)
+        if m['Timestamp'] == ts:
             single_measure = m
     
     single_measure = json.dumps(single_measure)

@@ -43,71 +43,76 @@
     <div class="col-3"></div>
 </div> -->
 <div class="row p-3 ml-3">
-    <h5 style="color: gray;">Measures taken at: 
-        <span style="color:red">{{timestamp}}</span> for the plant: 
+    <h5 style="color: gray;">Measures taken at:
+        <span style="color:red">{{timestamp}}</span> for the plant:
         <span style="color:red">{{alias}}</span>
-    </h5> 
+    </h5>
 </div>
-<div class="row">
+<div class="row m-2">
     <div id="settings" class="col-3">
-        <div id='limits-setting' class="col">
+        <div class="card p-4">
             <div class="row">
-                <h3 id='date'></h3>
-            </div>
-            <div class="row">
-                <h4>Plant Settings</h4>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <h4>Lower Limit</h4>
-                    <h4>Upper Limit</h4>
+                <div id='limits-setting' class="col">
+                    <div class="row">
+                        <h3 id='date'></h3>
+                    </div>
+                    <div class="row">
+                        <h4>Plant Settings</h4>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <h4 class="mr-3">Lower Limit</h4>
+                            <h4 class="mr-3 ml-3">Upper Limit</h4>
+                            <h4 class="mr-3 ml-3">Update graphic</h4>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowT" type="number" size="1" value={{lowT}} />
+                            <input class="input-limit" id="myInputHighT" type="number" size="1" value={{highT}} />
+                            <button class="btn btn-secondary input-btn" id="inputButtonT">Temp</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowNoise" type="number" size="1" value={{lowN}} />
+                            <input class="input-limit" id="myInputHighNoise" type="number" size="1" value={{highN}} />
+                            <button class="btn btn-secondary input-btn" id="inputButtonNoise">Soil Hum.</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowCO2" type="number" size="1" value={{lowC}} />
+                            <input class="input-limit" id="myInputHighCO2" type="number" size="1" value={{highC}} />
+                            <button class="btn btn-secondary input-btn" id="inputButtonCO2">Co2</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowHUM" type="number" size="1" value={{lowH}} />
+                            <input class="input-limit" id="myInputHighHUM" type="number" size="1" value={{highH}} />
+                            <button class="btn btn-secondary input-btn" id="inputButtonHUM">Hum</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="button-container">
+                            <input class="input-limit" id="myInputLowIL" type="number" size="1" value={{lowI}} />
+                            <input class="input-limit" id="myInputHighIL" type="number" size="1" value={{highI}} />
+                            <button class="btn btn-secondary input-btn" id="inputButtonIL">Light</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="mt-2 button-container">
+                            <button id="saveSettingsButton" class="btn btn-info ml-2">Save Settings</button>
+                        </div>
+                    </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <input class="input-limit" id="myInputLowT" type="number" size="1" value={{lowT}} />
-                    <input class="input-limit" id="myInputHighT" type="number" size="1" value={{highT}} />
-                    <button class="input-btn" id="inputButtonT">Temp</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <input class="input-limit" id="myInputLowNoise" type="number" size="1" value={{lowN}}  />
-                    <input class="input-limit" id="myInputHighNoise" type="number" size="1" value={{highN}}  />
-                    <button class="input-btn" id="inputButtonNoise">TDS</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <input class="input-limit" id="myInputLowCO2" type="number" size="1" value={{lowC}}  />
-                    <input class="input-limit" id="myInputHighCO2" type="number" size="1" value={{highC}}  />
-                    <button class="input-btn" id="inputButtonCO2">PH</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <input class="input-limit" id="myInputLowHUM" type="number" size="1" value={{lowH}}  />
-                    <input class="input-limit" id="myInputHighHUM" type="number" size="1" value={{highH}}  />
-                    <button class="input-btn" id="inputButtonHUM">NTU</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <input class="input-limit" id="myInputLowIL" type="number" size="1" value={{lowI}}  />
-                    <input class="input-limit" id="myInputHighIL" type="number" size="1" value={{highI}}  />
-                    <button class="input-btn" id="inputButtonIL">Elect</button>
-                </div>
-            </div>
-            <div class="row">
-                <div class="button-container">
-                    <button id="saveSettingsButton" class="btn ml-2">Save Settings</button>
-                </div>
-            </div>
 
+            </div>
         </div>
 
     </div>
-    <div class="col-9" id="Chart-all">
+    <div class="col-8" id="Chart-all">
         <!-- style="background-color: #ffde9f;"-->
         <div class="row">
             <div class="col-1">
@@ -163,7 +168,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>TDS [mg/l]</h2>
+                        <h2>Soil Hum [%]</h2>
                     </div>
                 </div>
             </div>
@@ -189,7 +194,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>PH [ph]</h2>
+                        <h2>Co2 [ppm]</h2>
                     </div>
                 </div>
             </div>
@@ -215,7 +220,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Turbidity [NTU]</h2>
+                        <h2>Humidity [%]</h2>
                     </div>
                 </div>
             </div>
@@ -241,7 +246,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Elecond. [mS/cm]</h2>
+                        <h2>Light [lux]</h2>
                     </div>
                 </div>
             </div>
@@ -264,39 +269,39 @@
     let saveButton = document.getElementById("saveSettingsButton");
 
     saveButton.addEventListener("click", () => {
-        
+
         let params = {
-            'lowT' : document.getElementById('myInputLowT').value,
-            'highT' : document.getElementById('myInputHighT').value,
-            'lowN' : document.getElementById('myInputLowNoise').value,
-            'highN' : document.getElementById('myInputHighNoise').value,
-            'lowC' : document.getElementById('myInputLowCO2').value,
-            'highC' : document.getElementById('myInputHighCO2').value,
-            'lowH' : document.getElementById('myInputLowHUM').value,
-            'highH' : document.getElementById('myInputHighHUM').value,
-            'lowI' : document.getElementById('myInputLowIL').value,
-            'highI' : document.getElementById('myInputHighIL').value,
-            'plant_id': {{plant_id}}
+            'lowT': document.getElementById('myInputLowT').value,
+            'highT': document.getElementById('myInputHighT').value,
+            'lowN': document.getElementById('myInputLowNoise').value,
+            'highN': document.getElementById('myInputHighNoise').value,
+            'lowC': document.getElementById('myInputLowCO2').value,
+            'highC': document.getElementById('myInputHighCO2').value,
+            'lowH': document.getElementById('myInputLowHUM').value,
+            'highH': document.getElementById('myInputHighHUM').value,
+            'lowI': document.getElementById('myInputLowIL').value,
+            'highI': document.getElementById('myInputHighIL').value,
+            'plant_id': {{ plant_id }}
         };
 
-        // Sending and receiving data in JSON format using POST method
-        //
+    // Sending and receiving data in JSON format using POST method
+    //
 
-        $.ajax({
-            url : '../../../ajax/savesettings',
-            data : params,
-            dataType : 'json',
-            success: function(data){
-                console.log(data.success)
-                if(data.success == true){
-                    alert('Settings saved succesfully');
-                }else{
-                    alert('An error ocurred saving the data');
-                }
+    $.ajax({
+        url: '../../../ajax/savesettings',
+        data: params,
+        dataType: 'json',
+        success: function (data) {
+            console.log(data.success)
+            if (data.success == true) {
+                alert('Settings saved succesfully');
+            } else {
+                alert('An error ocurred saving the data');
             }
-        })
+        }
+    })
 
-        console.log(params)
+    console.log(params);
     })
 </script>
 {% endblock %}

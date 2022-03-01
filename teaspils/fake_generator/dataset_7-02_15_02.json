@@ -1,0 +1,4331 @@
+[
+  {
+    "Timestamp": "2022-02-07 15:11:05",
+    "co2": 365.9342105263158,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 40.849030470914116,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 15:31:15",
+    "co2": 356.1,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 41.0421052631579,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 15:51:25",
+    "co2": 354.3142857142857,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 40.66917293233083,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 16:11:35",
+    "co2": 353.3611111111111,
+    "humidity": 25,
+    "light": 9.791666666666666,
+    "soilHumidity": 40.80263157894737,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 16:31:45",
+    "co2": 359.2535211267606,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.4862861378799,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 16:51:55",
+    "co2": 352.4117647058824,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.44582043343653,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 17:12:05",
+    "co2": 348.1470588235294,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.56346749226005,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 17:32:15",
+    "co2": 348.74626865671644,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.01335428122545,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 17:52:25",
+    "co2": 345.7121212121212,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.62998405103668,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 18:12:35",
+    "co2": 346.26153846153846,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.8421052631579,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 18:32:45",
+    "co2": 343.83673469387753,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.73469387755102,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 19:13:05",
+    "co2": 330.9,
+    "humidity": 23.75,
+    "light": 8.55,
+    "soilHumidity": 51.057894736842094,
+    "soilTemperature": 21.85,
+    "temperature": 22.8
+  },
+  {
+    "Timestamp": "2022-02-07 19:33:15",
+    "co2": 348.24,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.55719298245614,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 19:53:25",
+    "co2": 354,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.126934984520126,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 20:13:35",
+    "co2": 348.05882352941177,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.15479876160991,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 20:33:45",
+    "co2": 342.7142857142857,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.809022556390985,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-07 20:53:55",
+    "co2": 347.36842105263156,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.0803324099723,
+    "soilTemperature": 23,
+    "temperature": 23.605263157894736
+  },
+  {
+    "Timestamp": "2022-02-07 21:14:05",
+    "co2": 348.1066666666667,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.327719298245604,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 21:34:15",
+    "co2": 350,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.3283914010378,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 21:54:25",
+    "co2": 346.36619718309856,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.60266864343959,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 22:14:35",
+    "co2": 339.40277777777777,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.75730994152046,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 22:34:45",
+    "co2": 336.6811594202899,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.92982456140351,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 22:54:55",
+    "co2": 331.57971014492756,
+    "humidity": 25.10144927536232,
+    "light": 9,
+    "soilHumidity": 42.164759725400444,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 23:15:05",
+    "co2": 332.1818181818182,
+    "humidity": 25.227272727272727,
+    "light": 9,
+    "soilHumidity": 42.40669856459329,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-07 23:35:15",
+    "co2": 331.2089552238806,
+    "humidity": 25.35820895522388,
+    "light": 9,
+    "soilHumidity": 42.6457187745483,
+    "soilTemperature": 23,
+    "temperature": 22.19402985074627
+  },
+  {
+    "Timestamp": "2022-02-07 23:55:25",
+    "co2": 332.6060606060606,
+    "humidity": 25.666666666666668,
+    "light": 9,
+    "soilHumidity": 42.42743221690589,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 00:15:35",
+    "co2": 331.45454545454544,
+    "humidity": 25.333333333333332,
+    "light": 9,
+    "soilHumidity": 42.59649122807018,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 00:35:45",
+    "co2": 331,
+    "humidity": 25.103448275862068,
+    "light": 9,
+    "soilHumidity": 42.622504537205096,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 01:16:05",
+    "co2": 266.4,
+    "humidity": 20,
+    "light": 7.2,
+    "soilHumidity": 84.46315789473685,
+    "soilTemperature": 18.4,
+    "temperature": 17.6
+  },
+  {
+    "Timestamp": "2022-02-08 01:36:15",
+    "co2": 330.6933333333333,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 42.83368421052632,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 01:56:25",
+    "co2": 330.4142857142857,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 42.56992481203008,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 02:16:35",
+    "co2": 333.969696969697,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.170653907496,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 02:36:45",
+    "co2": 333.9577464788732,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.02446256486287,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 02:56:55",
+    "co2": 326.5342465753425,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.0814708002884,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 03:17:05",
+    "co2": 329.1081081081081,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.35277382645803,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 03:37:15",
+    "co2": 329.0405405405405,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.069701280227584,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 03:57:25",
+    "co2": 327.75,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.280185758513944,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 04:17:35",
+    "co2": 329.7671232876712,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 43.439077144917086,
+    "soilTemperature": 23,
+    "temperature": 21.506849315068493
+  },
+  {
+    "Timestamp": "2022-02-08 04:37:45",
+    "co2": 332.7671232876712,
+    "humidity": 25.054794520547944,
+    "light": 9,
+    "soilHumidity": 43.21124729632299,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-08 04:57:55",
+    "co2": 333.32394366197184,
+    "humidity": 25.169014084507044,
+    "light": 9,
+    "soilHumidity": 43.467753891771686,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-08 05:18:05",
+    "co2": 333.77142857142854,
+    "humidity": 25.114285714285714,
+    "light": 9,
+    "soilHumidity": 43.30225563909775,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-08 05:38:15",
+    "co2": 330.2173913043478,
+    "humidity": 25.202898550724637,
+    "light": 9,
+    "soilHumidity": 43.1395881006865,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-08 05:58:25",
+    "co2": 327.463768115942,
+    "humidity": 25.463768115942027,
+    "light": 9,
+    "soilHumidity": 43.44774980930587,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-08 06:18:35",
+    "co2": 327.09090909090907,
+    "humidity": 25.09090909090909,
+    "light": 9,
+    "soilHumidity": 42.58054226475279,
+    "soilTemperature": 23,
+    "temperature": 21.636363636363637
+  },
+  {
+    "Timestamp": "2022-02-08 06:38:45",
+    "co2": 328.984126984127,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 42.493528904227794,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 07:19:05",
+    "co2": 0,
+    "humidity": 0,
+    "light": 0,
+    "soilHumidity": 252.6315789473684,
+    "soilTemperature": 0,
+    "temperature": 0
+  },
+  {
+    "Timestamp": "2022-02-08 07:39:15",
+    "co2": 332.1842105263158,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 42.2049861495845,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-08 07:59:25",
+    "co2": 331.943661971831,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.438102297998526,
+    "soilTemperature": 23,
+    "temperature": 22.577464788732396
+  },
+  {
+    "Timestamp": "2022-02-08 08:19:35",
+    "co2": 332.9117647058824,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.94272445820434,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 08:39:45",
+    "co2": 337.3142857142857,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.82105263157894,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 08:59:55",
+    "co2": 336.82191780821915,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 41.09877433309301,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 09:20:05",
+    "co2": 337.2432432432432,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.72830725462305,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 09:40:15",
+    "co2": 341.1666666666667,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.86549707602339,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 10:00:25",
+    "co2": 343.19444444444446,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.78576723498887,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 10:20:35",
+    "co2": 343.9166666666667,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.38932948810383,
+    "soilTemperature": 23,
+    "temperature": 23.65753424657534
+  },
+  {
+    "Timestamp": "2022-02-08 10:40:45",
+    "co2": 346.2903225806452,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.675721561969446,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 11:00:55",
+    "co2": 344.76666666666665,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.55438596491228,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 11:21:05",
+    "co2": 353.85714285714283,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.18421052631579,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 11:41:15",
+    "co2": 352.77777777777777,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.18546365914787,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 12:01:25",
+    "co2": 343.8541666666667,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.05701754385965,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 12:21:35",
+    "co2": 342.79245283018867,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 40.232373386295926,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 12:41:45",
+    "co2": 344.2692307692308,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 39.67611336032388,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 13:01:55",
+    "co2": 342.12,
+    "humidity": 25,
+    "light": 9.6,
+    "soilHumidity": 40.01263157894736,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 13:22:05",
+    "co2": 345,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.69736842105263,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 14:02:25",
+    "co2": 340.4,
+    "humidity": 24.545454545454547,
+    "light": 9.818181818181818,
+    "soilHumidity": 43.41052631578948,
+    "soilTemperature": 22.581818181818182,
+    "temperature": 23.563636363636363
+  },
+  {
+    "Timestamp": "2022-02-08 14:22:35",
+    "co2": 346.2307692307692,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.53441295546559,
+    "soilTemperature": 23,
+    "temperature": 24.884615384615383
+  },
+  {
+    "Timestamp": "2022-02-08 14:42:45",
+    "co2": 342.74074074074076,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.62573099415204,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 15:02:55",
+    "co2": 345.23636363636365,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.70526315789474,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 15:23:05",
+    "co2": 350.03636363636366,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.21531100478468,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 15:43:15",
+    "co2": 341.5,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 38.70445344129554,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 16:03:25",
+    "co2": 344,
+    "humidity": 25,
+    "light": 10,
+    "soilHumidity": 39.200779727095515,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 16:23:35",
+    "co2": 344,
+    "humidity": 25,
+    "light": 9.72,
+    "soilHumidity": 38.879999999999995,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 16:43:45",
+    "co2": 346.2156862745098,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 39.39112487100104,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 17:03:55",
+    "co2": 344.7307692307692,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 38.973684210526315,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 17:24:05",
+    "co2": 341.6530612244898,
+    "humidity": 25,
+    "light": 9,
+    "soilHumidity": 39.059076262083785,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 17:44:15",
+    "co2": 343.2083333333333,
+    "humidity": 25.041666666666668,
+    "light": 9,
+    "soilHumidity": 39.078947368421055,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 18:04:25",
+    "co2": 349.3265306122449,
+    "humidity": 25.081632653061224,
+    "light": 26.79591836734694,
+    "soilHumidity": 38.66809881847475,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 18:24:35",
+    "co2": 348.46666666666664,
+    "humidity": 25.4,
+    "light": 9,
+    "soilHumidity": 38.81637426900584,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 18:44:45",
+    "co2": 350.2888888888889,
+    "humidity": 25.68888888888889,
+    "light": 9,
+    "soilHumidity": 39.09005847953217,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 19:04:55",
+    "co2": 359.17391304347825,
+    "humidity": 25.782608695652176,
+    "light": 65.08695652173913,
+    "soilHumidity": 39.09610983981692,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 19:25:05",
+    "co2": 364.1363636363636,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 38.85885167464116,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 19:45:15",
+    "co2": 359,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 38.88471177944862,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 20:05:25",
+    "co2": 353.35555555555555,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 38.886549707602335,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 20:25:35",
+    "co2": 351.40909090909093,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.08133971291866,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-08 20:45:45",
+    "co2": 354.72093023255815,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.13831089351286,
+    "soilTemperature": 23,
+    "temperature": 24.186046511627907
+  },
+  {
+    "Timestamp": "2022-02-08 21:26:05",
+    "co2": 0,
+    "humidity": 0,
+    "light": 0,
+    "soilHumidity": 252.6315789473684,
+    "soilTemperature": 0,
+    "temperature": 0
+  },
+  {
+    "Timestamp": "2022-02-08 21:46:15",
+    "co2": 355.6842105263158,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.22345337026778,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 22:06:25",
+    "co2": 357.3454545454546,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.04784688995216,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 22:26:35",
+    "co2": 352.6296296296296,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.6374269005848,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-08 22:46:45",
+    "co2": 347.6727272727273,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.141626794258364,
+    "soilTemperature": 23,
+    "temperature": 23.509090909090908
+  },
+  {
+    "Timestamp": "2022-02-08 23:06:55",
+    "co2": 346.188679245283,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.397219463753714,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 23:27:05",
+    "co2": 348.42857142857144,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.89473684210526,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-08 23:47:15",
+    "co2": 348.2962962962963,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.06237816764133,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 00:07:25",
+    "co2": 353.60377358490564,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.49056603773586,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 00:27:35",
+    "co2": 352.76785714285717,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.83834586466166,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 00:47:45",
+    "co2": 354.6923076923077,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.386639676113354,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 01:07:55",
+    "co2": 351.59183673469386,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.8796992481203,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 01:28:05",
+    "co2": 355.9148936170213,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.55543113101904,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 01:48:15",
+    "co2": 358.69565217391306,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.304347826086946,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 02:08:25",
+    "co2": 359.9148936170213,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.302351623740215,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 02:28:35",
+    "co2": 354.04347826086956,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.128146453089236,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 02:48:45",
+    "co2": 356.1363636363636,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.32057416267942,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 03:08:55",
+    "co2": 351.2608695652174,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.26544622425629,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 03:29:05",
+    "co2": 349.1777777777778,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.57777777777777,
+    "soilTemperature": 23,
+    "temperature": 22.91111111111111
+  },
+  {
+    "Timestamp": "2022-02-09 03:49:15",
+    "co2": 349,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.269005847953224,
+    "soilTemperature": 23,
+    "temperature": 22.6
+  },
+  {
+    "Timestamp": "2022-02-09 04:09:25",
+    "co2": 349.6046511627907,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.953488372093034,
+    "soilTemperature": 23,
+    "temperature": 22.046511627906977
+  },
+  {
+    "Timestamp": "2022-02-09 04:29:35",
+    "co2": 348.3076923076923,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.12955465587045,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-09 05:09:55",
+    "co2": 343.35714285714283,
+    "humidity": 25.38095238095238,
+    "light": 8.785714285714286,
+    "soilHumidity": 45.36842105263158,
+    "soilTemperature": 22.452380952380953,
+    "temperature": 21.476190476190474
+  },
+  {
+    "Timestamp": "2022-02-09 05:30:05",
+    "co2": 349.1090909090909,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.394258373205744,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-09 05:50:15",
+    "co2": 354.3333333333333,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.45224171539961,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-09 06:10:25",
+    "co2": 350.140350877193,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.5466297322253,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-09 06:30:35",
+    "co2": 350.1296296296296,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 40.36647173489279,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-09 06:50:45",
+    "co2": 349.8888888888889,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.65886939571151,
+    "soilTemperature": 23,
+    "temperature": 22.166666666666668
+  },
+  {
+    "Timestamp": "2022-02-09 07:10:55",
+    "co2": 351.9818181818182,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.12153110047848,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 07:31:05",
+    "co2": 351.0740740740741,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 39.142300194931785,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 07:51:15",
+    "co2": 348.4901960784314,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 38.56553147574819,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 08:11:25",
+    "co2": 351.92857142857144,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 38.61278195488723,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-09 08:31:35",
+    "co2": 356.78846153846155,
+    "humidity": 26,
+    "light": 25.615384615384617,
+    "soilHumidity": 38.59716599190283,
+    "soilTemperature": 23,
+    "temperature": 23.673076923076923
+  },
+  {
+    "Timestamp": "2022-02-09 08:51:45",
+    "co2": 361.08,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.82526315789473,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 09:11:55",
+    "co2": 365.64444444444445,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.78947368421053,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 09:32:05",
+    "co2": 364.1111111111111,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.08070175438596,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 09:52:15",
+    "co2": 357.60377358490564,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.064548162859985,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 10:12:25",
+    "co2": 362.52941176470586,
+    "humidity": 25.92156862745098,
+    "light": 9,
+    "soilHumidity": 37.30030959752321,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 10:32:35",
+    "co2": 365.4878048780488,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 36.32862644415917,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 10:52:45",
+    "co2": 361.95238095238096,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.07268170426065,
+    "soilTemperature": 23,
+    "temperature": 24.61904761904762
+  },
+  {
+    "Timestamp": "2022-02-09 11:12:55",
+    "co2": 361.95,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 36.81578947368421,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 11:33:05",
+    "co2": 356.1621621621622,
+    "humidity": 25.945945945945947,
+    "light": 9,
+    "soilHumidity": 36.58321479374109,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 11:53:15",
+    "co2": 357.22222222222223,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 37.01286549707603,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 12:13:25",
+    "co2": 360.06666666666666,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 36.54784688995216,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 12:33:35",
+    "co2": 361.90909090909093,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.813397129186576,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 12:53:45",
+    "co2": 347.4054054054054,
+    "humidity": 25.2972972972973,
+    "light": 9.35135135135135,
+    "soilHumidity": 42.611664295874824,
+    "soilTemperature": 22.37837837837838,
+    "temperature": 24.324324324324323
+  },
+  {
+    "Timestamp": "2022-02-09 13:13:55",
+    "co2": 358.5660377358491,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 36.70109235352533,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 13:34:05",
+    "co2": 358.81481481481484,
+    "humidity": 25.962962962962962,
+    "light": 10,
+    "soilHumidity": 36.48927875243666,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 13:54:15",
+    "co2": 357.07142857142856,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 36.201127819548866,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 14:14:25",
+    "co2": 358.8,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.718660287081356,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 14:34:35",
+    "co2": 355.962962962963,
+    "humidity": 25.925925925925927,
+    "light": 10,
+    "soilHumidity": 35.65692007797272,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 14:54:45",
+    "co2": 354.7307692307692,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.77732793522266,
+    "soilTemperature": 23,
+    "temperature": 25.615384615384617
+  },
+  {
+    "Timestamp": "2022-02-09 15:14:55",
+    "co2": 351.4230769230769,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.421052631578945,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-09 15:35:05",
+    "co2": 343.61538461538464,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.461538461538446,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-09 15:55:15",
+    "co2": 346.9230769230769,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.08906882591093,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-09 16:15:25",
+    "co2": 348.88461538461536,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 35.028340080971674,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-09 16:35:35",
+    "co2": 351.16,
+    "humidity": 26,
+    "light": 9.6,
+    "soilHumidity": 35.355789473684226,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-09 16:55:45",
+    "co2": 351.7083333333333,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.9824561403509,
+    "soilTemperature": 23,
+    "temperature": 25.833333333333332
+  },
+  {
+    "Timestamp": "2022-02-09 17:15:55",
+    "co2": 350.8723404255319,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.281075027995506,
+    "soilTemperature": 23,
+    "temperature": 25.595744680851062
+  },
+  {
+    "Timestamp": "2022-02-09 17:36:05",
+    "co2": 353.8636363636364,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.48803827751195,
+    "soilTemperature": 23,
+    "temperature": 25.136363636363637
+  },
+  {
+    "Timestamp": "2022-02-09 17:56:15",
+    "co2": 352.9574468085106,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.231802911534174,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 18:16:25",
+    "co2": 357.4888888888889,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.16374269005849,
+    "soilTemperature": 23,
+    "temperature": 25.044444444444444
+  },
+  {
+    "Timestamp": "2022-02-09 18:36:35",
+    "co2": 363.5777777777778,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.29473684210528,
+    "soilTemperature": 23,
+    "temperature": 25.044444444444444
+  },
+  {
+    "Timestamp": "2022-02-09 18:56:45",
+    "co2": 370.5531914893617,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.44120940649497,
+    "soilTemperature": 23,
+    "temperature": 25.04255319148936
+  },
+  {
+    "Timestamp": "2022-02-09 19:16:55",
+    "co2": 370.5777777777778,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.209356725146215,
+    "soilTemperature": 23,
+    "temperature": 25.177777777777777
+  },
+  {
+    "Timestamp": "2022-02-09 19:37:05",
+    "co2": 373.04347826086956,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.837528604119,
+    "soilTemperature": 23,
+    "temperature": 25.130434782608695
+  },
+  {
+    "Timestamp": "2022-02-09 19:57:15",
+    "co2": 376.95652173913044,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.681922196796314,
+    "soilTemperature": 23,
+    "temperature": 25.130434782608695
+  },
+  {
+    "Timestamp": "2022-02-09 20:17:25",
+    "co2": 384.22857142857146,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.31428571428574,
+    "soilTemperature": 23,
+    "temperature": 25.057142857142857
+  },
+  {
+    "Timestamp": "2022-02-09 20:57:45",
+    "co2": 375.7142857142857,
+    "humidity": 24.761904761904763,
+    "light": 8.571428571428571,
+    "soilHumidity": 45.50375939849623,
+    "soilTemperature": 21.904761904761905,
+    "temperature": 23.80952380952381
+  },
+  {
+    "Timestamp": "2022-02-09 21:17:55",
+    "co2": 395.10714285714283,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.597744360902276,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-09 21:38:05",
+    "co2": 397.6140350877193,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.473684210526315,
+    "soilTemperature": 23,
+    "temperature": 24.94736842105263
+  },
+  {
+    "Timestamp": "2022-02-09 21:58:15",
+    "co2": 400.48214285714283,
+    "humidity": 26.160714285714285,
+    "light": 9,
+    "soilHumidity": 35.46616541353385,
+    "soilTemperature": 23,
+    "temperature": 24.107142857142858
+  },
+  {
+    "Timestamp": "2022-02-09 22:18:25",
+    "co2": 398.23636363636365,
+    "humidity": 26.6,
+    "light": 9,
+    "soilHumidity": 35.68421052631579,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 22:38:35",
+    "co2": 401.7307692307692,
+    "humidity": 26.923076923076923,
+    "light": 9,
+    "soilHumidity": 36.17004048582997,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 22:58:45",
+    "co2": 396.6909090909091,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 35.859649122807,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 23:18:55",
+    "co2": 404,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.202429149797595,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 23:39:05",
+    "co2": 406.46153846153845,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.878542510121456,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-09 23:59:15",
+    "co2": 407.14814814814815,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.280701754385944,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 00:19:25",
+    "co2": 410.2307692307692,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.43724696356276,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 00:39:35",
+    "co2": 421.8679245283019,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.49056603773586,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 00:59:45",
+    "co2": 416.88,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.616842105263174,
+    "soilTemperature": 23,
+    "temperature": 23.46
+  },
+  {
+    "Timestamp": "2022-02-10 01:19:55",
+    "co2": 419.8333333333333,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.53947368421053,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 01:40:05",
+    "co2": 420.68,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.79157894736842,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 02:00:15",
+    "co2": 431.63829787234044,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.550951847704376,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 02:20:25",
+    "co2": 432.0851063829787,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.79507278835387,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 02:40:35",
+    "co2": 438.6808510638298,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.68756998880178,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 03:00:45",
+    "co2": 429.72340425531917,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.622620380739086,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 03:20:55",
+    "co2": 430.6170212765957,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.89137737961927,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 03:41:05",
+    "co2": 430.54545454545456,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.9090909090909,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 04:01:15",
+    "co2": 426.4347826086956,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.86956521739132,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 04:21:25",
+    "co2": 428.25,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.68421052631579,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 04:41:35",
+    "co2": 381,
+    "humidity": 24.75,
+    "light": 8.25,
+    "soilHumidity": 56.14912280701755,
+    "soilTemperature": 21.083333333333332,
+    "temperature": 21.083333333333332
+  },
+  {
+    "Timestamp": "2022-02-10 05:01:45",
+    "co2": 420,
+    "humidity": 26.964285714285715,
+    "light": 9,
+    "soilHumidity": 36.59398496240603,
+    "soilTemperature": 23,
+    "temperature": 22.857142857142858
+  },
+  {
+    "Timestamp": "2022-02-10 05:21:55",
+    "co2": 419.6363636363636,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 37.10813397129186,
+    "soilTemperature": 23,
+    "temperature": 22.09090909090909
+  },
+  {
+    "Timestamp": "2022-02-10 05:42:05",
+    "co2": 414.1509433962264,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 37.01886792452828,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-10 06:02:15",
+    "co2": 415.4259259259259,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 37.136452241715396,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-10 06:22:25",
+    "co2": 414.27272727272725,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.964593301435386,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-10 06:42:35",
+    "co2": 413.81481481481484,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 36.33138401559455,
+    "soilTemperature": 23,
+    "temperature": 22.40740740740741
+  },
+  {
+    "Timestamp": "2022-02-10 07:02:45",
+    "co2": 411.37254901960785,
+    "humidity": 26.215686274509803,
+    "light": 9,
+    "soilHumidity": 36.72858617131064,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 07:22:55",
+    "co2": 409.5686274509804,
+    "humidity": 26.019607843137255,
+    "light": 9,
+    "soilHumidity": 36.57172342621259,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 07:43:05",
+    "co2": 404.8301886792453,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.62462760675273,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 08:03:15",
+    "co2": 397.6111111111111,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.36062378167644,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-10 08:23:25",
+    "co2": 405.84615384615387,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 35.18825910931173,
+    "soilTemperature": 23,
+    "temperature": 23.057692307692307
+  },
+  {
+    "Timestamp": "2022-02-10 08:43:35",
+    "co2": 407.04,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.30526315789474,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 09:03:45",
+    "co2": 403.9583333333333,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.33771929824563,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 09:23:55",
+    "co2": 397.1224489795918,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.96133190118153,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 09:44:05",
+    "co2": 395.60869565217394,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.96338672768879,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 10:04:15",
+    "co2": 401.5833333333333,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 34.17543859649121,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 10:24:25",
+    "co2": 401.95652173913044,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.643020594965684,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 10:44:35",
+    "co2": 396.7391304347826,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.839816933638424,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 11:04:45",
+    "co2": 394.1363636363636,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.78468899521532,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 11:24:55",
+    "co2": 393.4651162790698,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.09914320685436,
+    "soilTemperature": 23,
+    "temperature": 24.023255813953487
+  },
+  {
+    "Timestamp": "2022-02-10 11:45:05",
+    "co2": 392.8139534883721,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 32.82007343941246,
+    "soilTemperature": 23,
+    "temperature": 24.86046511627907
+  },
+  {
+    "Timestamp": "2022-02-10 12:05:15",
+    "co2": 394.9166666666667,
+    "humidity": 26,
+    "light": 9,
+    "soilHumidity": 33.0482456140351,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 12:45:35",
+    "co2": 379.70588235294116,
+    "humidity": 25.235294117647058,
+    "light": 9.705882352941176,
+    "soilHumidity": 39.578947368421055,
+    "soilTemperature": 22.323529411764707,
+    "temperature": 24.264705882352942
+  },
+  {
+    "Timestamp": "2022-02-10 13:05:45",
+    "co2": 394.1132075471698,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 33.310824230387304,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 13:25:55",
+    "co2": 392.05882352941177,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 33.11042311661506,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 13:46:05",
+    "co2": 381.45283018867923,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 32.6395233366435,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 14:06:15",
+    "co2": 385.2830188679245,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 32.94538232373385,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 14:26:25",
+    "co2": 384.75471698113205,
+    "humidity": 26,
+    "light": 10,
+    "soilHumidity": 32.45680238331677,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 14:46:35",
+    "co2": 410.88461538461536,
+    "humidity": 26,
+    "light": 401.61538461538464,
+    "soilHumidity": 35.13765182186235,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 15:06:45",
+    "co2": 451.6909090909091,
+    "humidity": 26,
+    "light": 425.56363636363636,
+    "soilHumidity": 35.37033492822966,
+    "soilTemperature": 23,
+    "temperature": 25.563636363636363
+  },
+  {
+    "Timestamp": "2022-02-10 15:26:55",
+    "co2": 527.7307692307693,
+    "humidity": 26.076923076923077,
+    "light": 224.92307692307693,
+    "soilHumidity": 34.226720647773284,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 15:47:05",
+    "co2": 629.1666666666666,
+    "humidity": 26.037037037037038,
+    "light": 419.7962962962963,
+    "soilHumidity": 35.60428849902536,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 16:07:15",
+    "co2": 668.188679245283,
+    "humidity": 26,
+    "light": 426.35849056603774,
+    "soilHumidity": 36.38530287984112,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 16:27:25",
+    "co2": 668.52,
+    "humidity": 26.28,
+    "light": 310.12,
+    "soilHumidity": 35.54526315789472,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 16:47:35",
+    "co2": 643.0612244897959,
+    "humidity": 26,
+    "light": 225.6530612244898,
+    "soilHumidity": 34.80558539205154,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 17:07:45",
+    "co2": 656.7291666666666,
+    "humidity": 26.020833333333332,
+    "light": 428.6041666666667,
+    "soilHumidity": 36.37938596491226,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 17:27:55",
+    "co2": 696.1428571428571,
+    "humidity": 26.79591836734694,
+    "light": 415.6326530612245,
+    "soilHumidity": 35.61117078410313,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 17:48:05",
+    "co2": 745.9333333333333,
+    "humidity": 27,
+    "light": 415.4,
+    "soilHumidity": 35.15321637426903,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 18:08:15",
+    "co2": 798.0416666666666,
+    "humidity": 27.041666666666668,
+    "light": 417.0416666666667,
+    "soilHumidity": 35.38815789473684,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 18:28:25",
+    "co2": 842.2045454545455,
+    "humidity": 27.204545454545453,
+    "light": 417.40909090909093,
+    "soilHumidity": 35.150717703349265,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 18:48:35",
+    "co2": 887.063829787234,
+    "humidity": 27.95744680851064,
+    "light": 427.1276595744681,
+    "soilHumidity": 35.89249720044791,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 19:08:45",
+    "co2": 944.6444444444444,
+    "humidity": 28,
+    "light": 174.33333333333334,
+    "soilHumidity": 33.39883040935671,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 19:28:55",
+    "co2": 890.25,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 32.51196172248805,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-10 19:49:05",
+    "co2": 850.3863636363636,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 32.64354066985647,
+    "soilTemperature": 23,
+    "temperature": 25.477272727272727
+  },
+  {
+    "Timestamp": "2022-02-10 20:09:15",
+    "co2": 822.9565217391304,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.147869674185465,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-10 20:49:35",
+    "co2": 713.1428571428571,
+    "humidity": 26.666666666666668,
+    "light": 8.571428571428571,
+    "soilHumidity": 43.78947368421053,
+    "soilTemperature": 21.904761904761905,
+    "temperature": 23.80952380952381
+  },
+  {
+    "Timestamp": "2022-02-10 21:09:45",
+    "co2": 726.4545454545455,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.485167464114824,
+    "soilTemperature": 23,
+    "temperature": 24.945454545454545
+  },
+  {
+    "Timestamp": "2022-02-10 21:29:55",
+    "co2": 699.1296296296297,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.374269005847964,
+    "soilTemperature": 23,
+    "temperature": 24.11111111111111
+  },
+  {
+    "Timestamp": "2022-02-10 21:50:05",
+    "co2": 677.0566037735849,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.81330685203576,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 22:10:15",
+    "co2": 650.5471698113207,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.6782522343595,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 22:30:25",
+    "co2": 627.7169811320755,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.86097318768617,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 22:50:35",
+    "co2": 609.4814814814815,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.92202729044833,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 23:10:45",
+    "co2": 594.3333333333334,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.276315789473685,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 23:30:55",
+    "co2": 577.84,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.793684210526315,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-10 23:51:05",
+    "co2": 559.3018867924528,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.968222442899695,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 00:11:15",
+    "co2": 544.8,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.32842105263157,
+    "soilTemperature": 23,
+    "temperature": 23.96
+  },
+  {
+    "Timestamp": "2022-02-11 00:31:25",
+    "co2": 540.3541666666666,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.583333333333314,
+    "soilTemperature": 23,
+    "temperature": 23.645833333333332
+  },
+  {
+    "Timestamp": "2022-02-11 00:51:35",
+    "co2": 527.7916666666666,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.84649122807016,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 01:11:45",
+    "co2": 522.2826086956521,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.279176201373005,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 01:31:55",
+    "co2": 513.2608695652174,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.56292906178489,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 01:52:05",
+    "co2": 506.6363636363636,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.44736842105263,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 02:12:15",
+    "co2": 500.6136363636364,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.53349282296652,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 02:32:25",
+    "co2": 492.9130434782609,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.59954233409611,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 02:52:35",
+    "co2": 489.16279069767444,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.740514075887404,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 03:12:45",
+    "co2": 482.64444444444445,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.57660818713449,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 03:32:55",
+    "co2": 482.30232558139534,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.654834761321915,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 03:53:05",
+    "co2": 477.77272727272725,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.67942583732058,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 04:13:15",
+    "co2": 465.44444444444446,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.43391812865497,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 04:33:25",
+    "co2": 450.57894736842104,
+    "humidity": 27.5,
+    "light": 8.839285714285714,
+    "soilHumidity": 37.4078947368421,
+    "soilTemperature": 22.589285714285715,
+    "temperature": 22.589285714285715
+  },
+  {
+    "Timestamp": "2022-02-11 04:53:35",
+    "co2": 455.5090909090909,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.395215311004804,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 05:13:45",
+    "co2": 450.7692307692308,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.226720647773284,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 05:33:55",
+    "co2": 444.3207547169811,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.57298907646476,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 05:54:05",
+    "co2": 440.962962962963,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.10526315789474,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 06:14:15",
+    "co2": 433.8333333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.101364522417164,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 06:34:25",
+    "co2": 430.26785714285717,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 33.06390977443607,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 06:54:35",
+    "co2": 428.4807692307692,
+    "humidity": 27.71153846153846,
+    "light": 9,
+    "soilHumidity": 32.769230769230774,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 07:14:45",
+    "co2": 425.88461538461536,
+    "humidity": 27.076923076923077,
+    "light": 9,
+    "soilHumidity": 32.419028340080956,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 07:34:55",
+    "co2": 421.4074074074074,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 32.1325536062378,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-11 07:55:05",
+    "co2": 425.1111111111111,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 31.82651072124755,
+    "soilTemperature": 23,
+    "temperature": 23.796296296296298
+  },
+  {
+    "Timestamp": "2022-02-11 08:15:15",
+    "co2": 436.734693877551,
+    "humidity": 28.06122448979592,
+    "light": 201.48979591836735,
+    "soilHumidity": 33.37056928034374,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 08:35:25",
+    "co2": 452.7959183673469,
+    "humidity": 29.040816326530614,
+    "light": 9,
+    "soilHumidity": 31.35553168635876,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 08:55:35",
+    "co2": 459.29787234042556,
+    "humidity": 28.106382978723403,
+    "light": 9,
+    "soilHumidity": 31.077267637178057,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 09:15:45",
+    "co2": 469.625,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 31.00877192982458,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 09:35:55",
+    "co2": 470.5833333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 30.942982456140367,
+    "soilTemperature": 23,
+    "temperature": 24.083333333333332
+  },
+  {
+    "Timestamp": "2022-02-11 09:56:05",
+    "co2": 468.0869565217391,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 30.659038901601843,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 10:16:15",
+    "co2": 463.9166666666667,
+    "humidity": 27.708333333333332,
+    "light": 9,
+    "soilHumidity": 30.79385964912279,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 10:36:25",
+    "co2": 463.8333333333333,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 30.403508771929843,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 10:56:35",
+    "co2": 460.8,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 30.440191387559793,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 11:16:45",
+    "co2": 450.04651162790697,
+    "humidity": 27,
+    "light": 9.681818181818182,
+    "soilHumidity": 29.894736842105264,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 11:36:55",
+    "co2": 442.2244897959184,
+    "humidity": 26.448979591836736,
+    "light": 9.795918367346939,
+    "soilHumidity": 34.88292158968852,
+    "soilTemperature": 22.53061224489796,
+    "temperature": 24.489795918367346
+  },
+  {
+    "Timestamp": "2022-02-11 11:57:05",
+    "co2": 459.5272727272727,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.619138755980874,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 12:17:15",
+    "co2": 459.3720930232558,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.525091799265617,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 12:37:25",
+    "co2": 463.4651162790698,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.835985312117515,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 12:57:35",
+    "co2": 459.16129032258067,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.575551782682517,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 13:17:45",
+    "co2": 460.1063829787234,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.57222844344903,
+    "soilTemperature": 23,
+    "temperature": 25.76595744680851
+  },
+  {
+    "Timestamp": "2022-02-11 13:37:55",
+    "co2": 464.7169811320755,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.340615690168832,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 13:58:05",
+    "co2": 462,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.289989680082584,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 14:18:15",
+    "co2": 456.875,
+    "humidity": 27,
+    "light": 10.25,
+    "soilHumidity": 29.236842105263158,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 14:38:25",
+    "co2": 458.96153846153845,
+    "humidity": 27,
+    "light": 10.26923076923077,
+    "soilHumidity": 29.24493927125504,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 14:58:35",
+    "co2": 456.53846153846155,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.12955465587043,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 15:18:45",
+    "co2": 452.40816326530614,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.00107411385608,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 15:38:55",
+    "co2": 454.27659574468083,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.13997760358344,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 15:59:05",
+    "co2": 457.2708333333333,
+    "humidity": 27,
+    "light": 10.333333333333334,
+    "soilHumidity": 29.19736842105263,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 16:19:15",
+    "co2": 451.9148936170213,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 29.22060470324749,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 16:39:25",
+    "co2": 453.39130434782606,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 28.842105263157894,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 16:59:35",
+    "co2": 452.45454545454544,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 28.770334928229683,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 17:19:45",
+    "co2": 449.3720930232558,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 28.413708690330456,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 17:39:55",
+    "co2": 448.5744680851064,
+    "humidity": 27,
+    "light": 9.191489361702128,
+    "soilHumidity": 28.727883538633826,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 18:00:05",
+    "co2": 444.1111111111111,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 28.477192982456135,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 18:20:15",
+    "co2": 441.45238095238096,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 28.614035087719316,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 18:40:25",
+    "co2": 448.92857142857144,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 28.065162907268178,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 19:00:35",
+    "co2": 451.8333333333333,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 28.766081871345033,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-11 19:40:55",
+    "co2": 418.7692307692308,
+    "humidity": 24.923076923076923,
+    "light": 8.307692307692308,
+    "soilHumidity": 45.473684210526315,
+    "soilTemperature": 21.23076923076923,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 20:01:05",
+    "co2": 455.3061224489796,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 29.205155746509117,
+    "soilTemperature": 23,
+    "temperature": 25.163265306122447
+  },
+  {
+    "Timestamp": "2022-02-11 20:21:15",
+    "co2": 457.8909090909091,
+    "humidity": 27.363636363636363,
+    "light": 9,
+    "soilHumidity": 28.859330143540653,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 20:41:25",
+    "co2": 463,
+    "humidity": 27.964285714285715,
+    "light": 9,
+    "soilHumidity": 29.03759398496239,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 21:01:35",
+    "co2": 461.1272727272727,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.44114832535883,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 21:21:45",
+    "co2": 458.22641509433964,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.201588877855006,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 21:41:55",
+    "co2": 456.64,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.570526315789483,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 22:02:05",
+    "co2": 446.84444444444443,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.155555555555544,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-11 22:22:15",
+    "co2": 443.14285714285717,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.488721804511297,
+    "soilTemperature": 23,
+    "temperature": 24.285714285714285
+  },
+  {
+    "Timestamp": "2022-02-11 22:42:25",
+    "co2": 442,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.244851258581214,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 23:02:35",
+    "co2": 438,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.32894736842105,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 23:22:45",
+    "co2": 436.5,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.842105263157894,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-11 23:42:55",
+    "co2": 433.22222222222223,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.017543859649106,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 00:03:05",
+    "co2": 434.6363636363636,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.923444976076578,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 00:23:15",
+    "co2": 429.5483870967742,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.930390492359948,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 00:43:25",
+    "co2": 430.8333333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 29.09473684210527,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 01:03:35",
+    "co2": 430.5,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.914473684210527,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 01:23:45",
+    "co2": 424.7073170731707,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.356867779204116,
+    "soilTemperature": 23,
+    "temperature": 24.24390243902439
+  },
+  {
+    "Timestamp": "2022-02-12 01:43:55",
+    "co2": 419.22222222222223,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.017543859649106,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 02:04:05",
+    "co2": 422.7567567567568,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.24751066856329,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 02:24:15",
+    "co2": 415.42857142857144,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.992481203007532,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 02:44:25",
+    "co2": 414.22222222222223,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.78018575851394,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 03:24:45",
+    "co2": 414.5,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.94736842105263,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 03:44:55",
+    "co2": 413.36,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.305263157894746,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 04:05:05",
+    "co2": 410,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.541052631578932,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 04:25:15",
+    "co2": 411.625,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.144736842105264,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 04:45:25",
+    "co2": 412.1666666666667,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.546279491833047,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 05:05:35",
+    "co2": 413.2142857142857,
+    "humidity": 27.964285714285715,
+    "light": 9,
+    "soilHumidity": 27.81578947368421,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 05:25:45",
+    "co2": 412.3333333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.777777777777757,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 05:45:55",
+    "co2": 412.44444444444446,
+    "humidity": 27.555555555555557,
+    "light": 9,
+    "soilHumidity": 27.204678362573087,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 06:06:05",
+    "co2": 409.3333333333333,
+    "humidity": 27.476190476190474,
+    "light": 9,
+    "soilHumidity": 27.067669172932348,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 06:26:15",
+    "co2": 401.56,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 27.33052631578946,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 06:46:25",
+    "co2": 400.4,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 26.795789473684202,
+    "soilTemperature": 23,
+    "temperature": 25.72
+  },
+  {
+    "Timestamp": "2022-02-12 07:06:35",
+    "co2": 400.8888888888889,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 26.865497076023388,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-12 07:26:45",
+    "co2": 405.2,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 27.242105263157914,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-12 07:46:55",
+    "co2": 408.7931034482759,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 26.898496240601496,
+    "soilTemperature": 23,
+    "temperature": 26
+  },
+  {
+    "Timestamp": "2022-02-12 08:07:05",
+    "co2": 406.3529411764706,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 27.54798761609905,
+    "soilTemperature": 23,
+    "temperature": 25.941176470588236
+  },
+  {
+    "Timestamp": "2022-02-12 08:27:15",
+    "co2": 409.4736842105263,
+    "humidity": 27,
+    "light": 9,
+    "soilHumidity": 27.556786703601095,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 08:47:25",
+    "co2": 401.5,
+    "humidity": 27.333333333333332,
+    "light": 9,
+    "soilHumidity": 27.403508771929843,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 09:07:35",
+    "co2": 398.88235294117646,
+    "humidity": 27.941176470588236,
+    "light": 9,
+    "soilHumidity": 27.6780185758514,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 09:27:45",
+    "co2": 397.4,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.63157894736842,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 09:47:55",
+    "co2": 395.3809523809524,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.588972431077693,
+    "soilTemperature": 23,
+    "temperature": 25
+  },
+  {
+    "Timestamp": "2022-02-12 10:08:05",
+    "co2": 396.6190476190476,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.3483709273183,
+    "soilTemperature": 23,
+    "temperature": 24.61904761904762
+  },
+  {
+    "Timestamp": "2022-02-12 10:28:15",
+    "co2": 392.375,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.901315789473685,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 10:48:25",
+    "co2": 392.42857142857144,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.60902255639097,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 11:08:35",
+    "co2": 387,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.63157894736842,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 11:28:45",
+    "co2": 385.8,
+    "humidity": 28,
+    "light": 9.571428571428571,
+    "soilHumidity": 27.816541353383446,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 11:48:55",
+    "co2": 386.94117647058823,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 27.442724458204314,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 12:09:05",
+    "co2": 385.4583333333333,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 28.04385964912279,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 12:29:15",
+    "co2": 384.5,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 28.081871345029242,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 12:49:25",
+    "co2": 380.85714285714283,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 28.796992481202995,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 13:09:35",
+    "co2": 386.3529411764706,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 28.79876160990711,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 13:29:45",
+    "co2": 391,
+    "humidity": 28,
+    "light": 10,
+    "soilHumidity": 27.36842105263158,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 13:49:55",
+    "co2": 387.78125,
+    "humidity": 27.8125,
+    "light": 10,
+    "soilHumidity": 28.207236842105264,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-12 14:10:05",
+    "co2": 388.85185185185185,
+    "humidity": 27.74074074074074,
+    "light": 10,
+    "soilHumidity": 28.007797270955148,
+    "soilTemperature": 23,
+    "temperature": 23.85185185185185
+  },
+  {
+    "Timestamp": "2022-02-12 14:30:15",
+    "co2": 392.73333333333335,
+    "humidity": 27.866666666666667,
+    "light": 10,
+    "soilHumidity": 27.670175438596505,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 14:50:25",
+    "co2": 391.8888888888889,
+    "humidity": 27.444444444444443,
+    "light": 10,
+    "soilHumidity": 27.602339181286546,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 15:10:35",
+    "co2": 385.85714285714283,
+    "humidity": 27.142857142857142,
+    "light": 10,
+    "soilHumidity": 27.41353383458648,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 15:30:45",
+    "co2": 384.6666666666667,
+    "humidity": 27.1,
+    "light": 10,
+    "soilHumidity": 28.136842105263177,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 15:50:55",
+    "co2": 381.2413793103448,
+    "humidity": 27.137931034482758,
+    "light": 10,
+    "soilHumidity": 27.651542649727784,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 16:11:05",
+    "co2": 387.90909090909093,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 28.52312599681021,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 16:31:15",
+    "co2": 379.45454545454544,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 28.23923444976079,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 16:51:25",
+    "co2": 376.4736842105263,
+    "humidity": 27.210526315789473,
+    "light": 10,
+    "soilHumidity": 27.983379501385045,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 17:11:35",
+    "co2": 373.24,
+    "humidity": 27.08,
+    "light": 10,
+    "soilHumidity": 27.734736842105264,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 17:31:45",
+    "co2": 373.625,
+    "humidity": 27.125,
+    "light": 9.0625,
+    "soilHumidity": 27.86842105263158,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 17:51:55",
+    "co2": 371.4782608695652,
+    "humidity": 27.416666666666668,
+    "light": 9,
+    "soilHumidity": 27.986842105263158,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 18:12:05",
+    "co2": 374.2413793103448,
+    "humidity": 27.551724137931036,
+    "light": 9,
+    "soilHumidity": 28.083484573502716,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 18:32:15",
+    "co2": 372.8888888888889,
+    "humidity": 27.555555555555557,
+    "light": 9,
+    "soilHumidity": 28.18713450292398,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 18:52:25",
+    "co2": 378,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.736842105263158,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 19:32:45",
+    "co2": 356.35714285714283,
+    "humidity": 26.714285714285715,
+    "light": 8.678571428571429,
+    "soilHumidity": 36.18421052631579,
+    "soilTemperature": 22.178571428571427,
+    "temperature": 22.178571428571427
+  },
+  {
+    "Timestamp": "2022-02-12 19:52:55",
+    "co2": 366.2608695652174,
+    "humidity": 27.82608695652174,
+    "light": 9,
+    "soilHumidity": 28.096109839816947,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 20:13:05",
+    "co2": 370.5238095238095,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.140350877193,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 20:33:15",
+    "co2": 373.1818181818182,
+    "humidity": 27.90909090909091,
+    "light": 9,
+    "soilHumidity": 28.559808612440207,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 20:53:25",
+    "co2": 371.75,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.032894736842106,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 21:13:35",
+    "co2": 379.45,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.98421052631578,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 21:33:45",
+    "co2": 381,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.157894736842106,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 21:53:55",
+    "co2": 379.6666666666667,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.801169590643298,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 22:14:05",
+    "co2": 376,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.02105263157893,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 22:34:15",
+    "co2": 376.85714285714283,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.090225563909755,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 22:54:25",
+    "co2": 377.72,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.574736842105267,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 23:14:35",
+    "co2": 381.3333333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.08771929824563,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 23:34:45",
+    "co2": 383.26666666666665,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.24812030075186,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-12 23:54:55",
+    "co2": 382.3076923076923,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.07692307692306,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-13 00:15:05",
+    "co2": 385.42857142857144,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.19548872180449,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-13 00:35:15",
+    "co2": 384.875,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.282894736842106,
+    "soilTemperature": 23,
+    "temperature": 22.6875
+  },
+  {
+    "Timestamp": "2022-02-13 00:55:25",
+    "co2": 383.14285714285717,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.939849624060162,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 01:15:35",
+    "co2": 380.44,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.88631578947369,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 01:35:45",
+    "co2": 384.55555555555554,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.94736842105263,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 01:55:55",
+    "co2": 386,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.66917293233081,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 02:16:05",
+    "co2": 381.7894736842105,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.7174515235457,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 02:36:15",
+    "co2": 377.96,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.473684210526315,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 03:36:45",
+    "co2": 376.22727272727275,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.444976076555,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 03:56:55",
+    "co2": 377.2352941176471,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.030959752322,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 04:17:05",
+    "co2": 374.6,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.507368421052647,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 04:37:15",
+    "co2": 371.08,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.410526315789483,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 04:57:25",
+    "co2": 366.7931034482759,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.980036297640638,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 05:17:35",
+    "co2": 371.6333333333333,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.642105263157887,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 05:37:45",
+    "co2": 372.94444444444446,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 28.228070175438578,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 05:57:55",
+    "co2": 373.1111111111111,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.56140350877195,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 06:18:05",
+    "co2": 373.6551724137931,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.168784029038093,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 06:38:15",
+    "co2": 373.94594594594594,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.027027027027017,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 06:58:25",
+    "co2": 372.38461538461536,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.906882591093133,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 07:18:35",
+    "co2": 375.27777777777777,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.976608187134506,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 07:38:45",
+    "co2": 369.125,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.789473684210527,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 07:58:55",
+    "co2": 364.4375,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 27.092105263157894,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 08:19:05",
+    "co2": 363.27272727272725,
+    "humidity": 28.181818181818183,
+    "light": 9,
+    "soilHumidity": 27.846889952153102,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 08:39:15",
+    "co2": 364.64285714285717,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 26.94736842105263,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 08:59:25",
+    "co2": 371,
+    "humidity": 28.916666666666668,
+    "light": 9,
+    "soilHumidity": 26.526315789473685,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 09:19:35",
+    "co2": 372.7368421052632,
+    "humidity": 29,
+    "light": 9,
+    "soilHumidity": 26.77562326869807,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 09:39:45",
+    "co2": 365.7368421052632,
+    "humidity": 29,
+    "light": 9.68421052631579,
+    "soilHumidity": 26.975069252077542,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 09:59:55",
+    "co2": 365.3,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.757894736842086,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 10:20:05",
+    "co2": 372,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.76631578947371,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 10:40:15",
+    "co2": 370.27272727272725,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.45454545454547,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 11:00:25",
+    "co2": 371.4,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 27.747368421052624,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 11:40:45",
+    "co2": 344.93333333333334,
+    "humidity": 27.066666666666666,
+    "light": 9.333333333333334,
+    "soilHumidity": 41.88070175438595,
+    "soilTemperature": 21.466666666666665,
+    "temperature": 20.533333333333335
+  },
+  {
+    "Timestamp": "2022-02-13 12:00:55",
+    "co2": 367.06451612903226,
+    "humidity": 29,
+    "light": 10.064516129032258,
+    "soilHumidity": 26.47198641765705,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 12:21:05",
+    "co2": 370.95,
+    "humidity": 29,
+    "light": 10.05,
+    "soilHumidity": 27.010526315789466,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 12:41:15",
+    "co2": 368.3030303030303,
+    "humidity": 29,
+    "light": 10.121212121212121,
+    "soilHumidity": 26.68580542264753,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 13:01:25",
+    "co2": 367.9047619047619,
+    "humidity": 29,
+    "light": 10.380952380952381,
+    "soilHumidity": 26.771929824561422,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 13:21:35",
+    "co2": 365.80555555555554,
+    "humidity": 29,
+    "light": 10.228571428571428,
+    "soilHumidity": 26.827067669172912,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 13:41:45",
+    "co2": 362.3636363636364,
+    "humidity": 29,
+    "light": 10.045454545454545,
+    "soilHumidity": 26.784688995215316,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 14:01:55",
+    "co2": 366.2083333333333,
+    "humidity": 29,
+    "light": 10.458333333333334,
+    "soilHumidity": 26.894736842105264,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 14:22:05",
+    "co2": 364.81481481481484,
+    "humidity": 29,
+    "light": 10.592592592592593,
+    "soilHumidity": 26.96686159844055,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 14:42:15",
+    "co2": 361.57142857142856,
+    "humidity": 29,
+    "light": 10.666666666666666,
+    "soilHumidity": 26.115288220551378,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 15:02:25",
+    "co2": 361.8,
+    "humidity": 29,
+    "light": 10.08,
+    "soilHumidity": 26.522105263157897,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 15:22:35",
+    "co2": 362.75,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 27.136842105263177,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 15:42:45",
+    "co2": 366.11764705882354,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.650154798761594,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 16:02:55",
+    "co2": 366,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.842105263157894,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 16:23:05",
+    "co2": 365.3103448275862,
+    "humidity": 29,
+    "light": 9.96551724137931,
+    "soilHumidity": 26.555353901996376,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 16:43:15",
+    "co2": 367.89473684210526,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.753462603878113,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 17:03:25",
+    "co2": 361.05882352941177,
+    "humidity": 29,
+    "light": 10,
+    "soilHumidity": 26.996904024767804,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 17:23:35",
+    "co2": 362.76190476190476,
+    "humidity": 29,
+    "light": 9.285714285714286,
+    "soilHumidity": 26.686716791979958,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 17:43:45",
+    "co2": 356.38461538461536,
+    "humidity": 29.653846153846153,
+    "light": 9.538461538461538,
+    "soilHumidity": 26.60728744939273,
+    "soilTemperature": 23,
+    "temperature": 21.692307692307693
+  },
+  {
+    "Timestamp": "2022-02-13 18:03:55",
+    "co2": 357.3636363636364,
+    "humidity": 29.636363636363637,
+    "light": 9,
+    "soilHumidity": 26.736842105263158,
+    "soilTemperature": 23,
+    "temperature": 21.727272727272727
+  },
+  {
+    "Timestamp": "2022-02-13 18:24:05",
+    "co2": 358.3333333333333,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.842105263157894,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-13 18:44:15",
+    "co2": 355,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.070175438596472,
+    "soilTemperature": 23,
+    "temperature": 21.333333333333332
+  },
+  {
+    "Timestamp": "2022-02-13 19:44:45",
+    "co2": 325.2307692307692,
+    "humidity": 27.692307692307693,
+    "light": 8.307692307692308,
+    "soilHumidity": 43.76518218623481,
+    "soilTemperature": 21.23076923076923,
+    "temperature": 19.384615384615383
+  },
+  {
+    "Timestamp": "2022-02-13 20:04:55",
+    "co2": 355.5416666666667,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.232456140350894,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 20:25:05",
+    "co2": 356.54545454545456,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 25.741626794258366,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 20:45:15",
+    "co2": 351.8235294117647,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.705882352941156,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 21:05:25",
+    "co2": 349.8301886792453,
+    "humidity": 29.962264150943398,
+    "light": 9,
+    "soilHumidity": 26.327706057596803,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 21:25:35",
+    "co2": 354.64150943396226,
+    "humidity": 29.81132075471698,
+    "light": 9,
+    "soilHumidity": 26.240317775571,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 21:45:45",
+    "co2": 354.39622641509436,
+    "humidity": 29.358490566037737,
+    "light": 9,
+    "soilHumidity": 26.30784508440913,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 22:05:55",
+    "co2": 356.3333333333333,
+    "humidity": 29.166666666666668,
+    "light": 9,
+    "soilHumidity": 26.07602339181286,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 22:26:05",
+    "co2": 358.0192307692308,
+    "humidity": 29.51923076923077,
+    "light": 9,
+    "soilHumidity": 25.97975708502025,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 22:46:15",
+    "co2": 358.3636363636364,
+    "humidity": 29.927272727272726,
+    "light": 9,
+    "soilHumidity": 25.934928229665086,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 23:06:25",
+    "co2": 360.4166666666667,
+    "humidity": 29.958333333333332,
+    "light": 9,
+    "soilHumidity": 25.982456140350894,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 23:26:35",
+    "co2": 357.24,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 25.98315789473686,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-13 23:46:45",
+    "co2": 354.75,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.342105263157894,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 00:06:55",
+    "co2": 352.74468085106383,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.08510638297871,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 00:27:05",
+    "co2": 352.0652173913044,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.258581235697946,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 00:47:15",
+    "co2": 351.8666666666667,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.2315789473684,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 01:07:25",
+    "co2": 351.30434782608694,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.274599542334105,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 01:27:35",
+    "co2": 353.48936170212767,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.03583426651738,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 01:47:45",
+    "co2": 357.95454545454544,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.150717703349265,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 02:07:55",
+    "co2": 354.1777777777778,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 26.325146198830417,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 02:28:05",
+    "co2": 354.1818181818182,
+    "humidity": 30.045454545454547,
+    "light": 9,
+    "soilHumidity": 26.411483253588525,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 02:48:15",
+    "co2": 353.8857142857143,
+    "humidity": 30.65714285714286,
+    "light": 9,
+    "soilHumidity": 25.621052631578955,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 03:28:35",
+    "co2": 334.2142857142857,
+    "humidity": 28.785714285714285,
+    "light": 8.357142857142858,
+    "soilHumidity": 42.36090225563908,
+    "soilTemperature": 21.357142857142858,
+    "temperature": 19.5
+  },
+  {
+    "Timestamp": "2022-02-14 03:48:45",
+    "co2": 358.01724137931035,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 26.402903811252287,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 04:08:55",
+    "co2": 358.22222222222223,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 26.08771929824563,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 04:29:05",
+    "co2": 358.7450980392157,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 25.570691434468532,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 04:49:15",
+    "co2": 355.09090909090907,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 25.399043062200974,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 05:09:25",
+    "co2": 352.2181818181818,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 25.823923444976092,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 05:29:35",
+    "co2": 356.75,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 26.08995215311006,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 05:49:45",
+    "co2": 354.88461538461536,
+    "humidity": 31,
+    "light": 9,
+    "soilHumidity": 25.6444885799404,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 06:09:55",
+    "co2": 364.3272727272727,
+    "humidity": 30.763636363636362,
+    "light": 9,
+    "soilHumidity": 25.867942583732034,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 06:30:05",
+    "co2": 365.9622641509434,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 25.906653426017854,
+    "soilTemperature": 23,
+    "temperature": 21
+  },
+  {
+    "Timestamp": "2022-02-14 06:50:15",
+    "co2": 364.12280701754383,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 25.761772853185615,
+    "soilTemperature": 23,
+    "temperature": 21.157894736842106
+  },
+  {
+    "Timestamp": "2022-02-14 07:10:25",
+    "co2": 367.79245283018867,
+    "humidity": 30,
+    "light": 20.62264150943396,
+    "soilHumidity": 25.147964250248247,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-14 07:30:35",
+    "co2": 388.3469387755102,
+    "humidity": 30.816326530612244,
+    "light": 97.3265306122449,
+    "soilHumidity": 25.78302900107409,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-14 07:50:45",
+    "co2": 394.9591836734694,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 24.64446831364124,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-14 08:10:55",
+    "co2": 393.95652173913044,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 24.66819221967963,
+    "soilTemperature": 23,
+    "temperature": 22
+  },
+  {
+    "Timestamp": "2022-02-14 08:31:05",
+    "co2": 394.6170212765957,
+    "humidity": 30,
+    "light": 9,
+    "soilHumidity": 24.389697648376284,
+    "soilTemperature": 23,
+    "temperature": 22.829787234042552
+  },
+  {
+    "Timestamp": "2022-02-14 08:51:15",
+    "co2": 390.6326530612245,
+    "humidity": 29.918367346938776,
+    "light": 9,
+    "soilHumidity": 24.021482277121372,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-14 09:11:25",
+    "co2": 395.4468085106383,
+    "humidity": 29.170212765957448,
+    "light": 9,
+    "soilHumidity": 24.2441209406495,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-14 09:31:35",
+    "co2": 393.77777777777777,
+    "humidity": 29,
+    "light": 9,
+    "soilHumidity": 24.12397660818715,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-14 09:51:45",
+    "co2": 388.7391304347826,
+    "humidity": 29,
+    "light": 9,
+    "soilHumidity": 24.118993135011422,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-14 10:11:55",
+    "co2": 389.5744680851064,
+    "humidity": 29,
+    "light": 9,
+    "soilHumidity": 23.753639417693147,
+    "soilTemperature": 23,
+    "temperature": 23
+  },
+  {
+    "Timestamp": "2022-02-14 10:32:05",
+    "co2": 390.6341463414634,
+    "humidity": 28.51219512195122,
+    "light": 9,
+    "soilHumidity": 23.64569961489087,
+    "soilTemperature": 23,
+    "temperature": 23.048780487804876
+  },
+  {
+    "Timestamp": "2022-02-14 10:52:15",
+    "co2": 387.6666666666667,
+    "humidity": 28,
+    "light": 9,
+    "soilHumidity": 24.17543859649121,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 11:32:35",
+    "co2": 371.8863636363636,
+    "humidity": 27.363636363636363,
+    "light": 8.795454545454545,
+    "soilHumidity": 28.801435406698577,
+    "soilTemperature": 22.477272727272727,
+    "temperature": 23.454545454545453
+  },
+  {
+    "Timestamp": "2022-02-14 11:52:45",
+    "co2": 378.75925925925924,
+    "humidity": 28,
+    "light": 9.314814814814815,
+    "soilHumidity": 23.12865497076023,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 12:12:55",
+    "co2": 381.3207547169811,
+    "humidity": 27.962264150943398,
+    "light": 10,
+    "soilHumidity": 23.539225422045664,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 12:33:05",
+    "co2": 377.7818181818182,
+    "humidity": 27.145454545454545,
+    "light": 10,
+    "soilHumidity": 23.207655502392345,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 12:53:15",
+    "co2": 375.11538461538464,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 23.309716599190278,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 13:13:25",
+    "co2": 381.54716981132077,
+    "humidity": 27,
+    "light": 10.075471698113208,
+    "soilHumidity": 23.211519364448865,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 13:33:35",
+    "co2": 382.14814814814815,
+    "humidity": 27,
+    "light": 10,
+    "soilHumidity": 23.719298245614052,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 13:53:45",
+    "co2": 376.36,
+    "humidity": 27,
+    "light": 9.8,
+    "soilHumidity": 23.498947368421028,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 14:13:55",
+    "co2": 376.9433962264151,
+    "humidity": 26.849056603773583,
+    "light": 10,
+    "soilHumidity": 23.53326713008937,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 14:34:05",
+    "co2": 380.2641509433962,
+    "humidity": 26.58490566037736,
+    "light": 107.16981132075472,
+    "soilHumidity": 23.775571002979152,
+    "soilTemperature": 23,
+    "temperature": 24
+  },
+  {
+    "Timestamp": "2022-02-14 14:54:15",
+    "co2": 412.48979591836735,
+    "humidity": 26.163265306122447,
+    "light": 10.040816326530612,
+    "soilHumidity": 23.295381310418918,
+    "soilTemperature": 23,
+    "temperature": 24
+  }
+]

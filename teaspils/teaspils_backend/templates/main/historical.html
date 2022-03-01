@@ -39,7 +39,7 @@
                     <a class="nav-link" href="#temperature_area" role="tab" data-toggle="pill">{% blocktrans %}Temperature{% endblocktrans %} (ºC)</a>
                 </li>
                 <li>
-                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">{% blocktrans %}Noise{% endblocktrans %} (db)</a>
+                    <a class="nav-link" href="#noise_area" role="tab" data-toggle="pill">{% blocktrans %}Soil Humidity{% endblocktrans %} (%)</a>
                 </li>
                 <li>
                     <a class="nav-link" href="#humidity_area" role="tab" data-toggle="pill">{% blocktrans %}Humidity{% endblocktrans %} (%)</a>
@@ -76,7 +76,7 @@
                                 </div>
                                 <div id="first-options" class="dropdown-menu" aria-labelledby="first-dropdown">
                                     <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Noise{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Soil Humidity{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
@@ -91,7 +91,7 @@
                                 </div>
                                 <div id="second-options" class="dropdown-menu" aria-labelledby="second-dropdown">
                                     <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Noise{% endblocktrans %}</a>
+                                    <a class="dropdown-item" href="#">{% blocktrans %}Soil Humidity{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
                                     <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
@@ -134,9 +134,9 @@
 
 
     for (let i = 0; i < history.length; i++) {
-        times.push(new Date(history[i]['timestamp']));
+        times.push(new Date(history[i]['Timestamp']));
         temps.push(history[i]['temperature']);
-        noises.push(history[i]['noise']);
+        noises.push(history[i]['soilHumidity']);
         co2s.push(history[i]['co2']);
         lights.push(history[i]['light']);
         hums.push(history[i]['humidity']);
@@ -160,10 +160,10 @@
     var trace_noise = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Noise (db)',
+        name: 'Soil Humidity (%)',
         x: times,
         y: noises,
-        text: noises.map(function (value) { return `Noise: ${value} db`; }),
+        text: noises.map(function (value) { return `Soil H.: ${value} %`; }),
         hoverinfo: 'text',
         line: { color: '#666666', width: 8 },
         marker: { color: '#666666', size: 12 },

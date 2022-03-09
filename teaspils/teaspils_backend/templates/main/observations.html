@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
 
 {% load static %}
+
+{% load i18n %}
+
 {% load imagefit %}
 
 {% block content %}
@@ -23,10 +26,10 @@
     <div class="d-flex flex-row justify-content-center mt-3">
         <div class="col-6">
             <button type="button" class="btn btn-primary btn-lg btn-block"
-                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">Timeline</button>
+                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">{% blocktrans %}Timeline{% endblocktrans %}</button>
     </div>
         <div class=" col-6">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block" disabled>Observations</button>
+                <button type="button" class="btn btn-outline-success btn-lg btn-block" disabled>{% blocktrans %}Observations{% endblocktrans %}</button>
         </div>
     </div>
 </div>
@@ -52,7 +55,7 @@
                 <div class="row">
                     <div class="col-1"></div>
                     <div class="col-10">
-                        <h2>Name or group name:</h2>
+                        <h2>{% blocktrans %}Name or group name:{% endblocktrans %}</h2>
                     </div>
                     <div class="col-3"></div>
                 </div>
@@ -67,7 +70,7 @@
                 <div class="row" style="display: flex; align-content: space-between; margin-top: 10px 0px;">
                     <div class="col-1"></div>
                     <div class="col-10">
-                        <h2>Observations:</h2>
+                        <h2>{% blocktrans %}Observations:{% endblocktrans %}</h2>
                     </div>
 
                     <div class="col-1"></div>
@@ -85,7 +88,7 @@
                         <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
                     </div>
                     <div class="col-2">
-                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="Save">
+                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
                     </div>
                     <div class="col-7"></div>
                 </div>

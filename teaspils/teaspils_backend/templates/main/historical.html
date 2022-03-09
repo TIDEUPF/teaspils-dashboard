@@ -153,8 +153,8 @@
         y: temps,
         text: temps.map(function (value) { return `Temperature: ${value} Cº`; }),
         hoverinfo: 'text',
-        line: { color: '#f1bdff', width: 8 },
-        marker: { color: '#d9bdff', size: 12 },
+        line: { color: '#f1bdff', width: 3 },
+        marker: { color: '#d9bdff', size: 5 },
     }
 
     var trace_noise = {
@@ -165,8 +165,8 @@
         y: noises,
         text: noises.map(function (value) { return `Soil H.: ${value} %`; }),
         hoverinfo: 'text',
-        line: { color: '#666666', width: 8 },
-        marker: { color: '#666666', size: 12 },
+        line: { color: '#666666', width: 3 },
+        marker: { color: '#666666', size: 5 },
         layout: {
             xaxis: {
                 tickformat: "%H/%M"
@@ -182,8 +182,8 @@
         y: co2s,
         text: co2s.map(function (value) { return `Co2: ${value} ppm`; }),
         hoverinfo: 'text',
-        line: { color: '#9cbcff', width: 8 },
-        marker: { color: '#9cbcff', size: 12 },
+        line: { color: '#9cbcff', width: 3 },
+        marker: { color: '#9cbcff', size: 5 },
     }
 
     var trace_light = {
@@ -194,8 +194,8 @@
         y: lights,
         text: lights.map(function (value) { return `Light: ${value} lux`; }),
         hoverinfo: 'text',
-        line: { color: '#ffa2a2', width: 8 },
-        marker: { color: '#ffa2a2', size: 12 },
+        line: { color: '#ffa2a2', width: 3 },
+        marker: { color: '#ffa2a2', size: 5 },
     }
 
     var trace_hum = {
@@ -206,8 +206,8 @@
         y: hums,
         text: hums.map(function (value) { return `Humidity: ${value} %`; }),
         hoverinfo: 'text',
-        line: { color: '#bdfff1', width: 8 },
-        marker: { color: '#bdfff1', size: 12 },
+        line: { color: '#bdfff1', width: 3 },
+        marker: { color: '#bdfff1', size: 5 },
     }
 
     plot_all_div = document.getElementById('plt_all');
@@ -309,27 +309,35 @@
     }, { responsive: true });
 
     let m1 = 'Temperature'
-    let m2 = 'Noise'
+    let m2 = 'Soil Humidity'
 
     $('#first-options a').on('click', function () {
       m1 = $(this).text();
-      compare_measures(m1, m2)
+      console.log("comparing " + m1 + " - " + m2);
+      compare_measures(m1, m2);
     });
 
     $('#second-options a').on('click', function () {
       m2 = $(this).text();
-      compare_measures(m1, m2)
+      console.log("comparing " + m1 + " - " + m2);
+      compare_measures(m1, m2);
     });
 
     function compare_measures(m1, m2) {
         let traces_dict = {
             'Temperature': trace_temp,
-            'Noise': trace_noise,
+            'Temperatura' : trace_temp,
+            'Soil Humidity': trace_noise,
+            'Humedad del suelo': trace_noise,
             'Co2': trace_co2,
             'Light': trace_light,
-            'Humidity': trace_hum
+            'Iluminación': trace_light,
+            'Humidity': trace_hum,
+            'Humedad' : trace_hum
         }
-
+        
+        console.log("1: "+ traces_dict[m1]);
+        console.log("2: "+ traces_dict[m2]);
         plot_compare_div = document.getElementById('plt_compare');
         Plotly.newPlot(plot_compare_div, [traces_dict[m1], traces_dict[m2]], {
             margin: { t: 15 },

@@ -1,0 +1,82 @@
+<div id="settings" class="col-3">
+    <div class="accordion accordion-flush open" id="settings-accordion">
+        <div class="accordion-item">
+            <h4 class="accordion-header m-0" id="headingOne">
+                <button class=" btn btn-secondary accordion-button" style="display: block; width: 100%;" type="button"
+                    data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    {% blocktrans %}Plant Settings{% endblocktrans %}
+                </button>
+            </h4>
+            <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne"
+                data-parent="#settings-accordion">
+                <div class="card accordion-body p-3">
+                    <div class="row">
+                        <div id='limits-setting' class="col">
+                            <div class="row">
+                                <h3 id='date'></h3>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <h4 class="mr-3">{% blocktrans %}Lower Limit{% endblocktrans %}</h4>
+                                    <h4 class="mr-3 ml-3">{% blocktrans %}Upper Limit{% endblocktrans %}</h4>
+                                    <h4 class="mr-3 ml-3">{% blocktrans %}Update graphic{% endblocktrans %}</h4>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <input class="input-limit" id="myInputLowT" type="number" size="1" value={{lowT}} />
+                                    <input class="input-limit" id="myInputHighT" type="number" size="1"
+                                        value={{highT}} />
+                                    <button class="btn btn-secondary input-btn" id="inputButtonT">{% blocktrans %}Temp{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <input class="input-limit" id="myInputLowNoise" type="number" size="1"
+                                        value={{lowN}} />
+                                    <input class="input-limit" id="myInputHighNoise" type="number" size="1"
+                                        value={{highN}} />
+                                    <button class="btn btn-secondary input-btn" id="inputButtonNoise">{% blocktrans %}Soil Hum.{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <input class="input-limit" id="myInputLowCO2" type="number" size="1"
+                                        value={{lowC}} />
+                                    <input class="input-limit" id="myInputHighCO2" type="number" size="1"
+                                        value={{highC}} />
+                                    <button class="btn btn-secondary input-btn" id="inputButtonCO2">{% blocktrans %}Co2{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <input class="input-limit" id="myInputLowHUM" type="number" size="1"
+                                        value={{lowH}} />
+                                    <input class="input-limit" id="myInputHighHUM" type="number" size="1"
+                                        value={{highH}} />
+                                    <button class="btn btn-secondary input-btn" id="inputButtonHUM">{% blocktrans %}Hum{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="button-container">
+                                    <input class="input-limit" id="myInputLowIL" type="number" size="1"
+                                        value={{lowI}} />
+                                    <input class="input-limit" id="myInputHighIL" type="number" size="1"
+                                        value={{highI}} />
+                                    <button class="btn btn-secondary input-btn" id="inputButtonIL">{% blocktrans %}Light{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="mt-2 button-container">
+                                    <button id="saveSettingsButton" class="btn btn-info ml-2">{% blocktrans %}Save Settings{% endblocktrans %}</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>

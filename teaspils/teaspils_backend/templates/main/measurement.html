@@ -2,6 +2,8 @@
 
 {% load static %}
 
+{% load i18n %}
+
 {% block content %}
 <div class="cointainer">
     <!-- <div class="row">
@@ -16,11 +18,11 @@
     <div class="d-flex flex-row justify-content-center m-3">
         <div class="col-6">
             <button type="button" class="btn btn-primary btn-lg btn-block"
-                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">Timeline</button>
+                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">{% blocktrans %}Timeline{% endblocktrans %}</button>
         </div>
         <div class=" col-6">
                 <button type=" button" class="btn btn-success btn-lg btn-block"
-                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">Observations</button>
+                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">{% blocktrans %}Observations{% endblocktrans %}</button>
         </div>
     </div>
 </div>
@@ -43,8 +45,8 @@
     <div class="col-3"></div>
 </div> -->
 <div class="row p-3 ml-3">
-    <h5 style="color: gray;">Measures taken at:
-        <span style="color:red">{{timestamp}}</span> for the plant:
+    <h5 style="color: gray;">{% blocktrans %}Measures taken at:{% endblocktrans %}
+        <span style="color:red">{{timestamp}}</span>{% blocktrans %} for the plant:{% endblocktrans %}
         <span style="color:red">{{alias}}</span>
     </h5>
 </div>
@@ -57,53 +59,53 @@
                         <h3 id='date'></h3>
                     </div>
                     <div class="row">
-                        <h4>Plant Settings</h4>
+                        <h4>{% blocktrans %}Plant Settings{% endblocktrans %}</h4>
                     </div>
                     <div class="row">
                         <div class="button-container">
-                            <h4 class="mr-3">Lower Limit</h4>
-                            <h4 class="mr-3 ml-3">Upper Limit</h4>
-                            <h4 class="mr-3 ml-3">Update graphic</h4>
+                            <h4 class="mr-3">{% blocktrans %}Lower Limit{% endblocktrans %}</h4>
+                            <h4 class="mr-3 ml-3">{% blocktrans %}Upper Limit{% endblocktrans %}</h4>
+                            <h4 class="mr-3 ml-3">{% blocktrans %}Update graphic{% endblocktrans %}</h4>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowT" type="number" size="1" value={{lowT}} />
                             <input class="input-limit" id="myInputHighT" type="number" size="1" value={{highT}} />
-                            <button class="btn btn-secondary input-btn" id="inputButtonT">Temp</button>
+                            <button class="btn btn-secondary input-btn" id="inputButtonT">{% blocktrans %}Temp{% endblocktrans %}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowNoise" type="number" size="1" value={{lowN}} />
                             <input class="input-limit" id="myInputHighNoise" type="number" size="1" value={{highN}} />
-                            <button class="btn btn-secondary input-btn" id="inputButtonNoise">Soil Hum.</button>
+                            <button class="btn btn-secondary input-btn" id="inputButtonNoise">{% blocktrans %}Soil Hum.{% endblocktrans %}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowCO2" type="number" size="1" value={{lowC}} />
                             <input class="input-limit" id="myInputHighCO2" type="number" size="1" value={{highC}} />
-                            <button class="btn btn-secondary input-btn" id="inputButtonCO2">Co2</button>
+                            <button class="btn btn-secondary input-btn" id="inputButtonCO2">{% blocktrans %}Co2{% endblocktrans %}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowHUM" type="number" size="1" value={{lowH}} />
                             <input class="input-limit" id="myInputHighHUM" type="number" size="1" value={{highH}} />
-                            <button class="btn btn-secondary input-btn" id="inputButtonHUM">Hum</button>
+                            <button class="btn btn-secondary input-btn" id="inputButtonHUM">{% blocktrans %}Hum{% endblocktrans %}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="button-container">
                             <input class="input-limit" id="myInputLowIL" type="number" size="1" value={{lowI}} />
                             <input class="input-limit" id="myInputHighIL" type="number" size="1" value={{highI}} />
-                            <button class="btn btn-secondary input-btn" id="inputButtonIL">Light</button>
+                            <button class="btn btn-secondary input-btn" id="inputButtonIL">{% blocktrans %}Light{% endblocktrans %}</button>
                         </div>
                     </div>
                     <div class="row">
                         <div class="mt-2 button-container">
-                            <button id="saveSettingsButton" class="btn btn-info ml-2">Save Settings</button>
+                            <button id="saveSettingsButton" class="btn btn-info ml-2">{% blocktrans %}Save Settings{% endblocktrans %}</button>
                         </div>
                     </div>
                 </div>
@@ -141,7 +143,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2 id="temp-input">Temp. [ºC]</h2>
+                        <h2 id="temp-input">{% blocktrans %}Temp. [ºC]{% endblocktrans %}</h2>
                     </div>
                 </div>
             </div>
@@ -168,7 +170,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Soil Hum [%]</h2>
+                        <h2>{% blocktrans %}Soil Hum [%]{% endblocktrans %}</h2>
                     </div>
                 </div>
             </div>
@@ -194,7 +196,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Co2 [ppm]</h2>
+                        <h2>{% blocktrans %}Co2 [ppm]{% endblocktrans %}</h2>
                     </div>
                 </div>
             </div>
@@ -220,7 +222,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Humidity [%]</h2>
+                        <h2>{% blocktrans %}Humidity [%]{% endblocktrans %}</h2>
                     </div>
                 </div>
             </div>
@@ -246,7 +248,7 @@
                         </ul>
                     </div>
                     <div class="down">
-                        <h2>Light [lux]</h2>
+                        <h2>{% blocktrans %}Light [lux]{% endblocktrans %}</h2>
                     </div>
                 </div>
             </div>

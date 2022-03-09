@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-03-02 18:14+0100\n"
+"POT-Creation-Date: 2022-03-09 13:07+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -377,6 +377,7 @@ msgstr "Humedad"
 #: .\teaspils_backend\templates\main\historical.html:80
 #: .\teaspils_backend\templates\main\historical.html:95
 #: .\teaspils_backend\templates\main\measurement.html:89
+#: .\teaspils_backend\templates\main\settings.html:48
 msgid "Co2"
 msgstr "Co2"
 
@@ -384,6 +385,7 @@ msgstr "Co2"
 #: .\teaspils_backend\templates\main\historical.html:81
 #: .\teaspils_backend\templates\main\historical.html:96
 #: .\teaspils_backend\templates\main\measurement.html:103
+#: .\teaspils_backend\templates\main\settings.html:66
 msgid "Light"
 msgstr "Iluminación"
 
@@ -409,7 +411,6 @@ msgid "No alias"
 msgstr "Sin alias"
 
 #: .\teaspils_backend\templates\main\index.html:24
-#| msgid "Plant alias: "
 msgid "Plant id"
 msgstr "Id de la planta: "
 
@@ -426,40 +427,72 @@ msgid "Measures taken at:"
 msgstr "Medidas tomadas el:"
 
 #: .\teaspils_backend\templates\main\measurement.html:49
-msgid "for the plant:"
-msgstr "para la planta: "
+msgid " for the plant:"
+msgstr " para la planta: "
 
 #: .\teaspils_backend\templates\main\measurement.html:62
+#: .\teaspils_backend\templates\main\settings.html:7
 msgid "Plant Settings"
 msgstr "Configuración de la planta"
 
 #: .\teaspils_backend\templates\main\measurement.html:66
+#: .\teaspils_backend\templates\main\settings.html:20
 msgid "Lower Limit"
 msgstr "Límite inferior"
 
 #: .\teaspils_backend\templates\main\measurement.html:67
+#: .\teaspils_backend\templates\main\settings.html:21
 msgid "Upper Limit"
 msgstr "Límite superior"
 
 #: .\teaspils_backend\templates\main\measurement.html:68
+#: .\teaspils_backend\templates\main\settings.html:22
 msgid "Update graphic"
 msgstr "Actualizar gráfico"
 
 #: .\teaspils_backend\templates\main\measurement.html:75
+#: .\teaspils_backend\templates\main\settings.html:30
 msgid "Temp"
 msgstr "Temp"
 
 #: .\teaspils_backend\templates\main\measurement.html:82
+#: .\teaspils_backend\templates\main\settings.html:39
 msgid "Soil Hum."
 msgstr "Hum. suelo"
 
 #: .\teaspils_backend\templates\main\measurement.html:96
+#: .\teaspils_backend\templates\main\settings.html:57
 msgid "Hum"
 msgstr "Hum"
 
 #: .\teaspils_backend\templates\main\measurement.html:108
+#: .\teaspils_backend\templates\main\settings.html:71
 msgid "Save Settings"
 msgstr "Guardar configuración"
+
+#: .\teaspils_backend\templates\main\measurement.html:146
+msgid "Temp. [ºC]"
+msgstr "Temp. [ºC]"
+
+#: .\teaspils_backend\templates\main\measurement.html:173
+#| msgid "Soil Hum."
+msgid "Soil Hum [%%]"
+msgstr "Hum. suelo [%%]"
+
+#: .\teaspils_backend\templates\main\measurement.html:199
+#| msgid "Co2 "
+msgid "Co2 [ppm]"
+msgstr "Co2 [ppm]"
+
+#: .\teaspils_backend\templates\main\measurement.html:225
+#| msgid "Humidity"
+msgid "Humidity [%%]"
+msgstr "Humedad [%%]"
+
+#: .\teaspils_backend\templates\main\measurement.html:251
+#| msgid "Light "
+msgid "Light [lux]"
+msgstr "Iluminación [lux]"
 
 #: .\teaspils_backend\templates\main\observations.html:58
 msgid "Name or group name:"
@@ -484,12 +517,6 @@ msgstr "Guardar"
 
 #~ msgid " Noise "
 #~ msgstr "Ruido"
-
-#~ msgid "Co2 "
-#~ msgstr "Co2"
-
-#~ msgid "Light "
-#~ msgstr "Iluminación"
 
 #~ msgid "Hello"
 #~ msgstr "Hola"

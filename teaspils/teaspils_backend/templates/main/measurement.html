@@ -22,7 +22,7 @@
         </div>
         <div class=" col-6">
                 <button type=" button" class="btn btn-success btn-lg btn-block"
-                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">{% blocktrans %}Observations{% endblocktrans %}</button>
+                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">{% blocktrans %}Plant Observations{% endblocktrans %}</button>
         </div>
     </div>
 </div>
@@ -53,6 +53,12 @@
 <div class="row m-2">
     <div id="settings" class="col-3">
         <div class="card p-4">
+            <h3>{% blocktrans %}Make and read observations for this measure!{% endblocktrans %} <span class="badge badge-danger">{% blocktrans %}NEW!{% endblocktrans %}</span></h3>
+            
+            <button type=" button" class="btn btn-info btn-lg btn-block"
+            onclick="window.location.href='/teaspils/plant/{{plant_id}}/measureobs/{{timestamp}}'">{% blocktrans %}Measure observations{% endblocktrans %}</button>
+        </div>
+        <div class="card p-2">
             <div class="row">
                 <div id='limits-setting' class="col">
                     <div class="row">
@@ -153,9 +159,9 @@
                     <div class="chart-wrapper">
                         <ul class="chart-y">
                             <li></li>
-                            <li id="label_noise_h">{{lowN}}</li>
+                            <li id="label_noise_h">{{highN}}</li>
                             <li id="label_noise_m"> </li>
-                            <li id="label_noise_l">{{highN}}</li>
+                            <li id="label_noise_l">{{lowN}}</li>
                             <li></li>
                         </ul>
                         <ul class="chart-x">

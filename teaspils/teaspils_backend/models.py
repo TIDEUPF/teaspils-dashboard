@@ -1,5 +1,6 @@
 from datetime import datetime
 import json
+import re
 from django.db import models
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.conf import settings as django_settings
@@ -63,6 +64,18 @@ class Observation(models.Model):
 
     def __str__(self) -> str:
         return f'Observation by {self.author} @ {self.timestamp}'
+
+class MeasureObservation(models.Model):
+    author = models.TextField(max_length=50)
+    text = models.TextField(max_length=1200)
+    filePath = models.FilePathField(path='uploads/',blank=False)
+    image = ImageField(upload_to='uploads/', blank=False)
+    timestamp = models.DateTimeField(blank=False)
+
+    plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+
+    def __str__(self) -> str:
+        return f'Observation by {self.author} @ {self.timestamp}'    
 
 class PlantSettings(models.Model):
 

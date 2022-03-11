@@ -49,6 +49,14 @@
         <button class="btn btn-outline-danger">Export</button>
     </div> -->
     <div class="row">
+        <div class="p-4">
+            <h5 style="color: gray;">{% blocktrans %}New observation for the plant:{% endblocktrans %}
+                <span style="color:red">{{alias}}</span>{% blocktrans %} for the measures taken at:{% endblocktrans %}
+                <span style="color:red">{{timestamp}}</span>
+            </h5>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-5">
             <form method="post" enctype="multipart/form-data">
                 <input type="hidden" name="plant_id" value="{{plant_id}}">
@@ -96,7 +104,7 @@
         </div>
         <div id="comments-section" class="col-7">
             <div class="cointainer border rounded"
-                style="margin: 5px; overflow-y: scroll; height: 70%; width: 100%">
+                style="margin: 5px; overflow-y: scroll; height: 70%; width: 100%;">
                 {%for obs in observations %}
                 <div class="row" style="justify-content: center; margin: 5px;">
                     <div class="card" style="width: 95%;">

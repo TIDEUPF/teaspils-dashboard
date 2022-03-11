@@ -1,7 +1,8 @@
 import datetime
 import json
+from os import times
 from pathlib import Path
-from datetime import timezone
+from datetime import date, timezone
 from zoneinfo import ZoneInfo
 
 from django.http.response import Http404, HttpResponseRedirect, JsonResponse
@@ -10,18 +11,19 @@ from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
 from django.core.files import File as DjangoFile
+from django.core.files.images import ImageFile
 from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
-
-
 from django.views.decorators.csrf import csrf_exempt
+
+from io import BytesIO, StringIO
 
 
 from .utils import handle_uploaded_file
 
 from .api import facade
 
-from .models import Course, Measurement, Observation, Plant, PlantSettings, Student
+from .models import Course, MeasureObservation, Measurement, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, ObservationForm
 
 @csrf_exempt
@@ -112,7 +114,7 @@ def plantDetail(request, plant_id:int):
 def plantHistory(request, plant_id:int):
 
     plant = Plant.objects.filter(pk=plant_id).first()
-    con = facade.ConnectionFacade('http')
+    con = facade.ConnectionFacade('http') #thingsb
     con.connect(plant.data_source)
     print("FROM STATIC: ", facade.ConnectionFacade.data)
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
@@ -140,7 +142,12 @@ def observations(request, plant_id:int): #,plant_id:int):
             plant_id = form.cleaned_data['plant_id']
             name = form.cleaned_data['name']
             observation = form.cleaned_data['observation']
-            attachedfile = request.FILES['attachedfile']
+            attachedfile = None
+            if 'attachedfile' in request.FILES.keys():
+                attachedfile = request.FILES['attachedfile']
+            else:
+                attachedfile = BytesIO(open("teaspils_backend/static/img/no_image_jpg.jpg",'rb').read())
+                attachedfile =  ImageFile(attachedfile, name='foo.jpg') 
             timestamp = datetime.datetime.now().astimezone(ZoneInfo('Europe/Madrid'))
 
             #saved_path:str = handle_uploaded_file(attachedfile, plant_id, timestamp, django_settings.STATIC_URL)
@@ -160,7 +167,7 @@ def observations(request, plant_id:int): #,plant_id:int):
 
                 messages.success(request, "Observation saved successfully")
 
-                observations = Observation.objects.filter(plant_id=plant_id)
+                observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
                 context:set = {'plant_id': plant_id, 'observations': observations}
                 return HttpResponseRedirect('observations', context)
             else:
@@ -170,7 +177,7 @@ def observations(request, plant_id:int): #,plant_id:int):
             print(f"{name} makes this observation: {observation} about plant {plant_id} with file {attachedfile}")
 
     else:
-        observations = Observation.objects.filter(plant_id=plant_id)
+        observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
         print(observations)
 
 
@@ -178,6 +185,80 @@ def observations(request, plant_id:int): #,plant_id:int):
     context:set = {'plant_id': plant_id, 'observations': observations}
     return HttpResponse(template.render(context, request))
     #return HttpResponse(f"Hello, world. You're at Observations page {plant_id}.")
+
+@csrf_exempt
+def measureObservations(request, plant_id:int, ts:str):
+    observations = []
+    if request.method == 'POST':
+        print("FROM POST ENTERING", ts)
+        form:ObservationForm = ObservationForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            print("POST IS VALID", ts)
+            plant_id = form.cleaned_data['plant_id']
+            name = form.cleaned_data['name']
+            observation = form.cleaned_data['observation']
+            attachedfile = None
+            if 'attachedfile' in request.FILES.keys():
+                attachedfile = request.FILES['attachedfile']
+            else:
+                attachedfile = BytesIO(open("teaspils_backend/static/img/no_image_jpg.jpg",'rb').read())
+                attachedfile =  ImageFile(attachedfile, name='foo.jpg') 
+
+            print(attachedfile)
+            #2022-02-10%2019:08:45
+            timestamp = datetime.datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
+            saved_ts = timestamp.astimezone(ZoneInfo('Europe/Madrid'))
+            saved_path:str = '/uploads'
+
+            #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
+            if saved_path is not None:
+                obs = MeasureObservation(plant_id=plant_id,
+                                  author=name,
+                                  text=observation,
+                                  filePath= saved_path,
+                                  image = attachedfile,
+                                  timestamp=saved_ts)
+                obs.save()
+
+                messages.success(request, "Observation saved successfully")
+                observations = MeasureObservation.objects.filter(plant_id=plant_id, timestamp=saved_ts).order_by("-timestamp")
+
+                plant = Plant.objects.filter(pk=plant_id).first()
+                plant_alias = plant.alias
+
+                context:set = {'plant_id': plant_id, 
+                               'observations': observations,
+                               'timestamp' : ts,
+                               'alias' : plant_alias}
+                return HttpResponseRedirect(str(timestamp), context)
+            else:
+                messages.error(request, "Error saving the observation")
+                return(Http404())
+
+            print(f"{name} makes this observation: {observation} about plant {plant_id} with file {attachedfile}")
+
+    else:
+        print("### BY GET ###", ts)
+        timestamp = datetime.datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
+        # print(timestamp)
+        saved_ts = timestamp.astimezone(ZoneInfo('Europe/Madrid'))
+        # 2022-02-10 18:48:35+00:00
+        observations = MeasureObservation.objects.filter(plant_id=plant_id, timestamp=saved_ts).order_by("-timestamp")
+
+        for o in observations:
+            print(o.image)
+
+    plant = Plant.objects.filter(pk=plant_id).first()
+    plant_alias = plant.alias
+
+    template:any = loader.get_template('main/measureobs.html')
+    context:set = {'plant_id': plant_id, 
+                   'observations': observations,
+                   'timestamp' : ts,
+                   'alias' : plant_alias}
+    return HttpResponse(template.render(context, request))
+
 
 def measures(request, plant_id:int, ts:str):
     #2021-11-18%2022:48:02.884

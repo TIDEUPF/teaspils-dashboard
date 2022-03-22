@@ -6,27 +6,12 @@
 
 {% block content %}
 <div class="cointainer">
-    <!-- <div class="row">
-        <nav aria-label="breadcrumb" style="margin-left: 5%;">
-            <ol class="breadcrumb" style="background-color: white;">
-                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data measurement</li>
-            </ol>
-        </nav>
 
-    </div> -->
-    <div class="d-flex flex-row m-4">
-        <!-- <div class="col-6">
-            <button type="button" class="btn btn-outline-primary btn-lg btn-block" disabled ">{% blocktrans %}Timeline{% endblocktrans %}</button>
-        </div>
-        <div class=" col-6">
-                <button type=" button" class="btn btn-success btn-lg btn-block"
-                    onclick="window.location.href='/teaspils/plant/{{plant_id}}/observations'">{% blocktrans %}Observations{% endblocktrans %}</button>
-        </div> -->
+    <div class="d-flex flex-row ms-4 mt-3">
         <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item h3"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
-              <li class="breadcrumb-item active h3" aria-current="page" ><a href="#">Single measure</a></li>
+              <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
+              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Single measure</a></li>
             </ol>
           </nav>
     </div>
@@ -43,12 +28,6 @@
 <link rel="icon" type="image/png" href="{% static 'img/Teaspils_final_logo_no_text.png' %}" />
 <script src="{% static 'js/Term_fun.js' %}"></script>
 
-
-<!-- <div class="row">
-    <div class="col-1"></div>
-
-    <div class="col-3"></div>
-</div> -->
 <div class="row p-3 ml-3">
     <h5 style="color: gray;">{% blocktrans %}Measures taken at:{% endblocktrans %}
         <span style="color:red">{{timestamp}}</span>{% blocktrans %} for the plant:{% endblocktrans %}

@@ -3,7 +3,7 @@ import json
 import re
 from django.db import models
 from django.db.models.fields import BLANK_CHOICE_DASH
-from django.conf import settings as django_settings
+from django.conf import settings
 
 
 from thumbnails.fields import ImageField

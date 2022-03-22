@@ -14,9 +14,6 @@ import os
 from pathlib import Path
 from os.path import normpath, join
 
-import thumbnails
-import django_heroku
-
 from django.utils.translation import ugettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.

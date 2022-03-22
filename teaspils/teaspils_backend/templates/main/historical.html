@@ -2,10 +2,11 @@
 
 {% load static %}
 
+{% load imagefit %}
+
 {% load i18n %}
 
 {% block content %}
-
 
 {% if messages %}
 {% for message in messages %}
@@ -20,10 +21,10 @@
 
 
 <div id="main_container" class="cointainer">
-    <div class="d-flex flex-row m-4">
+    <div class="d-flex flex-row ms-4 mt-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active h3" aria-current="page" ><a href="#">Timeline</a></li>
+              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Timeline</a></li>
             </ol>
           </nav>
     </div>
@@ -34,21 +35,6 @@
                 <li class="nav-item" role="presentation">
                     <a class="nav-link active" data-bs-target="#all_area" role="tab" data-bs-toggle="pill" aria-selected="true"> {% blocktrans %}Data visualization{% endblocktrans %}</a>
                 </li>
-                <!-- <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#temperature_area" role="tab" data-bs-toggle="pill">{% blocktrans %}Temperature{% endblocktrans %} (ºC)</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#noise_area" role="tab" data-bs-toggle="pill">{% blocktrans %}Soil Humidity{% endblocktrans %} (%)</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#humidity_area" role="tab" data-bs-toggle="pill">{% blocktrans %}Humidity{% endblocktrans %} (%)</a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#co2_area" role="tab" data-bs-toggle="pill">{% blocktrans %}Co2{% endblocktrans %} (ppm) </a>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#light_area" role="tab" data-bs-toggle="pill">{% blocktrans %}Light{% endblocktrans %} (lux)</a>
-                </li> -->
                 <hr > 
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true"
@@ -60,13 +46,14 @@
             <div class="tab-content clearfix">
                 <div id="all_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
                     <div class="row">
+                        <div class="col-2"> </div>
                         <div class="col-2">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="load_switch" checked>
                             <label class="form-check-label" for="load_switch">Activate realtime data</label>
                           </div>
                         </div>
-                        <div class="col-10">
+                        <div class="col-6">
                             <div class="custom-file">
                                 <input type="file" class="form-control" id="dataset-upload" disabled>
                             </div>
@@ -75,21 +62,7 @@
 
                     <div id="plt_all" style="width:100%;height:90%;"></div>
                 </div>
-                    <!-- <div id="temperature_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                        <div id="plt_tem" style="width:100%;height:100%;"></div>
-                    </div>
-                    <div id="noise_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                        <div id="plt_noi" style="width:100%;height:100%;"></div>
-                    </div>
-                    <div id="humidity_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                        <div id="plt_hum" style="width:100%;height:100%;"></div>
-                    </div>
-                    <div id="co2_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                        <div id="plt_co2" style="width:100%;height:100%;"></div>
-                    </div>
-                    <div id="light_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                        <div id="plt_lig" style="width:100%;height:100%;"></div>
-                    </div> -->
+
                 <div id="compare_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
                     <!-- Example single danger button -->
                     <div style="display: flex; justify-content: space-around;">
@@ -126,23 +99,105 @@
                     </div>
                     <div id="plt_compare" style="width:100%;height:95%;"></div>
                 </div>
-                <!-- <div id="load_area"class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                    <div class="card p-4">
-                        <h5>{% blocktrans %}Load custom dataset...{% endblocktrans %}</h5>
-                        <br />
-                        <div class="custom-file">
-                            <input type="file" class="form-control" id="custom-upload">
-                        </div>
-                        <!-- <div id="loaded_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
-                            <div id="plt_loaded" style="width:100%;height:100%;"></div>
-                        </div> -->
-
                     </div>
                 </div>
 
             </div>
         </div>
     </div>
+
+    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">OBSERVATIONS</button>
+
+    <div class="offcanvas offcanvas-end {% if page_obj.number != 1 %}show{% endif %} " 
+         data-bs-scroll="true" 
+         data-bs-backdrop="false" tabindex="-1" id="offcanvasRight" 
+         aria-labelledby="offcanvasRightLabel"
+         style="width:40%">
+        <div class="offcanvas-header" style="justify-content: center;">
+          <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <div class="container" style="display:flex; flex-direction: column;">
+                <div class="row mb-2">
+                <div class="cointainer border rounded"
+                     style="overflow-y: scroll; height: 100%; width: 100%">
+                     <div class="card-header p-0">
+                        <h5>{% blocktrans %}Plant observations{% endblocktrans %}</h5>
+                    </div>
+                    {%for obs in page_obj %}
+                    <div class="row" style="justify-content: center; margin: 5px;">
+                        <div class="card" style="width: 100%;">
+                            <div class="card-body">
+                                <div class='row' style="display: flex; flex-direction: row;">
+                                    <div class="col-2">
+                                        <img src="{{  obs.image.url|resize:'100x100' }}" alt="Thumbnail">
+                                    </div>
+                                    <div class="col-10">
+                                        <h5 class="card-title">{{obs.author}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">{{obs.timestamp}}</h6>
+                                        <p class="card-text">{{obs.text}}</p>
+                                    </div>
+                                    <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    <div class="pagination" style="justify-content: space-around;">
+                        <span class="step-links">
+                            {% if page_obj.has_previous %}
+                                <a href="?page=1">{% blocktrans %}first{% endblocktrans %}</a>
+                                <a href="?page={{ page_obj.previous_page_number }}">{% blocktrans %}previous{% endblocktrans %}</a>
+                            {% endif %}
+                    
+                            <span class="current">
+                                {% blocktrans %}Page{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}of{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
+                            </span>
+                            {% if page_obj.has_next %}
+                                <a href="?page={{ page_obj.next_page_number }}">{% blocktrans %}next{% endblocktrans %}</a>
+                                <a href="?page={{ page_obj.paginator.num_pages }}">{% blocktrans %}last{% endblocktrans %}</a>
+                            {% endif %}
+                        </span>
+                        </div>
+                    </div>
+                </div>
+                <div class="row" style="margin-top:auto">
+                <div class="card">
+                    <div class="card-header p-0">
+                        <h5>{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" enctype="multipart/form-data">
+                            <input type="hidden" name="plant_id" value="{{plant_id}}">
+                            <div class="row">
+                                <h2>{% blocktrans %}Name or group name:{% endblocktrans %}</h2>
+                            </div>
+                            <div class="row">
+                                <input type="text" id="author-name" name="name" class="form-control">
+                            </div>
+                            <div class="row" style="display: flex; align-content: space-between; margin-top: 10px 0px;">
+                                <h2>{% blocktrans %}Observations:{% endblocktrans %}</h2>
+                            </div>
+                            <div class="row">
+                                <textarea id="comment-maker" name="observation" class="form-control" rows="4"></textarea>
+                            </div>
+                            <div class="row" style="margin: 30px;">
+                                <!-- IMAGE UPLOAD -->
+                                <div class="col-10">
+                                    <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
+                                </div>
+                                <div class="col-2">
+                                    <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 </div>
 
 

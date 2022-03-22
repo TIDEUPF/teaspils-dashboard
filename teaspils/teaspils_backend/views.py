@@ -18,6 +18,8 @@ from django.conf import settings as django_settings
 from django.utils.translation import ugettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
+from django.core.paginator import Paginator
+
 from io import BytesIO, StringIO
 
 
@@ -115,23 +117,63 @@ def plantDetail(request, plant_id:int):
 @csrf_exempt
 def plantHistory(request, plant_id:int):
 
+    observations = []
+    if request.method == 'POST':
+        form:ObservationForm = ObservationForm(request.POST, request.FILES)
+        if form.is_valid():
+            plant_id = form.cleaned_data['plant_id']
+            name = form.cleaned_data['name']
+            observation = form.cleaned_data['observation']
+            attachedfile = None
+            if 'attachedfile' in request.FILES.keys():
+                attachedfile = request.FILES['attachedfile']
+            else:
+                attachedfile = BytesIO(open("teaspils_backend/static/img/no_image_jpg.jpg",'rb').read())
+                attachedfile =  ImageFile(attachedfile, name='foo.jpg') 
+            timestamp = datetime.datetime.now().astimezone(ZoneInfo('Europe/Madrid'))
+
+            #saved_path:str = handle_uploaded_file(attachedfile, plant_id, timestamp, django_settings.STATIC_URL)
+            saved_path:str = '/uploads'
+
+            #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
+            
+
+            if saved_path is not None:
+                obs = Observation(plant_id=plant_id,
+                                  author=name,
+                                  text=observation,
+                                  filePath= saved_path,
+                                  image = attachedfile,
+                                  timestamp=timestamp)
+                obs.save()
+
+                messages.success(request, "Observation saved successfully")
+
+                observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
+                context:set = {'plant_id': plant_id, 'observations': observations}
+                return HttpResponseRedirect('history', context)
+
+
     plant = Plant.objects.filter(pk=plant_id).first()
     con = facade.ConnectionFacade('http') #thingsb
     con.connect(plant.data_source)
     print("FROM STATIC: ", facade.ConnectionFacade.data)
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
-    # Conectar con la fuente de datos externa.
-    # Esta parte en realidad no va acá. Debe haber una tarea corriendo que se  conecte cada X sminutos.
-    # En esta sección debe aparecer la información que ya está guardada en la base de datos.
-    # Crear información mock para probar.
-    # return HttpResponse(json_pretty,content_type="application/json")
 
     messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
+
+    #OBSERVATIONS:
+    observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
+
+    paginator = Paginator(observations, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
 
     return render(request, 
                   template_name='main/historical.html', 
                   context={'plant_id' : plant_id,
-                           'json_history': json_pretty})
+                           'json_history': json_pretty,
+                           'page_obj': page_obj})
 
 
 @csrf_exempt

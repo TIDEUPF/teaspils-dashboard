@@ -1,5 +1,7 @@
 import datetime
 import json
+from math import sin
+from multiprocessing import context
 from os import times
 from pathlib import Path
 from datetime import date, timezone
@@ -294,6 +296,41 @@ def measures(request, plant_id:int, ts:str):
                            'highI' : plant_settings.high_light
                            })
 
+@csrf_exempt
+def singleMeasure(request, plant_id:int, obj:str):
+    if  request.method == 'GET':
+    
+        single_measure = json.loads(obj)
+    
+        plant_settings = PlantSettings.objects.filter(plant_id=plant_id).last()
+        plant = Plant.objects.filter(pk=plant_id).first()
+        plant_alias = plant.alias
+
+        return_context = {'timestamp': single_measure['timestamp'], 
+                           'plant_id': plant_id,
+                           'alias' : plant_alias,
+                           'measure' : single_measure,
+                           'lowT' : plant_settings.low_temperature,
+                           'highT' : plant_settings.high_temperature,
+                           'lowN' : plant_settings.low_noise,
+                           'highN' : plant_settings.high_noise,
+                           'lowC' : plant_settings.low_co2,
+                           'highC' : plant_settings.high_co2,
+                           'lowH' : plant_settings.low_humidity,
+                           'highH' : plant_settings.high_humidity,
+                           'lowI' : plant_settings.low_light,
+                           'highI' : plant_settings.high_light
+                        }
+
+        print(plant_alias)
+        print(return_context)
+        
+        # plant_settings = plant_settings.toJSON()
+        return render(request, template_name='main/measurement.html', context=return_context)
+
+        # return render(request,
+        #           template_name='main/measurement.html',
+        #           )
                 
 @csrf_exempt
 def saveSettings(request):

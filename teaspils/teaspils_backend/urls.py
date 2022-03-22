@@ -14,6 +14,7 @@ urlpatterns:list = [
     #path('plant/<int:plant_id>/observations', views.observations, name='observations'),
     path('plant/<int:plant_id>/observations', views.observations, name='observations'),
     path('plant/<int:plant_id>/measurement/<str:ts>', views.measures, name='measurement'),
+    path('plant/<int:plant_id>/measures/<str:obj>', views.singleMeasure, name='singleMeasure'),
     path('plant/<int:plant_id>/measureobs/<str:ts>', views.measureObservations, name='measureObservations'),
     path('ajax/savesettings', views.saveSettings, name='saveSettings'),
     url(r'^i18n/', include('django.conf.urls.i18n')),

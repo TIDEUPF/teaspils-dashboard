@@ -119,7 +119,7 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
     let myH2 = document.createElement('h3');
 
-    myH2.textContent = measure_data['Timestamp'].Value;
+    myH2.textContent = measure_data['timestamp'].Value;
     Date_place.textContent = myH2.textContent;
     /*appendChild(myH2);*/
 

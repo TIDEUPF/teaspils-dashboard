@@ -525,10 +525,17 @@ function compare_measures(m1, m2) {
         'Humedad' : trace_hum
     }
     
-    console.log("1: "+ traces_dict[m1]);
-    console.log("2: "+ traces_dict[m2]);
+    console.log("1: "+ m1);
+    console.log("2: "+ m2);
+
+    trace1 = traces_dict[m1];
+    trace2 = traces_dict[m2];
+    
+    trace1['yaxis'] = 'y1';
+    trace2['yaxis'] = 'y2';
+
     plot_compare_div = document.getElementById('plt_compare');
-    Plotly.newPlot(plot_compare_div, [traces_dict[m1], traces_dict[m2]], {
+    Plotly.newPlot(plot_compare_div, [trace1, trace2], {
         margin: { t: 15 },
         // plot_bgcolor: "#ffde9f",
         // paper_bgcolor: "#ffde9f",
@@ -536,11 +543,26 @@ function compare_measures(m1, m2) {
             yanchor: "top",
             y: 0.8,
             xanchor: "right",
-            x: 1.1
+            x: 1.5
         },
         hovermode: "x unified",
         xaxis: {
             tickformat: '%H:%M',
+        },
+        // yaxis:{overlaying: 'y', side: 'left', position:-1},
+        yaxis: {
+             title: m1,
+        //     overlaying: 'y',
+        //     side: 'left',
+        //     position: -0.25
+        },
+        yaxis2:{
+            title: m2,
+            overlaying: 'y',
+            side: 'right',
+            position: 1,
+            // tickfont: {color: trace2['marker']['color']},
+            // titlefont: {color: trace2['marker']['color']},
         },
         autosize: true,
     }, { responsive: true });

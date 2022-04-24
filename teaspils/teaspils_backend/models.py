@@ -1,12 +1,14 @@
 from datetime import datetime
+import imp
+from importlib.metadata import metadata
 import json
 import re
 from django.db import models
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.conf import settings
 
-
-from thumbnails.fields import ImageField
+from imagekit.models import ImageSpecField
+from imagekit.processors import ResizeToFill
 
 class Center(models.Model):
     name = models.CharField(max_length=120)
@@ -56,26 +58,37 @@ class Measurement(models.Model):
 class Observation(models.Model):
     author = models.TextField(max_length=50)
     text = models.TextField(max_length=1200)
-    filePath = models.FilePathField(path='uploads/',blank=False)
-    image = ImageField(upload_to='uploads/')
+    filePath = models.FilePathField(path='media©©©/',blank=False)
+    image = models.ImageField(upload_to='obs_images/')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(64,64)],
+                                     format='JPEG',
+                                     options={'quality':60})
+
     timestamp = models.DateTimeField(default=datetime.now)
 
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
-        return f'Observation by {self.author} @ {self.timestamp}'
+        return f'Plant observation by {self.author} @ {self.timestamp}'
 
 class MeasureObservation(models.Model):
     author = models.TextField(max_length=50)
     text = models.TextField(max_length=1200)
-    filePath = models.FilePathField(path='uploads/',blank=False)
-    image = ImageField(upload_to='uploads/', blank=False)
+    filePath = models.FilePathField(path='media/',blank=False)
+    image = models.ImageField(upload_to='obs_images/')
+    image_thumbnail = ImageSpecField(source='image',
+                                     processors=[ResizeToFill(64,64)],
+                                     format='JPEG',
+                                     options={'quality':60})
+
     timestamp = models.DateTimeField(blank=False)
 
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
+    measure_timestamp = models.DateTimeField()
 
     def __str__(self) -> str:
-        return f'Observation by {self.author} @ {self.timestamp}'    
+        return f'Measure observation by {self.author} @ {self.plant} - {self.measure_timestamp}'    
 
 class PlantSettings(models.Model):
 

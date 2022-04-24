@@ -14,7 +14,7 @@ import os
 from pathlib import Path
 from os.path import normpath, join
 
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -46,8 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'thumbnails',
-    'imagefit'
+    'imagekit'
 ]
 
 MIDDLEWARE = [
@@ -85,20 +84,28 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'teaspils-db',
+#         'USER': 'admin',
+#         'PASSWORD': 'TEASPILS2021@',
+#         'PORT': 3306,
+#         'HOST': 'mysql',
+#         }
+# }
+
 DATABASES = {
-    # 'default': {
-    #     'ENGINE': 'django.db.backends.sqlite3',
-    #     'NAME': BASE_DIR / 'db.sqlite3',
-    # },
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'teaspils-db',
+        'NAME': 'teaspils_aws_db',
         'USER': 'admin',
-        'PASSWORD': 'TEASPILS2021@',
-        'PORT': 3306,
-        'HOST': 'docker-mysql',
+        'PASSWORD': '--Teaspils22',
+        'PORT': '3306',
+        'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
         }
 }
+
 
 
 # Password validation
@@ -143,9 +150,9 @@ USE_TZ = True
 STATIC_URL = '/teaspils_backend/static/'   
 
 
-MEDIA_ROOT_DIR = 'media'
+MEDIA_ROOT_DIR = 'teaspils_backend/media'
 MEDIA_ROOT = normpath(join(BASE_DIR, MEDIA_ROOT_DIR))
-MEDIA_URL = '/media/'
+MEDIA_URL = 'teaspils_backend/media/'
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -153,46 +160,45 @@ MEDIA_URL = '/media/'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Thumbnails
-IMAGEFIT_ROOT = "."
+# IMAGEFIT_ROOT = '.'
 
-
-THUMBNAILS = {
-    'METADATA': {
-        'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
-    },
-    'STORAGE': {
-        'BACKEND': 'django.core.files.storage.FileSystemStorage',
-        # You can also use Amazon S3 or any other Django storage backends
-    },
-    'SIZES': {
-        'small': {
-            'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 24, 'height': 24},
-                {'PATH': 'thumbnails.processors.crop', 'width': 80, 'height': 80}
-            ],
-            'POST_PROCESSORS': [
-                {
-                    'PATH': 'thumbnails.post_processors.optimize',
-                    'png_command': 'optipng -force -o7 "%(filename)s"',
-                    'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
-                },
-            ],
-        },
-        'large': {
-            'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 48, 'height': 48},
-                {'PATH': 'thumbnails.processors.flip', 'direction': 'horizontal'}
-            ],
-        },
-        'watermarked': {
-            'PROCESSORS': [
-                {'PATH': 'thumbnails.processors.resize', 'width': 20, 'height': 20},
-                # Only supports PNG. File must be of the same size with thumbnail (20 x 20 in this case)
-                {'PATH': 'thumbnails.processors.add_watermark', 'watermark_path': 'watermark.png'}
-            ],
-        }
-    }
-}
+# THUMBNAILS = {
+#     'METADATA': {
+#         'BACKEND': 'thumbnails.backends.metadata.DatabaseBackend',
+#     },
+#     'STORAGE': {
+#         'BACKEND': 'django.core.files.storage.FileSystemStorage',
+#         # You can also use Amazon S3 or any other Django storage backends
+#     },
+#     'SIZES': {
+#         'small': {
+#             'PROCESSORS': [
+#                 {'PATH': 'thumbnails.processors.resize', 'width': 24, 'height': 24},
+#                 {'PATH': 'thumbnails.processors.crop', 'width': 80, 'height': 80}
+#             ],
+#             'POST_PROCESSORS': [
+#                 {
+#                     'PATH': 'thumbnails.post_processors.optimize',
+#                     'png_command': 'optipng -force -o7 "%(filename)s"',
+#                     'jpg_command': 'jpegoptim -f --strip-all "%(filename)s"',
+#                 },
+#             ],
+#         },
+#         'large': {
+#             'PROCESSORS': [
+#                 {'PATH': 'thumbnails.processors.resize', 'width': 48, 'height': 48},
+#                 {'PATH': 'thumbnails.processors.flip', 'direction': 'horizontal'}
+#             ],
+#         },
+#         'watermarked': {
+#             'PROCESSORS': [
+#                 {'PATH': 'thumbnails.processors.resize', 'width': 20, 'height': 20},
+#                 # Only supports PNG. File must be of the same size with thumbnail (20 x 20 in this case)
+#                 {'PATH': 'thumbnails.processors.add_watermark', 'watermark_path': 'watermark.png'}
+#             ],
+#         }
+#     }
+# }
 
 # # Activate Django-Heroku.
 # django_heroku.settings(locals())

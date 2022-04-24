@@ -5,6 +5,8 @@ from multiprocessing import context
 from os import times
 from pathlib import Path
 from datetime import date, timezone
+import re
+from typing import List
 from zoneinfo import ZoneInfo
 
 from django.http.response import Http404, HttpResponseRedirect, JsonResponse
@@ -15,7 +17,7 @@ from django.contrib import messages
 from django.core.files import File as DjangoFile
 from django.core.files.images import ImageFile
 from django.conf import settings as django_settings
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from django.core.paginator import Paginator
@@ -28,12 +30,12 @@ from .utils import handle_uploaded_file
 from .api import facade
 
 from .models import Course, MeasureObservation, Measurement, Observation, Plant, PlantSettings, Student
-from .forms import LoginForm, ObservationForm
+from .forms import LoginForm, MeasureObservationForm, ObservationForm
 
 @csrf_exempt
 def index(request):
 
-    if request.is_ajax():
+    if request.accepts('text/html'):
         
         print(request)
         ajax_value = request.GET.get('value', '')
@@ -117,7 +119,7 @@ def plantDetail(request, plant_id:int):
 @csrf_exempt
 def plantHistory(request, plant_id:int):
 
-    observations = []
+    observations:List = []
     if request.method == 'POST':
         form:ObservationForm = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
@@ -275,7 +277,8 @@ def measureObservations(request, plant_id:int, ts:str):
                                'observations': observations,
                                'timestamp' : ts,
                                'alias' : plant_alias}
-                return HttpResponseRedirect(str(timestamp), context)
+                # "/teaspils/plant/"+pid+"/measures/" + sm_json
+                return HttpResponseRedirect("/teaspils/plant/"+plant_id+"/measures/" + sm_json)
             else:
                 messages.error(request, "Error saving the observation")
                 return(Http404())
@@ -340,39 +343,110 @@ def measures(request, plant_id:int, ts:str):
 
 @csrf_exempt
 def singleMeasure(request, plant_id:int, obj:str):
+    """
+    obj is the stringyfied json of the selected measure.
+    obj: {"timestamp":"2022-02-08 20:25:35",
+          "humidity":26,"light":9,"co2":351.40909090909093,
+          "soilHumidity":39.08133971291866,"temperature":25}
+    """
+
+    observations:List = []
+
     if  request.method == 'GET':
-    
+
+        print("ENTERIG BY GET:")
+        print(obj)
         single_measure = json.loads(obj)
     
         plant_settings = PlantSettings.objects.filter(plant_id=plant_id).last()
         plant = Plant.objects.filter(pk=plant_id).first()
         plant_alias = plant.alias
 
+        #OBSERVATIONS:
+        observations = MeasureObservation.objects.filter(plant_id=plant_id).order_by("-timestamp")
+
+        paginator = Paginator(observations, 3)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
         return_context = {'timestamp': single_measure['timestamp'], 
                            'plant_id': plant_id,
                            'alias' : plant_alias,
                            'measure' : single_measure,
-                           'lowT' : plant_settings.low_temperature,
-                           'highT' : plant_settings.high_temperature,
-                           'lowN' : plant_settings.low_noise,
-                           'highN' : plant_settings.high_noise,
-                           'lowC' : plant_settings.low_co2,
-                           'highC' : plant_settings.high_co2,
-                           'lowH' : plant_settings.low_humidity,
-                           'highH' : plant_settings.high_humidity,
-                           'lowI' : plant_settings.low_light,
-                           'highI' : plant_settings.high_light
+                           'lowT' :  0 if plant_settings is None else plant_settings.low_temperature,
+                           'highT' : 100 if plant_settings is None else plant_settings.high_temperature,
+                           'lowN' : 0 if plant_settings is None else plant_settings.low_noise,
+                           'highN' : 100 if plant_settings is None else plant_settings.high_noise,
+                           'lowC' : 0 if plant_settings is None else plant_settings.low_co2,
+                           'highC' : 100 if plant_settings is None else plant_settings.high_co2,
+                           'lowH' : 0 if plant_settings is None else plant_settings.low_humidity,
+                           'highH' : 100 if plant_settings is None else plant_settings.high_humidity,
+                           'lowI' : 0 if plant_settings is None else plant_settings.low_light,
+                           'highI' : 100 if plant_settings is None else plant_settings.high_light,
+                           'page_obj': page_obj
                         }
 
-        print(plant_alias)
-        print(return_context)
         
         # plant_settings = plant_settings.toJSON()
         return render(request, template_name='main/measurement.html', context=return_context)
 
-        # return render(request,
-        #           template_name='main/measurement.html',
-        #           )
+    elif  request.method == 'POST':
+        print("FROM POST ENTERING")
+        single_measure = json.loads(obj)
+        form:MeasureObservationForm = MeasureObservationForm(request.POST, request.FILES)
+        print(form)
+        if form.is_valid():
+            print("POST IS VALID", single_measure)
+            plant_id = form.cleaned_data['plant_id']
+            name = form.cleaned_data['name']
+            observation = form.cleaned_data['observation']
+
+            attachedfile = None
+            if 'attachedfile' in request.FILES.keys():
+                attachedfile = request.FILES['attachedfile']
+            else:
+                attachedfile = BytesIO(open("teaspils_backend/static/img/no_image_jpg.jpg",'rb').read())
+                attachedfile =  ImageFile(attachedfile, name='foo.jpg') 
+
+            print(attachedfile)
+            #2022-02-10%2019:08:45
+            measure_timestamp = datetime.datetime.strptime(single_measure['timestamp'], "%Y-%m-%d %H:%M:%S.%f")
+            saved_ts = measure_timestamp.astimezone(ZoneInfo('Europe/Madrid'))
+            saved_path:str = '/uploads'
+
+            real_timestamp = datetime.datetime.now()
+            
+
+            #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
+            if saved_path is not None:
+                obs = MeasureObservation(plant_id=plant_id,
+                                  author=name,
+                                  text=observation,
+                                  filePath= saved_path,
+                                  image = attachedfile,
+                                  measure_timestamp = saved_ts,
+                                  timestamp= real_timestamp)
+                obs.save()
+
+                messages.success(request, "Observation saved successfully")
+                observations = MeasureObservation.objects.filter(plant_id=plant_id, timestamp=saved_ts).order_by("-timestamp")
+
+                plant = Plant.objects.filter(pk=plant_id).first()
+                plant_alias = plant.alias
+
+                context:set = {'plant_id': plant_id, 
+                               'observations': observations,
+                               'timestamp' : saved_ts,
+                               'alias' : plant_alias}
+
+                single_measure = str(single_measure).replace("\'", "\"")
+
+                return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure))
+                # return HttpResponseRedirect(str(timestamp), context)
+            else:
+                messages.error(request, "Error saving the observation")
+                return(Http404())
+
                 
 @csrf_exempt
 def saveSettings(request):

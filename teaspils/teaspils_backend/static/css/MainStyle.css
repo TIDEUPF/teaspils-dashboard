@@ -464,9 +464,9 @@ footer h3{
 
     position: fixed;
     width: 200px;
-    height; 100px;
+    height: 50px;
     left: 100%;
-    top: 25%;
+    top: 50%;
     background-color: green;
     padding: 1%;
     transform-origin: 0% 0%;

@@ -29,14 +29,15 @@
     border-radius: 4px;">
         <div class="d-flex flex-row justify-content-between">
             <div class="menu_options col-2 m-1">
-                <a class='logo-btn' href=" www.teaspils.eu/" title="Tide-Logo">
+                <a class='logo-btn' href="http://www.teaspils.eu/" title="Tide-Logo">
                     <img src="{% static 'img/Teaspils_final_logo_M.png' %}" width="150" height="75">
                 </a>
             </div>
-            <div class="col-2 m-3 mr-4">
+            <div class="col-3 m-3 mr-4">
                 <div class="row" style="align-items: flex-end;">
-                    <div class="col-6">
-                        <form action="{% url 'set_language' %}" method="post">
+                    <div class="col-8">
+                        <form action="{% url 'set_language' %}" method="post"
+                              style="margin: 0.5em;">
                             {% csrf_token %}
                             <input name="next" type="hidden" value="{{ redirect_to }}" />
                             <select id="lang-selector" class="form-select" name="language">
@@ -51,7 +52,7 @@
                             </select>
                         </form>
                     </div>
-                    <div class="col-6">
+                    <div class="col-4">
                         <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">{% blocktrans %}Logout{% endblocktrans %}</a>
                     </div>
                 </div>

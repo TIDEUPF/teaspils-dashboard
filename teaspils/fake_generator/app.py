@@ -18,9 +18,9 @@ def generator():
         for i in range(0, random.randint(4, 9)):
             tmp = {
                 'plant_id'      : 1,
-                'timestamp'     : get_timestamp(),
+                'Timestamp'     : get_timestamp(),
                 'temperature'   : get_temperature(),
-                'noise'         : get_noise(),
+                'soilHumidity'  : get_noise(),
                 'humidity'      : get_humidity(),
                 'co2'           : get_co2(),
                 'light'         : get_light()

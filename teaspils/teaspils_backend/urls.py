@@ -1,5 +1,5 @@
-from django.urls import include, path
-from django.conf.urls import url
+from django.urls import path
+from django.urls import include, re_path
 
 from . import views
 
@@ -17,5 +17,5 @@ urlpatterns:list = [
     path('plant/<int:plant_id>/measures/<str:obj>', views.singleMeasure, name='singleMeasure'),
     path('plant/<int:plant_id>/measureobs/<str:ts>', views.measureObservations, name='measureObservations'),
     path('ajax/savesettings', views.saveSettings, name='saveSettings'),
-    url(r'^i18n/', include('django.conf.urls.i18n')),
+    re_path(r'^i18n/', include('django.conf.urls.i18n')),
 ]

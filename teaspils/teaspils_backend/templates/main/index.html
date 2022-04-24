@@ -21,7 +21,7 @@
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="course_id_input">Course id: </label> -->
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="course_id_label">{% blocktrans %}Plant id{% endblocktrans %}</span>
+                    <span style="height: 100%;" class="input-group-text" id="course_id_label">{% blocktrans %}Plant id{% endblocktrans %}</span>
                 </div>
                 <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3"
                     aria-label="Default" aria-describedby="course_id_label" required>
@@ -29,12 +29,12 @@
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="secret_word_input">Secret word: </label> -->
                 <div class="input-group-prepend">
-                    <span class="input-group-text" id="secret_label">{% blocktrans %}Secret Word{% endblocktrans %}</span>
+                    <span class="input-group-text" style="height: 100%;" id="secret_label">{% blocktrans %}Secret Word{% endblocktrans %}</span>
                 </div>
                 <input class="form-control" id="secret_word_input" type="password" name="secret_word" maxlength="12"
                     aria-label="Default" aria-describedby="secret_word_input" required>
                 <div class="input-group-append">
-                    <div class="input-group-text">
+                    <div class="input-group-text" style="height: 100%;">
                         <input type="checkbox" id="reveal-box" onclick="reveal()">
                     </div>
                 </div>

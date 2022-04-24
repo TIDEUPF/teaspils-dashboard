@@ -4,7 +4,8 @@
 
 {% load i18n %}
 
-{% load imagefit %}
+{% load imagekit %}
+
 
 {% block content %}
 
@@ -93,7 +94,7 @@
                 <div class="row" style="margin: 30px;">
                     <!-- IMAGE UPLOAD -->
                     <div class="col-10">
-                        <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
+                        <input type="file" class="form-control-file" name="attachedfile" id="obs-image-upload" />
                     </div>
                     <div class="col-2">
                         <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
@@ -111,7 +112,7 @@
                         <div class="card-body">
                             <div class='row' style="display: flex; flex-direction: row;">
                                 <div class="col-2">
-                                    <img src="{{  obs.image.url|resize:'100x100' }}" alt="Thumbnail">
+                                    <img src="{{  obs.image_thumbnail.url }}" alt="Thumbnail">
                                 </div>
                                 <div class="col-10">
                                     <h5 class="card-title">{{obs.author}}</h5>

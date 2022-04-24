@@ -9,3 +9,10 @@ class ObservationForm(forms.Form):
     name = forms.CharField(label='Given Name')
     observation = forms.CharField(label='Observations')
     attachedfile = forms.FileField(label='Attached file', allow_empty_file=True, required=False)
+
+class MeasureObservationForm(forms.Form):
+    plant_id = forms.IntegerField(label="Plant Id")
+    single_measure = forms.CharField(required=False)
+    name = forms.CharField(label='Given Name')
+    observation = forms.CharField(label='Observations')
+    attachedfile = forms.FileField(label='Attached file', allow_empty_file=True, required=False)

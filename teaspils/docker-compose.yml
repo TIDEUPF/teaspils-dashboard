@@ -1,23 +1,25 @@
 version: '3'
+
 services:
-  mysql:
-    platform: linux/amd64
-    image: mysql:8.0
-    container_name: docker-mysql
-    command: --default-authentication-plugin=mysql_native_password
-    environment:
-      MYSQL_DATABASE: teaspils-db
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: TEASPILS2021@
-      MYSQL_ROOT_PASSWORD: TEASPILS2021@
-      WEB_CONCURRENCY: 3
-    ports:
-      - "3306:3306"
-    restart: always
-    volumes:
-      - "mysql-data:/var/lib/mysql"
+  # mysql:
+  #   platform: linux/amd64
+  #   image: mysql:8.0
+  #   container_name: mysql
+  #   command: --default-authentication-plugin=mysql_native_password
+  #   environment:
+  #     MYSQL_DATABASE: teaspils-db
+  #     MYSQL_USER: admin
+  #     MYSQL_PASSWORD: TEASPILS2021@
+  #     MYSQL_ROOT_PASSWORD: TEASPILS2021@
+  #   ports:
+  #     - "3306:3306"
+  #   restart: always
+  #   volumes:
+  #     - "mysql-data:/var/lib/mysql"
+
   webapp:
     container_name: webapp
+    image: teaspils_webapp
     build: 
       context: .
       dockerfile: ./Dockerfile
@@ -27,12 +29,13 @@ services:
       - "80:80"
     environment:
       XDEBUG_CONFIG: remote_host=host.docker.internal
+      DJANGO_SETTINGS_MODULE: teaspils.settings
     volumes:
       - .:/teaspils
-    #   - /tmp/app/mysqld:/run/mysqld
-    depends_on:
-      - mysql
+    # - /tmp/app/mysqld:/run/mysqld
+    # depends_on:
+      # - mysql
     restart: always
 
-volumes:
-  mysql-data:
+# volumes:
+#   mysql-data:

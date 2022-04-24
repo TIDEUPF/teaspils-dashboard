@@ -2,7 +2,7 @@
 
 {% load static %}
 
-{% load imagefit %}
+{% load imagekit %}
 
 {% load i18n %}
 
@@ -113,7 +113,7 @@
          data-bs-backdrop="false" tabindex="-1" id="offcanvasRight" 
          aria-labelledby="offcanvasRightLabel"
          style="width:40%">
-        <div class="offcanvas-header" style="justify-content: center;">
+        <div class="offcanvas-header" style="justify-content: center; padding: 0.3rem 0;">
           <button type="button" class="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
@@ -122,7 +122,7 @@
                 <div class="cointainer border rounded"
                      style="overflow-y: scroll; height: 100%; width: 100%">
                      <div class="card-header p-0">
-                        <h5>{% blocktrans %}Plant observations{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Plant observations{% endblocktrans %}</h5>
                     </div>
                     {%for obs in page_obj %}
                     <div class="row" style="justify-content: center; margin: 5px;">
@@ -130,12 +130,13 @@
                             <div class="card-body">
                                 <div class='row' style="display: flex; flex-direction: row;">
                                     <div class="col-2">
-                                        <img src="{{  obs.image.url|resize:'100x100' }}" alt="Thumbnail">
+                                        <img src="{{  obs.image_thumbnail.url }}" alt="Thumbnail">
                                     </div>
-                                    <div class="col-10">
-                                        <h5 class="card-title">{{obs.author}}</h5>
-                                        <h6 class="card-subtitle mb-2 text-muted">{{obs.timestamp}}</h6>
-                                        <p class="card-text">{{obs.text}}</p>
+                                    <div class="col-1"></div>
+                                    <div class="col-9">
+                                        <h5 class="card-title" style="font-size: 1em;">{{obs.author}}</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.75em;">{{obs.timestamp}}</h6>
+                                        <p class="card-text" style="font-size: 0.6em;">{{obs.text}}</p>
                                     </div>
                                     <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
                                 </div>
@@ -164,27 +165,27 @@
                 <div class="row" style="margin-top:auto">
                 <div class="card">
                     <div class="card-header p-0">
-                        <h5>{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">
                             <input type="hidden" name="plant_id" value="{{plant_id}}">
                             <div class="row">
-                                <h2>{% blocktrans %}Name or group name:{% endblocktrans %}</h2>
+                                <h5>{% blocktrans %}Name or group name:{% endblocktrans %}</h5>
                             </div>
                             <div class="row">
-                                <input type="text" id="author-name" name="name" class="form-control">
+                                <input type="text" id="author-name" name="name" class="form-control input-sm" style="padding: 0.2em;">
                             </div>
                             <div class="row" style="display: flex; align-content: space-between; margin-top: 10px 0px;">
-                                <h2>{% blocktrans %}Observations:{% endblocktrans %}</h2>
+                                <h5>{% blocktrans %}Observations:{% endblocktrans %}</h5>
                             </div>
                             <div class="row">
-                                <textarea id="comment-maker" name="observation" class="form-control" rows="4"></textarea>
+                                <textarea id="comment-maker" name="observation" class="form-control" rows="2"></textarea>
                             </div>
                             <div class="row" style="margin: 30px;">
                                 <!-- IMAGE UPLOAD -->
                                 <div class="col-10">
-                                    <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
+                                    <input type="file" class="form-control form-control-sm" name="attachedfile" id="plant-image-upload" />
                                 </div>
                                 <div class="col-2">
                                     <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
@@ -202,11 +203,13 @@
 
 
 <script>
+    // variables initialized for GLOBAL use
+    //
     let history = {{ json_history| safe}};
     let pid = {{ plant_id }};
 </script>
 
-<script src="{% static 'js/main.js' %}"></script>
+<!-- <script src="{% static 'js/main.js' %}"></script> -->
 <!-- <script src="{% static 'js/realtime_loader.js' %}"></script> -->
 <script src="{% static 'js/dataset_loader.js' %}"></script>
 

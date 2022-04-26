@@ -48,16 +48,16 @@ def get_temperature():
     return random.randint(18,25)
 
 def get_noise():
-    return random.randint(120,280)
+    return random.randint(0,100)
 
 def get_co2():
-    return random.randint(4,8)
+    return random.randint(50,800)
 
 def get_humidity():
-    return random.randint(1000,2000)
+    return random.randint(0,100)
 
 def get_light():
-    return random.randint(2200,3100)
+    return random.randint(100,2000)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

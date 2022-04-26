@@ -58,7 +58,6 @@ class Measurement(models.Model):
 class Observation(models.Model):
     author = models.TextField(max_length=50)
     text = models.TextField(max_length=1200)
-    filePath = models.FilePathField(path='media©©©/',blank=False)
     image = models.ImageField(upload_to='obs_images/')
     image_thumbnail = ImageSpecField(source='image',
                                      processors=[ResizeToFill(64,64)],
@@ -75,7 +74,6 @@ class Observation(models.Model):
 class MeasureObservation(models.Model):
     author = models.TextField(max_length=50)
     text = models.TextField(max_length=1200)
-    filePath = models.FilePathField(path='media/',blank=False)
     image = models.ImageField(upload_to='obs_images/')
     image_thumbnail = ImageSpecField(source='image',
                                      processors=[ResizeToFill(64,64)],

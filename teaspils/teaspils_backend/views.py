@@ -1,11 +1,7 @@
 import datetime
+from re import X
+from dateutil import parser 
 import json
-from math import sin
-from multiprocessing import context
-from os import times
-from pathlib import Path
-from datetime import date, timezone
-import re
 from typing import List
 from zoneinfo import ZoneInfo
 
@@ -14,22 +10,15 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import loader
 from django.contrib import messages
-from django.core.files import File as DjangoFile
 from django.core.files.images import ImageFile
-from django.conf import settings as django_settings
 from django.utils.translation import gettext_lazy as _
 from django.views.decorators.csrf import csrf_exempt
 
 from django.core.paginator import Paginator
 
-from io import BytesIO, StringIO
-
-
-from .utils import handle_uploaded_file
-
 from .api import facade
 
-from .models import Course, MeasureObservation, Measurement, Observation, Plant, PlantSettings, Student
+from .models import Course, MeasureObservation, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, MeasureObservationForm, ObservationForm
 from .alerts import alerts_plantHistory, advice_plantHistory, alerts_singleMeasure, advice_singleMeasure
 
@@ -63,7 +52,6 @@ def index(request):
             course_id = form.cleaned_data['course_id']
             secret_word = form.cleaned_data['secret_word']
 
-            print(course_id)
             course = Course.objects.filter(pk=course_id).first()
 
             if (not course is None): 
@@ -304,7 +292,6 @@ def measureObservations(request, plant_id:int, ts:str):
             print(f"{name} makes this observation: {observation} about plant {plant_id} with file {attachedfile}")
 
     else:
-        print("### BY GET ###", ts)
         timestamp = datetime.datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
         # print(timestamp)
         saved_ts = timestamp.astimezone(ZoneInfo('Europe/Madrid'))
@@ -402,8 +389,10 @@ def singleMeasure(request, plant_id:int, obj:str):
         plant = Plant.objects.filter(pk=plant_id).first()
         plant_alias = plant.alias
 
+        measure_ts = single_measure['timestamp']
+
         #OBSERVATIONS:
-        observations = MeasureObservation.objects.filter(plant_id=plant_id).order_by("-timestamp")
+        observations = MeasureObservation.objects.filter(plant_id=plant_id, measure_timestamp=measure_ts).order_by("-timestamp")
 
         paginator = Paginator(observations, 3)
         page_number = request.GET.get('page')
@@ -451,43 +440,41 @@ def singleMeasure(request, plant_id:int, obj:str):
 
             print(attachedfile)
             #2022-02-10%2019:08:45
-            measure_timestamp = datetime.datetime.strptime(single_measure['timestamp'], "%Y-%m-%d %H:%M:%S.%f")
+            measure_timestamp = parser.parse(single_measure['timestamp'])
+            # measure_timestamp = datetime.datetime.strptime(single_measure['timestamp'], "%Y-%m-%d %H:%M:%S.%f")
             saved_ts = measure_timestamp.astimezone(ZoneInfo('Europe/Madrid'))
-            saved_path:str = '/uploads'
 
             real_timestamp = datetime.datetime.now()
             
 
             #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
-            if saved_path is not None:
-                obs = MeasureObservation(plant_id=plant_id,
-                                  author=name,
-                                  text=observation,
-                                  filePath= saved_path,
-                                  image = attachedfile,
-                                  measure_timestamp = saved_ts,
-                                  timestamp= real_timestamp)
-                obs.save()
+            obs = MeasureObservation(plant_id=plant_id,
+                                author=name,
+                                text=observation,
+                                image = attachedfile,
+                                measure_timestamp = saved_ts,
+                                timestamp= real_timestamp)
+            obs.save()
 
-                messages.success(request, "Observation saved successfully")
-                observations = MeasureObservation.objects.filter(plant_id=plant_id, timestamp=saved_ts).order_by("-timestamp")
+            messages.success(request, "Observation saved successfully")
+            observations = MeasureObservation.objects.filter(plant_id=plant_id, timestamp=saved_ts).order_by("-timestamp")
 
-                plant = Plant.objects.filter(pk=plant_id).first()
-                plant_alias = plant.alias
+            plant = Plant.objects.filter(pk=plant_id).first()
+            plant_alias = plant.alias
 
-                context:set = {'plant_id': plant_id, 
-                               'observations': observations,
-                               'timestamp' : saved_ts,
-                               'alias' : plant_alias,
-                               'num_visits': num_visits}
+            context:set = {'plant_id': plant_id, 
+                            'observations': observations,
+                            'timestamp' : saved_ts,
+                            'alias' : plant_alias,
+                            'num_visits': num_visits}
 
-                single_measure = str(single_measure).replace("\'", "\"")
+            single_measure = str(single_measure).replace("\'", "\"")
 
-                return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure), context)
-                # return HttpResponseRedirect(str(timestamp), context)
-            else:
-                messages.error(request, "Error saving the observation")
-                return(Http404())
+            return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure), context)
+            #     # return HttpResponseRedirect(str(timestamp), context)
+            # else:
+            #     messages.error(request, "Error saving the observation")
+            #     return(Http404())
 
                 
 @csrf_exempt

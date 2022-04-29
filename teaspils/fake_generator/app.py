@@ -14,11 +14,10 @@ def generator():
     measures = []
 
     try:
-
         for i in range(0, random.randint(4, 9)):
             tmp = {
                 'plant_id'      : 1,
-                'Timestamp'     : get_timestamp(),
+                'Timestamp'     : get_timestamp(i),
                 'temperature'   : get_temperature(),
                 'soilHumidity'  : get_noise(),
                 'humidity'      : get_humidity(),
@@ -41,23 +40,27 @@ def get_measures():
         return json.dumps(data, indent=4, sort_keys=True, default=str)
 
 
-def get_timestamp():
-    return datetime.datetime.now()
+def get_timestamp(i):
+    ts = datetime.datetime(2022, 4, 20, 11, 0, 0, 0) + datetime.timedelta(minutes=10*i)
+    ts = ts.strftime('%Y-%m-%d %H:%M:%S.%f')
+    return ts
+
+    #return datetime.datetime.now()
 
 def get_temperature():
     return random.randint(18,25)
 
 def get_noise():
-    return random.randint(120,280)
+    return random.randint(0,100)
 
 def get_co2():
-    return random.randint(4,8)
+    return random.randint(50,800)
 
 def get_humidity():
-    return random.randint(1000,2000)
+    return random.randint(0,100)
 
 def get_light():
-    return random.randint(2200,3100)
+    return random.randint(100,2000)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)

@@ -10,12 +10,27 @@
 
 {% if messages %}
 {% for message in messages %}
-<!-- <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div> -->
-<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable fade show mt-3"
-    style="position: fixed; top:0; width:95%" role="alert">
-    <strong>{{message}}</strong>
-    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-</div>
+    {% if message.extra_tags != 'customalert' %}
+    <!-- <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div> -->
+    <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %} alert-dismissable fade show mt-3"
+        style="position: fixed; top:0; width:95%" role="alert">
+        <strong>{{message}}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    {% endif %}
+
+    {% if message.extra_tags == 'customalert' %}
+    <p id="message-text">{{ message.message.text }}</p>
+    <i id="icon-text" class="fa-regular {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
+    <script>
+        $(document).ready(function(){
+            $("#customAlert").modal('show');
+            $("#message-container").append($("#message-text"));
+            $("#icon-container").append($("#icon-text"));
+        });
+    </script>
+    {% endif %}
+
 {% endfor %}
 {% endif %}
 

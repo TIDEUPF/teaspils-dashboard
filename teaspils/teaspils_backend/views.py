@@ -31,6 +31,7 @@ from .api import facade
 
 from .models import Course, MeasureObservation, Measurement, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, MeasureObservationForm, ObservationForm
+from .alerts import alerts_plantHistory, advice_plantHistory, alerts_singleMeasure, advice_singleMeasure
 
 @csrf_exempt
 def index(request):
@@ -119,6 +120,11 @@ def plantDetail(request, plant_id:int):
 @csrf_exempt
 def plantHistory(request, plant_id:int):
 
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    print('plantHistory visits:', request.session['num_visits'])
+
     observations:List = []
     if request.method == 'POST':
         form:ObservationForm = ObservationForm(request.POST, request.FILES)
@@ -146,13 +152,13 @@ def plantHistory(request, plant_id:int):
                                   text=observation,
                                   filePath= saved_path,
                                   image = attachedfile,
-                                  timestamp=timestamp)
+                                  timestamp=timestamp,)
                 obs.save()
 
                 messages.success(request, "Observation saved successfully")
 
                 observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
-                context:set = {'plant_id': plant_id, 'observations': observations}
+                context:set = {'plant_id': plant_id, 'observations': observations, 'num_visits': num_visits}
                 return HttpResponseRedirect('history', context)
 
 
@@ -163,6 +169,16 @@ def plantHistory(request, plant_id:int):
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
 
     messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
+
+    if plant_id == 2:
+        #print('index',num_visits%len(alerts_plantHistory))
+        #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
+        alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
+        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+
+    if plant_id == 3:
+        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     #OBSERVATIONS:
     observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
@@ -175,7 +191,8 @@ def plantHistory(request, plant_id:int):
                   template_name='main/historical.html', 
                   context={'plant_id' : plant_id,
                            'json_history': json_pretty,
-                           'page_obj': page_obj})
+                           'page_obj': page_obj,
+                           'num_visits': num_visits})
 
 
 @csrf_exempt
@@ -228,12 +245,13 @@ def observations(request, plant_id:int): #,plant_id:int):
 
 
     template:any = loader.get_template('main/observations.html')
-    context:set = {'plant_id': plant_id, 'observations': observations}
+    context:set = {'plant_id': plant_id, 'observations': observations, 'num_visits': num_visits}
     return HttpResponse(template.render(context, request))
     #return HttpResponse(f"Hello, world. You're at Observations page {plant_id}.")
 
 @csrf_exempt
 def measureObservations(request, plant_id:int, ts:str):
+
     observations = []
     if request.method == 'POST':
         print("FROM POST ENTERING", ts)
@@ -303,13 +321,19 @@ def measureObservations(request, plant_id:int, ts:str):
     context:set = {'plant_id': plant_id, 
                    'observations': observations,
                    'timestamp' : ts,
-                   'alias' : plant_alias}
+                   'alias' : plant_alias,
+                   'num_visits': num_visits}
     return HttpResponse(template.render(context, request))
 
 
 def measures(request, plant_id:int, ts:str):
     #2021-11-18%2022:48:02.884
     origin_data = facade.ConnectionFacade.data
+
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    print('measures visits:', request.session['num_visits'])
 
     single_measure = {}
     for m in origin_data:
@@ -338,7 +362,8 @@ def measures(request, plant_id:int, ts:str):
                            'lowH' : plant_settings.low_humidity,
                            'highH' : plant_settings.high_humidity,
                            'lowI' : plant_settings.low_light,
-                           'highI' : plant_settings.high_light
+                           'highI' : plant_settings.high_light,
+                           'num_visits': num_visits
                            })
 
 @csrf_exempt
@@ -349,6 +374,21 @@ def singleMeasure(request, plant_id:int, obj:str):
           "humidity":26,"light":9,"co2":351.40909090909093,
           "soilHumidity":39.08133971291866,"temperature":25}
     """
+
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    print('singleMeasure visits:', request.session['num_visits'])
+
+    if plant_id == 2:
+        #print('index',num_visits%len(alerts_singleMeasure))
+        #print('message',alerts_singleMeasure[num_visits%len(alerts_singleMeasure)] )
+        alert = alerts_singleMeasure[num_visits%len(alerts_singleMeasure)]
+        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+
+    if plant_id == 3:
+        advice = advice_singleMeasure[num_visits%len(advice_singleMeasure)]
+        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     observations:List = []
 
@@ -383,7 +423,8 @@ def singleMeasure(request, plant_id:int, obj:str):
                            'highH' : 100 if plant_settings is None else plant_settings.high_humidity,
                            'lowI' : 0 if plant_settings is None else plant_settings.low_light,
                            'highI' : 100 if plant_settings is None else plant_settings.high_light,
-                           'page_obj': page_obj
+                           'page_obj': page_obj,
+                           'num_visits': num_visits
                         }
 
         
@@ -437,11 +478,12 @@ def singleMeasure(request, plant_id:int, obj:str):
                 context:set = {'plant_id': plant_id, 
                                'observations': observations,
                                'timestamp' : saved_ts,
-                               'alias' : plant_alias}
+                               'alias' : plant_alias,
+                               'num_visits': num_visits}
 
                 single_measure = str(single_measure).replace("\'", "\"")
 
-                return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure))
+                return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure), context)
                 # return HttpResponseRedirect(str(timestamp), context)
             else:
                 messages.error(request, "Error saving the observation")

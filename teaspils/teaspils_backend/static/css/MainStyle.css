@@ -467,7 +467,8 @@ footer h3{
     height: 50px;
     left: 100%;
     top: 50%;
-    background-color: green;
+    background-color: #6b9377;
+    border-color: #6b9377;
     padding: 1%;
     transform-origin: 0% 0%;
     -webkit-transform: rotate(90deg);

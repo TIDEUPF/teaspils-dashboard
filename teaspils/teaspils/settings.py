@@ -95,18 +95,27 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 #         }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'teaspils_aws_db',
+#         'USER': 'admin',
+#         'PASSWORD': '--Teaspils22',
+#         'PORT': '3306',
+#         'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
+#         }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'teaspils_aws_db',
-        'USER': 'admin',
-        'PASSWORD': '--Teaspils22',
-        'PORT': '3306',
-        'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
-        }
+        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
+        'USER': '',                      # Not used with sqlite3.
+        'PASSWORD': '',                  # Not used with sqlite3.
+        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
+        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+    }
 }
-
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -131,7 +140,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGES = (('en', _('English')),
-             ('es', _('Spanish')))
+             ('es', _('Spanish')),
+             ('ca', _('Catalan')))
 
 LANGUAGE_CODE = 'en'
 

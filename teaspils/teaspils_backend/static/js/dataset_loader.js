@@ -1,10 +1,10 @@
 //Loading the window create the switch control and setting it to realtime
-window.onload = function(){
+window.onload = function () {
     document.getElementById('load_switch').addEventListener('change', function (event) {
         if (event.currentTarget.checked) {
             $('#dataset-upload').prop("disabled", true);
             $('#dataset-upload').val(null);
-            realtimedata();
+            load_from_realtime();
         } else {
             $('#dataset-upload').prop("disabled", false);
         }
@@ -12,7 +12,14 @@ window.onload = function(){
 
     console.log(document.getElementById('load_switch').checked);
     document.getElementById('load_switch').checked = true;
-    realtimedata();
+    load_from_realtime();
+
+    $(document).ready(function () {
+        function fade_out() {
+            $(".alert").fadeOut().empty();
+        }
+        setTimeout(fade_out, 5000);
+    });
 };
 
 
@@ -33,7 +40,7 @@ document.getElementById('dataset-upload').addEventListener('change', function (e
             json_data = csvJSON(csv_data);
             console.log(json_data);
 
-            load_plots(json_data)
+            load_from_file(json_data)
         }
         reader.readAsBinaryString(files[0]);
     }
@@ -74,7 +81,7 @@ function csvJSON(csv) {
 }
 
 //Display plots using FILE data
-function load_plots(json_loaded) {
+function load_from_file(json_loaded) {
 
     let history = JSON.parse(json_loaded);
 
@@ -82,7 +89,7 @@ function load_plots(json_loaded) {
 
     var times = [];
     var temps = [];
-    var noises = [];
+    var soilHumidity = [];
     var co2s = [];
     var lights = [];
     var hums = [];
@@ -91,7 +98,7 @@ function load_plots(json_loaded) {
     for (let i = 0; i < history.length; i++) {
         times.push(new Date(history[i]['Timestamp']));
         temps.push(history[i]['temperature']);
-        noises.push(history[i]['soilHumidity']);
+        soilHumidity.push(history[i]['soilHumidity']);
         co2s.push(history[i]['co2']);
         lights.push(history[i]['light']);
         hums.push(history[i]['humidity']);
@@ -101,7 +108,7 @@ function load_plots(json_loaded) {
 
 
 
-    var trace_temp = {
+    let trace_temp = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Timestamp: ',
@@ -112,24 +119,24 @@ function load_plots(json_loaded) {
         marker: { color: '#d9bdff', size: 5 },
     }
 
-    var trace_noise = {
+    let trace_soilHumidity = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Soil Humidity (%)',
         x: times,
-        y: noises,
-        text: noises.map(function (value) { return `Soil H.: ${value} %`; }),
+        y: soilHumidity,
+        text: soilHumidity.map(function (value) { return `Soil H.: ${value} %`; }),
         hoverinfo: 'text',
         line: { color: '#666666', width: 3 },
         marker: { color: '#666666', size: 5 },
         layout: {
             xaxis: {
                 tickformat: "%H/%M"
-            },
+            }
         }
     }
 
-    var trace_co2 = {
+    let trace_co2 = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Co2 (ppm)',
@@ -141,7 +148,7 @@ function load_plots(json_loaded) {
         marker: { color: '#9cbcff', size: 5 },
     }
 
-    var trace_light = {
+    let trace_light = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Light (lux)',
@@ -153,7 +160,7 @@ function load_plots(json_loaded) {
         marker: { color: '#ffa2a2', size: 5 },
     }
 
-    var trace_hum = {
+    let trace_hum = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Humidity %',
@@ -165,8 +172,8 @@ function load_plots(json_loaded) {
         marker: { color: '#bdfff1', size: 5 },
     }
 
-    plot_all_div = document.getElementById('plt_loaded');
-    Plotly.newPlot(plt_all, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    plot_all_div = document.getElementById('plt_loaded'); //plt_all
+    Plotly.newPlot(plt_all, [trace_temp, trace_soilHumidity, trace_co2, trace_light, trace_hum], {
         margin: { t: 15 },
         // plot_bgcolor: "#ffde9f",
         // paper_bgcolor: "#ffde9f",
@@ -184,136 +191,56 @@ function load_plots(json_loaded) {
         autosize: true,
     }, { responsive: true });
 
-    // plot_tem_div = document.getElementById('plt_tem');
-    // Plotly.newPlot(plot_tem_div, [trace_temp], {
-    //     margin: { t: 15 },
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified",
-    //     xaxis: {
-    //         tickformat: '%Y-%m-%d',
-    //     },
-    //     autosize: true,
-    // }, { responsive: true });
+    let m1 = 'Temperature'
+    let m2 = 'Soil Humidity'
 
-    // plot_noi_div = document.getElementById('plt_noi');
-    // Plotly.newPlot(plot_noi_div, [trace_noise], {
-    //     margin: { t: 15 },
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified",
-    //     xaxis: {
-    //         tickformat: '%Y-%m-%d',
-    //     },
-    //     autosize: true,
-    // }, { responsive: true });
+    $('#first-options a').on('click', function () {
+        m1 = $(this).text();
+        console.log("comparing " + m1 + " - " + m2);
+        compare_measures(m1, m2);
+    });
 
-    // plot_co2_div = document.getElementById('plt_co2');
-    // Plotly.newPlot(plot_co2_div, [trace_co2], {
-    //     margin: { t: 15 },
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified",
-    //     xaxis: {
-    //         tickformat: '%Y-%m-%d',
-    //     },
-    //     autosize: true,
-    // }, { responsive: true });
+    $('#second-options a').on('click', function () {
+        m2 = $(this).text();
+        console.log("comparing " + m1 + " - " + m2);
+        compare_measures(m1, m2);
+    });
 
-    // plot_lig_div = document.getElementById('plt_lig');
-    // Plotly.newPlot(plot_lig_div, [trace_light], {
-    //     margin: { t: 15 },
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified",
-    //     xaxis: {
-    //         tickformat: '%Y-%m-%d',
-    //     },
-    //     autosize: true,
-    // }, { responsive: true });
+    function compare_measures(m1, m2) {
+        let traces_dict = {
+            'Temperature': trace_temp,
+            'Temperatura': trace_temp,
+            'Soil Humidity': trace_soilHumidity,
+            'Humedad del suelo': trace_soilHumidity,
+            'Co2': trace_co2,
+            'Light': trace_light,
+            'Iluminación': trace_light,
+            'Humidity': trace_hum,
+            'Humedad': trace_hum
+        }
 
-    // plot_hum_div = document.getElementById('plt_hum');
-    // Plotly.newPlot(plot_hum_div, [trace_hum], {
-    //     margin: { t: 15 },
-    //     legend: {
-    //         yanchor: "top",
-    //         y: 0.8,
-    //         xanchor: "right",
-    //         x: 1.1
-    //     },
-    //     hovermode: "x unified",
-    //     xaxis: {
-    //         tickformat: '%Y-%m-%d',
-    //     },
-    //     autosize: true,
-    // }, { responsive: true });
+        console.log("1: " + traces_dict[m1]);
+        console.log("2: " + traces_dict[m2]);
+        plot_compare_div = document.getElementById('plt_compare');
+        Plotly.newPlot(plot_compare_div, [traces_dict[m1], traces_dict[m2]], {
+            margin: { t: 15 },
+            // plot_bgcolor: "#ffde9f",
+            // paper_bgcolor: "#ffde9f",
+            legend: {
+                yanchor: "top",
+                y: 0.8,
+                xanchor: "right",
+                x: 1.1
+            },
+            hovermode: "x unified",
+            xaxis: {
+                tickformat: '%H:%M',
+            },
+            autosize: true,
+        }, { responsive: true });
+    }
 
-    // let m1 = 'Temperature'
-    // let m2 = 'Soil Humidity'
-
-    // $('#first-options a').on('click', function () {
-    //   m1 = $(this).text();
-    //   console.log("comparing " + m1 + " - " + m2);
-    //   compare_measures(m1, m2);
-    // });
-
-    // $('#second-options a').on('click', function () {
-    //   m2 = $(this).text();
-    //   console.log("comparing " + m1 + " - " + m2);
-    //   compare_measures(m1, m2);
-    // });
-
-    // function compare_measures(m1, m2) {
-    //     let traces_dict = {
-    //         'Temperature': trace_temp,
-    //         'Temperatura' : trace_temp,
-    //         'Soil Humidity': trace_noise,
-    //         'Humedad del suelo': trace_noise,
-    //         'Co2': trace_co2,
-    //         'Light': trace_light,
-    //         'Iluminación': trace_light,
-    //         'Humidity': trace_hum,
-    //         'Humedad' : trace_hum
-    //     }
-
-    //     console.log("1: "+ traces_dict[m1]);
-    //     console.log("2: "+ traces_dict[m2]);
-    //     plot_compare_div = document.getElementById('plt_compare');
-    //     Plotly.newPlot(plot_compare_div, [traces_dict[m1], traces_dict[m2]], {
-    //         margin: { t: 15 },
-    //         // plot_bgcolor: "#ffde9f",
-    //         // paper_bgcolor: "#ffde9f",
-    //         legend: {
-    //             yanchor: "top",
-    //             y: 0.8,
-    //             xanchor: "right",
-    //             x: 1.1
-    //         },
-    //         hovermode: "x unified",
-    //         xaxis: {
-    //             tickformat: '%H:%M',
-    //         },
-    //         autosize: true,
-    //     }, { responsive: true });
-    // }
-
-    // compare_measures(m1, m2);
+    compare_measures(m1, m2);
 
     plt_all.on('plotly_click', function (data) {
 
@@ -354,58 +281,14 @@ function load_plots(json_loaded) {
         location.href = "/teaspils/plant/" + pid + "/measures/" + sm_json;
     });
 
-    // plot_tem_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    // plot_noi_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    // plot_co2_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    // plot_hum_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    // plot_lig_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    // plot_compare_div.on('plotly_click', function (data) {
-    //     ts = data['points'][0]['x']
-    //     console.log(ts)
-    //     location.href = "/teaspils/plant/{{plant_id }}/measurement/" + ts
-    // });
-
-    $(document).ready(function () {
-        function fade_out() {
-            $(".alert").fadeOut().empty();
-        }
-        setTimeout(fade_out, 5000);
-        console.log("fade out");
-    });
-
 }
 
 //data from thingsboard server
-function realtimedata() {
+function load_from_realtime() {
 
     var times = []
     var temps = []
-    var noises = []
+    var soilHumidity = []
     var co2s = []
     var lights = []
     var hums = []
@@ -414,31 +297,38 @@ function realtimedata() {
     for (let i = 0; i < history.length; i++) {
         times.push(new Date(history[i]['Timestamp']));
         temps.push(history[i]['temperature']);
-        noises.push(history[i]['soilHumidity']);
+        soilHumidity.push(history[i]['soilHumidity']);
         co2s.push(history[i]['co2']);
         lights.push(history[i]['light']);
         hums.push(history[i]['humidity']);
     }
-    console.log(times, temps, noises, co2s, lights, hums);
+    console.log("From server: ")
+    console.log(times, temps, soilHumidity, co2s, lights, hums);
 
-    var trace_temp = {
+    let trace_temp = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Temperature ',
+        name: 'Temperature',
         x: times,
         y: temps,
         text: temps.map(function (value) { return `${value} Cº`; }),
+        hoverinfo: 'text',
         line: { color: '#f1bdff', width: 3 },
         marker: { color: '#d9bdff', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: "%Y-%m-%d"
+            },
+        }
     }
 
-    var trace_noise = {
+    let trace_soilHumidity = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Soil Humidity (%)',
         x: times,
-        y: noises,
-        text: noises.map(function (value) { return `Soil H.: ${value} %`; }),
+        y: soilHumidity,
+        text: soilHumidity.map(function (value) { return `Soil H.: ${value} %`; }),
         hoverinfo: 'text',
         line: { color: '#666666', width: 3 },
         marker: { color: '#666666', size: 5 },
@@ -449,7 +339,7 @@ function realtimedata() {
         }
     }
 
-    var trace_co2 = {
+    let trace_co2 = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Co2 (ppm)',
@@ -459,9 +349,14 @@ function realtimedata() {
         hoverinfo: 'text',
         line: { color: '#9cbcff', width: 3 },
         marker: { color: '#9cbcff', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: "%Y-%m-%d"
+            },
+        }
     }
 
-    var trace_light = {
+    let trace_light = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Light (lux)',
@@ -471,9 +366,14 @@ function realtimedata() {
         hoverinfo: 'text',
         line: { color: '#ffa2a2', width: 3 },
         marker: { color: '#ffa2a2', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: "%Y-%m-%d"
+            },
+        }
     }
 
-    var trace_hum = {
+    let trace_hum = {
         type: "scatter",
         mode: "lines+markers",
         name: 'Humidity %',
@@ -483,10 +383,15 @@ function realtimedata() {
         hoverinfo: 'text',
         line: { color: '#bdfff1', width: 3 },
         marker: { color: '#bdfff1', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: "%Y-%m-%d"
+            },
+        }
     }
 
-    plot_all_div = document.getElementById('plt_all');
-    Plotly.newPlot(plot_all_div, [trace_temp, trace_noise, trace_co2, trace_light, trace_hum], {
+    plot_all_div = document.getElementById('plt_all'); //plt_all
+    Plotly.newPlot(plt_all, [trace_temp, trace_soilHumidity, trace_co2, trace_light, trace_hum], {
         margin: { t: 15 },
         // plot_bgcolor: "#ffde9f",
         // paper_bgcolor: "#ffde9f",
@@ -503,7 +408,6 @@ function realtimedata() {
         },
         autosize: true,
     }, { responsive: true });
-
 
     let m1 = 'Temperature'
     let m2 = 'Soil Humidity'
@@ -524,8 +428,8 @@ function realtimedata() {
         let traces_dict = {
             'Temperature': trace_temp,
             'Temperatura': trace_temp,
-            'Soil Humidity': trace_noise,
-            'Humedad del suelo': trace_noise,
+            'Soil Humidity': trace_soilHumidity,
+            'Humedad del suelo': trace_soilHumidity,
             'Co2': trace_co2,
             'Light': trace_light,
             'Iluminación': trace_light,
@@ -533,17 +437,10 @@ function realtimedata() {
             'Humedad': trace_hum
         }
 
-        console.log("1: " + m1);
-        console.log("2: " + m2);
-
-        trace1 = traces_dict[m1];
-        trace2 = traces_dict[m2];
-
-        trace1['yaxis'] = 'y1';
-        trace2['yaxis'] = 'y2';
-
+        console.log("1: " + traces_dict[m1]);
+        console.log("2: " + traces_dict[m2]);
         plot_compare_div = document.getElementById('plt_compare');
-        Plotly.newPlot(plot_compare_div, [trace1, trace2], {
+        Plotly.newPlot(plot_compare_div, [traces_dict[m1], traces_dict[m2]], {
             margin: { t: 15 },
             // plot_bgcolor: "#ffde9f",
             // paper_bgcolor: "#ffde9f",
@@ -551,26 +448,11 @@ function realtimedata() {
                 yanchor: "top",
                 y: 0.8,
                 xanchor: "right",
-                x: 1.5
+                x: 1.1
             },
             hovermode: "x unified",
             xaxis: {
                 tickformat: '%H:%M',
-            },
-            // yaxis:{overlaying: 'y', side: 'left', position:-1},
-            yaxis: {
-                title: m1,
-                //     overlaying: 'y',
-                //     side: 'left',
-                //     position: -0.25
-            },
-            yaxis2: {
-                title: m2,
-                overlaying: 'y',
-                side: 'right',
-                position: 1,
-                // tickfont: {color: trace2['marker']['color']},
-                // titlefont: {color: trace2['marker']['color']},
             },
             autosize: true,
         }, { responsive: true });
@@ -578,7 +460,9 @@ function realtimedata() {
 
     compare_measures(m1, m2);
 
-    plot_all_div.on('plotly_click', function (data) {
+    plt_all.on('plotly_click', function (data) {
+
+        console.log(data.points);
 
         let hum_y = 0.0;
         let light_y = 0.0;
@@ -613,32 +497,6 @@ function realtimedata() {
 
         sm_json = JSON.stringify(single_measure)
         location.href = "/teaspils/plant/" + pid + "/measures/" + sm_json;
-
-
-        // console.log(sm_json);
-        // $.ajax({
-        //     url     : '/teaspils/plant/{{plant_id }}/measurement/',
-        //     type    : 'POST',
-        //     data    : {measure : sm_json},
-        //     success : function(context){
-        //         console.log(context);
-        //         main = document.documentElement;
-        //         main.innerHTML = context;
-        //         dispatchEvent(new Event('load'));
-
-        //     }
-
-        // });
-        //location.href = "/teaspils/plant/{{plant_id }}/measurement/" + sm_json
     });
-
-    $(document).ready(function () {
-        function fade_out() {
-            $(".alert").fadeOut().empty();
-        }
-        setTimeout(fade_out, 5000);
-        console.log("fade out");
-    });
-
 
 }

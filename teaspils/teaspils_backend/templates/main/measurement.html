@@ -7,6 +7,26 @@
 {% load i18n %}
 
 {% block content %}
+
+{% if messages %}
+{% for message in messages %}
+
+    {% if message.extra_tags == 'customalert' %}
+    <p id="message-text">{{ message.message.text }}</p>
+    <i id="icon-text" class="fa-regular {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
+    <script>
+        $(document).ready(function(){
+            $("#customAlert").modal('show');
+            $("#message-container").append($("#message-text"));
+            $("#icon-container").append($("#icon-text"));
+        });
+    </script>
+    {% endif %}
+
+{% endfor %}
+{% endif %}
+
+
 <div id="measures_container" class="container">
     <div class="cointainer">
 

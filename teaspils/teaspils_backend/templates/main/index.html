@@ -7,7 +7,21 @@
 
 {% if messages %}
 {% for message in messages %}
-<div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+
+    {% if message.extra_tags != 'customalert' %}
+        <div class="alert {% if message.tags %}alert-{{ message.tags }}{% endif %}" role="alert">{{ message }}</div>
+    {% endif %}
+
+    {% if message.extra_tags == 'customalert' %}
+    <p id="message-text">{{ message }}</p>
+    <script>
+        $(document).ready(function(){
+            $("#customAlert").modal('show');
+            $("#message-container").append($("#message-text"));
+        });
+    </script>
+    {% endif %}
+
 {% endfor %}
 {% endif %}
 

@@ -21,7 +21,7 @@
 
     {% if message.extra_tags == 'customalert' %}
     <p id="message-text">{{ message.message.text }}</p>
-    <i id="icon-text" class="fa-regular {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
+    <i id="icon-text" class="fa-solid {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
     <script>
         $(document).ready(function(){
             $("#customAlert").modal('show');
@@ -52,13 +52,12 @@
                 </li>
                 <hr > 
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true"
-                        style="color: orange;">{% blocktrans %}Compare measures{% endblocktrans %}</a>
+                    <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true">{% blocktrans %}Compare measures{% endblocktrans %}</a>
                 </li>
             </ul>
         </div>
         <div class="col-10">
-            <div class="tab-content clearfix">
+            <div class="tab-content clearfix" style="width:100%;height:100%;">
                 <div id="all_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
                     <div class="row">
                         <div class="col-2"> </div>
@@ -121,7 +120,7 @@
         </div>
     </div>
 
-    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Observacions</button>
+    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">OBSERVACIONS</button>
 
     <div class="offcanvas offcanvas-end {% if page_obj.number != 1 %}show{% endif %} " 
          data-bs-scroll="true" 
@@ -137,7 +136,7 @@
                 <div class="cointainer border rounded"
                      style="overflow-y: scroll; height: 100%; width: 100%">
                      <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Plant observations{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Observacions de la planta{% endblocktrans %}</h5>
                     </div>
                     {%for obs in page_obj %}
                     <div class="row" style="justify-content: center; margin: 5px;">
@@ -167,7 +166,7 @@
                             {% endif %}
                     
                             <span class="current">
-                                {% blocktrans %}Page{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}of{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
+                                {% blocktrans %}Pàgina{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}de{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
                             </span>
                             {% if page_obj.has_next %}
                                 <a href="?page={{ page_obj.next_page_number }}">{% blocktrans %}next{% endblocktrans %}</a>
@@ -180,7 +179,7 @@
                 <div class="row" style="margin-top:auto">
                 <div class="card">
                     <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Fes una observació!{% endblocktrans %}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">

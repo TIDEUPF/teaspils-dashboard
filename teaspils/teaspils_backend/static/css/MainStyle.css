@@ -490,3 +490,64 @@ footer h3{
     text-decoration: none;
     color:#b75042;
 }
+
+/* LEFT MENU - NAV ITEMS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+
+#main_container .nav-item {
+    cursor: pointer;
+}
+
+.nav-pills .nav-link {
+    color: #212121 !important;
+}
+
+.nav-pills .nav-link:hover {
+    color: #b75042 !important;
+}
+
+.nav-pills .nav-link.active {
+    background-color: #d5e2d9 !important;
+    color: #212121 !important;
+}
+
+.nav-pills .nav-link.active:hover {
+    color: white !important;
+}
+
+.breadcrumb-item a{
+    color: #b75042 !important;
+}
+
+/* SETTINGS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+#saveSettingsButton {
+    background-color: #d5e2d9;
+    outline: none !important;
+    border-color: transparent;
+}
+
+#saveSettingsButton:hover {
+    background-color: #6b9377;
+    color: white;
+}
+
+/* COMPARE MEASURES
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+a .nav-link .dropdown-toggle {
+    color: #212121 !important;
+}
+
+a .nav-link .dropdown-toggle:hover {
+    color: #b75042 !important;
+}
+
+/* PLANT ALIAS
+–––––––––––––––––––––––––––––––––––––––––––––––––– */
+.bg-info {
+    background-color: #d5e2d9 !important;
+}
+
+.bg-success {
+    background-color: #6b9377 !important;
+}

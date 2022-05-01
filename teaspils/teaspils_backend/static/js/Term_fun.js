@@ -155,6 +155,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
             color_T = red;
         }
         Temperature.style.backgroundColor = color_T;
+
+        // Update Temp value
+        document.getElementById("T-value").innerHTML = Math.round(measure_data['temperature'] * 100) / 100 + 'ºC';
     }
     else {
         let Temp_input = document.getElementById("temp-input")
@@ -195,6 +198,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
             color_N = red;
         }
         Noise.style.backgroundColor = color_N   ;
+
+        // Update Soil Hum value
+        document.getElementById("SH-value").innerHTML = Math.round(measure_data['soilHumidity'] * 100) / 100 + '%';
     }
     else {
         let Noise_input = document.getElementById("noise-input")
@@ -233,6 +239,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
             color_C = red;
         }
         CO2.style.backgroundColor = color_C;
+
+        // Update Co2 value
+        document.getElementById("Co2-value").innerHTML = Math.round(measure_data['co2'] * 100) / 100 + 'ppm';
     }
     else {
         let CO2_input = document.getElementById("co2-input")
@@ -271,6 +280,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
             color_H = red;
         }
         Hum.style.backgroundColor = color_H;
+
+        // Update Humidity value
+        document.getElementById("H-value").innerHTML = Math.round(measure_data['humidity'] * 100) / 100 + '%';
     }
     else {
         let Hum_input = document.getElementById("humidity-input")
@@ -309,6 +321,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
             color_L = red;
         }
         Light.style.backgroundColor = color_L;
+
+        // Update Light value
+        document.getElementById("L-value").innerHTML = Math.round(measure_data['light'] * 100) / 100 + 'lux';
     }
     else {
         let Light_input = document.getElementById("light-input")

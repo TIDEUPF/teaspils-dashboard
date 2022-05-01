@@ -212,11 +212,14 @@ function load_from_file(json_loaded) {
             'Temperatura': trace_temp,
             'Soil Humidity': trace_soilHumidity,
             'Humedad del suelo': trace_soilHumidity,
+            'Humitat del sòl': trace_soilHumidity,
             'Co2': trace_co2,
             'Light': trace_light,
             'Iluminación': trace_light,
+            'Il·luminació': trace_light,
             'Humidity': trace_hum,
-            'Humedad': trace_hum
+            'Humedad': trace_hum,
+            'Humitat': trace_hum
         }
 
         console.log("1: " + traces_dict[m1]);
@@ -430,11 +433,14 @@ function load_from_realtime() {
             'Temperatura': trace_temp,
             'Soil Humidity': trace_soilHumidity,
             'Humedad del suelo': trace_soilHumidity,
+            'Humitat del sòl': trace_soilHumidity,
             'Co2': trace_co2,
             'Light': trace_light,
             'Iluminación': trace_light,
+            'Il·luminació': trace_light,
             'Humidity': trace_hum,
-            'Humedad': trace_hum
+            'Humedad': trace_hum,
+            'Humitat': trace_hum
         }
 
         console.log("1: " + traces_dict[m1]);

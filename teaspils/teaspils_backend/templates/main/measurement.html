@@ -13,7 +13,7 @@
 
     {% if message.extra_tags == 'customalert' %}
     <p id="message-text">{{ message.message.text }}</p>
-    <i id="icon-text" class="fa-regular {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
+    <i id="icon-text" class="fa-solid {{ message.message.icon }} fa-6x" style="color: #a7beae;"></i>
     <script>
         $(document).ready(function(){
             $("#customAlert").modal('show');
@@ -53,8 +53,8 @@
 
     <div class="row p-3 ml-3">
         <h5 style="color: gray;">{% blocktrans %}Measures taken at:{% endblocktrans %}
-            <span style="color:red">{{timestamp}}</span>{% blocktrans %} for the plant:{% endblocktrans %}
-            <span style="color:red">{{alias}}</span>
+            <span style="color: #b75042">{{timestamp}}</span>{% blocktrans %} for the plant:{% endblocktrans %}
+            <span style="color: #b75042">{{alias}}</span>
         </h5>
     </div>
     <div class="row m-2">
@@ -157,6 +157,7 @@
                         </div>
                         <div class="down">
                             <h2 id="temp-input">{% blocktrans %}Temp. [ºC]{% endblocktrans %}</h2>
+                            <div id="T-value"></div>
                         </div>
                     </div>
                 </div>
@@ -184,6 +185,7 @@
                         </div>
                         <div class="down">
                             <h2>{% blocktrans %}Soil Hum [%]{% endblocktrans %}</h2>
+                            <div id="SH-value"></div>
                         </div>
                     </div>
                 </div>
@@ -210,6 +212,7 @@
                         </div>
                         <div class="down">
                             <h2>{% blocktrans %}Co2 [ppm]{% endblocktrans %}</h2>
+                            <div id="Co2-value"></div>
                         </div>
                     </div>
                 </div>
@@ -236,6 +239,7 @@
                         </div>
                         <div class="down">
                             <h2>{% blocktrans %}Humidity [%]{% endblocktrans %}</h2>
+                            <div id="H-value"></div>
                         </div>
                     </div>
                 </div>
@@ -262,6 +266,7 @@
                         </div>
                         <div class="down">
                             <h2>{% blocktrans %}Light [lux]{% endblocktrans %}</h2>
+                            <div id="L-value"></div>
                         </div>
                     </div>
                 </div>
@@ -279,7 +284,7 @@
         </div> -->
     </div>
 
-    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">Observacions</button>
+    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">OBSERVACIONS</button>
 
     <div class="offcanvas offcanvas-end {% if page_obj.number != 1 %}show{% endif %} " 
          data-bs-scroll="true" 
@@ -325,7 +330,7 @@
                             {% endif %}
                     
                             <span class="current">
-                                {% blocktrans %}Page{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}of{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
+                                {% blocktrans %}Pàgina{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}de{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
                             </span>
                             {% if page_obj.has_next %}
                                 <a href="?page={{ page_obj.next_page_number }}">{% blocktrans %}next{% endblocktrans %}</a>
@@ -338,7 +343,7 @@
                 <div class="row" style="margin-top:auto">
                 <div class="card">
                     <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Fes una observació!{% endblocktrans %}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">

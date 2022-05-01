@@ -156,7 +156,8 @@ def plantHistory(request, plant_id:int):
     print("FROM STATIC: ", facade.ConnectionFacade.data)
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
 
-    messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
+    #messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
+    messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
 
     if plant_id == 2:
         #print('index',num_visits%len(alerts_plantHistory))

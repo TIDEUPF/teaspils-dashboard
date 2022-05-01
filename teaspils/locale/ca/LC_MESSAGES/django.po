@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2022-03-09 13:07+0100\n"
-"PO-Revision-Date: 2022-04-26 22:05+0200\n"
+"PO-Revision-Date: 2022-04-29 14:30+0200\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: ca\n"
@@ -420,7 +420,7 @@ msgstr "Contrassenya"
 
 #: .\teaspils_backend\templates\main\index.html:43
 msgid " Submit "
-msgstr "Enviar"
+msgstr " Enviar "
 
 #: .\teaspils_backend\templates\main\measurement.html:48
 msgid "Measures taken at:"
@@ -428,7 +428,7 @@ msgstr "Mesures preses a les:"
 
 #: .\teaspils_backend\templates\main\measurement.html:49
 msgid " for the plant:"
-msgstr "per la planta:"
+msgstr " per la planta:"
 
 #: .\teaspils_backend\templates\main\measurement.html:62
 #: .\teaspils_backend\templates\main\settings.html:7
@@ -443,7 +443,7 @@ msgstr "Límit inferior"
 #: .\teaspils_backend\templates\main\measurement.html:67
 #: .\teaspils_backend\templates\main\settings.html:21
 msgid "Upper Limit"
-msgstr "Lñimit superior"
+msgstr "Límit superior"
 
 #: .\teaspils_backend\templates\main\measurement.html:68
 #: .\teaspils_backend\templates\main\settings.html:22
@@ -509,10 +509,10 @@ msgid "Noise"
 msgstr "Soroll"
 
 msgid " Temperature "
-msgstr "Temperatura"
+msgstr " Temperatura "
 
 msgid " Noise "
-msgstr "Ruido"
+msgstr " Soroll "
 
 msgid "Hello"
 msgstr "Hola"

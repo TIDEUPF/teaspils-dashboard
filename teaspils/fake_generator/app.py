@@ -1,4 +1,5 @@
 from flask import Flask
+import csv
 import json
 import datetime
 from time import sleep
@@ -11,23 +12,30 @@ def generator():
 
     print("##### ENTERING FAKE GENERATOR #########")
 
-    measures = []
+    # measures = []
 
-    try:
-        for i in range(0, random.randint(4, 9)):
-            tmp = {
-                'plant_id'      : 1,
-                'Timestamp'     : get_timestamp(i),
-                'temperature'   : get_temperature(),
-                'soilHumidity'  : get_noise(),
-                'humidity'      : get_humidity(),
-                'co2'           : get_co2(),
-                'light'         : get_light()
-            }
-            measures.append(tmp)
-            sleep(0.01)
-    except Exception as e:
-        print(e)
+    # try:
+    #     for i in range(0, random.randint(4, 9)):
+    #         tmp = {
+    #             'plant_id'      : 1,
+    #             'Timestamp'     : get_timestamp(i),
+    #             'temperature'   : get_temperature(),
+    #             'soilHumidity'  : get_noise(),
+    #             'humidity'      : get_humidity(),
+    #             'co2'           : get_co2(),
+    #             'light'         : get_light()
+    #         }
+    #         measures.append(tmp)
+    #         sleep(0.01)
+    # except Exception as e:
+    #     print(e)
+
+    measures = {}
+    with open('dataset.csv') as csvFile:
+        csvReader = csv.DictReader(csvFile)
+        for rows in csvReader:
+            id = rows['id']
+            measures[id] = rows
 
     return json.dumps(measures, indent=4, sort_keys=True, default=str)
 

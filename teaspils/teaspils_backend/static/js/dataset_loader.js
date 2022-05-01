@@ -163,7 +163,7 @@ function load_from_file(json_loaded) {
     let trace_hum = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Humidity %',
+        name: 'Humidity (%)',
         x: times,
         y: hums,
         text: hums.map(function (value) { return `Humidity: ${value} %`; }),
@@ -308,7 +308,7 @@ function load_from_realtime() {
     let trace_temp = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Temperature',
+        name: 'Temperatura (ºC)',
         x: times,
         y: temps,
         text: temps.map(function (value) { return `${value} Cº`; }),
@@ -325,7 +325,7 @@ function load_from_realtime() {
     let trace_soilHumidity = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Soil Humidity (%)',
+        name: 'Humitat del sòl (%)',
         x: times,
         y: soilHumidity,
         text: soilHumidity.map(function (value) { return `Soil H.: ${value} %`; }),
@@ -359,7 +359,7 @@ function load_from_realtime() {
     let trace_light = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Light (lux)',
+        name: 'Il·luminació (lux)',
         x: times,
         y: lights,
         text: lights.map(function (value) { return `Light: ${value} lux`; }),
@@ -376,7 +376,7 @@ function load_from_realtime() {
     let trace_hum = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Humidity %',
+        name: 'Humitat (%)',
         x: times,
         y: hums,
         text: hums.map(function (value) { return `Humidity: ${value} %`; }),

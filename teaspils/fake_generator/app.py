@@ -30,12 +30,14 @@ def generator():
     # except Exception as e:
     #     print(e)
 
-    measures = {}
-    with open('dataset.csv') as csvFile:
+    measures = []
+    with open('./fake_generator/dataset.csv') as csvFile:
         csvReader = csv.DictReader(csvFile)
+        counter = 0
         for rows in csvReader:
-            id = rows['id']
-            measures[id] = rows
+            if counter%5 == 0:
+                measures.append(rows)
+            counter += 1
 
     return json.dumps(measures, indent=4, sort_keys=True, default=str)
 

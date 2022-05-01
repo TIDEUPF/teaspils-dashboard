@@ -71,7 +71,7 @@ var trace_light = {
 var trace_hum = {
     type: "scatter",
     mode: "lines+markers",
-    name: 'Humidity %',
+    name: 'Humidity (%)',
     x: times,
     y: hums,
     text: hums.map(function (value) { return `Humidity: ${value} %`; }),

@@ -14,14 +14,15 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from xml.dom.minidom import Document
-from django.urls import include, re_path
+from django.urls import include, path, re_path
 from django.contrib import admin
-from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from teaspils_backend import views
 
 
 urlpatterns = [
+    path('',views.index,name='home'),
     re_path('admin/', admin.site.urls),
     re_path('teaspils/', include('teaspils_backend.urls')),
 ]

@@ -286,7 +286,7 @@ function load_from_file(json_loaded) {
 
 }
 
-//data from thingsboard server
+// data from thingsboard server
 function load_from_realtime() {
 
     var times = []

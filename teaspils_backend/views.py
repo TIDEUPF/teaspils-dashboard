@@ -2,8 +2,9 @@ import datetime
 from re import X
 from dateutil import parser 
 import json
+import csv
 from typing import List
-from backports.zoneinfo import ZoneInfo
+from zoneinfo import ZoneInfo
 
 from django.http.response import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
@@ -151,10 +152,19 @@ def plantHistory(request, plant_id:int):
 
 
     plant = Plant.objects.filter(pk=plant_id).first()
-    con = facade.ConnectionFacade('http') #thingsb
-    con.connect(plant.data_source)
-    print("FROM STATIC: ", facade.ConnectionFacade.data)
-    json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
+    # con = facade.ConnectionFacade('http') #thingsb
+    # con.connect(plant.data_source)
+    # print("FROM STATIC: ", facade.ConnectionFacade.data)
+    measures = []
+    with open('./fake_generator/dataset.csv') as csvFile:
+        csvReader = csv.DictReader(csvFile)
+        counter = 0
+        for rows in csvReader:
+            if counter%5 == 0:
+                measures.append(rows)
+            counter += 1
+            
+    json_pretty = json.dumps(measures, sort_keys=True, indent=4)
 
     #messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
     messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")

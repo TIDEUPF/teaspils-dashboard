@@ -14,13 +14,13 @@ import os
 from pathlib import Path
 from os.path import normpath, join
 
-from django.utils.translation import gettext_lazy as _
 import django_heroku
+from django.utils.translation import gettext_lazy as _
 
 DEV_MODE = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 LOCALE_PATHS = (
     os.path.join(BASE_DIR, "locale"),
@@ -42,14 +42,14 @@ ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0:80','teaspils.herokuapp.com']
 # Application definition
 
 INSTALLED_APPS = [
-    'teaspils_backend.apps.TeaspilsBackendConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'imagekit'
+    'imagekit',
+    'teaspils_backend'
 ]
 
 MIDDLEWARE = [
@@ -113,7 +113,7 @@ if DEV_MODE == True:
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-            'NAME': BASE_DIR / 'sqlite3.db',
+            'NAME': 'sqlite3.db',
         }
     }
 else: 

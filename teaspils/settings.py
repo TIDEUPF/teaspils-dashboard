@@ -15,6 +15,9 @@ from pathlib import Path
 from os.path import normpath, join
 
 from django.utils.translation import gettext_lazy as _
+import django_heroku
+
+DEV_MODE = False
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -106,16 +109,24 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 #         }
 # }
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
-        'NAME': 'sqlite3.db',                      # Or path to database file if using sqlite3.
-        'USER': '',                      # Not used with sqlite3.
-        'PASSWORD': '',                  # Not used with sqlite3.
-        'HOST': '',                      # Set to empty string for localhost. Not used with sqlite3.
-        'PORT': '',                      # Set to empty string for default. Not used with sqlite3.
+if DEV_MODE == True:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
+            'NAME': BASE_DIR / 'sqlite3.db',
+        }
     }
-}
+else: 
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.postgresql_psycopg2',
+            'NAME': 'dd7al3csk9jcta', # database name
+            'USER': 'worcrytskldopx', # The username 
+            'PASSWORD': '6cf5b3e7e89cb419faf1a5e615cc336e4f3bfd025f34e36ccd778b8d107e9053', # The password 
+            'HOST': 'ec2-3-217-113-25.compute-1.amazonaws.com', # Host name/address
+            'PORT': '5432', # Port 
+        }
+    }
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -157,7 +168,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/teaspils_backend/static/'   
+# STATIC_URL = '/teaspils_backend/static/'   
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'teaspils_backend', 'staticfiles')
+STATIC_URL = '/static/'
+django_heroku.settings(locals())
 
 
 MEDIA_ROOT_DIR = 'teaspils_backend/media'

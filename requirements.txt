@@ -14,7 +14,8 @@ django-mysql==4.2.0
 gunicorn==20.1.0
 mysqlclient==2.0.3
 Pillow==8.4.0
-#psycopg2-binary
+psycopg2==2.9.3
+psycopg2-binary==2.9.3
 pycodestyle==2.8.0
 PyMySQL==1.0.2
 python-dateutil==2.8.2

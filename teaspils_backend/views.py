@@ -3,7 +3,7 @@ from re import X
 from dateutil import parser 
 import json
 from typing import List
-from zoneinfo import ZoneInfo
+from backports.zoneinfo import ZoneInfo
 
 from django.http.response import Http404, HttpResponseRedirect, JsonResponse
 from django.shortcuts import render

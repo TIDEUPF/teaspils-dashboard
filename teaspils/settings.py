@@ -170,7 +170,7 @@ USE_TZ = True
 
 # STATIC_URL = '/teaspils_backend/static/'   
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'teaspils_backend', 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 django_heroku.settings(locals())
 

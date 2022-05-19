@@ -163,6 +163,44 @@
                         </div>
                     </div>
                     {% endfor %}
+                    <!-- OBSERVACIONS MANUALS -->
+                    <div class="row" style="justify-content: center; margin: 5px;">
+                        <div class="card" style="width: 95%;">
+                            <div class="card-body">
+                                <div class='row' style="display: flex; flex-direction: row;">
+                                    <div class="col-2">
+                                        <img src="{% static 'img/regar.jpeg' %}" style="width: 90px;" alt="Thumbnail">
+                                    </div>
+                                    <div class="col-10">
+                                        <h5 class="card-title">Paula</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">2022-05-02 21:01:50</h6>
+                                        <p class="card-text">Avui hem regat la planta amb 300 ml aprox. d'aigua de l'aixeta.</p>
+                                    </div>
+                                    <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row" style="justify-content: center; margin: 5px;">
+                        <div class="card" style="width: 95%;">
+                            <div class="card-body">
+                                <div class='row' style="display: flex; flex-direction: row;">
+                                    <div class="col-2">
+                                        <img src="{% static 'img/finestra.png' %}" style="width: 90px;" alt="Thumbnail">
+                                    </div>
+                                    <div class="col-10">
+                                        <h5 class="card-title">Paula</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">2022-04-28 18:53:10</h6>
+                                        <p class="card-text">Hem obert la porta i la finestra perquè hi hagués ventilació creuada.</p>
+                                    </div>
+                                    <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
+    
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- FI OBSERVACIONS MANUALS -->
                     <div class="pagination" style="justify-content: space-around;">
                         <span class="step-links">
                             {% if page_obj.has_previous %}

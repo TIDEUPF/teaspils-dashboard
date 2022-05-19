@@ -374,3 +374,7 @@ footer h3{
     text-decoration: none;
     cursor: pointer;
 }
+
+.card-text {
+    font-size: 14px !important;
+  }

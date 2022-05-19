@@ -111,7 +111,7 @@ def plantHistory(request, plant_id:int):
 
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 1
+    request.session['num_visits'] = num_visits + 2
     print('plantHistory visits:', request.session['num_visits'])
 
     observations:List = []
@@ -156,13 +156,13 @@ def plantHistory(request, plant_id:int):
     # con.connect(plant.data_source)
     # print("FROM STATIC: ", facade.ConnectionFacade.data)
     measures = []
-    with open('./fake_generator/dataset.csv') as csvFile:
+    with open('./fake_generator/dataset2.csv') as csvFile:
         csvReader = csv.DictReader(csvFile)
-        counter = 0
+        #counter = 0
         for rows in csvReader:
-            if counter%5 == 0:
-                measures.append(rows)
-            counter += 1
+            #if counter%5 == 0:
+            measures.append(rows)
+            #counter += 1
             
     json_pretty = json.dumps(measures, sort_keys=True, indent=4)
 
@@ -170,13 +170,11 @@ def plantHistory(request, plant_id:int):
     messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
 
     if plant_id == 2:
-        #print('index',num_visits%len(alerts_plantHistory))
-        #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
         alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
     if plant_id == 3:
-        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+        advice = advice_plantHistory[(num_visits+1)%len(advice_plantHistory)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     #OBSERVATIONS:
@@ -193,6 +191,46 @@ def plantHistory(request, plant_id:int):
                            'page_obj': page_obj,
                            'num_visits': num_visits})
 
+
+# @csrf_exempt
+# def actionUrl(request, plant_id:int):
+
+#     # Number of visits to this view, as counted in the session variable.
+#     num_visits = request.session.get('num_visits', 0)
+#     request.session['num_visits'] = num_visits + 1
+#     print('compare button shows visits too:', request.session['num_visits'])
+
+#     if plant_id == 2:
+#         #print('index',num_visits%len(alerts_plantHistory))
+#         #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
+#         alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
+#         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+
+#     if plant_id == 3:
+#         advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+#         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
+
+#     return HttpResponse()
+
+@csrf_exempt
+def sendAlert(request, plant_id:int):
+    # Number of visits to this view, as counted in the session variable.
+    num_visits = request.session.get('num_visits', 0)
+    request.session['num_visits'] = num_visits + 1
+    print('compare button shows visits too:', request.session['num_visits'])
+    print(plant_id)
+
+    if plant_id == 2:
+        #print('index',num_visits%len(alerts_plantHistory))
+        #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
+        alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
+        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+
+    if plant_id == 3:
+        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
+
+    return HttpResponse('compare')
 
 @csrf_exempt
 def observations(request, plant_id:int): #,plant_id:int):

@@ -458,7 +458,7 @@ function load_from_realtime() {
             },
             hovermode: "x unified",
             xaxis: {
-                tickformat: '%H:%M',
+                tickformat: '%Y-%m-%d',
             },
             autosize: true,
         }, { responsive: true });

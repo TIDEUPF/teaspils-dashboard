@@ -31,13 +31,13 @@ def generator():
     #     print(e)
 
     measures = []
-    with open('./fake_generator/dataset.csv') as csvFile:
+    with open('./fake_generator/dataset2.csv') as csvFile:
         csvReader = csv.DictReader(csvFile)
-        counter = 0
+        #counter = 0
         for rows in csvReader:
-            if counter%5 == 0:
-                measures.append(rows)
-            counter += 1
+            #if counter%5 == 0:
+            measures.append(rows)
+            #counter += 1
 
     return json.dumps(measures, indent=4, sort_keys=True, default=str)
 

@@ -551,3 +551,8 @@ a .nav-link .dropdown-toggle:hover {
 .bg-success {
     background-color: #6b9377 !important;
 }
+
+/* ____________________________ */
+.card-text p {
+    font-size: 14px !important;
+  }

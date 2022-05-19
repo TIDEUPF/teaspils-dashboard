@@ -60,4 +60,8 @@ h2 {
     .fc-toolbar .fc-center {
       display: block;
       margin-top: 20px;
-      margin-bottom: 20px; } } */
+      margin-bottom: 20px; } } 
+
+.card-text p {
+  font-size: 14px !important;
+}

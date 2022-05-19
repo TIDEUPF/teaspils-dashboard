@@ -48,12 +48,17 @@
         <div class="col-2">
             <ul class="nav nav-pills flex-column" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" data-bs-target="#all_area" role="tab" data-bs-toggle="pill" aria-selected="true"> {% blocktrans %}Data visualization{% endblocktrans %}</a>
+                    <a class="nav-link active" data-bs-target="#all_area" role="tab" data-bs-toggle="pill" aria-selected="true" onclick="location.href='/teaspils/plant/{{plant_id}}/history'"> {% blocktrans %}Data visualization{% endblocktrans %}</a>
                 </li>
-                <hr > 
-                <li class="nav-item" role="presentation">
+                <hr >
+                <li id="compare-btn" class="nav-item" role="presentation">
+                <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true">
+                            {% blocktrans %}Compare measures{% endblocktrans %}
+                </a>
+                </li>
+                <!-- <li id="compare-btn" class="nav-item" role="presentation">
                     <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true">{% blocktrans %}Compare measures{% endblocktrans %}</a>
-                </li>
+                </li> -->
             </ul>
         </div>
         <div class="col-10">

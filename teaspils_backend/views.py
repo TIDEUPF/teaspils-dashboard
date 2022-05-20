@@ -21,7 +21,7 @@ from .api import facade
 
 from .models import Course, MeasureObservation, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, MeasureObservationForm, ObservationForm
-from .alerts import alerts_plantHistory, advice_plantHistory, alerts_singleMeasure, advice_singleMeasure
+from .alerts2 import alerts_plantHistory, advice_plantHistory, alerts_singleMeasure, advice_singleMeasure
 
 @csrf_exempt
 def index(request):
@@ -111,7 +111,7 @@ def plantHistory(request, plant_id:int):
 
     # Number of visits to this view, as counted in the session variable.
     num_visits = request.session.get('num_visits', 0)
-    request.session['num_visits'] = num_visits + 2
+    request.session['num_visits'] = num_visits + 1
     print('plantHistory visits:', request.session['num_visits'])
 
     observations:List = []
@@ -174,7 +174,7 @@ def plantHistory(request, plant_id:int):
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
     if plant_id == 3:
-        advice = advice_plantHistory[(num_visits+1)%len(advice_plantHistory)]
+        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     #OBSERVATIONS:

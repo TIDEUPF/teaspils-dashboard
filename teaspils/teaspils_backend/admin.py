@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Center, Course, MeasureObservation, Measurement, Observation, PlantSettings, Student, Plant
+from .models import Center, Course, MeasureObservation, Measurement, Observation, PlantAdmin, PlantSettings, Student, Plant
 
 # USER: root
 # PASS: teaspils22
@@ -9,7 +9,7 @@ admin.site.register(Measurement)
 admin.site.register(Observation)
 admin.site.register(MeasureObservation)
 admin.site.register(Student)
-admin.site.register(Plant)
+admin.site.register(Plant, PlantAdmin)
 admin.site.register(Course)
 admin.site.register(Center)
 admin.site.register(PlantSettings)

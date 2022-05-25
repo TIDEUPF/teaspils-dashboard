@@ -16,13 +16,14 @@ def generator():
     try:
         for i in range(0, random.randint(4, 9)):
             tmp = {
-                'plant_id'      : 1,
-                'Timestamp'     : get_timestamp(i),
-                'temperature'   : get_temperature(),
-                'soilHumidity'  : get_noise(),
-                'humidity'      : get_humidity(),
-                'co2'           : get_co2(),
-                'light'         : get_light()
+                'plant_id'        : 1,
+                'Timestamp'       : get_timestamp(i),
+                'temperature'     : get_temperature(),
+                'soilTemperature' : get_soilTemperature(),
+                'soilHumidity'    : get_soilHumidity(),
+                'humidity'        : get_humidity(),
+                'co2'             : get_co2(),
+                'light'           : get_light()
             }
             measures.append(tmp)
             sleep(0.01)
@@ -50,7 +51,10 @@ def get_timestamp(i):
 def get_temperature():
     return random.randint(18,25)
 
-def get_noise():
+def get_soilTemperature():
+    return random.randint(10,30)
+
+def get_soilHumidity():
     return random.randint(0,100)
 
 def get_co2():

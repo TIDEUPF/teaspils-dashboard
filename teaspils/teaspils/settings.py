@@ -95,17 +95,23 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 #         }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'teaspils_aws_db',
+#         'USER': 'admin',
+#         'PASSWORD': '--Teaspils22',
+#         'PORT': '3306',
+#         'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
+#         }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'teaspils_aws_db',
-        'USER': 'admin',
-        'PASSWORD': '--Teaspils22',
-        'PORT': '3306',
-        'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
-        }
-}
-
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
+    }
+}   
 
 
 # Password validation
@@ -131,7 +137,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # https://docs.djangoproject.com/en/3.2/topics/i18n/
 
 LANGUAGES = (('en', _('English')),
-             ('es', _('Spanish')))
+             ('es', _('Spanish')),
+             ('ca', _('Catalan')))
 
 LANGUAGE_CODE = 'en'
 

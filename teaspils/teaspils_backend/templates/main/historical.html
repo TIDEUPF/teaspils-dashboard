@@ -24,7 +24,7 @@
     <div class="d-flex flex-row ms-4 mt-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Timeline</a></li>
+              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Plant Timeline</a></li>
             </ol>
           </nav>
     </div>
@@ -122,7 +122,8 @@
                 <div class="cointainer border rounded"
                      style="overflow-y: scroll; height: 100%; width: 100%">
                      <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Plant observations{% endblocktrans %}</h5>
+                        <a style="margin: 5px 0;" href="/teaspils/plant/{{plant_id}}/observations">{% blocktrans %}Plant observations{% endblocktrans %}    <i class="bi bi-box-arrow-up-right"></i></a>
+                        
                     </div>
                     {%for obs in page_obj %}
                     <div class="row" style="justify-content: center; margin: 5px;">

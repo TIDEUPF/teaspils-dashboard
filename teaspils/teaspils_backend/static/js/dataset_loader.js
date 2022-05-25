@@ -131,7 +131,7 @@ function load_from_file(json_loaded) {
         marker: { color: '#666666', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%H/%M"
+                tickformat: '%d-%m-%y %H:%M',
             }
         }
     }
@@ -186,7 +186,7 @@ function load_from_file(json_loaded) {
         hovermode: "x unified",
         hovertemplate: "{x}",
         xaxis: {
-            tickformat: '%Y-%m-%d',
+            tickformat: '%d-%m-%y %H:%M',
         },
         autosize: true,
     }, { responsive: true });
@@ -234,7 +234,7 @@ function load_from_file(json_loaded) {
             },
             hovermode: "x unified",
             xaxis: {
-                tickformat: '%H:%M',
+                tickformat: '%d-%m-%y %H:%M',
             },
             autosize: true,
         }, { responsive: true });
@@ -283,11 +283,12 @@ function load_from_file(json_loaded) {
 
 }
 
-//data from thingsboard server
+//data from thingsboard server or fake generator
 function load_from_realtime() {
 
     var times = []
     var temps = []
+    var soilTemps = []
     var soilHumidity = []
     var co2s = []
     var lights = []
@@ -297,18 +298,19 @@ function load_from_realtime() {
     for (let i = 0; i < history.length; i++) {
         times.push(new Date(history[i]['Timestamp']));
         temps.push(history[i]['temperature']);
+        soilTemps.push(history[i]['soilTemperature']);
         soilHumidity.push(history[i]['soilHumidity']);
         co2s.push(history[i]['co2']);
         lights.push(history[i]['light']);
         hums.push(history[i]['humidity']);
     }
     console.log("From server: ")
-    console.log(times, temps, soilHumidity, co2s, lights, hums);
+    console.log(times, temps, soilTemps, soilHumidity, co2s, lights, hums);
 
     let trace_temp = {
         type: "scatter",
         mode: "lines+markers",
-        name: 'Temperature',
+        name: 'Temperature Cº',
         x: times,
         y: temps,
         text: temps.map(function (value) { return `${value} Cº`; }),
@@ -317,7 +319,24 @@ function load_from_realtime() {
         marker: { color: '#d9bdff', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%Y-%m-%d"
+                tickformat: '%d-%m-%y %H:%M',
+            },
+        }
+    }
+
+    let trace_soilTemp = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'Soil Temperature Cº',
+        x: times,
+        y: soilTemps,
+        text: temps.map(function (value) { return ` Soil Tmp: ${value} Cº`; }),
+        hoverinfo: 'text',
+        line: { color: '#2222ff', width: 3 },
+        marker: { color: '#2222ff', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: '%d-%m-%y %H:%M',
             },
         }
     }
@@ -328,13 +347,13 @@ function load_from_realtime() {
         name: 'Soil Humidity (%)',
         x: times,
         y: soilHumidity,
-        text: soilHumidity.map(function (value) { return `Soil H.: ${value} %`; }),
+        text: soilHumidity.map(function (value) { return `Soil H: ${value} %`; }),
         hoverinfo: 'text',
         line: { color: '#666666', width: 3 },
         marker: { color: '#666666', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%H/%M"
+                tickformat: '%d-%m-%y %H:%M',
             },
         }
     }
@@ -351,7 +370,7 @@ function load_from_realtime() {
         marker: { color: '#9cbcff', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%Y-%m-%d"
+                tickformat: '%d-%m-%y %H:%M',
             },
         }
     }
@@ -368,7 +387,7 @@ function load_from_realtime() {
         marker: { color: '#ffa2a2', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%Y-%m-%d"
+                tickformat: '%d-%m-%y %H:%M',
             },
         }
     }
@@ -385,13 +404,13 @@ function load_from_realtime() {
         marker: { color: '#bdfff1', size: 5 },
         layout: {
             xaxis: {
-                tickformat: "%Y-%m-%d"
+                tickformat: '%d-%m-%y %H:%M',
             },
         }
     }
 
     plot_all_div = document.getElementById('plt_all'); //plt_all
-    Plotly.newPlot(plt_all, [trace_temp, trace_soilHumidity, trace_co2, trace_light, trace_hum], {
+    Plotly.newPlot(plt_all, [trace_temp, trace_soilTemp, trace_soilHumidity, trace_co2, trace_light, trace_hum], {
         margin: { t: 15 },
         // plot_bgcolor: "#ffde9f",
         // paper_bgcolor: "#ffde9f",
@@ -404,13 +423,13 @@ function load_from_realtime() {
         hovermode: "x unified",
         hovertemplate: "{x}",
         xaxis: {
-            tickformat: '%Y-%m-%d',
+            tickformat: '%d-%m-%y %H:%M',
         },
         autosize: true,
     }, { responsive: true });
 
     let m1 = 'Temperature'
-    let m2 = 'Soil Humidity'
+    let m2 = 'Soil Temperature'
 
     $('#first-options a').on('click', function () {
         m1 = $(this).text();
@@ -428,6 +447,8 @@ function load_from_realtime() {
         let traces_dict = {
             'Temperature': trace_temp,
             'Temperatura': trace_temp,
+            'Soil Temperature' : trace_soilTemp,
+            'Temperatura del suelo' : trace_soilTemp,
             'Soil Humidity': trace_soilHumidity,
             'Humedad del suelo': trace_soilHumidity,
             'Co2': trace_co2,
@@ -452,7 +473,7 @@ function load_from_realtime() {
             },
             hovermode: "x unified",
             xaxis: {
-                tickformat: '%H:%M',
+                tickformat: '%d-%m-%y %H:%M',
             },
             autosize: true,
         }, { responsive: true });
@@ -468,6 +489,7 @@ function load_from_realtime() {
         let light_y = 0.0;
         let co2_y = 0.0;
         let soilH_y = 0.0;
+        let soilT_y = 0.0;
         let temp_y = 0.0;
 
         if (typeof (data['points'][0]) != "undefined") {
@@ -485,14 +507,18 @@ function load_from_realtime() {
         if (typeof (data['points'][4]) != "undefined") {
             temp_y = data['points'][4]['y'];
         }
+        if (typeof (data['points'][5]) != "undefined") {
+            soilT_y = data['points'][5]['y'];
+        }
 
         single_measure = {
-            'timestamp': data['points'][0]['x'],
-            'humidity': hum_y,
-            'light': light_y,
-            'co2': co2_y,
-            'soilHumidity': soilH_y,
-            'temperature': temp_y
+            'timestamp'         : data['points'][0]['x'],
+            'humidity'          : hum_y,
+            'light'             : light_y,
+            'co2'               : co2_y,
+            'soilHumidity'      : soilH_y,
+            'soilTemperature'   : soilT_y,
+            'temperature'       : temp_y
         };
 
         sm_json = JSON.stringify(single_measure)

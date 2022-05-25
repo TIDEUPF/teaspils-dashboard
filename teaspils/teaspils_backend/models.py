@@ -1,11 +1,9 @@
 from datetime import datetime
-import imp
-from importlib.metadata import metadata
 import json
-import re
 from django.db import models
 from django.db.models.fields import BLANK_CHOICE_DASH
 from django.conf import settings
+from django.contrib import admin
 
 from imagekit.models import ImageSpecField
 from imagekit.processors import ResizeToFill
@@ -91,15 +89,19 @@ class MeasureObservation(models.Model):
 class PlantSettings(models.Model):
 
     low_temperature = models.IntegerField(default=0)
-    high_temperature = models.IntegerField(default=0)
+    high_temperature = models.IntegerField(default=100)
     low_noise = models.IntegerField(default=0)
     high_noise = models.IntegerField(default=0)
+    low_soilHum = models.IntegerField(default=0)
+    high_soilHum = models.IntegerField(default=100)
+    low_soilTemp = models.IntegerField(default=0)
+    high_soilTemp = models.IntegerField(default=100)
     low_co2 = models.IntegerField(default=0)
-    high_co2 = models.IntegerField(default=0)
+    high_co2 = models.IntegerField(default=1000)
     low_humidity = models.IntegerField(default=0)
-    high_humidity = models.IntegerField(default=0)
+    high_humidity = models.IntegerField(default=100)
     low_light = models.IntegerField(default=0)
-    high_light = models.IntegerField(default=0)
+    high_light = models.IntegerField(default=3000)
 
     plant = models.ForeignKey(Plant, on_delete=models.CASCADE)
 
@@ -107,3 +109,12 @@ class PlantSettings(models.Model):
     def toJSON(self):
         return json.dumps(self, default=lambda o: o.__dict__, 
             sort_keys=True, indent=4)
+
+
+
+"""
+ADMIN MODELS
+"""
+
+class PlantAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)

@@ -1,5 +1,4 @@
 import datetime
-from re import X
 from dateutil import parser 
 import json
 from typing import List
@@ -87,23 +86,6 @@ def index(request):
     # context:set = {}
     # return HttpResponse(template.render(context, request))
 
-def login(request):
-    return HttpResponse("Hello, world. You're at the login.")
-
-def homeStudent(request, student_id:int):
-
-    student:Student = Student.objects.get(pk=student_id)
-    return HttpResponse(f"Hello, world. You're at the Student Home page for student named: {student.name}.")
-
-def calendar(request, student_id:int):
-    return HttpResponse(f"Hello, world. You're at the calendar page for {student_id}.")
-
-def plantList(request, student_id:int):
-    return HttpResponse(f"Hello, world. You're at the Plant List for {student_id}.")
-
-def plantDetail(request, plant_id:int):
-    return HttpResponse(f"Hello, world. You're at the detail of the plant {plant_id}.")
-
 @csrf_exempt
 def plantHistory(request, plant_id:int):
 
@@ -145,7 +127,7 @@ def plantHistory(request, plant_id:int):
 
 
     plant = Plant.objects.filter(pk=plant_id).first()
-    con = facade.ConnectionFacade('http') #thingsb
+    con = facade.ConnectionFacade('http') #or thingsb
     con.connect(plant.data_source)
     print("FROM STATIC: ", facade.ConnectionFacade.data)
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
@@ -202,7 +184,12 @@ def observations(request, plant_id:int): #,plant_id:int):
                 messages.success(request, "Observation saved successfully")
 
                 observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
-                context:set = {'plant_id': plant_id, 'observations': observations}
+
+                paginator = Paginator(observations, 3)
+                page_number = request.GET.get('page')
+                page_obj = paginator.get_page(page_number)
+
+                context:set = {'plant_id': plant_id, 'page_obj': page_obj}
                 return HttpResponseRedirect('observations', context)
             else:
                 messages.error(request, "Error saving the observation")
@@ -211,8 +198,18 @@ def observations(request, plant_id:int): #,plant_id:int):
             print(f"{name} makes this observation: {observation} about plant {plant_id} with file {attachedfile}")
 
     else:
+        #OBSERVATIONS:
         observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
-        print(observations)
+
+        paginator = Paginator(observations, 3)
+        page_number = request.GET.get('page')
+        page_obj = paginator.get_page(page_number)
+
+        return render(request,
+                      template_name='main/observations.html',
+                      context={
+                          'plant_id' : plant_id,
+                          'page_obj' :  page_obj})
 
 
     template:any = loader.get_template('main/observations.html')
@@ -312,20 +309,24 @@ def measures(request, plant_id:int, ts:str):
     # plant_settings = plant_settings.toJSON()
     return render(request,
                   template_name='main/measurement.html',
-                  context={'timestamp': ts, 
-                           'plant_id': plant_id,
-                           'alias' : plant_alias,
-                           'measure' : single_measure,
-                           'lowT' : plant_settings.low_temperature,
-                           'highT' : plant_settings.high_temperature,
-                           'lowN' : plant_settings.low_noise,
-                           'highN' : plant_settings.high_noise,
-                           'lowC' : plant_settings.low_co2,
-                           'highC' : plant_settings.high_co2,
-                           'lowH' : plant_settings.low_humidity,
-                           'highH' : plant_settings.high_humidity,
-                           'lowI' : plant_settings.low_light,
-                           'highI' : plant_settings.high_light
+                  context={'timestamp'  : ts, 
+                           'plant_id'   : plant_id,
+                           'alias'      : plant_alias,
+                           'measure'    : single_measure,
+                           'lowT'       : plant_settings.low_temperature,
+                           'highT'      : plant_settings.high_temperature,
+                           'lowSoilHum' : plant_settings.low_soilHum,
+                           'highSoilHum': plant_settings.high_soilHum,
+                           'lowSoilTemp': plant_settings.low_soilTemp,
+                           'highSoilTemp': plant_settings.high_soilTemp,
+                           'lowN'       : plant_settings.low_noise,
+                           'highN'      : plant_settings.high_noise,
+                           'lowC'       : plant_settings.low_co2,
+                           'highC'      : plant_settings.high_co2,
+                           'lowH'       : plant_settings.low_humidity,
+                           'highH'      : plant_settings.high_humidity,
+                           'lowI'       : plant_settings.low_light,
+                           'highI'      : plant_settings.high_light
                            })
 
 @csrf_exempt
@@ -364,8 +365,12 @@ def singleMeasure(request, plant_id:int, obj:str):
                            'measure' : single_measure,
                            'lowT' :  0 if plant_settings is None else plant_settings.low_temperature,
                            'highT' : 100 if plant_settings is None else plant_settings.high_temperature,
-                           'lowN' : 0 if plant_settings is None else plant_settings.low_noise,
-                           'highN' : 100 if plant_settings is None else plant_settings.high_noise,
+                           'lowST' :  0 if plant_settings is None else plant_settings.low_soilTemp,
+                           'highST' : 100 if plant_settings is None else plant_settings.high_soilTemp,
+                           'lowSH' :  0 if plant_settings is None else plant_settings.low_soilHum,
+                           'highSH' : 100 if plant_settings is None else plant_settings.high_soilHum,
+                        #    'lowN' : 0 if plant_settings is None else plant_settings.low_noise,
+                        #    'highN' : 100 if plant_settings is None else plant_settings.high_noise,
                            'lowC' : 0 if plant_settings is None else plant_settings.low_co2,
                            'highC' : 100 if plant_settings is None else plant_settings.high_co2,
                            'lowH' : 0 if plant_settings is None else plant_settings.low_humidity,
@@ -429,10 +434,7 @@ def singleMeasure(request, plant_id:int, obj:str):
             single_measure = str(single_measure).replace("\'", "\"")
 
             return HttpResponseRedirect("/teaspils/plant/"+str(plant_id)+"/measures/" + str(single_measure))
-            #     # return HttpResponseRedirect(str(timestamp), context)
-            # else:
-            #     messages.error(request, "Error saving the observation")
-            #     return(Http404())
+
 
                 
 @csrf_exempt
@@ -441,8 +443,12 @@ def saveSettings(request):
     try:
         settings = PlantSettings(low_temperature = request.GET['lowT'],
                                 high_temperature = request.GET['highT'],
-                                low_noise = request.GET['lowN'],
-                                high_noise = request.GET['highN'],
+                                low_soilTemp = request.GET['lowST'],
+                                high_soilTemp = request.GET['highST'],
+                                low_soilHum = request.GET['lowSH'],
+                                high_soilHum = request.GET['highSH'],
+                                # low_noise = request.GET['lowN'],
+                                # high_noise = request.GET['highN'],
                                 low_co2 = request.GET['lowC'],
                                 high_co2 = request.GET['highC'],
                                 low_humidity = request.GET['lowH'],

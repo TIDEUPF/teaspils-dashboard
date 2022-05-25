@@ -1,0 +1,262 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04x-27 21:04+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: teaspils/settings.py:133
+msgid "English"
+msgstr ""
+
+#: teaspils/settings.py:134
+msgid "Spanish"
+msgstr ""
+
+#: teaspils/settings.py:135
+msgid "Catalan"
+msgstr ""
+
+#: teaspils_backend/templates/base.html:56
+msgid "Logout"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:36
+msgid "Data visualization"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:41
+msgid "Compare measures"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:73
+msgid "First measure"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:76
+#: teaspils_backend/templates/main/historical.html:91
+msgid "Temperature"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:77
+#: teaspils_backend/templates/main/historical.html:92
+msgid "Soil Humidity"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:78
+#: teaspils_backend/templates/main/historical.html:93
+#: teaspils_backend/templates/main/measurement.html:82
+#: teaspils_backend/templates/main/settings.html:48
+msgid "Co2"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:79
+#: teaspils_backend/templates/main/historical.html:94
+#: teaspils_backend/templates/main/measurement.html:96
+#: teaspils_backend/templates/main/settings.html:66
+msgid "Light"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:80
+#: teaspils_backend/templates/main/historical.html:95
+msgid "Humidity"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:88
+msgid "Second measure"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:125
+msgid "Plant observations"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:150
+#: teaspils_backend/templates/main/measurement.html:303
+msgid "first"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:151
+#: teaspils_backend/templates/main/measurement.html:304
+msgid "previous"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:155
+#: teaspils_backend/templates/main/measurement.html:308
+msgid "Page"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:155
+#: teaspils_backend/templates/main/measurement.html:308
+msgid "of"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:158
+#: teaspils_backend/templates/main/measurement.html:311
+msgid "next"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:159
+#: teaspils_backend/templates/main/measurement.html:312
+msgid "last"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:168
+#: teaspils_backend/templates/main/measurement.html:321
+msgid "Make an observation!"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:174
+#: teaspils_backend/templates/main/measurement.html:328
+#: teaspils_backend/templates/main/measureobs.html:67
+#: teaspils_backend/templates/main/observations.html:59
+msgid "Name or group name:"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:180
+#: teaspils_backend/templates/main/measurement.html:334
+#: teaspils_backend/templates/main/measureobs.html:82
+#: teaspils_backend/templates/main/observations.html:74
+msgid "Observations:"
+msgstr ""
+
+#: teaspils_backend/templates/main/historical.html:191
+#: teaspils_backend/templates/main/measurement.html:345
+#: teaspils_backend/templates/main/measureobs.html:100
+#: teaspils_backend/templates/main/observations.html:92
+msgid "Save"
+msgstr ""
+
+#: teaspils_backend/templates/main/index.html:19
+msgid "Plant alias: "
+msgstr ""
+
+#: teaspils_backend/templates/main/index.html:19 teaspils_backend/views.py:36
+#: teaspils_backend/views.py:40
+msgid "No alias"
+msgstr ""
+
+#: teaspils_backend/templates/main/index.html:24
+msgid "Plant id"
+msgstr ""
+
+#: teaspils_backend/templates/main/index.html:32
+msgid "Secret Word"
+msgstr ""
+
+#: teaspils_backend/templates/main/index.html:43
+msgid " Submit "
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:35
+msgid "Measures taken at:"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:36
+msgid " for the plant:"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:43
+msgid "Make and read observations for this measure!"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:43
+msgid "NEW!"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:46
+#: teaspils_backend/templates/main/measurement.html:278
+msgid "Measure observations"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:55
+#: teaspils_backend/templates/main/settings.html:7
+msgid "Plant Settings"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:59
+#: teaspils_backend/templates/main/settings.html:20
+msgid "Lower Limit"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:60
+#: teaspils_backend/templates/main/settings.html:21
+msgid "Upper Limit"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:61
+#: teaspils_backend/templates/main/settings.html:22
+msgid "Update graphic"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:68
+#: teaspils_backend/templates/main/settings.html:30
+msgid "Temp"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:75
+#: teaspils_backend/templates/main/settings.html:39
+msgid "Soil Hum."
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:89
+#: teaspils_backend/templates/main/settings.html:57
+msgid "Hum"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:101
+#: teaspils_backend/templates/main/settings.html:71
+msgid "Save Settings"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:139
+msgid "Temp. [ºC]"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:166
+#, python-format
+msgid "Soil Hum [%%]"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:192
+msgid "Co2 [ppm]"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:218
+#, python-format
+msgid "Humidity [%%]"
+msgstr ""
+
+#: teaspils_backend/templates/main/measurement.html:244
+msgid "Light [lux]"
+msgstr ""
+
+#: teaspils_backend/templates/main/measureobs.html:30
+#: teaspils_backend/templates/main/observations.html:30
+msgid "Timeline"
+msgstr ""
+
+#: teaspils_backend/templates/main/measureobs.html:33
+#: teaspils_backend/templates/main/observations.html:33
+msgid "Observations"
+msgstr ""
+
+#: teaspils_backend/templates/main/measureobs.html:54
+msgid "New observation for the plant:"
+msgstr ""
+
+#: teaspils_backend/templates/main/measureobs.html:55
+msgid " for the measures taken at:"
+msgstr ""

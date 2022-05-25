@@ -11,23 +11,31 @@ window.addEventListener("load", () => {
     id_plant_displayer.value = IdPlant;
 
     /*INITIALIZE THE LIMITS FOR TEMPERATURE*/
-    let low_limit_T = document.getElementById("myInputLowT").value;
+    let lower_limit_T = document.getElementById("myInputLowT").value;
     let upper_limit_T = document.getElementById("myInputHighT").value;
 
-    /*INITIALIZE THE LIMITS FOR THE NOISE*/
-    let low_limit_Noise = document.getElementById("myInputLowNoise").value;
-    let upper_limit_Noise = document.getElementById("myInputHighNoise").value;
+    /*INITIALIZE THE LIMITS FOR SOIL TEMPERATURE*/
+    let lower_limit_SoilT = document.getElementById("myInputLowSoilT").value;
+    let upper_limit_SoilT = document.getElementById("myInputHighSoilT").value;
+    
+    /*INITIALIZE THE LIMITS FOR SOIL HUMIDITY*/
+    let lower_limit_SoilH = document.getElementById("myInputLowSoilH").value;
+    let upper_limit_SoilH = document.getElementById("myInputHighSoilH").value;
+
+    // /*INITIALIZE THE LIMITS FOR THE NOISE*/
+    // let lower_limit_Noise = document.getElementById("myInputLowNoise").value;
+    // let upper_limit_Noise = document.getElementById("myInputHighNoise").value;
 
     /*INITIALIZE THE LIMITS FOR THE CO2*/
-    let low_limit_CO2 = document.getElementById("myInputLowCO2").value;
+    let lower_limit_CO2 = document.getElementById("myInputLowCO2").value;
     let upper_limit_CO2 = document.getElementById("myInputHighCO2").value;
 
     /*INITIALIZE THE LIMITS FOR THE HUMIDITY*/
-    let low_limit_HUM = document.getElementById("myInputLowHUM").value;
+    let lower_limit_HUM = document.getElementById("myInputLowHUM").value;
     let upper_limit_HUM = document.getElementById("myInputHighHUM").value;
 
     /*INITIALIZE THE LIMITS FOR THE ILLUMINCANCE*/
-    let low_limit_IL = document.getElementById("myInputLowIL").value;;
+    let lower_limit_IL = document.getElementById("myInputLowIL").value;;
     let upper_limit_IL = document.getElementById("myInputHighIL").value;
 
     let hidden_data = document.getElementById("hidden_data").value
@@ -35,7 +43,14 @@ window.addEventListener("load", () => {
     let measure_data = JSON.parse(hidden_data);
     console.log(measure_data);
 
-    loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+    loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                lower_limit_SoilT, upper_limit_SoilT,
+                                lower_limit_SoilH, upper_limit_SoilH,
+                                // lower_limit_Noise, upper_limit_Noise, 
+                                lower_limit_CO2, upper_limit_CO2, 
+                                lower_limit_HUM, upper_limit_HUM, 
+                                lower_limit_IL, upper_limit_IL
+                );
 
 
     /*********************INPUT SETTINGS*************************************/
@@ -50,23 +65,77 @@ window.addEventListener("load", () => {
         document.getElementById("label_temp_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
         document.getElementById("label_temp_l").innerHTML = parseInt(input_value_low);
 
-        loadDashboard(measure_data, input_value_low, input_value_high, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, input_value_low, input_value_high, 
+                                    lower_limit_SoilT, upper_limit_SoilT,
+                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    // lower_limit_Noise, upper_limit_Noise, 
+                                    lower_limit_CO2, upper_limit_CO2, 
+                                    lower_limit_HUM, upper_limit_HUM, 
+                                    lower_limit_IL, upper_limit_IL);
     })
+
+    /*******************************SOILT*************************************/
+
+    let input_button_SoilT = document.getElementById('inputButtonSoilT')
+    input_button_SoilT.addEventListener('click', function () {
+
+        let input_value_low = document.getElementById("myInputLowSoilT").value;
+        let input_value_high = document.getElementById("myInputHighSoilT").value;
+        
+        document.getElementById("label_SoilT_h").innerHTML = parseInt(input_value_high);
+        document.getElementById("label_SoilT_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+        document.getElementById("label_SoilT_l").innerHTML = parseInt(input_value_low);
+
+        loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                    input_value_low, input_value_high, 
+                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    // lower_limit_Noise, upper_limit_Noise,
+                                    lower_limit_CO2, upper_limit_CO2, 
+                                    lower_limit_HUM, upper_limit_HUM, 
+                                    lower_limit_IL, upper_limit_IL);
+    })
+
+        /*******************************SOILH*************************************/
+
+        let input_button_SoilH = document.getElementById('inputButtonSoilH')
+        input_button_SoilH.addEventListener('click', function () {
+    
+            let input_value_low = document.getElementById("myInputLowSoilH").value;
+            let input_value_high = document.getElementById("myInputHighSoilH").value;
+            
+            document.getElementById("label_SoilH_h").innerHTML = parseInt(input_value_high);
+            document.getElementById("label_SoilH_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+            document.getElementById("label_SoilH_l").innerHTML = parseInt(input_value_low);
+    
+            loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                        lower_limit_SoilT, upper_limit_SoilT,
+                                        input_value_low, input_value_high, 
+                                        // lower_limit_Noise, upper_limit_Noise,
+                                        lower_limit_CO2, upper_limit_CO2, 
+                                        lower_limit_HUM, upper_limit_HUM, 
+                                        lower_limit_IL, upper_limit_IL);
+        })
 
     /*******************************NOISE*************************************/
 
-    let input_button_Noise = document.getElementById('inputButtonNoise')
-    input_button_Noise.addEventListener('click', function () {
+    // let input_button_Noise = document.getElementById('inputButtonNoise')
+    // input_button_Noise.addEventListener('click', function () {
 
-        let input_value_low = document.getElementById("myInputLowNoise").value;
-        let input_value_high = document.getElementById("myInputHighNoise").value;
+    //     let input_value_low = document.getElementById("myInputLowNoise").value;
+    //     let input_value_high = document.getElementById("myInputHighNoise").value;
         
-        document.getElementById("label_noise_h").innerHTML = parseInt(input_value_high);
-        document.getElementById("label_noise_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
-        document.getElementById("label_noise_l").innerHTML = parseInt(input_value_low);
+    //     document.getElementById("label_noise_h").innerHTML = parseInt(input_value_high);
+    //     document.getElementById("label_noise_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
+    //     document.getElementById("label_noise_l").innerHTML = parseInt(input_value_low);
 
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, input_value_low, input_value_high, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
-    })
+    //     loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+    //                                 lower_limit_SoilT, upper_limit_SoilT,
+    //                                 lower_limit_SoilH, upper_limit_SoilH,
+    //                                 input_value_low, input_value_high, 
+    //                                 lower_limit_CO2, upper_limit_CO2, 
+    //                                 lower_limit_HUM, upper_limit_HUM, 
+    //                                 lower_limit_IL, upper_limit_IL);
+    // })
 
     /*******************************CO2*************************************/
     let input_button_CO2 = document.getElementById('inputButtonCO2');
@@ -78,7 +147,13 @@ window.addEventListener("load", () => {
         document.getElementById("label_co2_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
         document.getElementById("label_co2_l").innerHTML = parseInt(input_value_low);
 
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, input_value_low, input_value_high, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                    lower_limit_SoilT, upper_limit_SoilT,
+                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_Noise, upper_limit_Noise, 
+                                    input_value_low, input_value_high, 
+                                    lower_limit_HUM, upper_limit_HUM, 
+                                    lower_limit_IL, upper_limit_IL);
     })
 
     /*******************************HUMIDITY*************************************/
@@ -91,7 +166,13 @@ window.addEventListener("load", () => {
         document.getElementById("label_hum_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
         document.getElementById("label_hum_l").innerHTML = parseInt(input_value_low);
 
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, input_value_low, input_value_high, low_limit_IL, upper_limit_IL);
+        loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                    lower_limit_SoilT, upper_limit_SoilT,
+                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    // lower_limit_Noise, upper_limit_Noise, 
+                                    lower_limit_CO2, upper_limit_CO2, 
+                                    input_value_low, input_value_high, 
+                                    lower_limit_IL, upper_limit_IL);
     })
 
     /*******************************ILLUMINANCE*************************************/
@@ -104,7 +185,13 @@ window.addEventListener("load", () => {
         document.getElementById("label_light_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
         document.getElementById("label_light_l").innerHTML = parseInt(input_value_low);
 
-        loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, input_value_low, input_value_high);
+        loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                    lower_limit_SoilT, upper_limit_SoilT,
+                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    // lower_limit_Noise, upper_limit_Noise, 
+                                    lower_limit_CO2, upper_limit_CO2, 
+                                    lower_limit_HUM, upper_limit_HUM, 
+                                    input_value_low, input_value_high);
     })
 
 });
@@ -113,7 +200,13 @@ const red = '#FF3104';
 const green = '#4AD347';
 const orange = '#E8B147';
 
-function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise, upper_limit_Noise, low_limit_CO2, upper_limit_CO2, low_limit_HUM, upper_limit_HUM, low_limit_IL, upper_limit_IL) {
+function loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
+                                     lower_limit_SoilT, upper_limit_SoilT,
+                                     lower_limit_SoilH, upper_limit_SoilH,
+                                    //  lower_limit_Noise, upper_limit_Noise, 
+                                     lower_limit_CO2, upper_limit_CO2, 
+                                     lower_limit_HUM, upper_limit_HUM, 
+                                     lower_limit_IL, upper_limit_IL) {
 
     let Date_place = document.getElementById("date");
 
@@ -123,6 +216,7 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
     Date_place.textContent = myH2.textContent;
     /*appendChild(myH2);*/
 
+    ///$$$$$$$
     /*____________________________________TEMPERATURE_________________________________*/
     let Temperature = document.getElementById("T-load");
     /*Checking if the temperature data has been received*/
@@ -131,12 +225,12 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
         let valueT = parseFloat(measure_data['temperature']);
         let percentage = 0.0;
-        if (valueT < low_limit_T) {
+        if (valueT < lower_limit_T) {
             percentage = 20.0;
-        } else if (valueT >= low_limit_T && valueT <= upper_limit_T) {
+        } else if (valueT >= lower_limit_T && valueT <= upper_limit_T) {
             a = 25;
             b = 75;
-            min = parseFloat(low_limit_T);
+            min = parseFloat(lower_limit_T);
             max = parseFloat(upper_limit_T);
             
             percentage = ((b-a)*(valueT-min)/(max-min)) + a;
@@ -147,9 +241,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         Temperature.style.height = percentage.toString() + '%';
         Temperature.setAttribute('title', measure_data['temperature']);
         let color_T
-        if (valueT > low_limit_T && valueT < upper_limit_T) {
+        if (valueT > lower_limit_T && valueT < upper_limit_T) {
             color_T = green;
-        } else if (valueT == upper_limit_T || valueT == low_limit_T) {
+        } else if (valueT == upper_limit_T || valueT == lower_limit_T) {
             color_T = orange;
         } else {
             color_T = red;
@@ -164,43 +258,85 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         Temperature.style.backgroundColor = '#F0F8FF'
     }
 
-    /*____________________________________NOISE_________________________________*/
-    let Noise = document.getElementById("N-load");
+        /*____________________________________SOIL TEMPERATURE_________________________________*/
+        let SoilTemperature = document.getElementById("SoilT-load");
+        /*Checking if the temperature data has been received*/
+    
+        if (measure_data['soilTemperature'] != null) {
+    
+            let valueST = parseFloat(measure_data['soilTemperature']);
+            let percentage = 0.0;
+            if (valueST < lower_limit_SoilT) {
+                percentage = 20.0;
+            } else if (valueST >= lower_limit_SoilT && valueST <= upper_limit_SoilT) {
+                a = 25;
+                b = 75;
+                min = parseFloat(lower_limit_SoilT);
+                max = parseFloat(upper_limit_SoilT);
+                
+                percentage = ((b-a)*(valueST-min)/(max-min)) + a;
+            } else {
+                percentage = 90.0;
+            }
+    
+            SoilTemperature.style.height = percentage.toString() + '%';
+            SoilTemperature.setAttribute('title', measure_data['soilTemperature']);
+            let color_ST
+            if (valueST > lower_limit_SoilT && valueST < upper_limit_SoilT) {
+                color_ST = green;
+            } else if (valueST == upper_limit_SoilT || valueST == lower_limit_SoilT) {
+                color_ST = orange;
+            } else {
+                color_ST = red;
+            }
+            SoilTemperature.style.backgroundColor = color_ST;
+        }
+        else {
+            let SoilTemp_input = document.getElementById("soilT-input")
+            SoilTemp_input.style.color = '#808080'
+            color_ST = red
+            SoilTemperature.style.height = '100%';
+            SoilTemperature.style.backgroundColor = '#F0F8FF'
+        }
+
+    /*____________________________________SOIL HUM_________________________________*/
+    let SoilHum = document.getElementById("SoilH-load");
 
     if (measure_data['soilHumidity'] != null) {
 
-        let valueN = parseFloat(measure_data['soilHumidity']);
+        let valueSH = parseFloat(measure_data['soilHumidity']);
         let percentage = 0.0;
-        if (valueN < low_limit_Noise) {
+        if (valueSH < lower_limit_SoilH) {
             percentage = 20.0;
-        } else if (valueN >= low_limit_Noise && valueN <= upper_limit_Noise) {
+        } else if (valueSH >= lower_limit_SoilH && valueSH <= upper_limit_SoilH) {
             a = 25;
             b = 75;
-            min = parseFloat(low_limit_Noise);
-            max = parseFloat(upper_limit_Noise);
+            min = parseFloat(lower_limit_SoilH);
+            max = parseFloat(upper_limit_SoilH);
             
-            percentage = ((b-a)*(valueN-min)/(max-min)) + a;
+            percentage = ((b-a)*(valueSH-min)/(max-min)) + a;
         } else {
             percentage = 90.0;
         }
 
-        Noise.style.height = percentage.toString() + '%';
-        Noise.setAttribute('title', measure_data['soilHumidity']);
-        let color_N;
-        if (valueN > low_limit_Noise && valueN < upper_limit_Noise) {
-            color_N = green;
-        } else if (valueN == upper_limit_Noise || valueN == low_limit_Noise) {
-            color_N = orange;
+        SoilHum.style.height = percentage.toString() + '%';
+        SoilHum.setAttribute('title', measure_data['soilHumidity']);
+        let color_SH;
+        if (valueSH > lower_limit_SoilH && valueSH < upper_limit_SoilH) {
+            color_SH = green;
+        } else if (valueSH == upper_limit_SoilH || valueSH == lower_limit_SoilH) {
+            color_SH = orange;
         } else {
-            color_N = red;
+            color_SH = red;
         }
-        Noise.style.backgroundColor = color_N   ;
+        SoilHum.style.backgroundColor = color_SH;
     }
     else {
-        let Noise_input = document.getElementById("noise-input")
-        Noise_input.style.color = '#808080'
-        Noise.style.height = '100%';
-        Noise.style.backgroundColor = '#F0F8FF'
+        let SoilHum_input = document.getElementById("soilH-input")
+        SoilHum_input.style.color = '#808080'
+        SoilH.style.height = '100%';
+        color_SH = red
+        SoilH.style.backgroundColor = '#F0F8FF'
     }
 
     /*____________________________________CO2_________________________________*/
@@ -209,12 +345,12 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
         let valueC = parseFloat(measure_data['co2']);
         let percentage = 0.0;
-        if (valueC < low_limit_CO2) {
+        if (valueC < lower_limit_CO2) {
             percentage = 20.0;
-        } else if (valueC >= low_limit_CO2 && valueC <= upper_limit_CO2) {
+        } else if (valueC >= lower_limit_CO2 && valueC <= upper_limit_CO2) {
             a = 25;
             b = 75;
-            min = parseFloat(low_limit_CO2);
+            min = parseFloat(lower_limit_CO2);
             max = parseFloat(upper_limit_CO2);
             
             percentage = ((b-a)*(valueC-min)/(max-min)) + a;
@@ -225,9 +361,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         CO2.style.height = percentage.toString() + '%';
         CO2.setAttribute('title', measure_data['co2']);
         let color_C;
-        if (valueC > low_limit_CO2 && valueC < upper_limit_CO2) {
+        if (valueC > lower_limit_CO2 && valueC < upper_limit_CO2) {
             color_C = green;
-        } else if (valueC == upper_limit_CO2 || valueC == low_limit_CO2) {
+        } else if (valueC == upper_limit_CO2 || valueC == lower_limit_CO2) {
             color_C = orange;
         } else {
             color_C = red;
@@ -247,12 +383,12 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
         let valueH = parseFloat(measure_data['humidity']);
         let percentage = 0.0;
-        if (valueH < low_limit_HUM) {
+        if (valueH < lower_limit_HUM) {
             percentage = 20.0;
-        } else if (valueH >= low_limit_HUM && valueH <= upper_limit_HUM) {
+        } else if (valueH >= lower_limit_HUM && valueH <= upper_limit_HUM) {
             a = 25;
             b = 75;
-            min = parseFloat(low_limit_HUM);
+            min = parseFloat(lower_limit_HUM);
             max = parseFloat(upper_limit_HUM);
             
             percentage = ((b-a)*(valueH-min)/(max-min)) + a;
@@ -263,9 +399,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         Hum.style.height = percentage.toString() + '%';
         Hum.setAttribute('title', measure_data['humidity']);
         let color_H;
-        if (valueH > low_limit_HUM && valueH < upper_limit_HUM) {
+        if (valueH > lower_limit_HUM && valueH < upper_limit_HUM) {
             color_H = green;
-        } else if (valueH == upper_limit_HUM || valueH == low_limit_HUM) {
+        } else if (valueH == upper_limit_HUM || valueH == lower_limit_HUM) {
             color_H = orange;
         } else {
             color_H = red;
@@ -285,12 +421,12 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
 
         let valueL = parseFloat(measure_data['light']);
         let percentage = 0.0;
-        if (valueL < low_limit_IL) {
+        if (valueL < lower_limit_IL) {
             percentage = 20.0;
-        } else if (valueL >= low_limit_IL && valueL <= upper_limit_IL) {
+        } else if (valueL >= lower_limit_IL && valueL <= upper_limit_IL) {
             a = 25;
             b = 75;
-            min = parseFloat(low_limit_IL);
+            min = parseFloat(lower_limit_IL);
             max = parseFloat(upper_limit_IL);
             
             percentage = ((b-a)*(valueL-min)/(max-min)) + a;
@@ -301,9 +437,9 @@ function loadDashboard(measure_data, low_limit_T, upper_limit_T, low_limit_Noise
         Light.style.height = percentage.toString() + '%';
         Light.setAttribute('title', measure_data['light']);
         let color_L;
-        if (valueL > low_limit_IL && valueL < upper_limit_IL) {
+        if (valueL > lower_limit_IL && valueL < upper_limit_IL) {
             color_L = green;
-        } else if (valueL == upper_limit_IL || valueL == low_limit_IL) {
+        } else if (valueL == upper_limit_IL || valueL == lower_limit_IL) {
             color_L = orange;
         } else {
             color_L = red;

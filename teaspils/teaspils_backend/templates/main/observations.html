@@ -16,22 +16,13 @@
 {% endif %}
 
 <div class="cointainer">
-    <!-- <div class="row">
-        <nav aria-label="breadcrumb" style="margin-left: 5%;">
-            <ol class="breadcrumb" style="background-color: white;">
-                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Observations</li>
+    <div class="d-flex flex-row ms-4 mt-3">
+        <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Plant Timeline</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><a href="#">Observations</a></li>
             </ol>
         </nav>
-    </div> -->
-    <div class="d-flex flex-row justify-content-center mt-3">
-        <div class="col-6">
-            <button type="button" class="btn btn-primary btn-lg btn-block"
-                onclick="window.location.href='/teaspils/plant/{{plant_id}}/history'"">{% blocktrans %}Timeline{% endblocktrans %}</button>
-    </div>
-        <div class=" col-6">
-                <button type="button" class="btn btn-outline-success btn-lg btn-block" disabled>{% blocktrans %}Observations{% endblocktrans %}</button>
-        </div>
     </div>
 </div>
 
@@ -51,76 +42,89 @@
     </div> -->
     <div class="row">
         <div class="col-5">
-            <form method="post" enctype="multipart/form-data">
-                <input type="hidden" name="plant_id" value="{{plant_id}}">
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col-10">
-                        <h2>{% blocktrans %}Name or group name:{% endblocktrans %}</h2>
-                    </div>
-                    <div class="col-3"></div>
+            <div class="card">
+                <div class="card-header p-0">
+                    <h5 style="margin: 5px 0;">{% blocktrans %}Make an observation!{% endblocktrans %}</h5>
                 </div>
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col-10">
-                        <!--style="background-color: papayawhip;"-->
-                        <input type="text" id="author-name" name="name" class="form-control">
-                    </div>
-                    <div class="col-1"></div>
+                <div class="card-body">
+                    <form method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="plant_id" value="{{plant_id}}">
+                        <div class="row">
+                            <h5>{% blocktrans %}Name or group name:{% endblocktrans %}</h5>
+                        </div>
+                        <div class="row">
+                            <input type="text" id="author-name" name="name" class="form-control input-sm"
+                                style="padding: 0.2em;">
+                        </div>
+                        <div class="row" style="display: flex; align-content: space-between; margin-top: 10px 0px;">
+                            <h5>{% blocktrans %}Observations:{% endblocktrans %}</h5>
+                        </div>
+                        <div class="row">
+                            <textarea id="comment-maker" name="observation" class="form-control" rows="4"></textarea>
+                        </div>
+                        <div class="row" style="margin: 30px;">
+                            <!-- IMAGE UPLOAD -->
+                            <div class="col-10">
+                                <input type="file" class="form-control form-control-sm" name="attachedfile"
+                                    id="plant-image-upload" />
+                            </div>
+                            <div class="col-2">
+                                <input type="submit" id="save-button" class="btn btn-outline-primary"
+                                    value="{% blocktrans %}Save{% endblocktrans %}">
+                            </div>
+                        </div>
+                    </form>
                 </div>
-                <div class="row" style="display: flex; align-content: space-between; margin-top: 10px 0px;">
-                    <div class="col-1"></div>
-                    <div class="col-10">
-                        <h2>{% blocktrans %}Observations:{% endblocktrans %}</h2>
-                    </div>
-
-                    <div class="col-1"></div>
-                </div>
-                <div class="row">
-                    <div class="col-1"></div>
-                    <div class="col-10"">
-                    <textarea id="comment-maker" name="observation" class="form-control" rows="4"></textarea>
-                    </div>
-                    <div class="col-1"></div>
-                </div>
-                <div class="row" style="margin: 30px;">
-                    <!-- IMAGE UPLOAD -->
-                    <div class="col-10">
-                        <input type="file" class="form-control-file" name="attachedfile" id="image-upload" />
-                    </div>
-                    <div class="col-2">
-                        <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
-                    </div>
-                    <div class="col-7"></div>
-                </div>
-            </form>
+            </div>
         </div>
-        <div id="comments-section" class="col-7">
-            <div class="cointainer border rounded"
-                style="margin: 5px; overflow-y: scroll; height: 70%; width: 100%">
-                {%for obs in observations %}
+        <div class="col-7">
+            <div class="cointainer border rounded" style="overflow-y: scroll; height: 100%; width: 100%">
+                <div class="card-header p-0">
+                    <h5 style="margin: 5px 0;" href="/teaspils/plant/{{plant_id}}/observations">{% blocktrans %}Plant observations{% endblocktrans %}</h5>
+                </div>
+                {%for obs in page_obj %}
                 <div class="row" style="justify-content: center; margin: 5px;">
-                    <div class="card" style="width: 95%;">
+                    <div class="card" style="width: 100%;">
                         <div class="card-body">
                             <div class='row' style="display: flex; flex-direction: row;">
                                 <div class="col-2">
-                                    <img src="{{  obs.image.url|resize:'100x100' }}" alt="Thumbnail">
+                                    <img src="{{  obs.image_thumbnail.url }}" alt="Thumbnail">
                                 </div>
-                                <div class="col-10">
-                                    <h5 class="card-title">{{obs.author}}</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">{{obs.timestamp}}</h6>
-                                    <p class="card-text">{{obs.text}}</p>
+                                <div class="col-1"></div>
+                                <div class="col-9">
+                                    <h5 class="card-title" style="font-size: 1em;">{{obs.author}}</h5>
+                                    <h6 class="card-subtitle mb-2 text-muted" style="font-size: 0.75em;">{{obs.timestamp}}
+                                    </h6>
+                                    <p class="card-text" style="font-size: 0.6em;">{{obs.text}}</p>
                                 </div>
                                 <!-- TODO: Add condition,  IF FILE IS ATTACHED -->
-
                             </div>
                         </div>
                     </div>
                 </div>
                 {% endfor %}
+                <div class="pagination" style="justify-content: space-around;">
+                    <span class="step-links">
+                        {% if page_obj.has_previous %}
+                        <a href="?page=1">{% blocktrans %}first{% endblocktrans %}</a>
+                        <a href="?page={{ page_obj.previous_page_number }}">{% blocktrans %}previous{% endblocktrans %}</a>
+                        {% endif %}
+
+                        <span class="current">
+                            {% blocktrans %}Page{% endblocktrans %} {{ page_obj.number }} {% blocktrans %}of{% endblocktrans %} {{ page_obj.paginator.num_pages }}.
+                        </span>
+                        {% if page_obj.has_next %}
+                        <a href="?page={{ page_obj.next_page_number }}">{% blocktrans %}next{% endblocktrans %}</a>
+                        <a href="?page={{ page_obj.paginator.num_pages }}">{% blocktrans %}last{% endblocktrans %}</a>
+                        {% endif %}
+                    </span>
+                </div>
             </div>
         </div>
     </div>
+</div>
+
+</div>
 </div>
 
 

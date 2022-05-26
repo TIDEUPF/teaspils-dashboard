@@ -197,11 +197,11 @@ def plantHistory(request, plant_id:int):
     #messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
     messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
 
-    if plant_id == 2:
+    if plant_id == 2 or plant_id == 14 or plant_id == 15:
         alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 3:
+    if plant_id == 3 or plant_id == 16 or plant_id == 17:
         advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
@@ -248,13 +248,13 @@ def sendAlert(request, plant_id:int):
     print('compare button shows visits too:', request.session['num_visits'])
     print(plant_id)
 
-    if plant_id == 2:
+    if plant_id == 2 or plant_id == 14 or plant_id == 15:
         #print('index',num_visits%len(alerts_plantHistory))
         #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
         alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 3:
+    if plant_id == 3 or plant_id == 16 or plant_id == 17:
         advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 

@@ -156,13 +156,24 @@ def plantHistory(request, plant_id:int):
     # con.connect(plant.data_source)
     # print("FROM STATIC: ", facade.ConnectionFacade.data)
     measures = []
-    with open('./fake_generator/dataset2.csv') as csvFile:
-        csvReader = csv.DictReader(csvFile)
-        #counter = 0
-        for rows in csvReader:
-            #if counter%5 == 0:
-            measures.append(rows)
-            #counter += 1
+    healthy_ids = [1,2,3,5,6,9,10]
+    unhealthy_ids = [4,7,8,11]
+    if (plant_id in healthy_ids):
+        with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
+            csvReader = csv.DictReader(csvFile)
+            #counter = 0
+            for rows in csvReader:
+                #if counter%5 == 0:
+                measures.append(rows)
+                #counter += 1
+    else:
+        with open('./fake_generator/dataset3_b_reduced.csv') as csvFile:
+            csvReader = csv.DictReader(csvFile)
+            #counter = 0
+            for rows in csvReader:
+                #if counter%5 == 0:
+                measures.append(rows)
+                #counter += 1
             
     json_pretty = json.dumps(measures, sort_keys=True, indent=4)
 

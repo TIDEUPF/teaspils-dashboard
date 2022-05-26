@@ -158,7 +158,8 @@ def plantHistory(request, plant_id:int):
     measures = []
     healthy_ids = [1,2,3,5,6,9,10]
     unhealthy_ids = [4,7,8,11]
-    if (plant_id in healthy_ids):
+    reduced_ids = []
+    if ((plant_id in healthy_ids) and (plant_id not in reduced_ids)):
         with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
@@ -166,7 +167,7 @@ def plantHistory(request, plant_id:int):
                 #if counter%5 == 0:
                 measures.append(rows)
                 #counter += 1
-    else:
+    elif ((plant_id in unhealthy_ids) and (plant_id not in reduced_ids)):
         with open('./fake_generator/dataset3_b_reduced.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
@@ -174,6 +175,22 @@ def plantHistory(request, plant_id:int):
                 #if counter%5 == 0:
                 measures.append(rows)
                 #counter += 1
+    elif ((plant_id in healthy_ids) and (plant_id in reduced_ids)):
+        with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
+            csvReader = csv.DictReader(csvFile)
+            counter = 0
+            for rows in csvReader:
+                if counter%5 == 0:
+                    measures.append(rows)
+                    counter += 1
+    elif ((plant_id in unhealthy_ids) and (plant_id in reduced_ids)):
+        with open('./fake_generator/dataset3_b_reduced.csv') as csvFile:
+            csvReader = csv.DictReader(csvFile)
+            counter = 0
+            for rows in csvReader:
+                if counter%5 == 0:
+                    measures.append(rows)
+                    counter += 1
             
     json_pretty = json.dumps(measures, sort_keys=True, indent=4)
 

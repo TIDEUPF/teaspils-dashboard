@@ -156,9 +156,9 @@ def plantHistory(request, plant_id:int):
     # con.connect(plant.data_source)
     # print("FROM STATIC: ", facade.ConnectionFacade.data)
     measures = []
-    healthy_ids = [1,2,3,5,6,9,10]
-    unhealthy_ids = [4,7,8,11]
-    reduced_ids = []
+    healthy_ids = [1,2,3,5,6,9,10,13,14,16]
+    unhealthy_ids = [4,7,8,11,12,15,17]
+    reduced_ids = [12, 13, 14, 15, 16, 17]
     if ((plant_id in healthy_ids) and (plant_id not in reduced_ids)):
         with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)

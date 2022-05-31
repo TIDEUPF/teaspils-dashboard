@@ -21,7 +21,7 @@ from .api import facade
 
 from .models import Course, MeasureObservation, Observation, Plant, PlantSettings, Student
 from .forms import LoginForm, MeasureObservationForm, ObservationForm
-from .alerts2 import alerts_plantHistory, advice_plantHistory, alerts_singleMeasure, advice_singleMeasure
+from .alerts3 import alerts_healthyPlant, alerts_unhealthyPlant
 
 @csrf_exempt
 def index(request):
@@ -197,12 +197,12 @@ def plantHistory(request, plant_id:int):
     #messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
     messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
 
-    if plant_id == 2 or plant_id == 14 or plant_id == 15:
-        alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
+    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+        alert = alerts_healthyPlant[num_visits%len(alerts_healthyPlant)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 3 or plant_id == 16 or plant_id == 17:
-        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+        advice = alerts_unhealthyPlant[num_visits%len(alerts_unhealthyPlant)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     #OBSERVATIONS:
@@ -248,14 +248,12 @@ def sendAlert(request, plant_id:int):
     print('compare button shows visits too:', request.session['num_visits'])
     print(plant_id)
 
-    if plant_id == 2 or plant_id == 14 or plant_id == 15:
-        #print('index',num_visits%len(alerts_plantHistory))
-        #print('message',alerts_plantHistory[num_visits%len(alerts_plantHistory)] )
-        alert = alerts_plantHistory[num_visits%len(alerts_plantHistory)]
+    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+        alert = alerts_healthyPlant[num_visits%len(alerts_healthyPlant)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 3 or plant_id == 16 or plant_id == 17:
-        advice = advice_plantHistory[num_visits%len(advice_plantHistory)]
+    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+        advice = alerts_unhealthyPlant[num_visits%len(alerts_unhealthyPlant)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     return HttpResponse('compare')
@@ -444,14 +442,12 @@ def singleMeasure(request, plant_id:int, obj:str):
     request.session['num_visits'] = num_visits + 1
     print('singleMeasure visits:', request.session['num_visits'])
 
-    if plant_id == 2:
-        #print('index',num_visits%len(alerts_singleMeasure))
-        #print('message',alerts_singleMeasure[num_visits%len(alerts_singleMeasure)] )
-        alert = alerts_singleMeasure[num_visits%len(alerts_singleMeasure)]
+    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+        alert = alerts_healthyPlant[num_visits%len(alerts_healthyPlant)]
         messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 3:
-        advice = advice_singleMeasure[num_visits%len(advice_singleMeasure)]
+    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+        advice = alerts_unhealthyPlant[num_visits%len(alerts_unhealthyPlant)]
         messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     observations:List = []

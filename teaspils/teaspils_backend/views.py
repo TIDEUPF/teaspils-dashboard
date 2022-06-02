@@ -114,7 +114,7 @@ def plantHistory(request, plant_id:int):
                 obs = Observation(plant_id=plant_id,
                                   author=name,
                                   text=observation,
-                                  filePath= saved_path,
+                                #   filePath= saved_path,
                                   image = attachedfile,
                                   timestamp=timestamp)
                 obs.save()
@@ -176,7 +176,7 @@ def observations(request, plant_id:int): #,plant_id:int):
                 obs = Observation(plant_id=plant_id,
                                   author=name,
                                   text=observation,
-                                  filePath= saved_path,
+                                #   filePath= saved_path,
                                   image = attachedfile,
                                   timestamp=timestamp)
                 obs.save()
@@ -240,14 +240,14 @@ def measureObservations(request, plant_id:int, ts:str):
             #2022-02-10%2019:08:45
             timestamp = datetime.datetime.strptime(ts, "%Y-%m-%d %H:%M:%S")
             saved_ts = timestamp.astimezone(ZoneInfo('Europe/Madrid'))
-            saved_path:str = '/uploads'
+            # saved_path:str = '/uploads'
 
             #img_file = DjangoFile(open(saved_path, mode='rb'), name=saved_path)
             if saved_path is not None:
                 obs = MeasureObservation(plant_id=plant_id,
                                   author=name,
                                   text=observation,
-                                  filePath= saved_path,
+                                #   filePath= saved_path,
                                   image = attachedfile,
                                   timestamp=saved_ts)
                 obs.save()

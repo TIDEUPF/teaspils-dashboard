@@ -90,6 +90,7 @@ function load_from_file(json_loaded) {
     var times = [];
     var temps = [];
     var soilHumidity = [];
+    var soilTemperatures = [];
     var co2s = [];
     var lights = [];
     var hums = [];
@@ -98,15 +99,12 @@ function load_from_file(json_loaded) {
     for (let i = 0; i < history.length; i++) {
         times.push(new Date(history[i]['Timestamp']));
         temps.push(history[i]['temperature']);
+        soilTemperatures.push(history[i]['soilTemperature']);
         soilHumidity.push(history[i]['soilHumidity']);
         co2s.push(history[i]['co2']);
         lights.push(history[i]['light']);
         hums.push(history[i]['humidity']);
     }
-    console.log("TEMPERATURAS::::::");
-    console.log(times, temps);
-
-
 
     let trace_temp = {
         type: "scatter",
@@ -118,6 +116,24 @@ function load_from_file(json_loaded) {
         line: { color: '#f1bdff', width: 3 },
         marker: { color: '#d9bdff', size: 5 },
     }
+
+    let trace_soilTemp = {
+        type: "scatter",
+        mode: "lines+markers",
+        name: 'Soil Temperature Cº',
+        x: times,
+        y: soilTemperatures,
+        text: soilTemperatures.map(function (value) { return ` Soil Tmp: ${value} Cº`; }),
+        hoverinfo: 'text',
+        line: { color: '#2222ff', width: 3 },
+        marker: { color: '#2222ff', size: 5 },
+        layout: {
+            xaxis: {
+                tickformat: '%d-%m-%y %H:%M',
+            },
+        }
+    }
+
 
     let trace_soilHumidity = {
         type: "scatter",
@@ -173,7 +189,8 @@ function load_from_file(json_loaded) {
     }
 
     plot_all_div = document.getElementById('plt_loaded'); //plt_all
-    Plotly.newPlot(plt_all, [trace_temp, trace_soilHumidity, trace_co2, trace_light, trace_hum], {
+    Plotly.newPlot(plt_all, [trace_temp, trace_soilTemp, trace_soilHumidity, 
+                             trace_co2, trace_light, trace_hum], {
         margin: { t: 15 },
         // plot_bgcolor: "#ffde9f",
         // paper_bgcolor: "#ffde9f",
@@ -191,7 +208,7 @@ function load_from_file(json_loaded) {
         autosize: true,
     }, { responsive: true });
 
-    let m1 = 'Temperature'
+    let m1 = 'Soil Temperature'
     let m2 = 'Soil Humidity'
 
     $('#first-options a').on('click', function () {
@@ -210,6 +227,8 @@ function load_from_file(json_loaded) {
         let traces_dict = {
             'Temperature': trace_temp,
             'Temperatura': trace_temp,
+            'Soil Temperature' : trace_soilTemp,
+            'Temperatura del suelo' : trace_soilTemp,
             'Soil Humidity': trace_soilHumidity,
             'Humedad del suelo': trace_soilHumidity,
             'Co2': trace_co2,
@@ -250,6 +269,7 @@ function load_from_file(json_loaded) {
         let light_y = 0.0;
         let co2_y = 0.0;
         let soilH_y = 0.0;
+        let soilT_y = 0.0;
         let temp_y = 0.0;
 
         if (typeof (data['points'][0]) != "undefined") {
@@ -267,6 +287,9 @@ function load_from_file(json_loaded) {
         if (typeof (data['points'][4]) != "undefined") {
             temp_y = data['points'][4]['y'];
         }
+        if (typeof (data['points'][5]) != "undefined") {
+            soilT_y = data['points'][5]['y'];
+        }
 
         single_measure = {
             'timestamp': data['points'][0]['x'],
@@ -274,6 +297,7 @@ function load_from_file(json_loaded) {
             'light': light_y,
             'co2': co2_y,
             'soilHumidity': soilH_y,
+            'soilTemperature'   : soilT_y,
             'temperature': temp_y
         };
 

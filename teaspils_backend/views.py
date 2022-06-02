@@ -194,16 +194,16 @@ def plantHistory(request, plant_id:int):
             
     json_pretty = json.dumps(measures, sort_keys=True, indent=4)
 
-    #messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
-    messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
+    messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
+    #messages.info(request, "Selecciona un punt al gràfic de dades per veure la visualització detallada de la mesura!")
 
-    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
-        alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
-        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+    # if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+    #     alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
+    #     messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
-        advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
-        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
+    # if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+    #     advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
+    #     messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     #OBSERVATIONS:
     observations = Observation.objects.filter(plant_id=plant_id).order_by("-timestamp")
@@ -248,13 +248,13 @@ def sendAlert(request, plant_id:int):
     print('compare button shows visits too:', request.session['num_visits'])
     print(plant_id)
 
-    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
-        alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
-        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+    # if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+    #     alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
+    #     messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
-        advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
-        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
+    # if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+    #     advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
+    #     messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     return HttpResponse('compare')
 
@@ -442,13 +442,13 @@ def singleMeasure(request, plant_id:int, obj:str):
     request.session['num_visits'] = num_visits + 1
     print('singleMeasure visits:', request.session['num_visits'])
 
-    if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
-        alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
-        messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
+    # if plant_id == 5 or plant_id == 6 or plant_id == 9 or plant_id == 10:
+    #     alert = advice_healthyPlant[num_visits%len(advice_healthyPlant)]
+    #     messages.info(request, {"text":alert["text"],"icon":alert["icon"]}, extra_tags="customalert")
 
-    if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
-        advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
-        messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
+    # if plant_id == 4 or plant_id == 7 or plant_id == 8 or plant_id == 11:
+    #     advice = advice_unhealthyPlant[num_visits%len(advice_unhealthyPlant)]
+    #     messages.info(request, {"text":advice["text"],"icon":advice["icon"]}, extra_tags="customalert")
 
     observations:List = []
 

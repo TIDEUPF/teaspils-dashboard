@@ -33,8 +33,8 @@
         <div class="d-flex flex-row ms-4 mt-3">
             <nav style="--bs-breadcrumb-divider: '/';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Línia de temps</a></li>
-                <li class="breadcrumb-item active" aria-current="page" ><a href="#">Mesura</a></li>
+                <li class="breadcrumb-item"><a href="/teaspils/plant/{{plant_id}}/history">Timeline</a></li>
+                <li class="breadcrumb-item active" aria-current="page" ><a href="#">Mesurement</a></li>
                 </ol>
             </nav>
         </div>
@@ -284,7 +284,7 @@
         </div> -->
     </div>
 
-    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">OBSERVACIONS</button>
+    <button id="obsMainButton" class="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">OBSERVATIONS</button>
 
     <div class="offcanvas offcanvas-end {% if page_obj.number != 1 %}show{% endif %} " 
          data-bs-scroll="true" 
@@ -343,7 +343,7 @@
                 <div class="row" style="margin-top:auto">
                 <div class="card">
                     <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Fes una observació!{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Post an observation{% endblocktrans %}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">

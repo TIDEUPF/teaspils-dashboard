@@ -39,7 +39,7 @@
     <div class="d-flex flex-row ms-4 mt-3">
         <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
             <ol class="breadcrumb">
-              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Línia de temps</a></li>
+              <li class="breadcrumb-item active" aria-current="page" ><a href="#">Timeline</a></li>
             </ol>
           </nav>
     </div>
@@ -69,7 +69,7 @@
                         <div class="col-2">
                         <div class="form-check form-switch">
                             <input class="form-check-input" type="checkbox" id="load_switch" checked>
-                            <label class="form-check-label" for="load_switch">Activa les dades en temps real</label>
+                            <label class="form-check-label" for="load_switch">Activate real-time data</label>
                           </div>
                         </div>
                         <div class="col-6">
@@ -141,7 +141,7 @@
                 <div class="cointainer border rounded"
                      style="overflow-y: scroll; height: 100%; width: 100%">
                      <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Observacions de la planta{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Plant observations{% endblocktrans %}</h5>
                     </div>
                     {%for obs in page_obj %}
                     <div class="row" style="justify-content: center; margin: 5px;">
@@ -222,7 +222,7 @@
                 <div class="row" style="margin-top:auto">
                 <div class="card">
                     <div class="card-header p-0">
-                        <h5 style="margin: 5px 0;">{% blocktrans %}Fes una observació!{% endblocktrans %}</h5>
+                        <h5 style="margin: 5px 0;">{% blocktrans %}Post an observation{% endblocktrans %}</h5>
                     </div>
                     <div class="card-body">
                         <form method="post" enctype="multipart/form-data">

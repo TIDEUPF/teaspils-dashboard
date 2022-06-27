@@ -160,7 +160,7 @@ def plantHistory(request, plant_id:int):
     unhealthy_ids = [4,7,8,11,12,15,17]
     reduced_ids = [12, 13, 14, 15, 16, 17]
     if ((plant_id in healthy_ids) and (plant_id not in reduced_ids)):
-        with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
+        with open('./fake_generator/dataset2.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
             for rows in csvReader:
@@ -168,7 +168,7 @@ def plantHistory(request, plant_id:int):
                 measures.append(rows)
                 #counter += 1
     elif ((plant_id in unhealthy_ids) and (plant_id not in reduced_ids)):
-        with open('./fake_generator/dataset3_b_reduced.csv') as csvFile:
+        with open('./fake_generator/dataset2.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
             for rows in csvReader:
@@ -176,7 +176,7 @@ def plantHistory(request, plant_id:int):
                 measures.append(rows)
                 #counter += 1
     elif ((plant_id in healthy_ids) and (plant_id in reduced_ids)):
-        with open('./fake_generator/dataset2_b_reduced.csv') as csvFile:
+        with open('./fake_generator/dataset2.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
             for rows in csvReader:
@@ -184,7 +184,7 @@ def plantHistory(request, plant_id:int):
                 measures.append(rows)
                 #counter += 1
     elif ((plant_id in unhealthy_ids) and (plant_id in reduced_ids)):
-        with open('./fake_generator/dataset3_b_reduced.csv') as csvFile:
+        with open('./fake_generator/dataset2.csv') as csvFile:
             csvReader = csv.DictReader(csvFile)
             #counter = 0
             for rows in csvReader:

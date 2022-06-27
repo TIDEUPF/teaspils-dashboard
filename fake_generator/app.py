@@ -36,7 +36,7 @@ def generator():
         #counter = 0
         for rows in csvReader:
             #if counter%5 == 0:
-            measures.append(rows)
+            measures.append(rows) 
             #counter += 1
 
     return json.dumps(measures, indent=4, sort_keys=True, default=str)

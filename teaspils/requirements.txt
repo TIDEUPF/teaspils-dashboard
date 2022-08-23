@@ -32,3 +32,4 @@ flask
 requests
 tb-rest-client
 gunicorn
+whitenoise

@@ -100,15 +100,26 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 #         }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'NAME': 'teaspils_aws_db',
+#         'USER': 'admin',
+#         'PASSWORD': '--Teaspils22',
+#         'PORT': '3306',
+#         'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
+#         }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'teaspils_aws_db',
-        'USER': 'admin',
-        'PASSWORD': '--Teaspils22',
-        'PORT': '3306',
-        'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
-        }
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'dourdv5usfvmn',
+        'USER': 'fctebxfzomdpya',
+        'PASSWORD': '495ee89f0e95719b9df1fb0064e17b3daa9196b924ef2baaf6483dd2295b272a',
+        'HOST': 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com',
+        'PORT': '5432',
+    }
 }
 
 # DATABASES = {

@@ -167,6 +167,9 @@ MEDIA_URL = 'teaspils_backend/media/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+STATIC_ROOT = BASE_DIR / "staticfiles"
+
+
 # Thumbnails
 # IMAGEFIT_ROOT = '.'
 

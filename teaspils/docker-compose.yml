@@ -23,8 +23,8 @@ services:
     build: 
       context: .
       dockerfile: ./Dockerfile
-    # command: python manage.py runserver 0.0.0.0:80
-    entrypoint: [./wait.sh]
+    command: gunicorn teaspils.wsgi:application --bind 0.0.0.0:80
+    # entrypoint: [./wait.sh]
     ports:
       - "80:80"
     environment:

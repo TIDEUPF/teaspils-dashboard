@@ -31,3 +31,4 @@ wrapt==1.13.3
 flask
 requests
 tb-rest-client
+gunicorn

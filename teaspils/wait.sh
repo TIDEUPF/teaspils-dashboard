@@ -11,4 +11,4 @@ python manage.py makemigrations
 python manage.py migrate
 python manage.py runserver 0.0.0.0:80 &
 
-python ./fake_generator/app.py
+# python ./fake_generator/app.py

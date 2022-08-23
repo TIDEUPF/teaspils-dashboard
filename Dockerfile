@@ -7,5 +7,4 @@ RUN apt-get install jpegoptim
 RUN pip install -r requirements.txt
 COPY . /teaspils/
 RUN chmod +x wait.sh
-EXPOSE 8000
 EXPOSE 3306

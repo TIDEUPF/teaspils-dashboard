@@ -126,8 +126,10 @@ def plantHistory(request, plant_id:int):
                 return HttpResponseRedirect('history', context)
 
 
+    # Connect to datasource
+    # Will be routed to dummy data until real sources became availables.
     plant = Plant.objects.filter(pk=plant_id).first()
-    con = facade.ConnectionFacade('http') #or thingsb
+    con = facade.ConnectionFacade('dummy') #or thingsb
     con.connect(plant.data_source)
     print("FROM STATIC: ", facade.ConnectionFacade.data)
     json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)

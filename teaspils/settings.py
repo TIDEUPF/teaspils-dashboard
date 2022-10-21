@@ -114,10 +114,10 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'dourdv5usfvmn',
-        'USER': 'fctebxfzomdpya',
-        'PASSWORD': '495ee89f0e95719b9df1fb0064e17b3daa9196b924ef2baaf6483dd2295b272a',
-        'HOST': 'ec2-52-48-159-67.eu-west-1.compute.amazonaws.com',
+        'NAME': 'd7p0mtae3nll27',
+        'USER': 'ofbichepjrkcxp',
+        'PASSWORD': '1bc7e524580f70c92371164528ac6c445d4f240334b04ccd27cc3bccbdd5cd68',
+        'HOST': 'ec2-54-75-26-218.eu-west-1.compute.amazonaws.com',
         'PORT': '5432',
     }
 }

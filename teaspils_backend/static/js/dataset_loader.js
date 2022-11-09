@@ -97,7 +97,7 @@ function load_from_file(json_loaded) {
 
 
     for (let i = 0; i < history.length; i++) {
-        times.push(new Date(history[i]['Timestamp']));
+        times.push(new Date(history[i]['timestamp']));
         temps.push(history[i]['temperature']);
         soilTemperatures.push(history[i]['soilTemperature']);
         soilHumidity.push(history[i]['soilHumidity']);
@@ -320,7 +320,7 @@ function load_from_realtime() {
 
 
     for (let i = 0; i < history.length; i++) {
-        times.push(new Date(history[i]['Timestamp']));
+        times.push(new Date(history[i]['timestamp']));
         temps.push(history[i]['temperature']);
         soilTemps.push(history[i]['soilTemperature']);
         soilHumidity.push(history[i]['soilHumidity']);

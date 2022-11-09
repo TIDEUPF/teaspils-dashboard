@@ -21,13 +21,13 @@ class DummyConnection:
         """
         print("ENTERING DUMMY DATA")
         dummy_data = [
-            {'Timestamp': '2022-04-20 11:00:00.000000', 'co2': 144, 'humidity': 89, 'light': 104, 'plant_id': 1, 'soilHumidity': 63, 'soilTemperature': 23, 'temperature': 25}, 
-            {'Timestamp': '2022-04-20 11:10:00.000000', 'co2': 313, 'humidity': 38, 'light': 171, 'plant_id': 1, 'soilHumidity': 22, 'soilTemperature': 25, 'temperature': 23}, 
-            {'Timestamp': '2022-04-20 11:20:00.000000', 'co2': 481, 'humidity': 100, 'light': 1866, 'plant_id': 1, 'soilHumidity': 69, 'soilTemperature': 19, 'temperature': 22}, 
-            {'Timestamp': '2022-04-20 11:30:00.000000', 'co2': 378, 'humidity': 15, 'light': 384, 'plant_id': 1, 'soilHumidity': 76, 'soilTemperature': 23, 'temperature': 21}, 
-            {'Timestamp': '2022-04-20 11:40:00.000000', 'co2': 791, 'humidity': 65, 'light': 1620, 'plant_id': 1, 'soilHumidity': 21, 'soilTemperature': 11, 'temperature': 21}, 
-            {'Timestamp': '2022-04-20 11:50:00.000000', 'co2': 589, 'humidity': 45, 'light': 798, 'plant_id': 1, 'soilHumidity': 19, 'soilTemperature': 23, 'temperature': 18}, 
-            {'Timestamp': '2022-04-20 12:00:00.000000', 'co2': 123, 'humidity': 81, 'light': 1271, 'plant_id': 1, 'soilHumidity': 95, 'soilTemperature': 23, 'temperature': 23}]
+            {'timestamp': '2022-04-20 11:00:00.000000', 'co2': 144, 'humidity': 89, 'light': 104, 'plant_id': 1, 'soilHumidity': 63, 'soilTemperature': 23, 'temperature': 25}, 
+            {'timestamp': '2022-04-20 11:10:00.000000', 'co2': 313, 'humidity': 38, 'light': 171, 'plant_id': 1, 'soilHumidity': 22, 'soilTemperature': 25, 'temperature': 23}, 
+            {'timestamp': '2022-04-20 11:20:00.000000', 'co2': 481, 'humidity': 100, 'light': 1866, 'plant_id': 1, 'soilHumidity': 69, 'soilTemperature': 19, 'temperature': 22}, 
+            {'timestamp': '2022-04-20 11:30:00.000000', 'co2': 378, 'humidity': 15, 'light': 384, 'plant_id': 1, 'soilHumidity': 76, 'soilTemperature': 23, 'temperature': 21}, 
+            {'timestamp': '2022-04-20 11:40:00.000000', 'co2': 791, 'humidity': 65, 'light': 1620, 'plant_id': 1, 'soilHumidity': 21, 'soilTemperature': 11, 'temperature': 21}, 
+            {'timestamp': '2022-04-20 11:50:00.000000', 'co2': 589, 'humidity': 45, 'light': 798, 'plant_id': 1, 'soilHumidity': 19, 'soilTemperature': 23, 'temperature': 18}, 
+            {'timestamp': '2022-04-20 12:00:00.000000', 'co2': 123, 'humidity': 81, 'light': 1271, 'plant_id': 1, 'soilHumidity': 95, 'soilTemperature': 23, 'temperature': 23}]
 
         return dummy_data
 

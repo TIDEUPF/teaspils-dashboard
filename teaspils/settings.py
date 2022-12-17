@@ -100,27 +100,27 @@ WSGI_APPLICATION = 'teaspils.wsgi.application'
 #         }
 # }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'NAME': 'teaspils_aws_db',
-#         'USER': 'admin',
-#         'PASSWORD': '--Teaspils22',
-#         'PORT': '3306',
-#         'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
-#         }
-# }
-
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'd7p0mtae3nll27',
-        'USER': 'ofbichepjrkcxp',
-        'PASSWORD': '1bc7e524580f70c92371164528ac6c445d4f240334b04ccd27cc3bccbdd5cd68',
-        'HOST': 'ec2-54-75-26-218.eu-west-1.compute.amazonaws.com',
-        'PORT': '5432',
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'teaspils_aws_db',
+        'USER': 'admin',
+        'PASSWORD': '--Teaspils22',
+        'PORT': '3306',
+        'HOST': 'teaspils-aws-db.c9d6fszohvgi.eu-west-3.rds.amazonaws.com',
+        }
 }
+
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': 'd7p0mtae3nll27',
+#         'USER': 'ofbichepjrkcxp',
+#         'PASSWORD': '1bc7e524580f70c92371164528ac6c445d4f240334b04ccd27cc3bccbdd5cd68',
+#         'HOST': 'ec2-54-75-26-218.eu-west-1.compute.amazonaws.com',
+#         'PORT': '5432',
+#     }
+# }
 
 # DATABASES = {
 #     'default': {

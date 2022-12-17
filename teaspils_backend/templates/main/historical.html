@@ -45,13 +45,15 @@
         <div class="col-10">
             <div class="tab-content clearfix">
                 <div id="all_area" class="tab-pane fade active show" role="tabpanel" style="width:100%;height:100%;">
-                    <div class="row">
-                        <div class="col-2"> </div>
-                        <div class="col-2">
-                        <div class="form-check form-switch">
-                            <input class="form-check-input" type="checkbox" id="load_switch" checked>
-                            <label class="form-check-label" for="load_switch">Activate realtime data</label>
-                          </div>
+                    <div class="row mb-3">
+                        <div class="col-2"></div>
+                        <div class="col-4" style="text-align: right; vertical-align: middle;">
+                            <label class="col-form-label fs-4" for="dataset-upload">{% blocktrans %}Upload your data to visualize it!{% endblocktrans %}</label>
+
+                            <!-- <div class="form-check form-switch">
+                                <input class="form-check-input" type="checkbox" id="load_switch" checked>
+                                <label class="form-check-label" for="load_switch">Activate realtime data</label>
+                            </div> -->
                         </div>
                         <div class="col-6">
                             <div class="custom-file">
@@ -59,7 +61,6 @@
                             </div>
                         </div>
                     </div>
-
                     <div id="plt_all" style="width:100%;height:90%;"></div>
                 </div>
 

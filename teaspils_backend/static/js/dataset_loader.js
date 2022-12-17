@@ -1,25 +1,26 @@
 //Loading the window create the switch control and setting it to realtime
 window.onload = function () {
-    document.getElementById('load_switch').addEventListener('change', function (event) {
-        if (event.currentTarget.checked) {
-            $('#dataset-upload').prop("disabled", true);
-            $('#dataset-upload').val(null);
-            load_from_realtime();
-        } else {
-            $('#dataset-upload').prop("disabled", false);
-        }
-    });
+    // document.getElementById('load_switch').addEventListener('change', function (event) {
+    //     if (event.currentTarget.checked) {
+    //         $('#dataset-upload').prop("disabled", true);
+    //         $('#dataset-upload').val(null);
+    //         load_from_realtime();
+    //     } else {
+    //         $('#dataset-upload').prop("disabled", false);
+    //     }
+    // });
 
-    console.log(document.getElementById('load_switch').checked);
-    document.getElementById('load_switch').checked = true;
+    //console.log(document.getElementById('load_switch').checked);
+    //document.getElementById('load_switch').checked = false;
     load_from_realtime();
+    $('#dataset-upload').prop("disabled", false);
 
-    $(document).ready(function () {
-        function fade_out() {
-            $(".alert").fadeOut().empty();
-        }
-        setTimeout(fade_out, 5000);
-    });
+    // $(document).ready(function () {
+    //     function fade_out() {
+    //         $(".alert").fadeOut().empty();
+    //     }
+    //     setTimeout(fade_out, 5000);
+    // });
 };
 
 

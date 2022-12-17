@@ -477,3 +477,16 @@ footer h3{
         transform: rotate(90deg) translateX(-50%);
 
 }
+
+#upload-message{
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 32px;
+    letter-spacing: 1.4px;
+    word-spacing: -2.6px;
+    color: #000000;
+    font-weight: 400;
+    text-decoration: none;
+    font-style: italic;
+    font-variant: normal;
+    text-transform: none;
+}

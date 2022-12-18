@@ -15,12 +15,12 @@ window.addEventListener("load", () => {
     let upper_limit_T = document.getElementById("myInputHighT").value;
 
     /*INITIALIZE THE LIMITS FOR SOIL TEMPERATURE*/
-    let lower_limit_SoilT = document.getElementById("myInputLowSoilT").value;
-    let upper_limit_SoilT = document.getElementById("myInputHighSoilT").value;
+    let lower_limit_SoilT11 = document.getElementById("myInputLowSoilT").value;
+    let upper_limit_SoilT1 = document.getElementById("myInputHighSoilT").value;
     
     /*INITIALIZE THE LIMITS FOR SOIL HUMIDITY*/
-    let lower_limit_SoilH = document.getElementById("myInputLowSoilH").value;
-    let upper_limit_SoilH = document.getElementById("myInputHighSoilH").value;
+    let lower_limit_SoilT2 = document.getElementById("myInputLowSoilH").value;
+    let upper_limit_SoilT2 = document.getElementById("myInputHighSoilH").value;
 
     // /*INITIALIZE THE LIMITS FOR THE NOISE*/
     // let lower_limit_Noise = document.getElementById("myInputLowNoise").value;
@@ -41,11 +41,11 @@ window.addEventListener("load", () => {
     let hidden_data = document.getElementById("hidden_data").value
     hidden_data = hidden_data.replaceAll("\'", "\"");
     let measure_data = JSON.parse(hidden_data);
-    console.log(measure_data);
+    console.log("Hidden data:", measure_data);
 
     loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                lower_limit_SoilT, upper_limit_SoilT,
-                                lower_limit_SoilH, upper_limit_SoilH,
+                                lower_limit_SoilT11, upper_limit_SoilT1,
+                                lower_limit_SoilT2, upper_limit_SoilT2,
                                 // lower_limit_Noise, upper_limit_Noise, 
                                 lower_limit_CO2, upper_limit_CO2, 
                                 lower_limit_HUM, upper_limit_HUM, 
@@ -66,8 +66,8 @@ window.addEventListener("load", () => {
         document.getElementById("label_temp_l").innerHTML = parseInt(input_value_low);
 
         loadDashboard(measure_data, input_value_low, input_value_high, 
-                                    lower_limit_SoilT, upper_limit_SoilT,
-                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_SoilT11, upper_limit_SoilT1,
+                                    lower_limit_SoilT2, upper_limit_SoilT2,
                                     // lower_limit_Noise, upper_limit_Noise, 
                                     lower_limit_CO2, upper_limit_CO2, 
                                     lower_limit_HUM, upper_limit_HUM, 
@@ -88,7 +88,7 @@ window.addEventListener("load", () => {
 
         loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
                                     input_value_low, input_value_high, 
-                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_SoilT2, upper_limit_SoilT2,
                                     // lower_limit_Noise, upper_limit_Noise,
                                     lower_limit_CO2, upper_limit_CO2, 
                                     lower_limit_HUM, upper_limit_HUM, 
@@ -108,7 +108,7 @@ window.addEventListener("load", () => {
             document.getElementById("label_SoilH_l").innerHTML = parseInt(input_value_low);
     
             loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                        lower_limit_SoilT, upper_limit_SoilT,
+                                        lower_limit_SoilT11, upper_limit_SoilT1,
                                         input_value_low, input_value_high, 
                                         // lower_limit_Noise, upper_limit_Noise,
                                         lower_limit_CO2, upper_limit_CO2, 
@@ -116,26 +116,6 @@ window.addEventListener("load", () => {
                                         lower_limit_IL, upper_limit_IL);
         })
 
-    /*******************************NOISE*************************************/
-
-    // let input_button_Noise = document.getElementById('inputButtonNoise')
-    // input_button_Noise.addEventListener('click', function () {
-
-    //     let input_value_low = document.getElementById("myInputLowNoise").value;
-    //     let input_value_high = document.getElementById("myInputHighNoise").value;
-        
-    //     document.getElementById("label_noise_h").innerHTML = parseInt(input_value_high);
-    //     document.getElementById("label_noise_m").innerHTML = ((parseInt(input_value_high) + parseInt(input_value_low)) / 2);
-    //     document.getElementById("label_noise_l").innerHTML = parseInt(input_value_low);
-
-    //     loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-    //                                 lower_limit_SoilT, upper_limit_SoilT,
-    //                                 lower_limit_SoilH, upper_limit_SoilH,
-    //                                 input_value_low, input_value_high, 
-    //                                 lower_limit_CO2, upper_limit_CO2, 
-    //                                 lower_limit_HUM, upper_limit_HUM, 
-    //                                 lower_limit_IL, upper_limit_IL);
-    // })
 
     /*******************************CO2*************************************/
     let input_button_CO2 = document.getElementById('inputButtonCO2');
@@ -148,8 +128,8 @@ window.addEventListener("load", () => {
         document.getElementById("label_co2_l").innerHTML = parseInt(input_value_low);
 
         loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                    lower_limit_SoilT, upper_limit_SoilT,
-                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_SoilT11, upper_limit_SoilT1,
+                                    lower_limit_SoilT2, upper_limit_SoilT2,
                                     lower_limit_Noise, upper_limit_Noise, 
                                     input_value_low, input_value_high, 
                                     lower_limit_HUM, upper_limit_HUM, 
@@ -167,8 +147,8 @@ window.addEventListener("load", () => {
         document.getElementById("label_hum_l").innerHTML = parseInt(input_value_low);
 
         loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                    lower_limit_SoilT, upper_limit_SoilT,
-                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_SoilT11, upper_limit_SoilT1,
+                                    lower_limit_SoilT2, upper_limit_SoilT2,
                                     // lower_limit_Noise, upper_limit_Noise, 
                                     lower_limit_CO2, upper_limit_CO2, 
                                     input_value_low, input_value_high, 
@@ -186,8 +166,8 @@ window.addEventListener("load", () => {
         document.getElementById("label_light_l").innerHTML = parseInt(input_value_low);
 
         loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                    lower_limit_SoilT, upper_limit_SoilT,
-                                    lower_limit_SoilH, upper_limit_SoilH,
+                                    lower_limit_SoilT11, upper_limit_SoilT1,
+                                    lower_limit_SoilT2, upper_limit_SoilT2,
                                     // lower_limit_Noise, upper_limit_Noise, 
                                     lower_limit_CO2, upper_limit_CO2, 
                                     lower_limit_HUM, upper_limit_HUM, 
@@ -201,8 +181,8 @@ const green = '#4AD347';
 const orange = '#E8B147';
 
 function loadDashboard(measure_data, lower_limit_T, upper_limit_T, 
-                                     lower_limit_SoilT, upper_limit_SoilT,
-                                     lower_limit_SoilH, upper_limit_SoilH,
+                                     lower_limit_SoilT11, upper_limit_SoilT1,
+                                     lower_limit_SoilT2, upper_limit_SoilT2,
                                     //  lower_limit_Noise, upper_limit_Noise, 
                                      lower_limit_CO2, upper_limit_CO2, 
                                      lower_limit_HUM, upper_limit_HUM, 
@@ -210,11 +190,11 @@ function loadDashboard(measure_data, lower_limit_T, upper_limit_T,
 
     let Date_place = document.getElementById("date");
 
-    let myH2 = document.createElement('h3');
+    let myH3 = document.createElement('h3');
 
-    myH2.textContent = measure_data['timestamp'].Value;
-    Date_place.textContent = myH2.textContent;
-    /*appendChild(myH2);*/
+    myH3.textContent = measure_data['timestamp'].Value;
+    Date_place.textContent = myH3.textContent;
+    /*appendChild(myH3);*/
 
     ///$$$$$$$
     /*____________________________________TEMPERATURE_________________________________*/
@@ -258,61 +238,61 @@ function loadDashboard(measure_data, lower_limit_T, upper_limit_T,
         Temperature.style.backgroundColor = '#F0F8FF'
     }
 
-        /*____________________________________SOIL TEMPERATURE_________________________________*/
-        let SoilTemperature = document.getElementById("SoilT-load");
-        /*Checking if the temperature data has been received*/
-    
-        if (measure_data['soilTemperature'] != null) {
-    
-            let valueST = parseFloat(measure_data['soilTemperature']);
-            let percentage = 0.0;
-            if (valueST < lower_limit_SoilT) {
-                percentage = 20.0;
-            } else if (valueST >= lower_limit_SoilT && valueST <= upper_limit_SoilT) {
-                a = 25;
-                b = 75;
-                min = parseFloat(lower_limit_SoilT);
-                max = parseFloat(upper_limit_SoilT);
-                
-                percentage = ((b-a)*(valueST-min)/(max-min)) + a;
-            } else {
-                percentage = 90.0;
-            }
-    
-            SoilTemperature.style.height = percentage.toString() + '%';
-            SoilTemperature.setAttribute('title', measure_data['soilTemperature']);
-            let color_ST
-            if (valueST > lower_limit_SoilT && valueST < upper_limit_SoilT) {
-                color_ST = green;
-            } else if (valueST == upper_limit_SoilT || valueST == lower_limit_SoilT) {
-                color_ST = orange;
-            } else {
-                color_ST = red;
-            }
-            SoilTemperature.style.backgroundColor = color_ST;
+    /*____________________________________SOIL TEMPERATURE_________________________________*/
+    let SoilTemperature = document.getElementById("SoilT-load");
+    /*Checking if the temperature data has been received*/
+
+    if (measure_data['soilTemperature1'] != null) {
+
+        let valueST = parseFloat(measure_data['soilTemperature1']);
+        let percentage = 0.0;
+        if (valueST < lower_limit_SoilT11) {
+            percentage = 20.0;
+        } else if (valueST >= lower_limit_SoilT11 && valueST <= upper_limit_SoilT1) {
+            a = 25;
+            b = 75;
+            min = parseFloat(lower_limit_SoilT11);
+            max = parseFloat(upper_limit_SoilT1);
+            
+            percentage = ((b-a)*(valueST-min)/(max-min)) + a;
+        } else {
+            percentage = 90.0;
         }
-        else {
-            let SoilTemp_input = document.getElementById("soilT-input")
-            SoilTemp_input.style.color = '#808080'
-            color_ST = red
-            SoilTemperature.style.height = '100%';
-            SoilTemperature.style.backgroundColor = '#F0F8FF'
+
+        SoilTemperature.style.height = percentage.toString() + '%';
+        SoilTemperature.setAttribute('title', measure_data['soilTemperature']);
+        let color_ST
+        if (valueST > lower_limit_SoilT11 && valueST < upper_limit_SoilT1) {
+            color_ST = green;
+        } else if (valueST == upper_limit_SoilT1 || valueST == lower_limit_SoilT11) {
+            color_ST = orange;
+        } else {
+            color_ST = red;
         }
+        SoilTemperature.style.backgroundColor = color_ST;
+    }
+    else {
+        let SoilTemp_input = document.getElementById("soilT-input")
+        SoilTemp_input.style.color = '#808080'
+        color_ST = red
+        SoilTemperature.style.height = '100%';
+        SoilTemperature.style.backgroundColor = '#F0F8FF'
+    }
 
     /*____________________________________SOIL HUM_________________________________*/
     let SoilHum = document.getElementById("SoilH-load");
 
-    if (measure_data['soilHumidity'] != null) {
+    if (measure_data['soilTemperature2'] != null) {
 
-        let valueSH = parseFloat(measure_data['soilHumidity']);
+        let valueSH = parseFloat(measure_data['soilTemperature2']);
         let percentage = 0.0;
-        if (valueSH < lower_limit_SoilH) {
+        if (valueSH < lower_limit_SoilT2) {
             percentage = 20.0;
-        } else if (valueSH >= lower_limit_SoilH && valueSH <= upper_limit_SoilH) {
+        } else if (valueSH >= lower_limit_SoilT2 && valueSH <= upper_limit_SoilT2) {
             a = 25;
             b = 75;
-            min = parseFloat(lower_limit_SoilH);
-            max = parseFloat(upper_limit_SoilH);
+            min = parseFloat(lower_limit_SoilT2);
+            max = parseFloat(upper_limit_SoilT2);
             
             percentage = ((b-a)*(valueSH-min)/(max-min)) + a;
         } else {
@@ -322,9 +302,9 @@ function loadDashboard(measure_data, lower_limit_T, upper_limit_T,
         SoilHum.style.height = percentage.toString() + '%';
         SoilHum.setAttribute('title', measure_data['soilHumidity']);
         let color_SH;
-        if (valueSH > lower_limit_SoilH && valueSH < upper_limit_SoilH) {
+        if (valueSH > lower_limit_SoilT2 && valueSH < upper_limit_SoilT2) {
             color_SH = green;
-        } else if (valueSH == upper_limit_SoilH || valueSH == lower_limit_SoilH) {
+        } else if (valueSH == upper_limit_SoilT2 || valueSH == lower_limit_SoilT2) {
             color_SH = orange;
         } else {
             color_SH = red;

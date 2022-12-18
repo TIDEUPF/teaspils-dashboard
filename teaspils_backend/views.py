@@ -1,4 +1,6 @@
+import ast
 import datetime
+import html
 from dateutil import parser 
 import json
 from typing import List
@@ -17,7 +19,7 @@ from django.core.paginator import Paginator
 
 from .api import facade
 
-from .models import Course, MeasureObservation, Observation, Plant, PlantSettings, Student
+from .models import Experiment, MeasureObservation, Observation, Plant, PlantSettings
 from .forms import LoginForm, MeasureObservationForm, ObservationForm
 
 @csrf_exempt
@@ -30,16 +32,12 @@ def index(request):
 
         if ajax_value != '':
 
-            course_id = ajax_value
-            course = Course.objects.filter(pk=course_id).first()
-            if(course is None):
-                return HttpResponse(json.dumps({'alias': _("No alias")})) 
+            partner_name = ajax_value
+            experiment = Experiment.objects.filter(partner=partner_name).first()
+            if(experiment is None):
+                return HttpResponse(json.dumps({'alias': "N"})) 
             else:
-                plant = Plant.objects.filter(course__pk=course.id).first()    
-                if(plant is None):
-                    return HttpResponse(json.dumps({'alias': _("No alias")})) 
-                else:
-                    return HttpResponse(json.dumps({'alias': plant.alias}))
+                return HttpResponse(json.dumps({'alias': "Y"}))
             
 
     if request.method == 'POST':
@@ -47,32 +45,32 @@ def index(request):
         form:LoginForm = LoginForm(request.POST)
 
         if form.is_valid():
-            course_id = form.cleaned_data['course_id']
+            partner_name = form.cleaned_data['partner_name']
             secret_word = form.cleaned_data['secret_word']
 
-            course = Course.objects.filter(pk=course_id).first()
+            experiment = Experiment.objects.filter(partner=partner_name).first()
 
-            if (not course is None): 
-                is_valid = course.validateSecret(secret_word)
+            if (not experiment is None): 
+                is_valid = experiment.validateSecret(secret_word)
 
                 #TODO: Implement real login system
                 if is_valid:
                     try: 
-                        plant = Plant.objects.filter(course__pk=course_id).first()
+                        plant = Plant.objects.filter(experiment__pk=experiment.id).first()
                         print(plant)
                         return HttpResponseRedirect(f'plant/{plant.id}/history')
                     except Exception as e:
                         print(e)
                         return HttpResponseRedirect('/teaspils')
                 else:
-                    messages.error(request, "Course credentials are not valid, try again.")
+                    messages.error(request, "Experiment credentials are not valid, try again.")
                     return render(request, 'main/index.html', {'form': form})
             else:
-                messages.error(request, "Course not found!")
+                messages.error(request, "Partner not found!")
                 return HttpResponseRedirect('/teaspils')
         else:
             print(form.errors)
-            print("Formulario no válido")
+            print("Not valid form")
             return HttpResponseRedirect('/teaspils')
 
 
@@ -89,8 +87,19 @@ def index(request):
 @csrf_exempt
 def plantHistory(request, plant_id:int):
 
+    print("ENTERING PLANT HISTORY VIEW")
+
     observations:List = []
-    if request.method == 'POST':
+
+    if request.method == 'POST' and request.POST['name'] == 'dataset_upload':
+        print("ENTERING FROM DATASET")
+
+        plant = Plant.objects.filter(pk=plant_id).first()
+        plant.last_dataset = bytes(request.POST['file'], 'utf-8')
+        plant.save()
+
+
+    if request.method == 'POST' and request.POST['name'] == 'observation_post':
         form:ObservationForm = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
             plant_id = form.cleaned_data['plant_id']
@@ -128,11 +137,25 @@ def plantHistory(request, plant_id:int):
 
     # Connect to datasource
     # Will be routed to dummy data until real sources became availables.
+    # plant = Plant.objects.filter(pk=plant_id).first()
+    # con = facade.ConnectionFacade('dummy') #or thingsb
+    # con.connect(plant.data_source)
+    # print("FROM STATIC: ", facade.ConnectionFacade.data)
+    # json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
     plant = Plant.objects.filter(pk=plant_id).first()
-    con = facade.ConnectionFacade('dummy') #or thingsb
-    con.connect(plant.data_source)
-    print("FROM STATIC: ", facade.ConnectionFacade.data)
-    json_pretty = json.dumps(facade.ConnectionFacade.data, sort_keys=True, indent=4)
+
+    if plant.last_dataset == None:
+        json_pretty = json.dumps({})
+
+    str_dataset = ''
+
+    # str_dataset = plant.last_dataset.decode('utf-8')
+    # str_dataset = "\"" + str_dataset + "\""
+    # str_dataset = str_dataset.encode('latin-1')
+    
+    #print(str_dataset)
+
+    # json_pretty = json.dumps(str_dataset)
 
     messages.info(request, "Select a data pont on the chart to see the full visualization of the measurement!")
 
@@ -146,7 +169,7 @@ def plantHistory(request, plant_id:int):
     return render(request, 
                   template_name='main/historical.html', 
                   context={'plant_id' : plant_id,
-                           'json_history': json_pretty,
+                           'json_history': str_dataset,
                            'page_obj': page_obj})
 
 

@@ -33,17 +33,18 @@
         <div class="col-2">
             <ul class="nav nav-pills flex-column" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link active" data-bs-target="#upload_area" role="tab" data-bs-toggle="pill" aria-selected="true"> {% blocktrans %}Data visualization{% endblocktrans %}</a>
+                    <a id="plot-pane" class="nav-link active" data-bs-target="#upload_area" role="tab" data-bs-toggle="pill" aria-selected="true"
+                       aria-controls="upload_area"> {% blocktrans %}Data visualization{% endblocktrans %}</a>
                 </li>
                 <hr > 
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="true"
-                        style="color: orange;">{% blocktrans %}Compare measures{% endblocktrans %}</a>
+                    <a id="compare-pane" class="nav-link" data-bs-target="#compare_area" role="tab" data-bs-toggle="pill" aria-selected="false"
+                        aria-controls="compare_area" style="color: orange;">{% blocktrans %}Compare measures{% endblocktrans %}</a>
                 </li>
             </ul>
         </div>
-        <div class="col-10">
-            <!-- <div class="tab-content clearfix"> -->
+        <div id="column-tab-content" class="col-10 tab-content">
+            <div id="upload_area" class="tab-pane fade show active" role="tabpanel" aria-labelledby="plot-pane" tabindex="0">
                 <div class="row">
                     <div class="input-group mb-3">
                         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-trigger="hover focus" 
@@ -68,44 +69,46 @@
                           </div>
                     </div>
                 </div>
-                </div>
-
-                <div id="compare_area" class="tab-pane fade" role="tabpanel" style="width:100%;height:100%;">
-                    <!-- Example single danger button -->
-                    <div style="display: flex; justify-content: space-around;">
-                        <div>
-                            <li class="nav-item dropdown">
-                                <div class="sms-button" id="first-dropdown" role="button" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}First measure{% endblocktrans %}&nbsp;&nbsp;</a>
-                                </div>
-                                <div id="first-options" class="dropdown-menu" aria-labelledby="first-dropdown">
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Soil Humidity{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
-                                </div>
-                            </li>
-                        </div>
-                        <div>
-                            <li class="nav-item dropdown">
-                                <div class="sms-button" id="second-dropdown" role="button" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}Second measure{% endblocktrans %}&nbsp;&nbsp;</a>
-                                </div>
-                                <div id="second-options" class="dropdown-menu" aria-labelledby="second-dropdown">
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Soil Humidity{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
-                                    <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
-                                </div>
-                            </li>
-                        </div>
+            </div>
+            <div id="compare_area" class="tab-pane fade" role="tabpanel" aria-labelledby="compare-pane" tabindex="0">
+                <!-- Example single danger button -->
+                <div style="display: flex; justify-content: space-around;">
+                    <div>
+                        <li class="nav-item dropdown">
+                            <div class="sms-button" id="first-dropdown" role="button" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}First measure{% endblocktrans %}&nbsp;&nbsp;</a>
+                            </div>
+                            <div id="first-options" class="dropdown-menu" aria-labelledby="first-dropdown">
+                                <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Soil Temperature 1{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Soil Temperature 2{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
+                            </div>
+                        </li>
                     </div>
-                    <div id="plt_compare" style="width:100%;height:95%;"></div>
+                    <div>
+                        <li class="nav-item dropdown">
+                            <div class="sms-button" id="second-dropdown" role="button" data-bs-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <a class="nav-link dropdown-toggle" href="#">&nbsp;{% blocktrans %}Second measure{% endblocktrans %}&nbsp;&nbsp;</a>
+                            </div>
+                            <div id="second-options" class="dropdown-menu" aria-labelledby="second-dropdown">
+                                <a class="dropdown-item" href="#">{% blocktrans %}Temperature{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Soil Temperature 1{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Soil Temperature 2{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Co2{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Light{% endblocktrans %}</a>
+                                <a class="dropdown-item" href="#">{% blocktrans %}Humidity{% endblocktrans %}</a>
+                            </div>
+                        </li>
+                    </div>
                 </div>
+                <div id="plt_compare" style="width:100%;height:90%;"></div>
+            </div>
+        </div>
             </div>
             </div>
 
@@ -196,7 +199,7 @@
                                     <input type="file" class="form-control form-control-sm" name="attachedfile" id="plant-image-upload" />
                                 </div>
                                 <div class="col-2">
-                                    <input type="submit" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
+                                    <input type="submit" name="observation_post" id="save-button" class="btn btn-outline-primary" value="{% blocktrans %}Save{% endblocktrans %}">
                                 </div>
                             </div>
                         </form>
@@ -212,13 +215,8 @@
 
 <script>
     // variables initialized for GLOBAL use
-    //
-    let history = {{ json_history| safe}};
-    let pid = {{ plant_id }};
+    var pid = {{ plant_id }}
 </script>
-
-<!-- <script src="{% static 'js/main.js' %}"></script> -->
-<!-- <script src="{% static 'js/realtime_loader.js' %}"></script> -->
 <script src="{% static 'js/dataset_loader.js' %}"></script>
 
 

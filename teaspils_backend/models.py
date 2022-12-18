@@ -14,8 +14,8 @@ class Center(models.Model):
     def __str__(self) -> str:
         return self.name
 
-class Course(models.Model):
-    name = models.CharField(max_length=120)
+class Experiment(models.Model):
+    partner = models.CharField(max_length=120)
     center = models.ForeignKey(Center, on_delete=models.CASCADE)
     secret_word = models.CharField(max_length=12)
 
@@ -23,20 +23,21 @@ class Course(models.Model):
         return True if input == self.secret_word else False
 
     def __str__(self) -> str:
-        return f'{self.name} @ {self.center.name}'
+        return f'{self.partner} @ {self.center.name}'
     
 class Student(models.Model):
     name = models.CharField(max_length=100)
-    course = models.ForeignKey(Course, on_delete=models.CASCADE)
+    experiment = models.ForeignKey(Experiment, on_delete=models.CASCADE)
 
     def __str__(self) -> str:
         return self.name
-#TODO Cambiar One to one a one to many con Courses
+#TODO Cambiar One to one a one to many con Experiments
 class Plant(models.Model):
     alias = models.CharField(max_length=100)
     data_source = models.CharField(max_length=512, default='no-source', null=False)
+    last_dataset = models.BinaryField()
 
-    course = models.OneToOneField(Course, on_delete=models.CASCADE)
+    experiment = models.OneToOneField(Experiment, on_delete=models.CASCADE)
     
 
     def __str__(self) -> str:
@@ -117,4 +118,7 @@ ADMIN MODELS
 """
 
 class PlantAdmin(admin.ModelAdmin):
+    readonly_fields = ('id',)
+
+class ExperimentAdmin(admin.ModelAdmin):
     readonly_fields = ('id',)

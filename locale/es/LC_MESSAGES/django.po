@@ -506,7 +506,7 @@ msgstr "Observaciones:"
 msgid "Save"
 msgstr "Guardar"
 
-#~ msgid "Course id"
+#~ msgid "Experiment id"
 #~ msgstr "Id Curso"
 
 #~ msgid "Noise"

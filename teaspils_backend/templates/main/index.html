@@ -16,15 +16,15 @@
     <div class="col-6">
         <form action="/teaspils/" method="post">
             <div class="input-group input-group-lg pt-3">
-                <h1>{% blocktrans %}Plant alias: {% endblocktrans %}<span id='alias-label' class="badge bg-info">{% blocktrans %}No alias{% endblocktrans %}</span> </h1>
+                <h1>{% blocktrans %}Partner status: {% endblocktrans %}<span id='alias-label' class="badge bg-info">{% blocktrans %}Not found{% endblocktrans %}</span> </h1>
             </div>
             <div class="input-group input-group-lg pb-3">
-                <!-- <label class="input-group-text" for="course_id_input">Course id: </label> -->
+                <!-- <label class="input-group-text" for="experiment_id_input">Experiment id: </label> -->
                 <div class="input-group-prepend">
-                    <span style="height: 100%;" class="input-group-text" id="course_id_label">{% blocktrans %}Plant id{% endblocktrans %}</span>
+                    <span style="height: 100%;" class="input-group-text" id="experiment_id_label">{% blocktrans %}Partner name{% endblocktrans %}</span>
                 </div>
-                <input class="form-control" id="course_id_input" type="number" name="course_id" maxlength="3"
-                    aria-label="Default" aria-describedby="course_id_label" required>
+                <input class="form-control" id="partner_name_input" name="partner_name" maxlength="10"
+                    aria-label="Default" aria-describedby="experiment_id_label" required>
             </div>
             <div class="input-group input-group-lg pb-3">
                 <!-- <label class="input-group-text" for="secret_word_input">Secret word: </label> -->
@@ -52,16 +52,17 @@
             document.getElementById("secret_word_input").type = 'password';
     }
 
-    document.getElementById('course_id_input').addEventListener('focusout', (event) => {
+    document.getElementById('partner_name_input').addEventListener('focusout', (event) => {
 
-        $.get('./', { 'value': document.getElementById('course_id_input').value }, function (json_response) {
+        $.get('./', { 'value': document.getElementById('partner_name_input').value }, function (json_response) {
             alias = JSON.parse(json_response)['alias']
-            document.getElementById("alias-label").innerHTML = alias;
 
-            if( alias != 'No alias' ){
+            if( alias != 'N' ){
+                document.getElementById("alias-label").innerHTML = {% blocktrans %}"active"{% endblocktrans %};
                 document.getElementById("alias-label").className = 'badge bg-success';                
             }else{
-                document.getElementById("alias-label").className = 'badge bg-info';    
+                document.getElementById("alias-label").innerHTML = {% blocktrans %}"Not found"{% endblocktrans %};
+                document.getElementById("alias-label").className = 'badge bg-warning';    
             }
         });
     });

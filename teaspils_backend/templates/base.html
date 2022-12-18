@@ -54,7 +54,7 @@
                         </form>
                     </div>
                     <div class="col-4">
-                        <a class="btn btn-danger btn-lg btn-block" href="/teaspils/">{% blocktrans %}Logout{% endblocktrans %}</a>
+                        <a id="btn-logout" class="btn btn-danger btn-lg btn-block" href="/teaspils/">{% blocktrans %}Logout{% endblocktrans %}</a>
                     </div>
                 </div>
             </div>
@@ -111,6 +111,10 @@
                 top.location.href = "{{request.path}}";
             },
         })
+    });
+
+    $("#btn-logout").on('click', () => {
+        window.localStorage.removeItem("dataset");
     });
 </script>
 

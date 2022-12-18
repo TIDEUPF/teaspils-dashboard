@@ -1,7 +1,7 @@
 from django import forms
 
 class LoginForm(forms.Form):
-    course_id = forms.IntegerField(label='Course Id')
+    partner_name = forms.CharField(label='Partner name')
     secret_word = forms.CharField(label='Secret Word', max_length=12)
 
 class ObservationForm(forms.Form):

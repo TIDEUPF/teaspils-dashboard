@@ -1,0 +1,19 @@
+# SERVICE SECTION
+apiVersion: v1
+kind: Service
+metadata:
+  name: teaspilsdash
+  namespace: teaspils
+  labels:
+    app: teaspilsdash
+    release: teaspilsdash
+spec:
+  type: ClusterIP
+  ports:
+  - name: teaspils-port
+    port: 8000
+    protocol: TCP
+    targetPort: 8000
+  selector:
+    app: teaspilsdash
+    release: teaspilsdash

@@ -1,0 +1,19 @@
+# INGRESS SECTION
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: teaspilsdash
+  namespace: teaspils
+spec:
+  ingressClassName: nginx
+  rules:
+  - host: teaspils.upf.edu
+    http:
+      paths:
+      - backend:
+          service:
+            name: teaspils-service
+            port:
+              number: 8000
+        pathType: Prefix
+        path: /teaspils/

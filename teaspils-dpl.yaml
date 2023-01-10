@@ -1,0 +1,44 @@
+# DEPLOYMENT SECTION
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: teaspilsdash
+  namespace: teaspils
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      workload.user.cattle.io/workloadselector: deployment-teaspils-teaspilsdash
+  template:
+    metadata:
+      labels:
+        app: teaspilsdash
+        release: teaspilsdash
+        workload.user.cattle.io/workloadselector: deployment-teaspils-teaspilsdash
+    spec:
+      containers:
+        - name: teaspilsdash
+          image: registry.sb.upf.edu/tide/teaspilsdash:3.0.1
+          imagePullPolicy: IfNotPresent
+          resources:
+            requests:
+              memory: "64m"
+              cpu: "512m"
+            limits:
+              memory: "128Mi"
+              cpu: "1024m"
+            # ADD NEXT SECTION IF YOU ARE MOUNTING A NFS VOLUME.    
+            volumeMounts:
+              - name: teaspilsdash-vol
+                mountPath: ./teaspils/
+
+      # ADD NEXT SECTION IF YOU ARE MOUNTING A NFS DIRECTORY.
+      volumes:
+        - name: teaspilsdash-vol
+          nfs:
+            path: /TIDE/TIDE-teaspils/app 
+            server: 10.80.110.228
+
+      # ONLY FOR AUTHENTICATED REGISTRIES.
+      imagePullSecrets:
+      - name: teaspils-secret #Create one following “Create Rancher Secret” Section

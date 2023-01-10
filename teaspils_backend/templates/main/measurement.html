@@ -78,14 +78,6 @@
                                 <button class="btn btn-secondary input-btn" id="inputButtonHUM">{% blocktrans %}Humidity{% endblocktrans %}</button>
                             </div>
                         </div>
-
-                        <!-- <div class="row">
-                            <div class="button-container">
-                                <input class="input-limit" id="myInputLowNoise" type="number" size="1" value={{lowN}} />
-                                <input class="input-limit" id="myInputHighNoise" type="number" size="1" value={{highN}} />
-                                <button class="btn btn-secondary input-btn" id="inputButtonNoise">{% blocktrans %}Noise{% endblocktrans %}</button>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="button-container">
                                 <input class="input-limit" id="myInputLowCO2" type="number" size="1" value={{lowC}} />
@@ -114,7 +106,7 @@
 
         <!-- Starting thermometers -->
 
-        <div class="col-9" id="Chart-all" style="margin: 0;">
+        <div class="col-9" id="Chart-all" style="margin: 0; padding-left: 1;">
             <div class="row" style="margin-bottom: 1em ;">
                 <h5 style="color: gray; text-align: center;">{% blocktrans %}Measures taken at:{% endblocktrans %}
                     <span style="color:red">{{timestamp}}</span>{% blocktrans %} for the plant:{% endblocktrans %}
@@ -123,12 +115,12 @@
             </div>
             <!-- style="background-color: #ffde9f;"-->
             <div class="row">
-                <div class="col-1">
+                <div class="col-1" style="width:3%">
                     <div class="white-space-swiper"></div>
                 </div>
-                <div class="col-lg-1">
+                <div class="col-2">
                     <!-- <script src="{% static 'js/Term_fun.js' %}"></script> -->
-                    <div class="container">
+                    <div class="container p-0">
                         <div class="chart-wrapper">
                             <ul class="chart-y">
                                 <li></li>
@@ -149,19 +141,19 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2 id="temp-input">{% blocktrans %}Temp. [ºC]{% endblocktrans %}</h2>
+                            <h2 id="temp-label">{% blocktrans %}Temp. [ºC]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-2">
                     <!-- <script src="{% static 'js/Term_fun.js' %}"></script> -->
-                    <div class="container">
+                    <div class="container p-0">
                         <div class="chart-wrapper">
                             <ul class="chart-y">
                                 <li></li>
-                                <li id="label_temp_h">{{highST}}</li>
-                                <li id="label_temp_m"> </li>
-                                <li id="label_temp_l">{{lowST}}</li>
+                                <li id="label_SoilT_h">{{highST}}</li>
+                                <li id="label_SoilT_m"> </li>
+                                <li id="label_SoilT_l">{{lowST}}</li>
                                 <li></li>
                             </ul>
                             <ul class="chart-x">
@@ -176,7 +168,7 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2 id="soilT-input">{% blocktrans %}Soil Temp 1 [ºC]{% endblocktrans %}</h2>
+                            <h2 id="soilT1-label">{% blocktrans %}Soil Temp 1 [ºC]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
@@ -203,12 +195,12 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2 id="soilH-input">{% blocktrans %}Soil Temp 2 [ºC]{% endblocktrans %}</h2>
+                            <h2 id="soilT2-label">{% blocktrans %}Soil Temp 2 [ºC]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
                 <div class="col-1">
-                    <div class="container">
+                    <div class="container p-0">
                         <div class="chart-wrapper">
                             <ul class="chart-y">
                                 <li></li>
@@ -229,11 +221,11 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2>{% blocktrans %}Humidity [%]{% endblocktrans %}</h2>
+                            <h2 id="humidity-label">{% blocktrans %}Humidity [%]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
-                <div class="col-1">
+                <div class="col-2">
                     <div class="container">
                         <div class="chart-wrapper">
                             <ul class="chart-y">
@@ -255,7 +247,7 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2>{% blocktrans %}Co2 [ppm]{% endblocktrans %}</h2>
+                            <h2 id="co2-label" >{% blocktrans %}Co2 [ppm]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
@@ -281,7 +273,7 @@
                             </ul>
                         </div>
                         <div class="down">
-                            <h2>{% blocktrans %}Light [lux]{% endblocktrans %}</h2>
+                            <h2 id="light-label">{% blocktrans %}Light [lux]{% endblocktrans %}</h2>
                         </div>
                     </div>
                 </div>
@@ -407,33 +399,31 @@
             'highST'    : document.getElementById('myInputHighSoilT').value,
             'lowSH'     : document.getElementById('myInputLowSoilH').value,
             'highSH'    : document.getElementById('myInputHighSoilH').value,
-            // 'lowN'      : document.getElementById('myInputLowNoise').value,
-            // 'highN'     : document.getElementById('myInputHighNoise').value,
             'lowC'      : document.getElementById('myInputLowCO2').value,
             'highC'     : document.getElementById('myInputHighCO2').value,
             'lowH'      : document.getElementById('myInputLowHUM').value,
             'highH'     : document.getElementById('myInputHighHUM').value,
             'lowI'      : document.getElementById('myInputLowIL').value,
             'highI'     : document.getElementById('myInputHighIL').value,
-            'plant_id'  : {{ plant_id }}
+            'plant_id'  : {{ plant_id }},
         };
 
-    // Sending and receiving data in JSON format using POST method
-    //
+        // Sending and receiving data in JSON format using POST method
+        //
 
-    $.ajax({
-        url: '../../../ajax/savesettings',
-        data: params,
-        dataType: 'json',
-        success: function (data) {
-            console.log(data.success)
-            if (data.success == true) {
-                alert('Settings saved succesfully');
-            } else {
-                alert('An error ocurred saving the data, please check all fields are filled');
+        $.ajax({
+            url: '../../../ajax/savesettings',
+            data: params,
+            dataType: 'json',
+            success: function (data) {
+                console.log(data.success)
+                if (data.success == true) {
+                    alert('Settings saved succesfully');
+                } else {
+                    alert('An error ocurred saving the data, please check all fields are filled');
+                }
             }
-        }
-    });
+        });
 
     console.log(params);
     });

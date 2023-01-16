@@ -88,18 +88,19 @@ def index(request):
 def plantHistory(request, plant_id:int):
 
     print("ENTERING PLANT HISTORY VIEW")
+    print(request.POST)
 
     observations:List = []
 
-    if request.method == 'POST' and request.POST['name'] == 'dataset_upload':
+    if (request.method == 'POST') and (request.POST['name'] == 'dataset_upload'):
         print("ENTERING FROM DATASET")
 
         plant = Plant.objects.filter(pk=plant_id).first()
         plant.last_dataset = bytes(request.POST['file'], 'utf-8')
         plant.save()
 
-
-    if request.method == 'POST' and request.POST['name'] == 'observation_post':
+    if (request.method == 'POST') and (('observation_post' in request.POST) and 
+                                       (request.POST['observation_post'])):
         form:ObservationForm = ObservationForm(request.POST, request.FILES)
         if form.is_valid():
             plant_id = form.cleaned_data['plant_id']

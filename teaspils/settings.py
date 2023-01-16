@@ -35,7 +35,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [ 
     '0.0.0.0',
-    'teaspilsdash.herokuapp.com', 
+    'teaspils.upf.edu',
     '127.0.0.1'
 ]
 
@@ -111,26 +111,9 @@ DATABASES = {
         }
 }
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': 'd7p0mtae3nll27',
-#         'USER': 'ofbichepjrkcxp',
-#         'PASSWORD': '1bc7e524580f70c92371164528ac6c445d4f240334b04ccd27cc3bccbdd5cd68',
-#         'HOST': 'ec2-54-75-26-218.eu-west-1.compute.amazonaws.com',
-#         'PORT': '5432',
-#     }
-# }
-
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': BASE_DIR / 'db.sqlite3',
-#     }
-# }   
 
 
-# Password validation
+# assword validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
